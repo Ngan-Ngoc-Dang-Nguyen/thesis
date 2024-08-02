@@ -3,7 +3,8 @@
 // Canh đều toàn văn bản
 //#set align()
 //nhớ thêm tích Hamdamard
-
+#set math.equation(numbering: "(1)")
+#import "../typst-orange.typ": chapter
 #set page(numbering: "1")
 #set page(header: [
   _Luận văn - Nguyễn Đặng Ngọc Ngân_
@@ -12,6 +13,9 @@
 ])
 
 == #text(orange)[CHƯƠNG 1: KIẾN THỨC CHUẨN BỊ]
+// #chapter[KIẾN THỨC CHUẨN BỊ]
+// = LÝ THUYẾT ĐỒ THỊ
+
 
 == #text(orange)[1. LÝ THUYẾT ĐỒ THỊ]
 == #text(orange)[1.1 ĐỒ THỊ]
@@ -107,7 +111,11 @@ Bây giờ ta đặt $f_1(x,a) eq.triple d(x,a)$ là hàm khoảng cách từ m�
 
 #text(orange)[*Chứng minh*] Ta sẽ tiến hành chứng minh hai chiều.
 
-Giả sử, $T$ là đồ thị cây. Chọn $y,z$ bất kỳ nằm trên cây $T$, $0<lambda<1$ và $x in P(y,z)$. Để chứng minh $f_1(x,a)$ là hàm lồi, ta cần chứng minh $d(x,a) <= lambda d(y,a) + (1-lambda) d(z,a)$ hoặc ta có thể chứng minh bất đẳng thức sau: $d(x,a)d(y,z) <= d(x,z)d(y,a) + d(x,y)d(z,a)$ (1) (Cách trích dẫn 1)
+Giả sử, $T$ là đồ thị cây. Chọn $y,z$ bất kỳ nằm trên cây $T$, $0<lambda<1$ và $x in P(y,z)$. Để chứng minh $f_1(x,a)$ là hàm lồi, ta cần chứng minh $d(x,a) <= lambda d(y,a) + (1-lambda) d(z,a)$ hoặc ta có thể chứng minh bất đẳng thức sau:
+
+$ d(x,a) d(y,z) <= d(x,z) d(y,a) + d(x,y) d(z,a) $ <eq:distance-a>
+
+(Cách trích dẫn @eq:distance-a )
 
 Vì $x in P(y,z)$ nên theo _Bổ đề 1_, ta có $x in P(y,a)$ hoặc $x in P(z,a)$.
 

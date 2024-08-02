@@ -39,10 +39,10 @@
   ]
 )
 
-#part("Part One Title") 
+#part([Example]) 
 
-#chapter("Sectioning Examples", image: image("../images/orange2.jpg"), l: "chap1")
-#index("Sectioning")
+// #chapter("Sectioning Examples", image: image("../images/orange2.jpg"), l: "chap1")
+// #index("Sectioning")
 
 #include "../docs/chapter1.typ"
 
@@ -150,7 +150,7 @@ fi fj fl ffl ffi Ty
 
 == Referencing Chapters
 #index("Referencing")
-This statement references to another chapter @chap1
+This statement references to another chapter
 
 #part("Part Two Title")
 
