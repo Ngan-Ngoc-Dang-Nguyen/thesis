@@ -1,4 +1,5 @@
-#import "../polylux.typ": *    
+// #import "../polylux.typ": *  
+#import "@preview/polylux:0.3.1": *
 #import themes.clean: *
 
 #show link: set text(blue)
@@ -18,11 +19,11 @@
     title: [Upgrading Stability Radius Model for Enhancing Robustness
 of Median Location on Tree Networks ],
     //subtitle: "An overview over all the features",
-    authors:[#underline[Nguyễn Đặng Ngọc Ngân], Cao Minh Quang, Trần Thủ Lễ, Nguyễn Trung Kiên],
+    authors:[#underline[Nguyễn Đặng Ngọc Ngân],  Cao Minh Quang,  Trần Thủ Lễ,  Nguyễn Trung Kiên],
     date: "August 2024",
 )
 
-#slide(title: [#text(eastern. darken(10%))[The main content]])[
+#slide(title:"The main content")[
 
     *1. Stability Radius.*
 
@@ -32,48 +33,70 @@ of Median Location on Tree Networks ],
 
 #slide(title: "About this presentation")[
     Let $T = (V, E)$ be a tree network with vertex set $V = {v_1, ..., v_n}$ and edge set $E$.
-Each vertex $v_i ∈ V$ has a nonnegative weight $w_i$.
+Each vertex $v_i ∈ V$ has a nonnegative weight $w_i$ and every edge length also has to be positive.
 
-#import "@preview/bob-draw:0.1.0": *
-#show raw.where(lang: "bob"): it => render(it)
+#import "@preview/cetz:0.1.2": canvas, plot
+#import "@preview/cetz:0.2.2"
+  #import "@preview/cetz:0.1.2"
 
-#align(center)[#render(
-    ```
-  10          70                     *-----------------*
-    *------------*                  /
-                  \                /
-                   \              /
-                    \5         7 /
-                     *----------*
-                    /            \     *--------*
-                   /              \   /
-                  /                \ /
-    *------------*                  * 
-                /                    \
-               /                      \
-              /                        *--------------*
-             *
-    
-    
-    
-    ```,
-    width: 52%,
-)]
-    
-    This presentation is supposed to briefly showcase what you can do with this
-    package.
+  #only(1)[
+  #align(center)[#canvas(length: 10%, {
+    import cetz.draw: *
 
-    For a full documentation, read the
-    #link("https://polylux.dev/book/")[online book].
+    let y = 2 
+    let x = 4
+    let y-space = 1
+    let h=1.4
+
+    circle((0*h,3), radius: 0.05,fill:black, name: "v1") 
+    content("v1.bottom", $v_1 (0.1)$, anchor: "left", padding: 0.2)
+
+    circle((-2*h, 2), radius: 0.05, fill: black, name: "v2") 
+    content("v2.bottom", $v_2 (0.13)$, anchor: "left", padding: 0.2)
+
+    circle((-3*h, 1), radius: 0.05,fill:black, name: "v5") 
+    content("v5.bottom", $v_5 (0.1)$, anchor: "left", padding: 0.2)
+
+    circle((-1*h, 1), radius: 0.05,fill:black, name: "v6") 
+    content("v6.bottom", $v_6 (0.1)$, anchor: "left", padding: 0.2)
+
+    circle((0*h, 2), radius: 0.05, fill: black, name: "v3") 
+    content("v3.bottom", $v_3 (0.06)$, anchor: "left", padding: 0.2)
+
+    circle((0*h, 1), radius: 0.05, fill: black, name: "v7") 
+    content("v7.bottom", $v_7 (0.06)$, anchor: "left", padding: 0.2)
+
+    circle((2*h, 2), radius: 0.05, fill: black, name: "v4") 
+    content("v4.bottom", $v_4 (0.15)$, anchor: "left", padding: 0.2)
+
+    circle((1*h, 1), radius: 0.05, fill: black, name: "v8") 
+    content("v8.bottom", $v_8 (0.2)$, anchor: "left", padding: 0.2)
+    circle((3*h, 1), radius: 0.05, fill:black, name: "v9") 
+    content("v9.bottom", $v_9 (0.1)$, anchor: "left", padding: 0.2)
+    
+    line("v1", "v2")
+    line("v1", "v3")
+    line("v1", "v4")
+    line("v2", "v5")
+    line("v2", "v6")
+    line("v3", "v7")
+    line("v4", "v8")
+    line("v4", "v9")    }
+  )]]
+
+    // This presentation is supposed to briefly showcase what you can do with this
+    // package.
+
+    // For a full documentation, read the
+    // #link("https://polylux.dev/book/")[online book].
 ]
 
-#slide(title: "A title")[
-    Let's explore what we have here.
+#slide(title: "1-median on tree")[
 
-
-    #pause
-
-    On the top of this slide, you can see the slide title.
+Let $d(x, v_i)$ be the length of the shortest path between x and vi. A vertex $x^*$
+is called a 1-median of T, if
+$f(x^*) ≤ f(x) quad forall x in V$
+where $f(x)= sum_(i=1) ^n w_i d(x,v_i)$
 
     // We used the `title` argument of the `#slide` function for that:
     // ```typ
@@ -84,58 +107,78 @@ Each vertex $v_i ∈ V$ has a nonnegative weight $w_i$.
     // (This works because we utilise the `clean` theme; more on that later.)
 ]
 
-#slide[
-    Titles are not mandatory, this slide doesn't have one.
+#slide(title: "Stability Radius")[
+Definition of the stability radius:
 
-    But did you notice that the current section name is displayed above that
-    top line?
+$R(w) = sup{epsilon in [0, min_{i=1,..., n} w_i]: v_1 in X^*_tilde(w), quad forall tilde(w) in [w-epsilon, w+ epsilon]}$
 
-    We defined it using
-    #raw("#new-section-slide(\"Introduction\")", lang: "typst", block: false).
+*Theorem...* 
 
-    This helps our audience with not getting lost after a microsleep.
+ $underline(R(w)) = min_{u in N(v_1)} 1/n  (1- 2 angle.l w, bb(1)_T_u angle.r).$
 
-    You can also spot a short title above that.
+ *Example...*
+
+Consider the weighted tree T in Figure 1. The stability radius of median point $v_1$ is $R(w) = min{epsilon_v_2 , epsilon_v_3 , epsilon_v_4 } = 0.1/9$ since $epsilon_v_2 = 0.34/9, epsilon_v_3 = 0.76/9, epsilon_v_4 = 0.1/9$
+
+    // We used the `title` argument of the `#slide` function for that:
+    // ```typ
+    // #slide(title: "First slide")[
+    //     ...
+    // ]
+    // ```
+    // (This works because we utilise the `clean` theme; more on that later.)
+]
+// 
+
+// #slide[
+//     *Example...*
+
+//     Consider the weighted tree T in Figure 1. The stability radius of medianpoint $v_1$ is $R(w) = min{epsilon v_2 , epsilon v_3 , epsilon v_4 } = 0.1/9$ since $epsilon v_2 = 0.34/9, epsilon v_3 = 0.76/9 , epsilon v_4 = 0.1/9$
+// ]
+
+// #slide(title: "The bottom of the slide")[
+//     Now, look down!
+
+//     There we have some general info for the audience about what talk they are
+//     actually attending right now.
+
+//     You can also see the slide number there.
 ]
 
-#slide(title: "The bottom of the slide")[
-    Now, look down!
 
-    There we have some general info for the audience about what talk they are
-    actually attending right now.
+#new-section-slide("Upgrading Stability Radius of median point")
 
-    You can also see the slide number there.
+
+#slide(title: "Formulations")[
+Let $T = (V, E)$ be a tree network with vertex set $V = {v_1, ..., v_n}$ and edge set $E$.
+
+Each vertex $v_i in V$ has a nonnegative weight $w_i$ and every edge length also has to be positive. 
+// #pause
+Let $v_1 in V$ be a median point associated with weight vector $w in RR^n_+$.
+
+(Nhớ nói về tổng trọng số cây ban đầu phải = 1)
+
+#pause
+
+ Given a budget $B ≥ 0$, the goal is to modify the weights from $w$ to some $tilde(w) in RR^n_+$ within the budget $B$.
+]
+
+#slide[The problem model is stated as follows:
+
+$
+max quad & underline(R(tilde(w)))\
+
+"s.t." quad & norm(tilde(w)-w)_1 <= B\
+
+ & v_1 "is 1-median w.r.t" tilde(w)\
+
+ & sum^n_(i=1) tilde(w)_i = 1\
+
+ & norm(tilde(w)-w)_infinity <= epsilon_0
+$
 ]
 
 
-#new-section-slide("Dynamic content")
-
-
-#slide(title: [A dynamic slide with `pause`s])[
-    Sometimes we don't want to display everything at once.
-    #pause
-
-    That's what the `#pause` function is there for!
-    #pause
-
-    It makes everything after it appear at the next subslide.
-
-    #text(.6em)[(Also note that the slide number does not change while we are here.)]
-]
-
-#slide(title: "Fine-grained control")[
-    When `#pause` does not suffice, you can use more advanced commands to show
-    or hide content.
-
-    These are some of your options:
-    - `#uncover`
-    - `#only`
-    - `#alternatives`
-    - `#one-by-one`
-    - `#line-by-line`
-
-    Let's explore them in more detail!
-]
 
 #let example(body) = block(
     width: 100%,
@@ -144,276 +187,143 @@ Each vertex $v_i ∈ V$ has a nonnegative weight $w_i$.
     radius: .5em,
     text(size: .8em, body)
 )
+#let Rdown = $underline(R)$
 
-#slide(title: [`#uncover`: Reserving space])[
-    With `#uncover`, content still occupies space, even when it is not displayed.
+#slide[
+    $ max_(tilde(w)) Rdown(tilde(w)) = max_tilde(w) min_(u in N(v_1))1/n -2/n min_tilde(w) max_(u in N(v_1)) angle.l w, bb(1)_T_u angle.r $
 
-    For example, #uncover(2)[these words] are only visible on the second "subslide".
+    The problem (USR-10) can be rewritten as follows:
 
-    In `()` behind `#uncover`, you specify _when_ to show the content, and in
-    `[]` you then say _what_ to show:
-    #example[
-        ```typ
-        #uncover(3)[Only visible on the third "subslide"]
-        ```
-        #uncover(3)[Only visible on the third "subslide"]
-    ]
+    
+    $
+    min quad & max_(u in N(v_1)) angle.l w + x, bb(1)_T_u angle.r\ 
+
+    "s.t." quad & norm(x)_1 <= B\
+
+    & sum^n_(i=1) x_i = 0\
+
+    & x_i in [-epsilon_0; epsilon_0], forall i = 1,...,n
+    $
+    
 ]
 
-#slide(title: "Complex display rules")[
-    So far, we only used single subslide indices to define when to show something.
 
-    We can also use arrays of numbers...
-    #example[
-        ```typ
-        #uncover((1, 3, 4))[Visible on subslides 1, 3, and 4]
-        ```
-        #uncover((1, 3, 4))[Visible on subslides 1, 3, and 4]
-    ]
 
-    ...or a dictionary with `beginning` and/or `until` keys:
-    #example[
-        ```typ
-        #uncover((beginning: 2, until: 4))[Visible on subslides 2, 3, and 4]
-        ```
-        #uncover((beginning: 2, until: 4))[Visible on subslides 2, 3, and 4]
-    ]
+#slide(title: "Parametric version")[
+
+"Given some target objective value $t$, what is the minimum budget we should prepare to reach objective value bounded by $t$?”
+
+Considering the following problem 
+   
+    $
+    min quad & norm(x)_1\
+
+    "s.t." quad & max_(u in N(v_1)) angle.l w + x, bb(1)_T_u angle.r <= t\
+
+    & sum^n_(i=1) x_i = 0\
+
+    & x_i in [-epsilon_0; epsilon_0], forall i = 1,...,n
+    $
+   
 ]
 
-#slide(title: "Convenient rules as strings")[
-    As as short hand option, you can also specify rules as strings in a special
-    syntax.
+#slide[
+We also denote by $x^*$ an optimal solution and by $t^*$ the optimal objective value of (USR-12). Next, let $hat(x)(t)$ be an optimal solution and $beta(t)$ be the optimal objective value of (DUSR-13) corresponding to parameter $t$.
 
-    Comma separated, you can use rules of the form
-    #table(
-        columns: (auto, auto),
-        column-gutter: 1em,
-        stroke: none,
-        align: (x, y) => (right, left).at(x),
-        [`1-3`], [from subslide 1 to 3 (inclusive)],
-        [`-4`], [all the time until subslide 4 (inclusive)],
-        [`2-`], [from subslide 2 onwards],
-        [`3`], [only on subslide 3],
-    )
-    #example[
-        ```typ
-        #uncover("-2, 4-6, 8-")[Visible on subslides 1, 2, 4, 5, 6, and from 8 onwards]
-        ```
-        #uncover("-2, 4-6, 8-")[Visible on subslides 1, 2, 4, 5, 6, and from 8 onwards]
-    ]
+*Lemma* 
+
+$ beta(t) <= B <=> t ≥ t^* $
+
+#pause
+
+*Theorem* 
+The optimal objective value $t^*$ of (USR-12) satisfies 
+
+$ t^* = inf{t : beta(t) ≤ B } $ and $hat(x)(t^*)$ is an optimal solution of (USR-12).
+
 ]
 
-#slide(title: [`#only`: Reserving no space])[
-    Everything that works with `#uncover` also works with `#only`.
+#let zup = $overline(z)$
 
-    However, content is completely gone when it is not displayed.
+#slide[
+*Theorem.* _There exists an optimal solution $hat(x)(t)$ of (DUSR-13) that assigns the
+same value to $hat(x)(t)$ for all vertices $v_i$ within each subtree $T_u$, where $u in N (v_1)$_
 
-    For example, #only(2)[#text(red)[see how]] the rest of this sentence moves.
+Reducing the dimension of problem (DUSR-13) from $n$ to $k+1$ where $k$ is the
+degree of median point $v_1$
 
-    Again, you can use complex string rules, if you want.
-    #example[
-        ```typ
-        #only("2-4, 6")[Visible on subslides 2, 3, 4, and 6]
-        ```
-        #only("2-4, 6")[Visible on subslides 2, 3, 4, and 6]
-    ]
+Let $N(v_1) = {u_1, ...., u_k}, u_0 = v_1$ and $ T_u_0 = {v_1}$
+
+Let $z_0 = x_1$ the modification associated with the median point $v_1$, $z_j = angle.l x, bb(1)_T_u_j angle.r$, $zup = epsilon_0|T_u_j|$, $gamma_j = angle.l w, bb(1)_T_u_j angle.r$ the total weight of subtree $T_u_j$ for $j = 1, ...,k$.
+
 ]
 
-#slide(title: [`#alternatives`: Substituting content])[
-    You might be tempted to try
-    #example[
-        ```typ
-        #only(1)[Ann] #only(2)[Bob] #only(3)[Christopher] likes #only(1)[chocolate] #only(2)[strawberry] #only(3)[vanilla] ice cream.
-        ```
-        #only(1)[Ann] #only(2)[Bob] #only(3)[Christopher]
-        likes
-        #only(1)[chocolate] #only(2)[strawberry] #only(3)[vanilla]
-        ice cream.
-    ]
+#slide[
 
-    But it is hard to see what piece of text actually changes because everything
-    moves around.
-    Better:
-    #example[
-        ```typ
-        #alternatives[Ann][Bob][Christopher] likes #alternatives[chocolate][strawberry][vanilla] ice cream.
-        ```
-        #alternatives[Ann][Bob][Christopher] likes #alternatives[chocolate][strawberry][vanilla] ice cream.
-    ]
+$
+    min quad & sum_(j=0)^k abs(z_j)\
+
+    "s.t." quad & max_(j=1,...,k) (gamma_j + z_j) <= t\
+
+    & sum^k_(j=1) z_j = 0\
+
+    & z_j in [-zup_j; zup_j], forall j = 0,1,...,k
+    $
+
 ]
 
-#slide(title: [`#one-by-one`: An alternative for `#pause`])[
-    `#alternatives` is to `#only` what `#one-by-one` is to `#uncover`.
+#slide[
 
-    `#one-by-one` behaves similar to using `#pause` but you can additionally
-    state when uncovering should start.
-    #example[
-        ```typ
-        #one-by-one(start: 2)[one ][by ][one]
-        ```
-        #one-by-one(start: 2)[one ][by ][one]
-    ]
-
-    `start` can also be omitted, then it starts with the first subside:
-    #example[
-        ```typ
-        #one-by-one[one ][by ][one]
-        ```
-        #one-by-one[one ][by ][one]
-    ]
+Since the
+transformation (17-z) costs $O(n)$, the decision problems (DUSR-16) can be solved in $O(k log k)$. Therefore, the problem (DUSR-13) can be solved in $O(n+k log k)$.
 ]
 
-#slide(title: [`#line-by-line`: syntactic sugar for `#one-by-one`])[
-    Sometimes it is convenient to write the different contents to uncover one
-    at a time in subsequent lines.
+#new-section-slide("Solving upgrading stability radius problem")
 
-    This comes in especially handy for bullet lists, enumerations, and term lists.
-    #example[
-        #grid(
-            columns: (1fr, 1fr),
-            gutter: 1em,
-            ```typ
-            #line-by-line(start: 2)[
-                - first
-                - second
-                - third
-            ]
-            ```,
-            line-by-line(start: 2)[
-                - first
-                - second
-                - third
-            ]
-        )
-    ]
 
-    `start` is again optional and defaults to `1`.
-]
+#slide[
+We have the following diagram:
 
-#slide(title: [`#list-one-by-one` and Co: when `#line-by-line` doesn't suffice])[
-    While `#line-by-line` is very convenient syntax-wise, it fails to produce
-    more sophisticated bullet lists, enumerations or term lists.
-    For example, non-tight lists are out of reach.
 
-    For that reason, there are `#list-one-by-one`, `#enum-one-by-one`, and 
-    `#terms-one-by-one`, respectively.
-    #example[
-        #grid(
-            columns: (1fr, 1fr),
-            gutter: 1em,
-            ```typ
-            #enum-one-by-one(start: 2, tight: false, numbering: "i)")[first][second][third]
-            ```,
-            enum-one-by-one(start: 2, tight: false, numbering: "i)")[first][second][third]
-        )
-    ]
 
-    Note that, for technical reasons, the bullet points, numbers, or terms are
-    never covered.
+*Example*
 
-    `start` is again optional and defaults to `1`.
-]
+  ]
+    
+
+// #slide(title: "References")[
+
+// [1] Marianov, V., Eiselt, H.A.: Fifty years of location theory - a selective review.
+// _European Journal of Operational Research_ *318*(3), 701–718 (2024)
+
+// [2] Laporte, G., Nickel, S., Saldanha-da-Gama, F.: Introduction to Location Science,
+// pp. 1–21. Springer, Cham (2019)
+
+// [3] Espejo, I., Mar ́ın, A.: The p-median problem with upgrading of transportation
+// costs and minimum travel time allocation. Computers & Operations Research
+// 159, 106354 (2023)
+
+// [4] Goldengorin, B., J ̈ager, G., Molitor, P.: Tolerances applied in combinatorial
+// optimization. J. Comput. Sci 2(9), 716–734 (2006)
+
+// [5] Erkut, E., Tansel, B.C.: On parametric medians of trees. Transportation science
+// 26(2), 149–156 (1992)
+
+// [6] Cooper, L.: Bounds on the weber problem solution under conditions of uncer-
+// tainty. Journal of Regional Science 18(1) (1978)
+
+// [7] Drezner, Z.: Sensitivity analysis of the optimal location of a facility. Naval
+// Research Logistics Quarterly 32(2), 209–224 (1985)
+
+// [8] Chakravarti, N., Wagelmans, A.P.: Calculation of stability radii for combinatorial
+// optimization problems. Operations Research Letters 23(1-2), 1–7 (1998)
+
+// [9] Burkard, R.E., Pleschiutschnig, C., Zhang, J.: The inverse 1-median problem on
+// a cycle. Discrete Optimization 5(2), 242–253 (2008)
+// 15
+
+
+// ]
 
 
 /*
-#slide(title: "Different ways of covering content")[
-    When content is covered, it is completely invisible by default.
-
-    However, you can also just display it in light gray by using the
-    `mode` argument with the value `"transparent"`:
-    #let pc = 1
-    #{ pc += 1 } #show: pause(pc, mode: "transparent")
-
-    Covered content is then displayed differently.
-    #{ pc += 1 } #show: pause(pc, mode: "transparent")
-
-    Every `uncover`-based function has an optional `mode` argument:
-    - `#show: pause(...)`
-    - `#uncover(...)[...]`
-    - `#one-by-one(...)[...][...]`
-    - `#line-by-line(...)[...][...]`
-]
-*/
-
-#new-section-slide("Themes")
-
-
-#slide(title: "How a slide looks...")[
-    ... is defined by the _theme_ of the presentation.
-
-    This demo uses the `clean` theme.
-
-    Because of it, the title slide and the decoration on each slide (with
-    section name, short title, slide number etc.) look the way they do.
-
-    Themes can also provide variants, for example ...
-]
-
-#focus-slide[
-    ... this one!
-
-    It's very minimalist and helps the audience focus on an important point.
-]
-
-#slide(title: "Your own theme?")[
-    If you want to create your own design for slides, you can define custom
-    themes!
-
-    #link("https://polylux.dev/book/themes/your-own.html")[The book]
-    explains how to do so.
-]
-
-#new-section-slide("Utilities")
-
-#slide(title: [The `utils` module])[
-    Polylux ships a `utils` module with solutions for common tasks in slide
-    building.
-]
-
-#slide(title: [Fit to height])[
-    You can scale content such that it has a certain height using
-    `#fit-to-height(height, content)`:
-
-    #fit-to-height(2.5cm)[Height is `2.5cm`]
-]
-
-#slide(title: "Fill remaining space")[
-    This function also allows you to fill the remaining space by using fractions
-    as heights, i.e. `fit-to-height(1fr)[...]`:
-
-    #fit-to-height(1fr)[Wow!]
-]
-
-#slide(title: "Side by side content")[
-    Often you want to put different content next to each other.
-    We have the function `#side-by-side` for that:
-
-    #side-by-side(lorem(10), lorem(20), lorem(15))
-]
-
-#slide(title: "Outline")[
-    Why not include an outline?
-    #polylux-outline(padding: 1em, enum-args: (tight: false))
-]
-
-#new-section-slide("Typst features")
-
-#slide(title: "Use Typst!")[
-    Typst gives us so many cool things #footnote[For example footnotes!].
-    Use them!
-]
-
-#slide(title: "Bibliography")[
-    Let us cite something so we can have a bibliography: @A @B @C
-    #bibliography(title: none, "literature.bib")
-]
-
-#new-section-slide("Conclusion")
-
-#slide(title: "That's it!")[
-    Hopefully you now have some kind of idea what you can do with this template.
-
-    Consider giving it
-    #link("https://github.com/andreasKroepelin/polylux")[a GitHub star #text(font: "OpenMoji")[#emoji.star]]
-    or open an issue if you run into bugs or have feature requests.
-]

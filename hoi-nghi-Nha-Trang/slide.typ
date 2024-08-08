@@ -1,4 +1,5 @@
 #import "@preview/polylux:0.3.1": *
+// #import themes.clean: *
 #import themes.university: *
 // #import themes.simple: *
 #import "@preview/cetz:0.1.2": canvas, plot
@@ -12,27 +13,27 @@
 #import "macros.typ": *
 
 
-#title-slide(
-  authors: [#underline[Nguyễn Đặng Ngọc Ngân], #h(1em) Cao Minh Quang, #h(1em) Trần Thủ Lễ, #h(1em) Nguyễn Trung Kiên],
-  // title: [Upgrading Stability Radius Model for Enhancing Robustness of Median Location on Tree Networks ],
-  title: [Upgrading Stability Radius Model for Enhancing Robustness of Median Location on Tree Networks ],
-  subtitle: "",
-  date: "Nha Trang 23-25/08-2024",
-  institution-name: "Khoa Sư Phạm, ĐH Cần Thơ",
-  // logo: image("dummy-logo.png", width: 60mm),
-  // footer: none
-)
+// #title-slide(
+//   authors: [#underline[Nguyễn Đặng Ngọc Ngân], #h(1em) Cao Minh Quang, #h(1em) Trần Thủ Lễ, #h(1em) Nguyễn Trung Kiên],
+//   // title: [Upgrading Stability Radius Model for Enhancing Robustness of Median Location on Tree Networks ],
+//   title: [Upgrading Stability Radius Model for Enhancing Robustness of Median Location on Tree Networks ],
+//   subtitle: "",
+//   date: "Nha Trang 23-25/08-2024",
+//   institution-name: "Khoa Sư Phạm, ĐH Cần Thơ",
+//   // logo: image("dummy-logo.png", width: 60mm),
+//   // footer: none
+// )
 
 #pagebreak()
 
 
-// #title-slide(
-//     title: [Upgrading Stability Radius Model for Enhancing Robustness
-// of Median Location on Tree Networks ],
-//     //subtitle: "An overview over all the features",
-//     authors:[#underline[Nguyễn Đặng Ngọc Ngân], Cao Minh Quang, Trần Thủ Lễ, Nguyễn Trung Kiên],
-//     date: "August 2024",
-// )
+#title-slide(
+    title: [Upgrading Stability Radius Model for Enhancing Robustness
+of Median Location on Tree Networks ],
+    //subtitle: "An overview over all the features",
+    authors:[#underline[Nguyễn Đặng Ngọc Ngân], Cao Minh Quang, Trần Thủ Lễ, Nguyễn Trung Kiên],
+    date: "August 2024",
+)
 
 #slide(title: [#text(eastern. darken(10%))[The main content]])[
 
@@ -249,14 +250,30 @@ Each vertex $v_i ∈ V$ has a nonnegative weight $w_i$.
     let x = 4
     let y-space = 1
 
-    content((0, y), box(stroke: gray, inset: 0.3em)[Feature Sparsity], anchor: "right", name: "AA") 
-    content((x, y), box(stroke: gray, inset: 0.3em)[Smaller primal problem], anchor: "left", name: "BB")
-    line("AA.right", "BB.left", mark: (end: ">"), stroke: 3pt+gray)
+    circle((0, 0), radius: 0.2, name: "v1") 
+    content("v1.bottom", $v_1$, anchor: "left", padding: 0.2)
+
+    circle((0, -1), radius: 0.2, name: "v2") 
+    content("v2.bottom", $v_2$, anchor: "left", padding: 0.2)
+
+    circle((1, -1), radius: 0.2, name: "v3") 
+    content("v3.bottom", $v_3$, anchor: "left", padding: 0.2)
+
+    line("v1.top", "v2.bottom")
+    line("v1.top", "v3.bottom")
+
+    // content((0, y), box(stroke: gray, inset: 0.3em)[Feature Sparsity], anchor: "right", name: "AA") 
+
+    // circle((x, y), radius: 0.2, name: "BB") 
+    // content("BB.bottom", $v_1$, anchor: "left", padding: 0.2)
 
 
-    content((0, y - 2*y-space), box(stroke: gray, inset: 0.3em)[Sample Sparsity], anchor: "right", name: "CC") 
-    content((x, y -  2*y-space), box(stroke: gray, inset: 0.3em)[Smaller dual problem], anchor: "left", name: "DD")
-    line("CC.right", "DD.left", mark: (end: ">"), stroke: 3pt+gray)
+    // line("AA.right", "BB.left", stroke: 3pt+gray)
+
+
+    // content((0, y - 2*y-space), box(stroke: gray, inset: 0.3em)[Sample Sparsity], anchor: "right", name: "CC") 
+    // content((x, y -  2*y-space), box(stroke: gray, inset: 0.3em)[Smaller dual problem], anchor: "left", name: "DD")
+    // line("CC.right", "DD.left", mark: (end: ">"), stroke: 3pt+gray)
 
     // circle((x/3, y), radius: 0.1, fill: gray, name: "point1")
     // circle((2*x/3, y), radius: 0.1, fill: gray, name: "point2")
