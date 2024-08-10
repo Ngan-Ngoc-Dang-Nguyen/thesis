@@ -80,6 +80,36 @@ Each vertex $v_i ∈ V$ has a nonnegative weight $w_i$.
     // #link("https://polylux.dev/book/")[online book].
 ]
 
+#slide[
+
+  #import "@preview/cetz:0.1.2"
+  #canvas(length: 10%, {
+    import cetz.draw: *
+    let (y1, y2, y3, y4) = (3,2,1, 4) 
+    let (x1, x2, x3, x4) = (1, 3, 5, 7) 
+    let x0 = 0
+    let r = 0.5
+    let h =-2
+
+    rect((0,0), (2, 0.5), name: "p1")
+    rect((5,0), (5+2, 0.5), name: "p2")
+    rect((0,h), (2, h+0.5), name: "p4")
+    rect((5,h), (5+2, h+0.5), name: "p3")
+    line("p1.right", "p2.left",  mark: (end: ">"), name: "l1")
+    line("p2.bottom", "p3.top",  mark: (end: ">"), name: "l2")
+    line("p3.left", "p4.right",  mark: (end: ">"), name: "l3")
+
+
+    content("p1.center",  [box 1], anchor: none, padding: 0.2)
+    content("p2.center",  [box 2], anchor: none, padding: 0.2)
+    content("p3.center",  [box 3], anchor: none, padding: 0.2)
+    content("p4.center",  [box 4], anchor: none, padding: 0.2)
+
+    content("l1.bottom",  [because], anchor: "bottom", padding: 0.2)
+    content("l2.left",  [because], anchor: "left", padding: 0.2)
+    content("l3.bottom",  [because], anchor: "bottom", padding: 0.2)
+  })
+]
 
 #slide[
 
