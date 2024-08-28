@@ -1,11 +1,17 @@
 #import "../typst-orange.typ": project, part, chapter, my-bibliography, appendices, make-index, index, theorem, mathcal
 
+#show math.equation: it => {
+    if it.body.fields().at("size", default: none) != "display" {
+      return math.display(it)
+    }
+    it 
+}
 //#set text(font: "Linux Libertine")
 //#set text(font: "TeX Gyre Pagella")
-#set text(font: "Lato")
+// #set text(font: "Lato")
 //#show math.equation: set text(font: "Fira Math")
-#show math.equation: set text(font: "Lato Math")
-#show raw: set text(font: "Fira Code")
+// #show math.equation: set text(font: "Lato Math")
+// #show raw: set text(font: "Fira Code")
 
 #show: project.with(
   title: "Bài toán nâng cấp bán kính",
