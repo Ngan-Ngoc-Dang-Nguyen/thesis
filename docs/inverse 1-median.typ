@@ -1,11 +1,13 @@
 // The inverse 1-median problem on a tree and on a path (Galavii)
 
+// Thêm ý nghĩa của bài toán vào luận văn
+
 *Bài toán inverse 1-median trên cây*
 
 *1. Phát biểu vấn đề*
 
-#let widown= $underline(w_i)$
-#let wiup = $overline(w_i)$
+#let widown= $underline(w)_i$
+#let wiup = $overline(w)_i$
 #let wt = $tilde(w)$
 
 Cho đồ thị cây $T=(V,E)$ với tập đỉnh $V={v_1,v_2,...,v_n}$ và tập cạnh $E$. Mỗi đỉnh trên đồ thị được gán một trọng số không âm, kí hiệu là $w_i, i=1,2,...,n$ và mỗi cạnh cũng có một độ dài không âm. Đặt $d(x,v_i)$ là độ dài đường đi ngắn nhất giữa $x$ và $v_i$. Một đỉnh $x^*$ được gọi là điểm 1-median trên $T$ nếu
@@ -33,9 +35,46 @@ min quad & sum_(i=1)^n c_i (p_i + q_i)\
 
 "s.t." quad & sum_(i=s)^n (p_i - q_i) - sum_(i=1)^(s-1) (p_i - q_i) = 2 wt_k - W\
 
- & p_i <= wiup - w_i\
+ & p_i <= wiup - w_i quad quad quad quad quad quad quad quad quad quad quad i=1,2...,n\
 
- & sum^n_(i=1) tilde(w)_i = 1\
+ & q_i <= w_i -widown quad quad quad quad quad quad quad quad quad quad quad i=1,2...,n \
 
- & norm(tilde(w)-w)_infinity <= epsilon_0
+ & p_i, q_i >= 0 quad quad quad quad quad quad quad quad quad quad quad quad quad i=1,2...,n
 $
+
+*3. Phương pháp giải*
+
+Bây giờ, ta chỉ ra rằng bài toán $(L P)$ trên có thể được viết dưới dạng bài toán xếp ba lô liên tục (continuos knapsack). Như đã được Burkard và các đồng tác giả [3] chỉ ra, giá trị $R$ sẽ giảm nếu trọng lượng của $s$(hoặc của một đỉnh trong $T_i, i=1,2,...,k-1$) tăng lên hoặc trọng lượng của một đỉnh trong $T_k$ giảm đi. Do đó, chúng ta có thể định nghĩa biến mới $x_i$ như sau: $x_i := q_i$ với $i=1,...,s-1$ và $x_i := p_i$ với $i= s,...,n$. Lưu ý rằng $q_i = 0 $ với mọi $i= s,...,n$ và $p_i = 0$ với mọi $i=1,...,s-1$. Vì vậy phương trình (1) có thể viết lại như sau: 
+$ sum_(i=1)^n = 2tilde(w)_k - W. quad quad quad quad quad quad (3) $
+
+Bằng cách sử dụng ký hiệu ở trên, ta có:
+$ 0 <= x_i <= cases( wiup - w_i "nếu" x_i = p_i, w_i - widown "nếu" x_i = q_i )
+$
+
+Bằng cách định nghĩa
+$ u_i := cases(wiup - w_i "nếu" x_i = p_i, w_i - widown "nếu" x_i = q_i) quad quad (4) $
+
+Ta có: 
+$ 0<=x_i<=u_i  quad quad forall i=1,2,...,n. $
+
+Tóm lại, từ (3) và (4), ta được:
+
+$(L K P)$
+
+$
+min quad & sum_(i=1)^n c_i x_i\
+
+"s.t." quad & sum_(i=s)^n x_i = b\
+
+ & x_i <= u_i quad quad quad quad quad quad quad quad quad quad quad i=1,2...,n\
+
+ & x_i >= 0 quad quad quad quad quad quad quad quad quad quad quad i=1,2...,n
+$
+Trong đó $c_i$ và $b= 2tilde(w)_k - W$ không âm. $(L K P)$ là bài toán xếp ba lô liên tục, Balas và Zemel [1] đã giải trong thời gian tuyến tính. Vì vậy, bài toán inverse 1-median trên cây với trọng số dương có thể được giải trong thời gian $O(n)$
+
+*Định lý 1.* _Bài toán inverse 1-median trên cây với trọng số không âm có thể được giải trong thời gian đa thức._
+
+*Ví dụ*
+
+
+
