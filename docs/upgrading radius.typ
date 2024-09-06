@@ -182,5 +182,116 @@ trong đó $underline(t)$ được định nghĩa ở (23).
 
 Bây giờ chúng ta chỉ ra sự tồn tại của $underline(t)$. Đặt $phi(t')= overline(z_0) < sum_(j in J >(t))(gamma_j -t)$ và $phi(t)>= sum_(j in J > (t))(gamma_j -t)$ vì mệnh đề 4.1. Do tính liên tục của $phi$ ngụ ý sự tồn tại của $underline(t)$. Cuối cùng, không khó để thấy rằng $z$ là một nghiệm khả thi của (PUSR-16) và thỏa (24). Bằng cách chọn $hat(z)(t)=z$, chúng ta hoàn thành chứng minh. (chứng minh xong)
 
+Quan sát rằng với mỗi giá trị cố định của $t$, ta có thể tìm $underline(t)$ trong (23) bằng cách sử dụng tìm kiếm nhị phân vì hàm $z_0 + sum_(j in J <= (t)) min (z_j, . - gamma_j)$ là hàm tuyến tính từng khúc và không giảm. Lưu ý rằng việc đánh giá hàm này tốn chi phi $O(k)$, với $k$ là bậc của $v_1$. Do đó, các bài toán tham số (PUSR-16) có thể được giải quyết trong thời gian $O(k log k)$. Vì phép biến đổi (17) tốn chi phí $O(n)$, bài toán (PUSR-13) có thể được giải trong thời gian $O(n+k log k).$
+
+*Giải bài toán nâng cấp bán kính ổn định*
+Bây giờ chúng tôi sẽ mô tả một cách tiếp cận tổ hợp để tìm nghiệm tối ưu $w*$ của bài toán nâng cấp bán kính ổn định ban đầu (USR-10) thông qua các phép biến đổi đã được phát triển trong các tiểu mục trước đó.
+
+Ta có $w* = w + x^* $, trong đó $x*$ là nghiệm khả thi của (USR-12). Dựa vào định lý 4.1, ta có thể chọn $x*= hat(x)(t*)$. Lưu ý rằng, ta có thể xây dựng $hat(x)(t)$ từ $hat(z)(t)$ cho bất kỳ $t$ nào bằng cách sử dụng Định lý 4.2, phương trình (17), và biểu thức của $hat(z)(t)$ được cho bởi (21) hoặc (22). Về giá trị $t*$, nó có thể được tìm thấy trong thời gian $O(k log k)$, với $k$ là bậc của $v_1$, bằng cách sử dụng tìm kiếm nhị phân vì $t* = inf{t >= 0: beta(t) <= B}$ và hàm $beta(.)$ được xác định trong Định lý 4.3 là hàm tuyến tính từng khúc và giảm dần. Xem Hình 2 để có cái nhìn tổng quan về các phép biến đổi giữa các bài toán và lời giải.
+
+#align(center)[
+  #import "@preview/cetz:0.1.2"
+  #import "@preview/cetz:0.1.2": canvas, plot
+// #import "@preview/cetz:0.2.2"
+//   #import "@preview/cetz:0.1.2
+  #canvas(length: 10%, {
+    import cetz.draw: *
+    let (y1, y2, y3, y4) = (3,2,1, 4) 
+    let (x1, x2, x3, x4) = (1, 3, 5, 7) 
+    let x0 = 0
+    let r = 0.5
+    let h =-2
+
+    rect((0,0), (2.2, 0.5), name: "p1")
+    rect((6,0), (6.5+2, 0.5), name: "p2")
+    rect((0,h), (2.5, h+0.5), name: "p4")
+    rect((6,h), (6.5+2, h+0.5), name: "p3")
+    line("p1.right", "p2.left",  mark: (end: ">"), name: "l1")
+    line("p2.bottom", "p3.top",  mark: (end: ">"), name: "l2")
+    line("p3.left", "p4.right",  mark: (end: ">"), name: "l3")
+
+
+    content("p1.center",  [#text(blue)[$("USR"-1) quad "&" quad w^*$]], anchor: none, padding: 0.3)
+    content("p2.center",  [#text(blue)[$("USR"-2) quad "&" quad x^*$]], anchor: none, padding: 0.3)
+    content("p3.center",  [#text(blue)[$("PUSR"-3) quad "&" quad hat(x)(t)$]], anchor: none, padding: 0.3)
+    content("p4.center",  [#text(blue)[$("PUSR"-4) quad "&" quad hat(z)(t)$]], anchor: none, padding: 0.2)
+
+    content("l1.bottom",  [*Loại bỏ ràng buộc median*], anchor: "bottom", padding: 0.2)
+    content("l1.top",  [*$x^* = w^* - w$*], anchor: "top", padding: 0.2)
+    content("l2.left",  [*Đổi hàm mục tiêu và*
+
+*điều kiện ngân sách*], anchor: "left", padding: 0.2)
+    content("l2.right",  [*Định lý 3*], anchor: "right", padding: 0.2)
+    content("l3.bottom",  [*Định lý 4.2 4.3 & (17)*], anchor: "bottom", padding: 0.2)
+    content("l3.top",  [*Giảm chiều*], anchor: "top", padding: 0.2)
+  })]
+
+Hình 2. Các phép biến đổi của bốn bài toán nâng cấp. Mỗi hộp chứa một bài toán và nghiệm tối ưu của nó. Mỗi mũi tên đại diện cho phép biến đổi giữa các bài toán cùng với những kết quả chính kết nối chúng.
+
+Nhớ rằng việc giải quyết bài toán (PUSR_13) tốn chi phí $O(n + k log k)$ và việc tìm kiếm $t*$ có thể thực hiện trong $O(k log k)$, do đó độ phức tạp tổng thể của việc giải bài toán (USR-10) là $O(n + k log k)$. 
+
+*Định lý 4.4* _Bài toán nâng cấp cận dưới của bán kính ổn định cho điểm trung vị trên đồ thị cây (USR-10) có thể được giải quyết trong thời gian $O(n + k log k )$, trong đó $n$ là số đỉnh của cây và $k$ là bậc của điểm trung vị $v_1$._
+
+Cuối cùng, ta kết thúc mục này bằng ví dụ minh họa cho những bước chính để giải quyết bài toán (USR-10).
+
+*Ví dụ 4.1* Xem xét bài toán (USR-12) với ngân sách $B = 0.36$, mức độ nhiễu $epsilon_0 = 0.05$ và cây có trọng số như hình 1. Đặt $u_0 = v_1$, $u_1 = v_2$ $u_2 = v_3$ và $u_3 = v_4$. Nhớ rằng $gamma_j = angle.l w, bb(1)_T_u_j angle.r $ với $j= 0,1,2,3$, ta có $gamma_1 = 0.33$, $gamma_2 = 0.12$ và $gamma_3 = 0.45$. Hơn nữa $ beta(t)= 2([gamma_1 - t]_+ + [gamma_2 - t]_+ + [gamma_3 - t]_+) $.
+
+Bằng (15), ta có $t^*=inf{t: beta(t) <= B}= 0.3$. Trong trường hợp này, ta có $beta(t^*)=B$. Bởi vì $overline(z_0)= epsilon_0 = 0.05 < beta(t^*)/2 =0.18$, ta có thể chọn $hat(z)(t^*)$ dựa vào (22), chú ý rằng $J > (t^*)= {1,3}$, $J <= (t^*)= {2}$ và ta có
+$ hat(z)(t^*)=(0.05, -0.03, 0.13, -0.15). $
+Bằng (17), ta có $ hat(x)(t^*)=(0.05, -0.01, 0.065, -0,05, -0.01, -0,01, 0.065, -0.05, -0.05). $ 
+
+Dựa vào định lý 4.1, ta có thể chọn $x^* = hat(x)(t^*)$. Bởi vì $w^* = w+x$, ta được
+$ w^* = (0.15, 0.12, 0.125, 0.1, 0.09, 0.09, 0.125, 0.1, 0.15, 0.05). $
+Chặn dưới lớn nhất của bán kính ổn định sau khi được nâng cấp là $underline(R)(w^*)= 0.4/9$. 
+
+Trọng số đỉnh trên cây được cải thiện như ở hình 3
+
+#import "@preview/cetz:0.1.2": canvas, plot
+#import "@preview/cetz:0.2.2"
+#import "@preview/cetz:0.1.2"
+
+#align(center)[#canvas(length: 10%, {
+  import cetz.draw: *
+
+  let y = 2 
+  let x = 4
+  let y-space = 1
+  let h=1.4
+
+  circle((0*h,3), radius: 0.05,fill:black, name: "v1") 
+  content("v1.bottom", $v_1 (0.15)$, anchor: "left", padding: 0.2)
+
+  circle((-2*h, 2), radius: 0.05, fill: black, name: "v2") 
+  content("v2.bottom", $v_2 (0.12)$, anchor: "left", padding: 0.2)
+
+  circle((-3*h, 1), radius: 0.05,fill:black, name: "v5") 
+  content("v5.bottom", $v_5 (0.09)$, anchor: "left", padding: 0.2)
+
+  circle((-1*h, 1), radius: 0.05,fill:black, name: "v6") 
+  content("v6.bottom", $v_6 (0.09)$, anchor: "left", padding: 0.2)
+
+  circle((0*h, 2), radius: 0.05, fill: black, name: "v3") 
+  content("v3.bottom", $v_3 (0.125)$, anchor: "left", padding: 0.2)
+
+  circle((0*h, 1), radius: 0.05, fill: black, name: "v7") 
+  content("v7.bottom", $v_7 (0.125)$, anchor: "left", padding: 0.2)
+
+  circle((2*h, 2), radius: 0.05, fill: black, name: "v4") 
+  content("v4.bottom", $v_4 (0.1)$, anchor: "left", padding: 0.2)
+
+  circle((1*h, 1), radius: 0.05, fill: black, name: "v8") 
+  content("v8.bottom", $v_8 (0.15)$, anchor: "left", padding: 0.2)
+  circle((3*h, 1), radius: 0.05, fill:black, name: "v9") 
+  content("v9.bottom", $v_9 (0.05)$, anchor: "left", padding: 0.2)
+  
+  line("v1", "v2")
+  line("v1", "v3")
+  line("v1", "v4")
+  line("v2", "v5")
+  line("v2", "v6")
+  line("v3", "v7")
+  line("v4", "v8")
+  line("v4", "v9")    }
+)]
 
 ]

@@ -12,8 +12,8 @@ Các bài toán nâng cấp có mối liên hệ chặt chẽ với các bài to
 
 
 //Trong bài báo này, chúng tôi xem xét một biến thể của bài toán 1-median, trong đó mạng được sửa đổi trước khi cơ sở được đặt trên mạng. Các bài toán nâng cấp và hạ cấp có thể được xem như các bài toán hai cấp độ, trong đó một người ra quyết định (người hành động) thay đổi trọng số đỉnh trong một số giới hạn nhất định và một người ra quyết định khác (nhà lập kế hoạch vị trí hoặc người phản ứng) định vị cơ sở một cách tối ưu dựa trên các trọng số đỉnh mới. Mục tiêu của nhà lập kế hoạch vị trí là tối thiểu hóa giá trị mục tiêu 1-median. Tùy thuộc vào việc mục tiêu của người hành động và người phản ứng có giống nhau hay mâu thuẫn với nhau, chúng ta sẽ nói về các bài toán nâng cấp hoặc hạ cấp. Trong phiên bản nâng cấp, người hành động muốn tối thiểu hóa giá trị mục tiêu 1-median (tức là, người hành động và người phản ứng có cùng mục tiêu), trong khi trong phiên bản hạ cấp, người hành động tìm cách tối đa hóa giá trị mục tiêu 1-median trong khi nhà lập kế hoạch vị trí muốn tối thiểu hóa giá trị này. Do đó, phiên bản hạ cấp là một bài toán max-min.
-
-== giới thiệu ký hiệu
+== #text(orange)[CHƯƠNG 2: KIẾN THỨC CHUẨN BỊ]
+=== giới thiệu ký hiệu
 Ký hiệu giá trị mục tiêu 1-median tối ưu với trọng số đỉnh $w$ là $f(w)$. Sau đó, nhiệm vụ của bài toán nâng cấp 1-median là tăng các trọng số bằng \( \delta = (\delta_v){v \in V} \) sao cho \( \delta \) là một sự thay đổi trọng số đỉnh khả thi và \( z(w - \delta) \) được tối thiểu hóa. Tương tự, bài toán hạ cấp 1-median là tìm một sự thay đổi trọng số khả thi \( \delta \) sao cho \( z(w + \delta) \) được tối đa hóa.
 
 Một sự thay đổi trọng số đỉnh \( \delta = (\delta_v){v \in V} \) được gọi là khả thi nếu một ràng buộc ngân sách được đáp ứng và các thay đổi nằm trong các giới hạn nhất định: 
