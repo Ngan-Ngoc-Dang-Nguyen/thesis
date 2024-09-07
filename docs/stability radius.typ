@@ -1,3 +1,5 @@
+= BÁN KÍNH ỔN ĐỊNH CỦA ĐIỂM 1-MEDIAN
+
 Giả sử $w in RR_+^n$ là một vecto trọng số thỏa mãn điều kiện (1) và $v_1$ là một trung vị tương ứng với $w$.
 
 Trong thực tế, vecto trọng số $w$ có thể bị nhiễu thành vecto $tilde(w) in RR_+^n$. Ta giả sử rằng sự khác biệt giữ $w$ và $tilde(w)$ là nhỏ, tức là $norm(tilde(w)-w)_infinity <= epsilon_0$, hoặc tương đương $tilde(w) in [w-epsilon; w+ epsilon] $ với một mức nhiễu nhỏ $epsilon>0$. Trong bối cảnh có nhiễu này, chúng ta nhắm đến việc điều tra sự ổn định của điểm trung vị $v_1$. Cụ thể, chúng ta quan tâm đến mức nhiễu lớn nhất có thể $epsilon$ sao cho $v_1$ vẫn còn tối ưu đối với $tilde(w)$, tức là

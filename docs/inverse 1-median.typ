@@ -2,9 +2,9 @@
 
 // Thêm ý nghĩa của bài toán vào luận văn
 
-*Bài toán inverse 1-median trên cây*
+== Bài toán inverse 1-median trên cây
 
-*1. Phát biểu vấn đề*
+=== Phát biểu vấn đề
 
 #let widown= $underline(w)_i$
 #let wiup = $overline(w)_i$

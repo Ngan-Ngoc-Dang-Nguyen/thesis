@@ -1,8 +1,15 @@
-== #text(orange)[1.2 Bài toán 1-median]
+// == #text(orange)[1.2 Bài toán 1-median]
+// == Bài toán 1-median
+== BÀI TOÁN 1-MEDIAN
+
 
 (Viết lại) (Trích giáo trình thầy Kiên) Xuất phát từ yêu cầu phải đặt công trình công cộng ở một vị trí trong một phạm vi địa lý nhất định để tối ưu hóa việc đi lại trong một tiêu chuẩn nào đó, ví dụ như chi phí nhiên liệu cho các phương tiện giao thông. Vấn đề này được giải quyết bằng việc giải bài toán 1-median trên đồ thị có trọng số. Bài toán này được dùng trong các ứng dụng thực tế như xây dựng các công trình công cộng: trường hợp, bệnh viện,...
 
-== #text(orange)[1.2.1 Bài toán 1-median trên đồ thị tổng quát]
+// == #text(orange)[1.2.1 Bài toán 1-median trên đồ thị tổng quát]
+
+=== Bài toán 1-median trên đồ thị tổng quát
+
+
 
 (Trích trong giáo trình thầy Kiên) Cho $G=(V,E)$ là một đồ thị được gán một trọng số độ dài cạnh và trọng số mỗi đỉnh. Ta đặt $w_i$ là trọng số của đỉnh $v_i$. Ta giả sử tất cả các đỉnh đều có trọng số dương. 
 
@@ -22,7 +29,8 @@ Thuật toán tìm điểm 1-median trên đồ thị tổng quát được trì
 
 (Cho ví dụ, vẽ hình)
 
-== #text(orange)[1.2.1 Bài toán 1-median trên cây]
+// == #text(orange)[1.2.1 Bài toán 1-median trên cây]
+=== Bài toán 1-median đồ thị cây
 
 Cho $T$ là một cây. Ta ký hiệu .....
 

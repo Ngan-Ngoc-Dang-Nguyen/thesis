@@ -1,5 +1,6 @@
-#par(justify: true)[
-*Nâng cấp bán kính ổn định của điểm 1-median*
+// #par(justify: true)[
+// = Nâng cấp bán kính ổn định của điểm 1-median
+= NÂNG CẤP BÁN KÍNH ỔN ĐỊNH CỦA ĐIỂM 1-MEDIAN
 
 Trong phần này, đầu tiên, chúng tôi sẽ xác định vấn đề chính của mình trong Mục 4.1. Tiếp theo, chúng tôi giới thiệu các phiên bản quyết định của bài toán và thiết lập mối quan hệ giữa chúng trong Mục 4.2. Cuối cùng, chúng tôi cho thấy rằng các vấn đề quyết định có thể được giải quyết dưới dạng đóng, từ đó đưa ra một phương pháp tiếp cận tổ hợp hiệu quả để giải quyết vấn đề lần lượt trong mục 4.3 và 4.4. 
 
@@ -75,8 +76,8 @@ Trực quan, mối liên hệ giữa (USR-12) và (PUSR-13) như sau: nếu ngâ
 
 Thú vị là, lập luận ngược lại cũng đúng, như được chứng minh trong bổ đề sau đây. Để phát biểu bổ đề, chúng ta hãy giới thiệu một số ký hiệu bổ sung. Gọi $P(x)= max_(u in N(v_1)) angle.l w + x, bb(1)_T_u angle.r $ là hàm mục tiêu của (USR-12). Chúng ta cũng ký hiệu $x^*$ là nghiệm tối ưu và $t^*$ là giá trị mục tiêu tối ưu của (USR-12). Khi đó, $P(x^*)= t^*$. Tiếp theo, gọi $hat(x)(t)$ là nghiệm tối ưu và $beta(t)$ là giá trị mục tiêu tối ưu của (PUSR-13) tương ứng với tham số $t$. Nếu tập hợp nghiệm khả thi của (PUSR-13) rỗng, chúng ta đặt $beta(t)= + infinity$. Rõ ràng bằng $beta(.)$ là một hàm không giảm trên miền của nó. Mối quan hệ giữa $(t,beta(t))$ và $(t^*,B)$ được thiết lập như sau:
 
-== Bổ đề 4.1 
-
+// == Bổ đề 4.1 
+*Bổ đề 4.1*
 $ beta(t) <= B <=> t>= t^* $
 
 *Chứng minh*
@@ -294,4 +295,5 @@ Trọng số đỉnh trên cây được cải thiện như ở hình 3
   line("v4", "v9")    }
 )]
 
-]
+// ]
+

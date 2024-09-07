@@ -1,5 +1,6 @@
 // trích bài báo Up- down grading the 1-median in a network Gassner
-#text(orange)[*Bài toán nâng cấp 1-median*]
+// #text(orange)[*Bài toán nâng cấp 1-median*]
+== Bài toán nâng cấp  XXX 1-median
 
 Trong khi các bài toán vị trí cổ điển chủ yếu tập trung vào việc xác định các vị trí tối ưu cho các cơ sở, bài toán nâng cấp hướng đến việc điều chỉnh mạng lưới cơ sở hạ tầng dưới những ràng buộc nhất định để đạt được giá trị mục tiêu tối ưu tốt nhất có thể trong mạng lưới đã được sửa đổi. Phần này sẽ trình bày bài toán nâng cấp 1-median thông qua việc thay đổi trọng số của các đỉnh trong các giới hạn đã cho, sao cho thỏa mãn một ràng buộc ngân sách tuyến tính. Đồng thời, phần này cũng đề xuất một thuật toán có thời gian tính toán $O(n^2)$ để giải quyết bài toán này.
 

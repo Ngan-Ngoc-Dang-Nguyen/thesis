@@ -12,14 +12,19 @@
   Trường Đại học Cần Thơ
 ])
 
-= #text(orange)[*CHƯƠNG 1: KIẾN THỨC CHUẨN BỊ*]
+// = #text(orange)[*CHƯƠNG 1: KIẾN THỨC CHUẨN BỊ*]
+= KIẾN THỨC CHUẨN BỊ
+
+== LÝ THUYẾT ĐỒ THỊ
+
+// === Đồ thị
 
 
 
-== #text(orange)[1. LÝ THUYẾT ĐỒ THỊ]
-=== #text(orange)[1.1 ĐỒ THỊ]
+// == #text(orange)[1. LÝ THUYẾT ĐỒ THỊ]
+// === #text(orange)[1.1 ĐỒ THỊ]
 
-==== #text(orange)[1.1.1 Khái niệm đồ thị]
+=== Khái niệm đồ thị
 
 Trong thực tế, việc biểu diễn các đối tượng và mối quan hệ giữa chúng là vô cùng quan trọng, phục vụ cho nhiều mục đích trong các lĩnh vực khác nhau. Ví dụ, trong mạng xã hội, để nghiên cứu mối quan hệ của các cá nhân với nhau, chúng ta cần một công cụ có thể mô hình hóa các kết nối này một cách trực quan và hiệu quả. Đồ thị là công cụ hữu ích để thực hiện việc này.
 
@@ -310,7 +315,8 @@ Trong khi đó, đồ thị có hướng (directed graph) là một loại đồ
 #align(center)[#text(orange)[*Hình 1.4*]  Đồ thị không liên thông]
 
 
-==== #text(orange)[1.1.2 Một số khái niệm liên quan]
+// ==== #text(orange)[1.1.2 Một số khái niệm liên quan]
+=== Một số khái niệm liên quan
 (a) Nếu $u$ là một điểm đầu mút của cạnh $e$ thì ta nói $u$ và $e$ _liên thuộc(incident)_ với nhau.
 
 #align(center)[#canvas(length: 10%, {
@@ -412,7 +418,8 @@ Trong khi đó, đồ thị có hướng (directed graph) là một loại đồ
 
 (g) Đơn đồ thị (simple graph) là một đồ thị không có vòng và không có cạnh song song.
 
-==== #text(orange)[1.1.3 Bậc và đường đi]
+// ==== #text(orange)[1.1.3 Bậc và đường đi]
+=== Bậc và đường đi
 
 Bậc_(Degree)_ _d(v)_ của đỉnh _v_ trong _G_ là số cạnh của _G_ liên thuộc với _v_, mỗi vòng được tính là hai cạnh. (Cho ví dụ).
 
@@ -423,7 +430,8 @@ Chu trình_(closed walk)_ là một đường đi có chiều dài dương và c
 Đối với đồ thị có trọng số, _độ dài đường đi(length)_ bằng tổng trọng số cạnh của đường đi đó.
 
 (Ví dụ minh họa)
-==== #text(orange)[1.1.4 Đồ thị cây]
+// ==== #text(orange)[1.1.4 Đồ thị cây]
+=== Đồ thị cây
 Một _cây(tree)_ là một đồ thị liên thông không có chu trình sơ cấp.
 (Ví dụ, vẽ hình)
 
