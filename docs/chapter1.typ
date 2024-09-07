@@ -34,8 +34,8 @@ Một đồ thị (graph) $G$ là một bộ ba $(V(G),E(G),psi_G)$ bao gồm m�
 Ví dụ, ta xét đồ thị $G=(V(G),E(G),psi_G)$ với $V(G)={v_1,v_2,v_3,v_4,v_5}, E(G)={e_1,e_2,e_3,e_4,e_5,e_6}$ và $psi_G$ được xác định bởi $psi_G(e_1)=v_1v_2, psi_G(e_2)=v_2v_3, psi_G(e_3)= v_2v_4, psi_G(e_4)=v_1v_5, psi_G(e_5)=v_3v_5, psi_G(e_6)=v_1v_4$. Hình bên dưới là một biểu diễn hình học của đồ thị $G$.
 
 #import "@preview/cetz:0.1.2": canvas, plot
-#import "@preview/cetz:0.2.2"
 #import "@preview/cetz:0.1.2"
+// #import "@preview/cetz:0.2.2"
 
   
   #align(center)[#canvas(length: 10%, {
