@@ -2,6 +2,11 @@
 // = Nâng cấp bán kính ổn định của điểm 1-median
 = NÂNG CẤP BÁN KÍNH ỔN ĐỊNH CỦA ĐIỂM 1-MEDIAN
 
+// $ x^2 + y^2 = z^2 $ <eq:pytago>
+
+// Xét pt pytago @eq:pytago
+
+
 Trong phần này, đầu tiên, chúng tôi sẽ xác định vấn đề chính của mình trong Mục 4.1. Tiếp theo, chúng tôi giới thiệu các phiên bản quyết định của bài toán và thiết lập mối quan hệ giữa chúng trong Mục 4.2. Cuối cùng, chúng tôi cho thấy rằng các vấn đề quyết định có thể được giải quyết dưới dạng đóng, từ đó đưa ra một phương pháp tiếp cận tổ hợp hiệu quả để giải quyết vấn đề lần lượt trong mục 4.3 và 4.4. 
 
 *4.1 Công thức*

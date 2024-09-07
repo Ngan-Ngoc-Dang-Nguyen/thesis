@@ -31,7 +31,7 @@
 )
 
 #set text(font: "Times New Roman", size: 12pt)
-
+#set math.equation(numbering: "(1)")
 
 // #part([Chương 1]) 
 
