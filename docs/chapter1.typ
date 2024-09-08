@@ -374,9 +374,10 @@ Trong khi đó, đồ thị có hướng (directed graph) là một loại đồ
 (d) Một cạnh có hai điểm đầu mút trùng nhau được gọi là một _vòng(loop)_. (Vẽ hình minh hoa)
 
 
-(e) Hai hay nhiều cạnh mà có hai đầu mút giống nhau được gọi là _các cạnh song song(parallel edges)_ hay còn được gọi là _các cạnh bội(multiple edges)_.
 
 (e) Hai hay nhiều cạnh mà có hai đầu mút giống nhau được gọi là _các cạnh song song(parallel edges)_ hay còn được gọi là _các cạnh bội(multiple edges)_.
+
+// (e) Hai hay nhiều cạnh mà có hai đầu mút giống nhau được gọi là _các cạnh song song(parallel edges)_ hay còn được gọi là _các cạnh bội(multiple edges)_.
 
 #align(center)[#canvas(length: 10%, {
     import cetz.draw: *
@@ -412,16 +413,189 @@ Trong khi đó, đồ thị có hướng (directed graph) là một loại đồ
     
     }
   )]
-#align(center)[#text(orange)[*Hình 1.7*] Minh họa các cạnh bội]
+#align(center)[#text(orange)[*Hình 1.8*] Minh họa các cạnh bội]
 
-(f) Đồ thị hữu hạn (finite graph) là đồ thị có cả tập hợp cạnh và tập hợp đỉnh đều hữu hạn. Các hình được đề cập bên trên đều là đồ thị hữu hạn.
+(f) Đồ thị hữu hạn (_finite graph_) là đồ thị có cả tập hợp cạnh và tập hợp đỉnh đều hữu hạn. Các hình được đề cập bên trên đều là đồ thị hữu hạn.
 
-(g) Đơn đồ thị (simple graph) là một đồ thị không có vòng và không có cạnh song song.
+(g) Đơn đồ thị (_simple graph_) là một đồ thị không có vòng và không có cạnh song song. Hình 1.3 là một ví dụ của đơn đồ thị.
+
+(h) Đồ thị tầm thường (_trivial graph_) là đồ thị chỉ có một đỉnh và không có cạnh.
+
+(i) Đồ thị rỗng (_empty graph_) là đồ thị không có cạnh. 
+
+
 
 // ==== #text(orange)[1.1.3 Bậc và đường đi]
-=== Bậc và đường đi
 
-Bậc_(Degree)_ _d(v)_ của đỉnh _v_ trong _G_ là số cạnh của _G_ liên thuộc với _v_, mỗi vòng được tính là hai cạnh. (Cho ví dụ).
+=== Đồ thị con 
+
+Đồ thị con (_subgraph_) đề cập đến một đồ thị được tạo thành từ một phần của đồ thị lớn hơn. Cụ thể đồ thị $H$ là một đồ thị con của $G$ (ký hiệu H $subset.eq$ G) nếu $ V(H) subset.eq V(G), E(H) subset.eq E(G)$ và $psi_H$ là giới hạn của $psi_G$ trên $E(H)$.
+
+Có nhiều loại đồ thị con như: 
+
+(a) _Đồ thị con thực sự (proper subgraph)_: $H subset.eq G$ nhưng $H eq.not G$. Khi đó, ta ký hiệu $H subset G$.
+
+(b) _Đồ thị con bao trùm (spanning subgraph)_: $V(H)= V(G)$.
+
+(c) _Đồ thị con cảm sinh (induced subgraph)_: là một loại đồ thị con đặc biệt được tạo ra từ một tập hợp con của các đỉnh trong đồ thị gốc, cùng với tất cả các cạnh mà các đỉnh này nối với nhau trong đồ thị gốc. Đồ thị con của $G$ cảm sinh bởi $V'$ được ký hiệu $G[V']$. Để hiểu rõ hơn về định nghĩa đồ thị con cảm sinh, ta xét ví dụ sau: Cho đồ thị $G$ như hình bên dưới, $V'= {v_1, v_2, v_3}$, khi đó đồ thị con của $G$ cảm sinh bởi $V'$ được xác định như sau:
+
+#align(left)[#canvas(length: 7%, {
+    import cetz.draw: *
+
+    let y = 2 
+    let x = 4
+    let y-space = 1
+    let h=1.4
+
+    circle((0*h,3), radius: 0.05,fill:black, name: "v1") 
+    content("v1.bottom", $v_1$, anchor: "left", padding: 0.2)
+    content("v1.bottom", $(G)$, anchor: "top", padding: 2)
+
+
+
+    circle((-3, 1.5), radius: 0.05, fill: black, name: "v2") 
+    content("v2.right", $v_2$, anchor: "right", padding: 0.2)
+
+    circle((3, 1.5), radius: 0.05, fill: black, name: "v3") 
+    content("v3.right", $v_3$, anchor: "right", padding: 0.2)
+     circle((2, 5), radius: 0.05, fill: black, name: "v4") 
+    content("v4.right", $v_4$, anchor: "right", padding: 0.2)
+
+     circle((-2, 5), radius: 0.05, fill: black, name: "v5") 
+    content("v5.right", $v_5 $, anchor: "right", padding: 0.2)
+
+     circle((0, 5), radius: 0.05, fill: black, name: "v6") 
+    content("v6.right", $v_6 $, anchor: "right", padding: 0.2)
+
+    line("v1", "v2", name: "v1v2")
+    // content("v1v2.top", $3$, anchor: "top", padding: 0.5)
+
+    line("v1", "v3", name: "v1v3")
+    // content("v1v3.top", $3$, anchor: "top", padding: 0.5)
+
+    line("v1", "v5", name: "v1v5")
+    // content("v1v5.top", $2$, anchor: "top", padding: 0.7)
+
+    line("v1", "v4", name: "v1v4")
+    // content("v1v4.top", $2$, anchor: "top", padding: 0.5)
+
+    line("v1", "v6", name: "v1v6")
+    // content("v1v6.right", $1$, anchor: "right", padding: 0.1)
+    
+    }
+  )]
+
+  #align(right)[#canvas(length: 7%, {
+    import cetz.draw: *
+
+    let y = 2 
+    let x = 4
+    let y-space = 1
+    let h=1.4
+
+    circle((0*h,3), radius: 0.05,fill:black, name: "v1") 
+    content("v1.bottom", $v_1$, anchor: "left", padding: 0.2)
+    content("v1.bottom", $(G[V'])$, anchor: "top", padding: 2)
+
+    circle((-3, 1.5), radius: 0.05, fill: black, name: "v2") 
+    content("v2.right", $v_2$, anchor: "right", padding: 0.2)
+
+    circle((3, 1.5), radius: 0.05, fill: black, name: "v3") 
+    content("v3.right", $v_3$, anchor: "right", padding: 0.2)
+    //  circle((2, 5), radius: 0.05, fill: black, name: "v4") 
+    // content("v4.right", $v_4 (1)$, anchor: "right", padding: 0.2)
+
+    //  circle((-2, 5), radius: 0.05, fill: black, name: "v5") 
+    // content("v5.right", $v_5 (7)$, anchor: "right", padding: 0.2)
+
+    //  circle((0, 5), radius: 0.05, fill: black, name: "v6") 
+    // content("v6.right", $v_6 (2)$, anchor: "right", padding: 0.2)
+
+    line("v1", "v2", name: "v1v2")
+    // content("v1v2.top", $3$, anchor: "top", padding: 0.5)
+
+    line("v1", "v3", name: "v1v3")
+    // content("v1v3.top", $3$, anchor: "top", padding: 0.5)
+
+    // line("v1", "v5", name: "v1v5")
+    // content("v1v5.top", $2$, anchor: "top", padding: 0.7)
+
+    // line("v1", "v4", name: "v1v4")
+    // content("v1v4.top", $2$, anchor: "top", padding: 0.5)
+
+    // line("v1", "v6", name: "v1v6")
+    // content("v1v6.right", $1$, anchor: "right", padding: 0.1)
+    
+    }
+  )]
+
+#align(center)[#text(orange)[*Hình 1.10*] Minh họa đồ thị cảm sinh]
+=== Bậc của đỉnh
+
+Bậc (_Degree_) của đỉnh $v$ trong $G$ là số cạnh của $G$ liên thuộc với $v$, mỗi vòng được tính là hai cạnh. Ký hiệu: $d(v)$. Bậc của đỉnh mang ý nghĩa quan trọng trong nhiều ứng dụng thực tế. Chẳng hạn, trong mạng xã hội, bậc của một đỉnh biểu thị số lượng kết nối của một người dùng, chẳng hạn như số lượng bạn bè hoặc người theo dõi. Những đỉnh có bậc cao thường đại diện cho những cá nhân có sức ảnh hưởng lớn, do họ có nhiều kết nối và tương tác với các thành viên khác trong mạng lưới. Điều này giúp phản ánh mức độ quan trọng hoặc tầm ảnh hưởng của người dùng trong cộng đồng, từ đó hỗ trợ các nền tảng đánh giá mức độ tương tác hoặc xác định người dùng nổi bật.
+
+Với đồ thị $G$ như Hình 1.11, ta có $d(v_1)=4, d(v_2)=4, d(v_3)=4, d(v_4)=2, d(v_5)=2$ và $d(v_6)=0$.
+
+#align(center)[#canvas(length: 10%, {
+    import cetz.draw: *
+
+    let y = 2 
+    let x = 4
+    let y-space = 1
+    let h=1.4
+
+    circle((0*h,3), radius: 0.05,fill:black, name: "v1")
+    content("v1.left", $v_1$, anchor: "bottom", padding: 0.3)
+
+    circle((-3, 3), radius: 0.05, fill: black, name: "v2") 
+    content("v2.right", $v_2$, anchor: "right", padding: 0.2)
+
+    circle((0, 0), radius: 0.05, fill: black, name: "v3") 
+    content("v3.bottom", $v_3$, anchor: "top", padding: 0.1)
+
+    circle((-3, 0), radius: 0.05, fill: black, name: "v4") 
+    content("v4.right", $v_4$, anchor: "right", padding: 0.2)
+
+     circle((3, 1.5), radius: 0.05, fill: black, name: "v5") 
+    content("v5.right", $v_5$, anchor: "left", padding: 0.2)
+
+     circle((6, 1.5), radius: 0.05, fill: black, name: "v6") 
+    content("v6.right", $v_6$, anchor: "right", padding: 0.2)
+
+    line("v1", "v2", name: "v1v2")
+    content("v1v2.bottom", $e_1$, anchor: "bottom", padding: 0.1)
+
+    bezier("v1","v2", (-1.5,2), name: "be1")
+    content("be1.top", $e_4$, anchor: "top", padding: 0.2)
+
+    line("v1", "v3", name: "v1v3")
+    content("v1v3.right", $e_2$, anchor: "right", padding: 0.1)
+
+    line("v2", "v3", name: "v2v3")
+    content("v2v3.left", $e_3$, anchor: "left", padding: 1)
+
+     line("v2", "v4", name: "v2v4")
+    content("v2v4.left", $e_5$, anchor: "left", padding: 0.1)
+
+     line("v4", "v3", name: "v4v3")
+    content("v4v3.bottom", $e_6$, anchor: "bottom", padding: 0.1)
+
+     line("v1", "v5", name: "v1v5")
+    content("v1v5.bottom", $e_7$, anchor: "bottom", padding: 0.5)
+
+     line("v3", "v5", name: "v3v5")
+    content("v3v5.bottom", $e_8$, anchor: "bottom", padding: 0.4)
+
+  
+    
+    }
+  )]
+
+#align(center)[#text(orange)[*Hình 1.11*] Minh họa bậc của đỉnh]
+
+#text(orange)[*Định lý 1.1*] _Tổng bậc của tất cả các đỉnh trong một đồ thị bằng hai lần số cạnh của đồ thị đó_
+
+=== Đường đi, tính liên thông và chu trình
 
 Đường đi_(walk)_ trong _G_ là một dãy khác rỗng hữu hữu gồm các đỉnh và các cạnh xen kẽ nhau. Nếu các cạnh của đường đi đôi một khác nhau thì đường đi đó được gọi là _đường đi đơn(trail)_. Trong khi đó, nếu các đỉnh của đường đi đôi một khác nhau thì được gọi là đường đi sơ cấp_(path)_.
 
@@ -492,6 +666,7 @@ Tiếp theo, đặt $f_1(x,a)$ là hàm lồi trên tập các điểm thuộc �
 -Nghiệm cục bộ cũng là nghiệm toàn cục => trên cây giải hiệu quả....
 (Có thể chứng minh thêm nghiệm cục bộ là nghiệm toàn cục)
 
+=== Độ phức tạp tính toán
 
 
 
