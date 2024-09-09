@@ -3,6 +3,18 @@
 // Canh đều toàn văn bản
 //#set align()
 //nhớ thêm tích Hamdamard
+//LỜI CẢM ƠN
+// //PHẦN MỞ ĐẦU
+// 1. LÝ DO CHỌN ĐỀ TÀI 
+// 2. MỤC TIÊU CHỌN ĐỀ TÀI 
+// 3. ĐỐI TƯỢNG VÀ PHẠM VI NGHIÊN CỨU 
+// 4. PP NGHIÊN CỨU 
+// 5. ĐÓNG GÓP ĐỀ TÀI 
+// 6. CẤU TRÚC ĐỀ TÀI 
+
+
+
+
 #set math.equation(numbering: "(1)")
 #import "../typst-orange.typ": chapter
 #set page(numbering: "1")
@@ -536,7 +548,8 @@ Bậc (_Degree_) của đỉnh $v$ trong $G$ là số cạnh của $G$ liên thu
 
 Với đồ thị $G$ như Hình 1.11, ta có $d(v_1)=4, d(v_2)=4, d(v_3)=4, d(v_4)=2, d(v_5)=2$ và $d(v_6)=0$.
 
-#align(center)[#canvas(length: 10%, {
+#align(center)[
+  #canvas(length: 10%, {
     import cetz.draw: *
 
     let y = 2 
@@ -589,49 +602,211 @@ Với đồ thị $G$ như Hình 1.11, ta có $d(v_1)=4, d(v_2)=4, d(v_3)=4, d(v
   
     
     }
-  )]
+)]
 
 #align(center)[#text(orange)[*Hình 1.11*] Minh họa bậc của đỉnh]
 
+// #figure(
+//   caption: [Một hình XXX]
+// )[
+//   #canvas(length: 10%, {
+//     import cetz.draw: *
+
+//     let y = 2 
+//     let x = 4
+//     let y-space = 1
+//     let h=1.4
+
+//     circle((0*h,3), radius: 0.05,fill:black, name: "v1")
+//     content("v1.left", $v_1$, anchor: "bottom", padding: 0.3)
+
+//     circle((-3, 3), radius: 0.05, fill: black, name: "v2") 
+//     content("v2.right", $v_2$, anchor: "right", padding: 0.2)
+
+//     circle((0, 0), radius: 0.05, fill: black, name: "v3") 
+//     content("v3.bottom", $v_3$, anchor: "top", padding: 0.1)
+
+//     circle((-3, 0), radius: 0.05, fill: black, name: "v4") 
+//     content("v4.right", $v_4$, anchor: "right", padding: 0.2)
+
+//      circle((3, 1.5), radius: 0.05, fill: black, name: "v5") 
+//     content("v5.right", $v_5$, anchor: "left", padding: 0.2)
+
+//      circle((6, 1.5), radius: 0.05, fill: black, name: "v6") 
+//     content("v6.right", $v_6$, anchor: "right", padding: 0.2)
+
+//     line("v1", "v2", name: "v1v2")
+//     content("v1v2.bottom", $e_1$, anchor: "bottom", padding: 0.1)
+
+//     bezier("v1","v2", (-1.5,2), name: "be1")
+//     content("be1.top", $e_4$, anchor: "top", padding: 0.2)
+
+//     line("v1", "v3", name: "v1v3")
+//     content("v1v3.right", $e_2$, anchor: "right", padding: 0.1)
+
+//     line("v2", "v3", name: "v2v3")
+//     content("v2v3.left", $e_3$, anchor: "left", padding: 1)
+
+//      line("v2", "v4", name: "v2v4")
+//     content("v2v4.left", $e_5$, anchor: "left", padding: 0.1)
+
+//      line("v4", "v3", name: "v4v3")
+//     content("v4v3.bottom", $e_6$, anchor: "bottom", padding: 0.1)
+
+//      line("v1", "v5", name: "v1v5")
+//     content("v1v5.bottom", $e_7$, anchor: "bottom", padding: 0.5)
+
+//      line("v3", "v5", name: "v3v5")
+//     content("v3v5.bottom", $e_8$, anchor: "bottom", padding: 0.4)
+
+  
+    
+//     }
+// )
+// ]
+
 #text(orange)[*Định lý 1.1*] _Tổng bậc của tất cả các đỉnh trong một đồ thị bằng hai lần số cạnh của đồ thị đó_
 
-=== Đường đi, tính liên thông và chu trình
 
-Đường đi_(walk)_ trong _G_ là một dãy khác rỗng hữu hữu gồm các đỉnh và các cạnh xen kẽ nhau. Nếu các cạnh của đường đi đôi một khác nhau thì đường đi đó được gọi là _đường đi đơn(trail)_. Trong khi đó, nếu các đỉnh của đường đi đôi một khác nhau thì được gọi là đường đi sơ cấp_(path)_.
+// #theorem("Euclid")[
+//   Tổng bậc của tất cả các đỉnh trong một đồ thị bằng hai lần số cạnh của đồ thị đó
+// ]
 
-Chu trình_(closed walk)_ là một đường đi có chiều dài dương và có đỉnh đầu và đỉnh cuối trùng nhau. _Chu trình đơn(closed trail)_ là một chu trình có các cạnh đôi một khác nhau. _Chu trình sơ cấp(cycle)_ là một chu trình đơn có các đỉnh đôi một khác nhau ngoại trừ đỉnh đầu và đỉnh cuối.
+=== Đường đi, chu trình và tính liên thông
 
-Đối với đồ thị có trọng số, _độ dài đường đi(length)_ bằng tổng trọng số cạnh của đường đi đó.
+Đường đi (_walk_) trong $G$ là một dãy khác rỗng hữu hạn gồm các đỉnh và các cạnh xen kẽ nhau. Nếu các cạnh của đường đi đôi một khác nhau thì đường đi đó được gọi là _đường đi đơn (trail)_. Trong khi đó, nếu các đỉnh của đường đi đôi một khác nhau thì được gọi là đường đi sơ cấp (_path_).
 
+Chu trình (_closed walk_) là một đường đi có chiều dài dương và có đỉnh đầu và đỉnh cuối trùng nhau. _Chu trình đơn (closed trail)_ là một chu trình có các cạnh đôi một khác nhau. _Chu trình sơ cấp (cycle)_ là một chu trình đơn có các đỉnh đôi một khác nhau ngoại trừ đỉnh đầu và đỉnh cuối.
+
+Đối với đồ thị có trọng số, _độ dài đường đi (length)_ bằng tổng trọng số cạnh của đường đi đó.
 (Ví dụ minh họa)
+
+Tính liên thông trên đồ thị là một khái niệm liên quan đến khả năng kết nối giữa các đỉnh trong một đồ thị. Một đồ thị được gọi là _liên thông_ nếu tồn tại một đường đi giữa mọi cặp đỉnh. Cụ thể
+
+(a) _Đồ thị vô hướng liên thông_: Là đồ thị trong đó mỗi cặp đỉnh bất kỳ, ta có thể tìm được một đường đi giữa chúng. Điều này có nghĩa là không có đỉnh nào bị tách rời khỏi phần còn lại của đồ thị.
+
+(b) _Đồ thị có hướng liên thông mạnh_: Là đồ thị có hướng, trong đó tồn tại đường đi từ bất kỳ đỉnh nào đến bất kỳ đỉnh khác. Điều này yêu cầu cả hai chiều đường đi phải tồn tại giữa hai đỉnh.
+
+(c) _Đồ thị có hướng liên thông yếu_: Nếu ta bỏ qua hướng của các cạnh (xem như cạnh vô hướng) và đồ thị trở thành liên thông. 
+
+Tính liên thông là một yếu tố quan trọng để phân tích cấu trúc của đồ thị và áp dụng trong nhiều bài toán như mạng lưới giao thông, thiết kế mạng máy tính, hoặc giải quyết các bài toán về tối ưu hóa. 
+
 // ==== #text(orange)[1.1.4 Đồ thị cây]
+
+Trong phần tiếp theo, chúng ta sẽ đi sâu vào nghiên cứu đồ thị cây cùng với những tính chất đặc biệt của nó. Đồ thị cây là một trường hợp đặc biệt của đồ thị, mang trong mình cấu trúc đơn giản nhưng lại vô cùng mạnh mẽ và có tính ứng dụng rộng rãi trong nhiều lĩnh vực. 
+
 === Đồ thị cây
-Một _cây(tree)_ là một đồ thị liên thông không có chu trình sơ cấp.
-(Ví dụ, vẽ hình)
 
-#text(orange)[*Định lý 1.1*] _Trong một cây, hai đỉnh bất kỳ được nối với nhau bằng một đường đi sơ cấp duy nhất._
+Đồ thị cây (_tree graph_) là đồ thị liên thông và không chứa chu trình sơ cấp.
 
-#text(orange)[*Chứng minh*]
+#align(center)[
+  #canvas(length: 10%, {
+    import cetz.draw: *
 
-Ta sẽ chứng minh bằng phản chứng. Cho _G_ là một cây và giả sử rằng trong _G_ có hai đường đi sơ cấp khác nhau từ _u_ đến _v_ là $P_1$ và $P_2$. Vì $P_1 != P_2$ nên tồn tại một cạnh $e=x y $ của $P_1$ không phải là cạnh của $P_2$. Rõ ràng đồ thị $(P_1 union P_2) - e$ liên thông, xem hình(....). Do đó, nó chứa một đường đi sơ cấp $P$ đi từ $x$ đến $y$. Khi đó $ P + e$ là một chu trình sơ cấp trong $G$, mâu thuẫn với giả thiết $G$ là một cây. $square.stroked.medium$
+    let y = 2 
+    let x = 4
+    let y-space = 1
+    let h=1.4
 
-Lá (leaf) là các đỉnh (node) trong cây có bậc (degree) bằng 1. Nói cách khác, một đỉnh là lá nếu nó chỉ kết nối với đúng một đỉnh khác trong cây. 
-(Ví dụ minh họa)
+    circle((0*h,2), radius: 0.05,fill:black, name: "v1")
+    content("v1.left", $v_1$, anchor: "bottom", padding: 0.3)
 
-Hàm khoảng cách trên đồ thị cây là hàm lồi
+    circle((-2, 2), radius: 0.05, fill: black, name: "v2") 
+    content("v2.right", $v_2$, anchor: "right", padding: 0.2)
+
+    circle((0, 0), radius: 0.05, fill: black, name: "v3") 
+    content("v3.bottom", $v_3$, anchor: "top", padding: 0.1)
+
+    circle((-2, 0), radius: 0.05, fill: black, name: "v4") 
+    content("v4.right", $v_4$, anchor: "right", padding: 0.2)
+
+     circle((2, 1), radius: 0.05, fill: black, name: "v5") 
+    content("v5.right", $v_5$, anchor: "left", padding: 0.2)
+
+     circle((4, 1), radius: 0.05, fill: black, name: "v6") 
+    content("v6.right", $v_6$, anchor: "right", padding: 0.2)
+
+    circle((6, 2), radius: 0.05, fill: black, name: "v7") 
+    content("v7.right", $v_7$, anchor: "right", padding: 0.2)
+    
+    circle((6, 0), radius: 0.05, fill: black, name: "v8") 
+    content("v8.right", $v_8$, anchor: "right", padding: 0.2)
+    line("v1", "v2", name: "v1v2")
+    // content("v1v2.bottom", $e_1$, anchor: "bottom", padding: 0.1)
+
+    // bezier("v1","v2", (-1.5,2), name: "be1")
+    // content("be1.top", $e_4$, anchor: "top", padding: 0.2)
+
+    // line("v1", "v3", name: "v1v3")
+    // content("v1v3.right", $e_2$, anchor: "right", padding: 0.1)
+
+    // line("v2", "v3", name: "v2v3")
+    // content("v2v3.left", $e_3$, anchor: "left", padding: 1)
+
+    //  line("v2", "v4", name: "v2v4")
+    // content("v2v4.left", $e_5$, anchor: "left", padding: 0.1)
+
+     line("v4", "v3", name: "v4v3")
+    content("v4v3.bottom", $e_6$, anchor: "bottom", padding: 0.1)
+
+     line("v1", "v5", name: "v1v5")
+    content("v1v5.bottom", $e_7$, anchor: "bottom", padding: 0.5)
+
+     line("v3", "v5", name: "v3v5")
+    content("v3v5.bottom", $e_8$, anchor: "bottom", padding: 0.4)
+
+     line("v6", "v5", name: "v6v5")
+    // content("v6v5.bottom", $e_8$, anchor: "bottom", padding: 0.4)
+
+     line("v6", "v7", name: "v6v7")
+
+      line("v6", "v8", name: "v6v8")
+
+  
+    
+    }
+)]
+
+#align(center)[#text(orange)[*Hình 1.12*] Minh họa đồ thị cây]
+
+Đồ thị cây có những đặc điểm nổi bật sau:
+
+(a) Nếu $T$ là đồ thị cây có $n$ đỉnh thì luôn có đúng $n-1$ cạnh.
+
+(b) Trong một cây, hai đỉnh bất kỳ được nối với nhau bằng một đường đi sơ cấp duy nhất. 
+
+(c) Mỗi cây với mỗi đỉnh $n >= 2$ thì có ít nhất hai đỉnh bậc một.  Những đỉnh bậc một này thường được gọi là _lá_, và chúng đóng vai trò quan trọng trong việc xác định cấu trúc và tính chất của cây.
+
+
+// #text(orange)[*Định lý 1.2*] _Trong một cây, hai đỉnh bất kỳ được nối với nhau bằng một đường đi sơ cấp duy nhất._
+
+// #text(orange)[*Chứng minh*]
+
+// Ta sẽ chứng minh bằng phản chứng. Cho _G_ là một cây và giả sử rằng trong _G_ có hai đường đi sơ cấp khác nhau từ _u_ đến _v_ là $P_1$ và $P_2$. Vì $P_1 != P_2$ nên tồn tại một cạnh $e=x y $ của $P_1$ không phải là cạnh của $P_2$. Rõ ràng đồ thị $(P_1 union P_2) - e$ liên thông, xem hình(....). Do đó, nó chứa một đường đi sơ cấp $P$ đi từ $x$ đến $y$. Khi đó $ P + e$ là một chu trình sơ cấp trong $G$, mâu thuẫn với giả thiết $G$ là một cây. $square.stroked.medium$
+
+// Lá (leaf) là các đỉnh (node) trong cây có bậc (degree) bằng 1. Nói cách khác, một đỉnh là lá nếu nó chỉ kết nối với đúng một đỉnh khác trong cây. 
+// (Ví dụ minh họa)
 
 //ĐN kỹ lại a ( nên sài N^1 như trong bài báo)
 
 Với hai điểm $x$ và $y$ gọi $P(x,y)$ là đường đi nối $x$ và $y$.
 
-#text(orange)[*Bổ đề 1*] (Trích Bài p-maxian) Đặt $a,x,y$ và $z$ là bốn điểm phân biệt nằm trên cây $T$ sao cho $z in P(x,y)$ thì $z in P(a,x)$ hoặc $z in P(a,y)$.
-
+#text(orange)[*Bổ đề 1.1*] (Trích Bài p-maxian) _Đặt $a,x,y$ và $z$ là bốn điểm phân biệt nằm trên cây $T$ sao cho $z in P(x,y)$ thì $z in P(a,x)$ hoặc $z in P(a,y)$_.
 
 #text(orange)[*Chứng minh*]
 
-Theo giả thiết, ta có $z in P(x,y)$. Ta giả sử $ z in.not P(a,x)$ và $z in.not P(a,y)$ (như hình vẽ) (vẽ hình minh họa). Bởi vì đường đi kết nối $x$ và $y$ đi qua $a$ nhưng không chứa $z$, trong khi đó đường đi $P(x,y)$ chứa $z$. Vì vậy, tồn tại hai con đường nối $x$ và $y$ và điều này mâu thuẫn với tính chất của đồ thị cây.$square.stroked.medium$
+Theo giả thiết, ta có $z in P(x,y)$. Ta giả sử $ z in.not P(a,x)$ và $z in.not P(a,y)$ (như hình vẽ) (vẽ hình minh họa). Bởi vì đường đi kết nối $x$ và $y$ đi qua $a$ nhưng không chứa $z$, trong khi đó đường đi $P(x,y)$ chứa $z$. Vì vậy, tồn tại hai con đường nối $x$ và $y$ và điều này mâu thuẫn với tính chất của đồ thị cây. $ quad square.stroked.medium$
 
-Bây giờ ta đặt $f_1(x,a) eq.triple d(x,a)$ là hàm khoảng cách từ một điểm bất kỳ trên đồ thị đến $a$.
+Tiếp theo đây, chúng ta sẽ trình bày một định lý quan trọng trên đồ thị cây, định lý này thường được áp dụng để giải quyết các bài toán tối ưu. 
+
+Đặt $f_1(x,a) eq.triple d(x,a)$ là hàm khoảng cách từ một điểm bất kỳ trên đồ thị đến $a$.
+ //ĐN a
+
+
+
+// #text(orange)[*Định lý 1.2*] _Tổng bậc của tất cả các đỉnh trong một đồ thị bằng hai lần số cạnh của đồ thị đó_
+
+Hàm khoảng cách trên đồ thị cây là hàm lồi
 
 #text(orange)[*Bổ đề 2*] (Trích Convex Location Problems on Tree Networks)$f_1(x,a)$ là hàm lồi khi và chỉ khi $T$ là đồ thị cây.
 

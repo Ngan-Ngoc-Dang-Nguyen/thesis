@@ -1,11 +1,24 @@
 #import "../typst-orange.typ": project, part, chapter, my-bibliography, appendices, make-index, index, theorem, mathcal
+// // begin format of Theorem
+// #import "@preview/ctheorems:1.1.2": *
+// #show: thmrules.with(qed-symbol: $square$)
 
-#show math.equation: it => {
-    if it.body.fields().at("size", default: none) != "display" {
-      return math.display(it)
-    }
-    it 
-}
+// #set page(width: 16cm, height: auto, margin: 1.5cm)
+// #set heading(numbering: "1.1.")
+
+// #let theorem = thmbox("theorem", "Theorem", fill: rgb("#eeffee"))
+// #let corollary = thmplain(
+//   "corollary",
+//   "Corollary",
+//   base: "theorem",
+//   titlefmt: strong
+// )
+// #let definition = thmbox("definition", "Definition", inset: (x: 1.2em, top: 1em))
+
+// #let example = thmplain("example", "Example").with(numbering: none)
+// #let proof = thmproof("proof", "Proof")
+// // end of format of Theorem
+
 // #set text(font: "Times New Roman", size: 14pt)
 //#set text(font: "TeX Gyre Pagella")
 // #set text(font: "Lato")
@@ -31,9 +44,14 @@
 )
 
 #set text(font: "Times New Roman", size: 12pt)
-#set math.equation(numbering: "(1)")
-
-// #part([Chương 1]) 
+// #set math.equation(numbering: "(1)")
+#show math.equation: it => {
+    if it.body.fields().at("size", default: none) != "display" {
+      return math.display(it)
+    }
+    it 
+}
+#part([Chương 1]) 
 
 
 // #chapter("Sectioning Examples", image: image("../images/orange2.jpg"), l: "chap1")
