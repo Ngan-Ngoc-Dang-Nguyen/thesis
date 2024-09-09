@@ -147,12 +147,12 @@
   locate(loc => {
     let language = language_state.at(loc)
     let mainColor = main_color_state.at(loc)
-    thmbox("theorem", if language=="en" {"Theorem"} else {"Teorema"},
+    thmbox("theorem", if language=="en" {"Định lý"} else {"Teorema"},
     stroke: 0.5pt + mainColor,
     radius: 0em,
     inset: 0.65em,
     padding: (top: 0em, bottom: 0em),
-    namefmt: x => [*--- #x.*],
+    namefmt: x => [(*#x*)],
     separator: h(0.2em),
     titlefmt: x => text(weight: "bold", fill: mainColor, x), 
     fill: black.lighten(95%), 
@@ -162,16 +162,28 @@
 
 #let corollary = thmplain(
   "corollary",
-  "Corollary",
+  "Hệ quả",
+  base: "theorem",
+  titlefmt: strong
+)
+#let proposition = thmplain(
+  "proposition",
+  "Mệnh đề",
+  base: "theorem",
+  titlefmt: strong
+)
+#let lemma = thmplain(
+  "lemma",
+  "Bổ đề",
   base: "theorem",
   titlefmt: strong
 )
 #let definition = thmbox("definition", "Definition", inset: (x: 1.2em, top: 1em))
 
-#let example = thmplain("example", "Example").with(numbering: none)
+#let example = thmplain("example", "Ví dụ").with(numbering: none)
 #let proof = thmplain(
   "proof",
-  "Proof",
+  "Chứng minh",
   base: "theorem",
   bodyfmt: body => [#body #h(1fr) $square$]
 ).with(numbering: none)
@@ -182,16 +194,16 @@
   set par(leading: 0.5em)
   set enum(numbering: "1.a.i.")
   set list(marker: ([•], [--], [◦]))
-  show math.equation.where(block: true): e => {
-    counter(math.equation).step()
-    locate(loc => {
-      pad(left: 1cm, {
-        box(baseline: 50%, e)
-        h(1fr)
-        box(baseline: 50%, "(" + str(counter(heading).at(loc).at(0)) + "." + str(counter(math.equation).at(loc).first()) + ")")
-      })
-    })
-  }
+  // show math.equation.where(block: true): e => {
+  //   counter(math.equation).step()
+  //   locate(loc => {
+  //     pad(left: 1cm, {
+  //       box(baseline: 50%, e)
+  //       h(1fr)
+  //       box(baseline: 50%, "(" + str(counter(heading).at(loc).at(0)) + "." + str(counter(math.equation).at(loc).first()) + ")")
+  //     })
+  //   })
+  // }
 
   set figure(gap: 1.3em,
   numbering: it => {

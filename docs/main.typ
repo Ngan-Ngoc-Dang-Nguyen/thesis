@@ -31,7 +31,8 @@
   //subtitle: "A Practical Guide",
   date: "2024",
   author: "Nguyễn Đặng Ngọc Ngân",
-  mainColor: rgb("#F36619"),
+  // mainColor: rgb("#F36619"),
+  mainColor: blue,
   lang: "en",
   cover: image("../images/background.svg"),
   imageIndex: image("../images/orange1.jpg"),
@@ -44,14 +45,16 @@
 )
 
 #set text(font: "Times New Roman", size: 12pt)
-// #set math.equation(numbering: "(1)")
+#set math.equation(numbering: "(1)")
+// #show math.equation: set text(blue)
 #show math.equation: it => {
     if it.body.fields().at("size", default: none) != "display" {
       return math.display(it)
     }
     it 
 }
-#part([Chương 1]) 
+// #show cite: it => [#text(fill: blue)[#cite(it)]]
+#show cite: set text(red)
 
 
 // #chapter("Sectioning Examples", image: image("../images/orange2.jpg"), l: "chap1")
@@ -59,6 +62,9 @@
 
 
 // --------- CHƯƠNG 1
+#part([Chương 1]) 
+#pagebreak()
+#include "../docs/xxx-how.typ"
 #include "../docs/chapter1.typ"
 // #include "../docs/chapter2.typ"
 #include "../docs/1.2 median.typ"
@@ -68,7 +74,15 @@
 #include "../docs/upgrading.typ"
 
 // --------- CHƯƠNG 2
+#part([Chương 2]) 
+#pagebreak()
 #include "../docs/stability radius.typ"
 
 // --------- CHƯƠNG 3
+#part([Chương 3]) 
+#pagebreak()
 #include "../docs/upgrading radius.typ"
+
+#part([Tài Liệu Tham Khảo]) 
+#pagebreak()
+#bibliography("../docs/ref.bib", title: "Tài Liệu Tham Khảo", style: "annual-reviews-author-date", )

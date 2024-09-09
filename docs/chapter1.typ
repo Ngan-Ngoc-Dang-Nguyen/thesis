@@ -1,3 +1,5 @@
+#include "../tools/multi-section-ref.typ"
+#import "../tools/macros.typ": eqref
 
 // Nhớ đánh số trang và footnote
 // Canh đều toàn văn bản
@@ -15,14 +17,14 @@
 
 
 
-#set math.equation(numbering: "(1)")
-#import "../typst-orange.typ": chapter
-#set page(numbering: "1")
-#set page(header: [
-  _Luận văn - Nguyễn Đặng Ngọc Ngân_
-  #h(1fr)
-  Trường Đại học Cần Thơ
-])
+// #set math.equation(numbering: "(1)")
+// #import "../typst-orange.typ": chapter
+// #set page(numbering: "1")
+// #set page(header: [
+//   _Luận văn - Nguyễn Đặng Ngọc Ngân_
+//   #h(1fr)
+//   Trường Đại học Cần Thơ
+// ])
 
 // = #text(orange)[*CHƯƠNG 1: KIẾN THỨC CHUẨN BỊ*]
 = KIẾN THỨC CHUẨN BỊ
@@ -31,12 +33,14 @@
 
 // === Đồ thị
 
-
+// @alizadehBudgetconstrainedInverseMedian2020a
 
 // == #text(orange)[1. LÝ THUYẾT ĐỒ THỊ]
 // === #text(orange)[1.1 ĐỒ THỊ]
 
-=== Khái niệm đồ thị
+=== Khái niệm đồ thị 
+
+
 
 Trong thực tế, việc biểu diễn các đối tượng và mối quan hệ giữa chúng là vô cùng quan trọng, phục vụ cho nhiều mục đích trong các lĩnh vực khác nhau. Ví dụ, trong mạng xã hội, để nghiên cứu mối quan hệ của các cá nhân với nhau, chúng ta cần một công cụ có thể mô hình hóa các kết nối này một cách trực quan và hiệu quả. Đồ thị là công cụ hữu ích để thực hiện việc này.
 
@@ -816,7 +820,7 @@ Giả sử, $T$ là đồ thị cây. Chọn $y,z$ bất kỳ nằm trên cây $
 
 $ d(x,a) d(y,z) <= d(x,z) d(y,a) + d(x,y) d(z,a) $ <eq:distance-a>
 
-(Cách trích dẫn @eq:distance-a )
+// (Cách trích dẫn @eq:distance-a )
 
 Vì $x in P(y,z)$ nên theo _Bổ đề 1_, ta có $x in P(y,a)$ hoặc $x in P(z,a)$.
 
