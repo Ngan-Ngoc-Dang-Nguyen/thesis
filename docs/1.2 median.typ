@@ -265,17 +265,101 @@ Thuật toán tuyến tính tìm 1-median trên cây được độc lập đưa
 #table(
   table.hline(),
   stroke: none,
-  columns: (auto, 2fr),
-  [*ĐẦU VÀO*], [Cây $T=(V,E)$, làm chiều dài $l$, hàm trọng số $w$],
-  [*Bước 0*], [Tính $W= sum_(v_i in V) w_i.$],
-  [*Bước 1*], [Chọn một lá $v_k$ của $T=(V,E).$],
-  [*Bước 2*], [Nếu $V={v_k}$ thì trả về: $X^*={v_k}.$],
-  [*Bước 3*], [],
-  [$w_k$ = $W$/2], [Trả về: $X^*={x in v_k v_l}$, trong đó $v_l$ liền kề $v_k$.],
-  [$w_k >$ $W$/2], [Trả về: $X^*={v_k}$],
-  [$w_k <$ $W$/2], [Sang Bước 4.],
-  [*Bước 4*], [Đặt $w_l := w_l + w_k$ với $v_l$ liền kề $v_k$ và xét cây mới $T:= T without {v_k}$. Trở về Bước 1.],
+  columns: (auto, 4fr),
+  [*ĐẦU VÀO*],  [Cây $T=(V,E)$, làm chiều dài $l$, hàm trọng số $w$],
+  [*Bước 0*],  [Tính $W= sum_(v_i in V) w_i.$],
+  [*Bước 1*],  [Chọn một lá $v_k$ của $T=(V,E).$],
+  [*Bước 2*],  [Nếu $V={v_k}$ thì trả về: $X^*={v_k}.$],
+  [*Bước 3*],  [],
+  [$w_k$ = $W$/2],  [Trả về: $X^*={x in v_k v_l}$, trong đó $v_l$ liền kề $v_k$.],
+  [$w_k >$ $W$/2],  [Trả về: $X^*={v_k}$],
+  [$w_k <$ $W$/2],  [Sang Bước 4.],
+  [*Bước 4*],  [Đặt $w_l := w_l + w_k$ với $v_l$ liền kề $v_k$ và xét cây mới $T:= T without {v_k}$. Trở về Bước 1.],
   table.hline(),
-  [*ĐẦU RA*], [$X^*$ là tập hợp tất cả các điểm 1-median.],
+  [*ĐẦU RA*],  [$X^*$ là tập hợp tất cả các điểm 1-median.],
 )
-Ví dụ.....
+Để hiểu rõ hơn về cách hoạt động của thuật toán, chúng ta sẽ cùng phân tích qua ví dụ dưới đây.
+
+*Ví dụ* Tìm điểm 1-median của đồ thị được cho hình như bên dưới
+
+#align(center)[#canvas(length: 6%, {
+    import cetz.draw: *
+
+    let y = 2 
+    let x = 4
+    let y-space = 1
+    let h=1.4
+
+    circle((0*h,3), radius: 0.05,fill:black, name: "v2")
+    content("v2.left", $v_2 (1)$, anchor: "left", padding: 0.2)
+
+     circle((-3,0), radius: 0.05,fill:black, name: "v1")
+    content("v1.left", $v_1 (1)$, anchor: "left", padding: 0.2)
+
+     circle((-3,6), radius: 0.05,fill:black, name: "v3")
+    content("v3.left", $v_3 (3)$, anchor: "left", padding: 0.2)
+
+     circle((-4,9), radius: 0.05,fill:black, name: "v4")
+    content("v4.left", $v_4 (2)$, anchor: "left", padding: 0.2)
+
+     circle((-6,5), radius: 0.05,fill:black, name: "v5")
+    content("v5.left", $v_5 (3)$, anchor: "left", padding: 0.2)
+
+     circle((3,3), radius: 0.05,fill:black, name: "v6")
+    content("v6.left", $v_6 (4)$, anchor: "left", padding: 0.2)
+
+     circle((5,4), radius: 0.05,fill:black, name: "v7")
+    content("v7.left", $v_7 (1)$, anchor: "left", padding: 0.2)
+
+     circle((6,7.5), radius: 0.05,fill:black, name: "v8")
+    content("v8.left", $v_8 (3)$, anchor: "left", padding: 0.2)
+
+     circle((5,1.5), radius: 0.05,fill:black, name: "v9")
+    content("v9.left", $v_9 (2)$, anchor: "left", padding: 0.2)
+
+     circle((6,-1), radius: 0.05,fill:black, name: "v10")
+    content("v10.left", $v_10 (1)$, anchor: "left", padding: 0.2)
+
+     circle((9,0), radius: 0.05,fill:black, name: "v11")
+    content("v11.left", $v_11 (1)$, anchor: "left", padding: 0.2)
+
+    line("v1", "v2")
+
+    line("v2", "v3")
+
+    line("v3", "v4")
+
+    line("v3", "v5")
+
+    line("v2", "v6")
+
+    line("v6", "v7")
+    
+    line("v7", "v8")
+
+    line("v6", "v9")
+
+    line("v9", "v10")
+
+    line("v10", "v11")
+
+
+ }
+  )]
+
+Ta có $W(T)=22$, các lá $s:= {v_1, v_4, v_5, v_8, v_11}$
+
+Xét lá $v_1$, vì $w_1 = 1 < W/2 = 11$ nên $w_2:= w_2 + w_1 = 1+1= 2$ và xét cây mới $T:= T without {v_1}.$
+
+Xét lá $v_4$, vì $w_4 = 2 < W/2 = 11$ nên $w_3 := w_3 + w_4 = 2+3=5$ và xét cây mới $T:= T without {v_4}.$
+
+Xét lá $v_5$, vì $w_5 = 3 < W/2 = 11$ nên $w_3 := w_3 + w_5= 5+ 3 = 8$ và xét cây mới $T:= T without {v_5}.$
+
+Xét lá $v_3$, vì $w_3 = 8 < W/2 = 11$ nên $w_2:= w_3 + w_2 = 8 + 2= 10$ và xét cây mới $T:= T without {v_3} $
+
+Xét lá $v_2$, vì $w_2= 10 < W/2 =11 $ nên $w_6:= w_6 + w_2 = 4 + 10 = 14$ và xét cây mới $T:= T without {v_2}.$
+
+Xét lá $v_6$, vì $w_6 = 14 > W/2 = 11$ nên trả về $X^* = { v_6}.$
+
+Vậy $v_6$ là điểm 1-median cần tìm. 
+
