@@ -1,4 +1,5 @@
 #import "../typst-orange.typ": project, part, chapter, my-bibliography, appendices, make-index, index, theorem, mathcal
+
 // // begin format of Theorem
 // #import "@preview/ctheorems:1.1.2": *
 // #show: thmrules.with(qed-symbol: $square$)
@@ -31,8 +32,8 @@
   //subtitle: "A Practical Guide",
   date: "2024",
   author: "Nguyễn Đặng Ngọc Ngân",
-  // mainColor: rgb("#F36619"),
-  mainColor: blue,
+  mainColor: rgb("#F36619"),
+  // mainColor: blue,
   lang: "en",
   cover: image("../images/background.svg"),
   imageIndex: image("../images/orange1.jpg"),
@@ -60,7 +61,9 @@
 // #chapter("Sectioning Examples", image: image("../images/orange2.jpg"), l: "chap1")
 // #index("Sectioning")
 
-
+// #include "../tools/multi-section-ref.typ"
+// #import "../tools/macros.typ": eqref
+// #import "../typst-orange.typ": theorem, proof, lemma, proposition, corollary, example
 // --------- CHƯƠNG 1
 #part([Chương 1]) 
 #pagebreak()
