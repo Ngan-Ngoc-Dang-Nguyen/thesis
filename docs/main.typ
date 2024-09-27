@@ -71,9 +71,11 @@
 #include "../docs/chapter1.typ"
 // #include "../docs/chapter2.typ"
 #include "../docs/1.2 median.typ"
-#include "../docs/1.3 center.typ"
+
+// #include "../docs/1.3 center.typ"
 #include "../docs/knapsack.typ"
 #include "../docs/inverse 1-median.typ"
+#include "../docs/reverse.typ"
 #include "../docs/upgrading.typ"
 
 // --------- CHƯƠNG 2

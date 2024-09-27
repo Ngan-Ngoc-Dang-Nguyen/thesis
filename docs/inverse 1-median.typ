@@ -11,7 +11,7 @@
 #import "@preview/cetz:0.1.2": canvas, plot
 #import "@preview/cetz:0.1.2"
 
-== Bài toán inverse 1-median trên cây
+== BÀI TOÁN INVERSE 1-MEDIAN TRÊN CÂY
 
 
 Trong mục này, chúng ta sẽ xem xét một bài toán khác cũng có nhiều ứng dụng thực tiễn rộng rãi trong cuộc sống, đặc biệt là trong các lĩnh vực như quy hoạch đô thị, logistics và quản lý hệ thống hạ tầng. Một ví dụ điển hình là trong quy hoạch đô thị, chính phủ thường có nhu cầu cố định vị trí của các công trình công cộng quan trọng như trường học, bệnh viện, hoặc các cơ sở y tế khác để đảm bảo người dân có thể dễ dàng tiếp cận các dịch vụ thiết yếu. Tuy nhiên, việc lựa chọn các vị trí này đôi khi chưa phải là tối ưu nhất so với sự phân bố dân cư và hệ thống giao thông hiện có.
@@ -115,9 +115,9 @@ Từ #eqref(<eq:37>), ta thấy rằng (LKP) là bài toán xếp ba lô liên t
 Bây giờ, ta sẽ xét ví dụ sau.
 
 *Ví dụ* Cho cây $T(V,E)$ có trọng số như hình bên dưới. Điểm $v_2$ đang là điểm 1-median. Ta cần phải chỉnh $w_i, i=1,...,6$ sao cho $v_4$ trở thành điểm 1-median, đồng thời vẫn thỏa mãn các giới hạn cho trước. Cụ thể:
-
+$c_1=1, c_2 = 6, c_3 = 4, c_4 =5, c_5=7, c_6 = 8 $
 $
-4 <= w_1 <= 8,
+4 <= w_1 <= 8, 
 4 <= w_2 <= 6,
 5 <= w_3 <= 9,
 3 <= w_4 <= 5,
