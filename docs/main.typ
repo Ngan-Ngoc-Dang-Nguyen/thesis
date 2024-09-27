@@ -45,7 +45,7 @@
   copyright: []
 )
 
-#set text(font: "Times New Roman", size: 12pt)
+#set text(font: "Times New Roman", size: 13pt)
 #set math.equation(numbering: "(1)")
 // #show math.equation: set text(blue)
 #show math.equation: it => {
@@ -71,8 +71,6 @@
 #include "../docs/chapter1.typ"
 // #include "../docs/chapter2.typ"
 #include "../docs/1.2 median.typ"
-
-// #include "../docs/1.3 center.typ"
 #include "../docs/knapsack.typ"
 #include "../docs/inverse 1-median.typ"
 #include "../docs/reverse.typ"
