@@ -11,7 +11,8 @@
 #import "@preview/cetz:0.1.2": canvas, plot
 #import "@preview/cetz:0.1.2"
 
-== BÀI TOÁN INVERSE 1-MEDIAN TRÊN CÂY
+// == BÀI TOÁN INVERSE 1-MEDIAN TRÊN CÂY
+== INVERSE 1-MEDIAN VÀ CÁC BÀI TOÁN LIÊN QUAN 
 
 
 Trong mục này, chúng ta sẽ xem xét một bài toán khác cũng có nhiều ứng dụng thực tiễn rộng rãi trong cuộc sống, đặc biệt là trong các lĩnh vực như quy hoạch đô thị, logistics và quản lý hệ thống hạ tầng. Một ví dụ điển hình là trong quy hoạch đô thị, chính phủ thường có nhu cầu cố định vị trí của các công trình công cộng quan trọng như trường học, bệnh viện, hoặc các cơ sở y tế khác để đảm bảo người dân có thể dễ dàng tiếp cận các dịch vụ thiết yếu. Tuy nhiên, việc lựa chọn các vị trí này đôi khi chưa phải là tối ưu nhất so với sự phân bố dân cư và hệ thống giao thông hiện có.
@@ -22,7 +23,8 @@ Việc tối ưu hóa này không chỉ giúp giảm chi phí và thời gian di
 
 Lớp bài toán này được gọi là bài toán inverse 1-median trên cây.
 
-=== Định nghĩa bài toán
+// === Định nghĩa bài toán
+=== Bài toán Inverse 1-median
 
 #let wt = $tilde(w)$
 
@@ -30,7 +32,7 @@ Cho đồ thị cây $T=(V,E)$ với tập đỉnh $V={v_1,v_2,...,v_n}$ và t�
 
  Bây giờ, bài toán inverse 1-median trên cây có thể được phát biểu như sau: Tìm các trọng số đỉnh mới $w^*_i = w_i + p_i - q_i, i=1,2,...,n$ sao cho điểm $s in V $ là 1-median đối với các trọng số mới $w^*_i$, các trọng số mới nằm trong các giới hạn cho trước $underline(w_i) <= w^*_i <= overline(w_i)$ với tất cả $i=1,2,...,n$ và tổng chi phí $ sum_(i=1)^n c_i (p_i + q_i) $ cho việc thay đổi các trọng số nên được tối thiểu.
 
-=== Điều kiện tối ưu
+==== Điều kiện tối ưu
 
 Giả sử $ W= sum_(i=1)^n w_i $ là tổng của tất cả các trọng số đỉnh của cây. 
 
@@ -69,7 +71,7 @@ min quad & sum_(i=1)^n c_i (p_i + q_i)\
  & p_i, q_i >= 0quad quad quad quad quad quad quad quad quad quad quad quad quad i=1,2...,n
 $
 
-=== Giải thuật cho bài toán inverse 1-median trên cây
+==== Giải thuật cho bài toán inverse 1-median trên cây
 
 Ý tưởng chính để giải quyết bài toán này là chuyển đổi nó thành dạng tương đương với _bài toán xếp ba lô liên tục_. Bằng cách này, ta có thể tận dụng các đặc điểm và phương pháp giải hiệu quả của bài toán ba lô liên tục để tìm lời giải tối ưu một cách nhanh chóng và chính xác.
 

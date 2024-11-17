@@ -143,11 +143,11 @@
   file
 }
 
-#let theorem(name: none, body) = {
+#let theorem(name: none, body, the-type: "Định lý") = {
   locate(loc => {
     let language = language_state.at(loc)
     let mainColor = main_color_state.at(loc)
-    thmbox("theorem", if language=="en" {"Định lý"} else {"Teorema"},
+    thmbox("theorem", if language=="en" {the-type} else {"Teorema"},
     stroke: 0.5pt + mainColor,
     radius: 0em,
     inset: 0.65em,
@@ -159,28 +159,44 @@
     base_level: 1)(name:name, body)
   })
 }
+#let lemma(name: none, body) = theorem(name: name, body, the-type: "Bổ đề")
+#let definition(name: none, body) = theorem(name: name, body, the-type: "Định nghĩa")
+#let corollary(name: none, body) = theorem(name: name, body, the-type: "Hệ quả")
+#let proposition(name: none, body) = theorem(name: name, body, the-type: "Mệnh đề")
 
-#let corollary = thmplain(
-  "corollary",
-  "Hệ quả",
-  base: "theorem",
-  titlefmt: strong
-)
-#let proposition = thmplain(
-  "proposition",
-  "Mệnh đề",
-  base: "theorem",
-  titlefmt: strong
-)
-#let lemma = thmplain(
-  "lemma",
-  "Bổ đề",
-  base: "theorem",
-  titlefmt: strong
-)
-#let definition = thmbox("definition", "Definition", inset: (x: 1.2em, top: 1em))
+// #let (name: none, body) = theorem(name: name, body, the-type: "Định nghĩa")
+// #let definition(name: none, body) = theorem(name: name, body, the-type: "Định nghĩa")
+
+
+// #let corollary = thmplain(
+//   "corollary",
+//   "Hệ quả",
+//   base: "theorem",
+//   titlefmt: strong
+// )
+// #let proposition = thmplain(
+//   "proposition",
+//   "Mệnh đề",
+//   base: "theorem",
+//   titlefmt: strong
+// )
+// #let lemma = thmplain(
+//   "lemma",
+//   "Bổ đề",
+//   base: "theorem",
+//   titlefmt: strong
+// )
+// #let lemma = thmbox(
+//   "lemma",
+//   "Bổ đề",
+//   base: "theorem",
+//   titlefmt: strong
+// )
+// #let definition = thmbox("definition", "Definition", inset: (x: 1.2em, top: 1em))
+// #let lemma = thmbox("lemma", "Bổ đề", inset: (x: 1.2em, top: 1em))
 
 #let example = thmplain("example", "Ví dụ").with(numbering: none)
+#let remark = thmplain("remark", "Lưu ý").with(numbering: none)
 #let proof = thmplain(
   "proof",
   "Chứng minh",

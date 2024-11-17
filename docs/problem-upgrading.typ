@@ -9,7 +9,8 @@
 
 Mục tiếp theo, ta sẽ xem xét một lớp bài toán khác được gọi là bài toán nâng cấp.
 
-== BÀI TOÁN NÂNG CẤP 1-MEDIAN TRÊN CÂY
+// == BÀI TOÁN NÂNG CẤP 1-MEDIAN TRÊN CÂY
+=== Bài toán Upgrading 1-median 
 
 Giả sử một thành phố có mạng lưới các con đường nối liền các quận với nhau, với một bến xe buýt trung tâm đặt tại quận A - vị trí được chọn làm điểm trung chuyển tối ưu để người dân dễ dàng di chuyển tới các khu vực khác. Tuy nhiên, theo thời gian, khi dân số tăng lên và lưu lượng giao thông trở nên quá tải, việc di chuyển từ các quận tới quận A ngày càng mất nhiều thời gian, gây ra tình trạng tắc nghẽn và phiền toái.
 
@@ -32,7 +33,7 @@ Luận văn này sẽ tập trung vào bài toán nâng cấp 1-median, trong đ
 //Trong bài báo này, chúng tôi xem xét một biến thể của bài toán 1-median, trong đó mạng được sửa đổi trước khi cơ sở được đặt trên mạng. Các bài toán nâng cấp và hạ cấp có thể được xem như các bài toán hai cấp độ, trong đó một người ra quyết định (người hành động) thay đổi trọng số đỉnh trong một số giới hạn nhất định và một người ra quyết định khác (nhà lập kế hoạch vị trí hoặc người phản ứng) định vị cơ sở một cách tối ưu dựa trên các trọng số đỉnh mới. Mục tiêu của nhà lập kế hoạch vị trí là tối thiểu hóa giá trị mục tiêu 1-median. Tùy thuộc vào việc mục tiêu của người hành động và người phản ứng có giống nhau hay mâu thuẫn với nhau, chúng ta sẽ nói về các bài toán nâng cấp hoặc hạ cấp. Trong phiên bản nâng cấp, người hành động muốn tối thiểu hóa giá trị mục tiêu 1-median (tức là, người hành động và người phản ứng có cùng mục tiêu), trong khi trong phiên bản hạ cấp, người hành động tìm cách tối đa hóa giá trị mục tiêu 1-median trong khi nhà lập kế hoạch vị trí muốn tối thiểu hóa giá trị này. Do đó, phiên bản hạ cấp là một bài toán max-min.
 // == #text(orange)[CHƯƠNG 2: KIẾN THỨC CHUẨN BỊ]
 
-=== Định nghĩa và giải thuật
+// === Định nghĩa và giải thuật
 
 // Để tiếp cận bài toán một cách hiệu quả, trước tiên chúng ta sẽ tóm tắt ngắn gọn vấn đề và sau đó xây dựng mô hình toán học của nó.
 

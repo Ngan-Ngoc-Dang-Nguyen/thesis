@@ -42,9 +42,11 @@
   supplementChapter: "Chương",
   supplementPart: "Phần",
   part_style: 0,
-  copyright: []
+  copyright: [],
+
 )
 
+#set figure(supplement: "Hình")
 #set text(font: "Times New Roman", size: 13pt)
 #set math.equation(numbering: "(1)")
 // #show math.equation: set text(blue)
@@ -60,32 +62,35 @@
 
 // #chapter("Sectioning Examples", image: image("../images/orange2.jpg"), l: "chap1")
 // #index("Sectioning")
-
 // #include "../tools/multi-section-ref.typ"
 // #import "../tools/macros.typ": eqref
 // #import "../typst-orange.typ": theorem, proof, lemma, proposition, corollary, example
+
 // --------- CHƯƠNG 1
 #part([Chương 1]) 
+#pagebreak()
+#include "../docs/intro.typ"
+
+// --------- CHƯƠNG 2
+#part([Chương 2]) 
 #pagebreak()
 #include "../docs/xxx-how.typ"
 #include "../docs/chapter1.typ"
 // #include "../docs/chapter2.typ"
 #include "../docs/1.2 median.typ"
-#include "../docs/knapsack.typ"
-#include "../docs/inverse 1-median.typ"
-#include "../docs/reverse.typ"
-#include "../docs/upgrading.typ"
-
-// --------- CHƯƠNG 2
-#part([Chương 2]) 
-#pagebreak()
-#include "../docs/stability radius.typ"
+#include "../docs/problem-inverse.typ"
+#include "../docs/problem-knapsack.typ"
+#include "../docs/problem-reverse.typ"
+#include "../docs/problem-upgrading.typ"
 
 // --------- CHƯƠNG 3
 #part([Chương 3]) 
 #pagebreak()
-#include "../docs/upgrading radius.typ"
+#include "../docs/stability-radius.typ"
+#include "../docs/stability-radius-upgrading.typ"
 
-#part([Tài Liệu Tham Khảo]) 
+
+// --------- CHƯƠNG 4
+#part([#v(0.65em)]) 
 #pagebreak()
-#bibliography("../docs/ref.bib", title: "Tài Liệu Tham Khảo", style: "annual-reviews-author-date", )
+#bibliography("../docs/ref.bib", title: "TÀI LIỆU THAM KHẢO", style: "annual-reviews-author-date", )

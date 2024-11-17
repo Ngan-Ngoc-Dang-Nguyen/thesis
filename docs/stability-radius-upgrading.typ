@@ -1,15 +1,23 @@
+#include "../tools/multi-section-ref.typ"
+#import "../tools/macros.typ": eqref, remark-Le, delete-Le, add-Le, remark-Ngan, delete-Ngan, add-Ngan
+#import "../typst-orange.typ": theorem, proof, lemma, proposition, corollary, example, definition, 
+#import "@preview/cetz:0.1.2": canvas, plot
+#import "@preview/cetz:0.1.2"
+
 // #par(justify: true)[
 // = Nâng cấp bán kính ổn định của điểm 1-median
-= NÂNG CẤP BÁN KÍNH ỔN ĐỊNH CỦA ĐIỂM 1-MEDIAN
+// = NÂNG CẤP BÁN KÍNH ỔN ĐỊNH CỦA ĐIỂM 1-MEDIAN
 
 // $ x^2 + y^2 = z^2 $ <eq:pytago>
 
 // Xét pt pytago @eq:pytago
+==  Bài toán nâng cấp bán kính ổn định 
 
 
 Trong phần này, đầu tiên, chúng tôi sẽ xác định vấn đề chính của mình trong Mục 4.1. Tiếp theo, chúng tôi giới thiệu các phiên bản quyết định của bài toán và thiết lập mối quan hệ giữa chúng trong Mục 4.2. Cuối cùng, chúng tôi cho thấy rằng các vấn đề quyết định có thể được giải quyết dưới dạng đóng, từ đó đưa ra một phương pháp tiếp cận tổ hợp hiệu quả để giải quyết vấn đề lần lượt trong mục 4.3 và 4.4. 
 
-*4.1 Công thức*
+// *4.1 Công thức*
+=== Mô hình hóa bài toán
 
 Rõ ràng các biến đổi trong trọng số đỉnh trên cây có thể dẫn đến sự bất ổn định trong vị trí trung vị đã thiết lập. Trong phần này, chúng tôi nhằm mục đích tăng cường độ bền vững của vị trí trung vị bằng cách cải thiện bán kính ổn định $R(w)$. Do tính chất phức tạp của $R(w)$, thay vào đó chúng tôi tập trung vào việc nâng cấp chặn dưới của $R(w)$. Bây giờ, chúng tôi sẽ nghiên cứu chi tiết mô hình
 
@@ -58,7 +66,8 @@ Trong phần còn lại của bài báo này, chúng tôi sẽ tập trung vào 
 
 Trong phần tiếp theo, chúng tôi đề xuất một phương pháp tổ hợp hiệu quả để giải quyết vấn đề (USR-12) bằng cách tận dụng cấu trúc đặc thù của nó. Để phát triển thuật toán này, chúng tôi sẽ giới thiệu trong các phần tiếp theo..., có thể được giải dưới dạng đóng. Hơn nữa, giải pháp cho vấn đề quyết định có thể được chuyển đổi hiệu quả thành giải pháp cho (USR-12) dựa trên mối quan hệ giữa chúng.
 
-== Phiên bản tham số của bài toán nâng cấp bán kính ổn định
+===  Tham số hóa bài toán
+// nâng cấp bán kính ổn định
 
 Giải quyết bài toán (USR-12) thực chất là trả lời câu hỏi: "Giá trị mục tiêu nhỏ nhất có thể đạt được với ngân sách bị giới hạn bởi $B$ là bao nhiêu". Thay vì tập trung vào câu hỏi này, ta có thể khám phá một câu hỏi liên quan chặt chẽ khác: "Với một giá trị mục tiêu $t$ cho trước, ngân sách tối thiểu cần thiết để đạt được giá trị mục tiêu không lớn hơn $t$ là bao nhiêu?". Câu hỏi này có thể được biểu diễn thành bài toán sau:
 
@@ -82,33 +91,43 @@ Trực quan, mối liên hệ giữa (USR-12) và (PUSR-13) như sau: nếu ngâ
 Thú vị là, lập luận ngược lại cũng đúng, như được chứng minh trong bổ đề sau đây. Để phát biểu bổ đề, chúng ta hãy giới thiệu một số ký hiệu bổ sung. Gọi $P(x)= max_(u in N(v_1)) angle.l w + x, bb(1)_T_u angle.r $ là hàm mục tiêu của (USR-12). Chúng ta cũng ký hiệu $x^*$ là nghiệm tối ưu và $t^*$ là giá trị mục tiêu tối ưu của (USR-12). Khi đó, $P(x^*)= t^*$. Tiếp theo, gọi $hat(x)(t)$ là nghiệm tối ưu và $beta(t)$ là giá trị mục tiêu tối ưu của (PUSR-13) tương ứng với tham số $t$. Nếu tập hợp nghiệm khả thi của (PUSR-13) rỗng, chúng ta đặt $beta(t)= + infinity$. Rõ ràng bằng $beta(.)$ là một hàm không giảm trên miền của nó. Mối quan hệ giữa $(t,beta(t))$ và $(t^*,B)$ được thiết lập như sau:
 
 // == Bổ đề 4.1 
-*Bổ đề 4.1*
+// *Bổ đề 4.1*
+#lemma[Ta có 
 $ beta(t) <= B <=> t>= t^* $
+]
 
-*Chứng minh*
-Nếu $beta(t) <= B$, thì $hat(x)(t)$ là một nghiệm khả thi ứng với (PUSR-13), do đó, $P(hat(x)(t)) >= P(x^*)$. Vì thế, $t >= P(hat(x)(t)) >= P(x^*) = t^*$, trong đó dấu bất đẳng thức đầu tiên xuất phát từ (PUSR-13a). Ta tiến hành chứng minh chiều ngược lại. Giả sử rằng $t >= t^*$. Bởi vì $t^* = P(x^*)$, ta có $P(x^*) <= t$. Điều này cho thấy tính khả thi của $x^*$ đối với (PUSR-13). Do đó, $norm(hat(x)(t))_1 <= norm(x^*)_1$. Tính khả thi của $x^*$ đối với (PUSR-12) ngụ ý rằng $norm(x^*)_1 <= B$. Vì vậy, $beta(t)= norm(hat(x)(t))_1 <= B$. Ta hoàn thành chứng minh.
+// *Chứng minh*
+#proof[
+Nếu $beta(t) <= B$, thì $hat(x)(t)$ là một nghiệm khả thi ứng với (PUSR-13), do đó, $P(hat(x)(t)) >= P(x^*)$. Vì thế, $t >= P(hat(x)(t)) >= P(x^*) = t^*$, trong đó dấu bất đẳng thức đầu tiên xuất phát từ (PUSR-13a). Ta tiến hành chứng minh chiều ngược lại. Giả sử rằng $t >= t^*$. Bởi vì $t^* = P(x^*)$, ta có $P(x^*) <= t$. Điều này cho thấy tính khả thi của $x^*$ đối với (PUSR-13). Do đó, $norm(hat(x)(t))_1 <= norm(x^*)_1$. Tính khả thi của $x^*$ đối với (PUSR-12) ngụ ý rằng $norm(x^*)_1 <= B$. Vì vậy, $beta(t)= norm(hat(x)(t))_1 <= B$. Ta hoàn thành chứng minh.]
 
 Từ *Bổ đề 4.1*, điều quan trọng cần lưu ý là $beta(t^*) <= B.$ (14). 
 
 Trong phần tiếp theo, chúng ta sẽ khai thác *Bổ đề 4.1* để dẫn ra một sự chuyển đổi từ $(hat(x)(t), beta(t))$ của (USR-12) sang $(x^*, t^*)$ của (PUSR-13).
 
-*Định lý 4.1* _Giá trị hàm mục tiêu $t^*$ của (USR-12) được tính_
+// *Định lý 4.1*
+
+#theorem[_Giá trị hàm mục tiêu $t^*$ của (USR-12) được tính_
 $ t^* = inf{t: beta(t) <= B}. $
-_và $hat(x)(t^*)$ là nghiệm tối ưu của (USR-12)._
+_và $hat(x)(t^*)$ là nghiệm tối ưu của (USR-12)._]
 
-*Chứng minh* 
+// *Chứng minh* 
 
+#proof[
 Từ 4.1, ta có thể thấy rằng $t^* <= inf{t: beta(t)<= B}$. Nếu $t^* < inf{t: beta(t) <= B}$ thì dễ thấy rằng $beta(t^*) > B$, điều này mâu thuẫn với (14). Vì thế, $t^*= inf{t: beta(t)<= B}$.
 
-Từ (14), ta biết rằng $hat(x)t^*$ là nghiệm khả thi của (USR-12). Do đó, $P(hat(x)(t^*)) >= P(x^*) = t^*$. Hơn nữa, tính khả thi của $hat(t^*)$ tương ứng với (PUSR-13a) ngụ ý rằng $t^* >= P(hat(x)(t^*))$. Kết hợp với các điều này cho thấy tính tối ưu của $hat(x)(t^*)$ đối với (USR-12). (chứng minh xong).
+Từ (14), ta biết rằng $hat(x)t^*$ là nghiệm khả thi của (USR-12). Do đó, $P(hat(x)(t^*)) >= P(x^*) = t^*$. Hơn nữa, tính khả thi của $hat(t^*)$ tương ứng với (PUSR-13a) ngụ ý rằng $t^* >= P(hat(x)(t^*))$. Kết hợp với các điều này cho thấy tính tối ưu của $hat(x)(t^*)$ đối với (USR-12). (chứng minh xong).]
 
 Từ *Định lý 4.1*, có thể thấy rằng nếu ta có thể giải quyết được (PUSR-13), tức là biết $beta(t)$ và $hat(x)(t)$ với t bất kỳ, thì ta có thể xây dựng một nghiệm tối ưu $x^* = hat(x)(t^*)$, trong đó $t^*$ có thể được tính bằng (15). Trong phần còn lại của tiểu mục này, chúng tôi đề xuất một cách đơn giản hóa (PUSR-13) bằng cách gộp tất cả các phần tử của nghiệm tối ưu có giá trị bằng nhau. Cụ thể, trước hết chúng tôi nhận thấy rằng có tồn tại một nghiệm tối ưu của (PUSR-13) sao cho các phần tử thứ $i$ của nó có giá trị giống nhau đối với các đỉnh $v_i$ thuộc cùng một cây con $T_u$ với $u in N(v_1)$.
 
-*Định lý 4.2* _Tồn tại một nghiệm tối ưu $hat(x)(t)$ của (PUSR-13) mà gán cùng một giá trị cho $hat(x)_(i)(t)$ đối với tất cả các đỉnh $v_i$ trong mỗi cây con $T_u$, với $ u in N(v_1)$._
+// *Định lý 4.2*
 
-*Chứng minh*
+#theorem[Tồn tại một nghiệm tối ưu $hat(x)(t)$ của (PUSR-13) mà gán cùng một giá trị cho $hat(x)_(i)(t)$ đối với tất cả các đỉnh $v_i$ trong mỗi cây con $T_u$, với $ u in N(v_1)$.]
+
+// *Chứng minh*
+#proof[
 Giả sử $hat(x)(t)$ là một nghiệm tối ưu bất kỳ của (PUSR-13). Khi đó, ta có thể đạt được nghiệm tối ưu mong muốn bằng cách, đối với mọi $ u in N(v_1)$,
 $ hat(x)_(i)(t) = 1/ abs(T_u) sum_(v_i in T_u) hat(x)_(i)(t), quad quad forall v_i in T_u. $ (chứng minh xong)
+]
 
 Từ định lý *4.2*, chúng ta nhận thấy rằng thay vì tìm kiếm vecto điều chỉnh tối ưu $hat(x)(t)$, chúng ta có thể tập trung vào tổng trọng chỉnh sửa trên mỗi cây con $T_u_j$. Quan sát này cho phép chúng ta giảm số chiều của bài toán (PUSR-13) từ $n$ xuống $k+1$, trong đó $k$ là bậc của điểm trung vị $v_1$. Giả sử $N(v_1)={u_1,u_2,...,u_k}$, $u_0 = v_1$ và $T_u_O = {v_1}$. Bây giờ chúng ta định nghĩa vecto mới $z in RR_+^(k+1)$ có chặn trên $overline(z) in RR_+^(k+1)$. Tiếp theo, ta đặt $z_0 = x_1$ là phép chỉnh sửa liên quan đến điểm trung vị $v_1$ và $z_0 = epsilon_0$ là giới hạn trên của nó. Đặt $z_j = angle.l x, bb(1)_T_u_j angle.r$ là tổng trọng số chỉnh sửa của cây con $T_u_j$ và $z_j = epsilon_0 abs(T_u_j)$ là chặn trên cho $z_j$, với $j=1,...,k$. Lưu ý rằng, $norm(x)_1 >= norm(z)_1$ và sự bằng nhau xảy ra nếu các giá trị $x_i$ cùng dấu cho các đỉnh $v_i$ thuộc cùng một cây con $T_u_j$. Ký hiệu $gamma_j = angle.l w, bb(1)_T_u_j angle.r$ là tổng trọng số của cây con $T_u_j$ với $j=1,...,k.$
 
@@ -132,26 +151,31 @@ $ hat(x)_i(t) = (hat(z)_(j)(t))/ abs(T_u_j), quad forall v_i in T_u_j, forall j=
 
 Chúng ta kết thúc phần này với một đặc trưng về tính không rỗng của tập hợp khả thi của (PUSR-16). Gọi $ J <= (t)= {j in {1,...,k}: gamma_j <= t}$ và $J > (t) = {j in {1,...,k}: gamma_j > t}.$
 
-*Mệnh đề 4.1*. _Tập khả thi của (PUSR-16) là không rỗng nếu
-$ overline(z_0) + sum_(j in J <= (t)) min(overline(z)_j, t- gamma_j) >= sum_(i in J>(t)) (gamma_i- t). $_
+// *Mệnh đề 4.1*.
 
-*Chứng minh*
+#proposition[Tập khả thi của (PUSR-16) là không rỗng nếu
+$ overline(z_0) + sum_(j in J <= (t)) min(overline(z)_j, t- gamma_j) >= sum_(i in J>(t)) (gamma_i- t). $]
+
+// *Chứng minh*
+#proof[
 Nếu tập khả thi của (PUSR-16) không rỗng thì tồn tại một số nghiệm khả thi $z in RR^(k+1)$ thỏa mãn ràng buộc (PUSR-16), nghĩa là
 $ z_0 + sum_(j in J<=(t)) z_j = - sum_(j in J > (t)) z_j. $ (19)
 
 Từ tính khả thi của $z$, không khó để xác minh rằng vế trái của (19) bị chặn trên bởi vế trái của (18) và vế phải của (19) bị chặn dưới bởi vế phải của (18). Do đó, ta thu được (18). Ngược lại, giả sử rằng (18) không thỏa mãn. Bằng cách sử dụng các ước lượng tương tự, ta có thể thu được
 $ z_0 + sum_(j in J <= (t)) z_j < - sum_(j in J > (t)) z_j. $
 
-Điều này vi phạm ràng buộc (PUSR-16b) và do đó, tập hợp khả thi là rỗng. (chứng minh xong).
+Điều này vi phạm ràng buộc (PUSR-16b) và do đó, tập hợp khả thi là rỗng. (chứng minh xong).]
 
-== 4.3 Giải phiên bản tham số của bài toán nâng cấp bán kính ổn định
+// == 4.3 Giải phiên bản tham số của bài toán nâng cấp bán kính ổn định
+== Giải thuật 
 
 Trong phần trước, chúng ta đã chứng minh rằng việc giải bài toán mục tiêu (USR-12) có thể được giảm xuống bằng việc giải phiên bản tham số của nó (PUSR-16) bằng cách tìm một nghiệm tối ưu $hat(z)(t)$ và mục tiêu tối ưu $beta(t)$ tương ứng với $t$. Định lý sau đây cung cấp các biểu thức dạng đóng cho cả $hat(z)(t)$ và $beta(t)$. 
 
-*Định lý 4.3* _Nếu giá trị mục tiêu tối ưu $beta(t)$ là hữu hạn, thì nó có thể được tính dưới dạng biểu thức đóng:
-$ beta(t) = 2 sum_(i=1)^k [gamma_i -t]_+ $ (20)_
+// *Định lý 4.3* 
 
-_Trong đó $[alpha]_+ = max(0,alpha)$ với $alpha in RR$. Hơn nữa, một nghiệm tối ưu của (PUSR-16), gọi là $hat(z)(t)$ có thể được chọn bằng cách xem xét hai trường hợp. Nếu $overline(z_0) >= sum_(i=1)^k [gamma_i - t]_+$ thì ta chọn
+=== Giải bài toán tham số
+#remark-Le[Xem lại cách trình bày lại định lý này trong bản mới của bài báo]
+Hơn nữa, một nghiệm tối ưu của (PUSR-16), gọi là $hat(z)(t)$ có thể được chọn bằng cách xem xét hai trường hợp. Nếu $overline(z_0) >= sum_(i=1)^k [gamma_i - t]_+$ thì ta chọn
 $ hat(z)_(j)(t) = -(gamma_j - t), quad quad j in J > (t) quad (21a) $
 $ hat(z)_(j) (t) = 0, quad quad j in J <= (t) quad quad (21b) $
 $ hat(z_0)(t)= sum_(j in J > (t)) (gamma_j - t). quad quad (21c)  $
@@ -161,9 +185,18 @@ $ hat(z_j)(t)= -(gamma_j -t), quad quad j in J > (t)
 $ hat(z_j)(t)= min(overline(z_j), underline(t)-gamma_j), quad quad j in J <= (t) (22b) $
 $ hat(z_0)(t)=overline(z_0), quad (22c) $
 trong đó $underline(t)$ được chọn sao cho 
-$ overline(z_0)+ sum_(j in J <= (t)) min(overline(z_j), underline(t)-gamma_j)= sum_(j in J >(t)) (gamma_j - t). quad (23) $_
+$ overline(z_0)+ sum_(j in J <= (t)) min(overline(z_j), underline(t)-gamma_j)= sum_(j in J >(t)) (gamma_j - t). quad (23) $
 
-*Chứng minh*
+
+#theorem[Nếu giá trị mục tiêu tối ưu $beta(t)$ là hữu hạn, thì nó có thể được tính dưới dạng biểu thức đóng:
+$ beta(t) = 2 sum_(i=1)^k [gamma_i -t]_+ $
+
+Trong đó $[alpha]_+ = max(0,alpha)$ với $alpha in RR$. ]
+
+
+
+// *Chứng minh*
+#proof[
 Chứng minh gồm hai phần, chúng tôi chia thành hai bước. Trong bước đầu tiên, chúng tôi chứng minh rằng $2 sum_(i=1)^k [gamma_j - t]_+$ là cận dưới cho mục tiêu (PUSR-16), tức là $beta(t)>= 2 sum_(i=1)^k [gamma_j - t]_+$. Trong bước thứ hai, chúng tôi chứng minh rằng $2 sum_(i=1)^k [gamma_j-t]_+$ thực sự là giá trị nhỏ nhất của (PUSR-16) bằng cách chứng minh rằng $hat(z)(t)$, được định nghĩa trong (21) hoặc (22), thỏa mãn $norm(hat(z)(t))_1 = 2 sum_(i=1)^k [gamma_j - t]_+.$
 
 *Bước 1.* Trực giác cho thấy, với một giá trị $t$ nào đó, ta cần phải giảm $gamma_j$ với $ j in J <= (t)$ để duy trì phương trình (PUSR-16b). Nói cách khác, $z_j$ nên là số không dương đối với $j in J>(t)$ và nên là số không âm đối với $j in J <= (t)$. Trực giác này thúc đẩy các ước lượng khéo léo sau đây để đạt được một cận dưới chặt chẽ cho hàm mục tiêu:
@@ -186,11 +219,12 @@ $ z_0 = overline(z_0), $
 $ z_j = min (overline(z_j), underline(t)-gamma_j), quad forall j in J <= (t), $
 trong đó $underline(t)$ được định nghĩa ở (23).
 
-Bây giờ chúng ta chỉ ra sự tồn tại của $underline(t)$. Đặt $phi(t')= overline(z_0) < sum_(j in J >(t))(gamma_j -t)$ và $phi(t)>= sum_(j in J > (t))(gamma_j -t)$ vì mệnh đề 4.1. Do tính liên tục của $phi$ ngụ ý sự tồn tại của $underline(t)$. Cuối cùng, không khó để thấy rằng $z$ là một nghiệm khả thi của (PUSR-16) và thỏa (24). Bằng cách chọn $hat(z)(t)=z$, chúng ta hoàn thành chứng minh. (chứng minh xong)
+Bây giờ chúng ta chỉ ra sự tồn tại của $underline(t)$. Đặt $phi(t')= overline(z_0) < sum_(j in J >(t))(gamma_j -t)$ và $phi(t)>= sum_(j in J > (t))(gamma_j -t)$ vì mệnh đề 4.1. Do tính liên tục của $phi$ ngụ ý sự tồn tại của $underline(t)$. Cuối cùng, không khó để thấy rằng $z$ là một nghiệm khả thi của (PUSR-16) và thỏa (24). Bằng cách chọn $hat(z)(t)=z$, chúng ta hoàn thành chứng minh. (chứng minh xong)]
 
 Quan sát rằng với mỗi giá trị cố định của $t$, ta có thể tìm $underline(t)$ trong (23) bằng cách sử dụng tìm kiếm nhị phân vì hàm $z_0 + sum_(j in J <= (t)) min (z_j, . - gamma_j)$ là hàm tuyến tính từng khúc và không giảm. Lưu ý rằng việc đánh giá hàm này tốn chi phi $O(k)$, với $k$ là bậc của $v_1$. Do đó, các bài toán tham số (PUSR-16) có thể được giải quyết trong thời gian $O(k log k)$. Vì phép biến đổi (17) tốn chi phí $O(n)$, bài toán (PUSR-13) có thể được giải trong thời gian $O(n+k log k).$
 
-*Giải bài toán nâng cấp bán kính ổn định*
+=== Giải bài toán nâng cấp bán kính ổn định
+
 Bây giờ chúng tôi sẽ mô tả một cách tiếp cận tổ hợp để tìm nghiệm tối ưu $w*$ của bài toán nâng cấp bán kính ổn định ban đầu (USR-10) thông qua các phép biến đổi đã được phát triển trong các tiểu mục trước đó.
 
 Ta có $w* = w + x^* $, trong đó $x*$ là nghiệm khả thi của (USR-12). Dựa vào định lý 4.1, ta có thể chọn $x*= hat(x)(t*)$. Lưu ý rằng, ta có thể xây dựng $hat(x)(t)$ từ $hat(z)(t)$ cho bất kỳ $t$ nào bằng cách sử dụng Định lý 4.2, phương trình (17), và biểu thức của $hat(z)(t)$ được cho bởi (21) hoặc (22). Về giá trị $t*$, nó có thể được tìm thấy trong thời gian $O(k log k)$, với $k$ là bậc của $v_1$, bằng cách sử dụng tìm kiếm nhị phân vì $t* = inf{t >= 0: beta(t) <= B}$ và hàm $beta(.)$ được xác định trong Định lý 4.3 là hàm tuyến tính từng khúc và giảm dần. Xem Hình 2 để có cái nhìn tổng quan về các phép biến đổi giữa các bài toán và lời giải.
@@ -236,11 +270,15 @@ Hình 2. Các phép biến đổi của bốn bài toán nâng cấp. Mỗi hộ
 
 Nhớ rằng việc giải quyết bài toán (PUSR_13) tốn chi phí $O(n + k log k)$ và việc tìm kiếm $t*$ có thể thực hiện trong $O(k log k)$, do đó độ phức tạp tổng thể của việc giải bài toán (USR-10) là $O(n + k log k)$. 
 
-*Định lý 4.4* _Bài toán nâng cấp cận dưới của bán kính ổn định cho điểm trung vị trên đồ thị cây (USR-10) có thể được giải quyết trong thời gian $O(n + k log k )$, trong đó $n$ là số đỉnh của cây và $k$ là bậc của điểm trung vị $v_1$._
+// *Định lý 4.4*
+
+#theorem[Bài toán nâng cấp cận dưới của bán kính ổn định cho điểm trung vị trên đồ thị cây (USR-10) có thể được giải quyết trong thời gian $O(n + k log k )$, trong đó $n$ là số đỉnh của cây và $k$ là bậc của điểm trung vị $v_1$.]
 
 Cuối cùng, ta kết thúc mục này bằng ví dụ minh họa cho những bước chính để giải quyết bài toán (USR-10).
 
-*Ví dụ 4.1* Xem xét bài toán (USR-12) với ngân sách $B = 0.36$, mức độ nhiễu $epsilon_0 = 0.05$ và cây có trọng số như hình 1. Đặt $u_0 = v_1$, $u_1 = v_2$ $u_2 = v_3$ và $u_3 = v_4$. Nhớ rằng $gamma_j = angle.l w, bb(1)_T_u_j angle.r $ với $j= 0,1,2,3$, ta có $gamma_1 = 0.33$, $gamma_2 = 0.12$ và $gamma_3 = 0.45$. Hơn nữa $ beta(t)= 2([gamma_1 - t]_+ + [gamma_2 - t]_+ + [gamma_3 - t]_+) $.
+// *Ví dụ 4.1* 
+
+#example[Xem xét bài toán (USR-12) với ngân sách $B = 0.36$, mức độ nhiễu $epsilon_0 = 0.05$ và cây có trọng số như hình 1. Đặt $u_0 = v_1$, $u_1 = v_2$ $u_2 = v_3$ và $u_3 = v_4$. Nhớ rằng $gamma_j = angle.l w, bb(1)_T_u_j angle.r $ với $j= 0,1,2,3$, ta có $gamma_1 = 0.33$, $gamma_2 = 0.12$ và $gamma_3 = 0.45$. Hơn nữa $ beta(t)= 2([gamma_1 - t]_+ + [gamma_2 - t]_+ + [gamma_3 - t]_+) $.
 
 Bằng (15), ta có $t^*=inf{t: beta(t) <= B}= 0.3$. Trong trường hợp này, ta có $beta(t^*)=B$. Bởi vì $overline(z_0)= epsilon_0 = 0.05 < beta(t^*)/2 =0.18$, ta có thể chọn $hat(z)(t^*)$ dựa vào (22), chú ý rằng $J > (t^*)= {1,3}$, $J <= (t^*)= {2}$ và ta có
 $ hat(z)(t^*)=(0.05, -0.03, 0.13, -0.15). $
@@ -251,6 +289,7 @@ $ w^* = (0.15, 0.12, 0.125, 0.1, 0.09, 0.09, 0.125, 0.1, 0.15, 0.05). $
 Chặn dưới lớn nhất của bán kính ổn định sau khi được nâng cấp là $underline(R)(w^*)= 0.4/9$. 
 
 Trọng số đỉnh trên cây được cải thiện như ở hình 3
+]
 
 #import "@preview/cetz:0.1.2": canvas, plot
 #import "@preview/cetz:0.2.2"
@@ -301,4 +340,11 @@ Trọng số đỉnh trên cây được cải thiện như ở hình 3
 )]
 
 // ]
+
+== Kết luận và thảo luận 
+
+#remark-Le[
+  - Kết luận: Các kết quả đạt được
+  - Thảo luận: Lấy conclusion của bài báo vô. Các hướng nghiên cứu tiếp theo
+]
 

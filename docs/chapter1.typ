@@ -1,10 +1,11 @@
-// #include "../tools/multi-section-ref.typ"
-// #import "../tools/macros.typ": eqref
-#include "../tools/multi-section-ref.typ"
-#import "../tools/macros.typ": eqref
-#import "../typst-orange.typ": theorem, proof, lemma, proposition, corollary, example
 
-// Nhớ đánh số trang và footnote
+#include "../tools/multi-section-ref.typ"
+#import "../tools/macros.typ": eqref, remark-Le, delete-Le, add-Le, remark-Ngan, delete-Ngan, add-Ngan
+#import "../typst-orange.typ": theorem, proof, lemma, proposition, corollary, example, definition, 
+#import "@preview/cetz:0.1.2": canvas, plot
+#import "@preview/cetz:0.1.2"
+// Nhớ đánh số trang và footnote// #include "../tools/multi-section-ref.typ"
+// #import "../tools/macros.typ": eqref
 // Canh đều toàn văn bản
 //#set align()
 //nhớ thêm tích Hamdamard
@@ -30,9 +31,12 @@
 // ])
 
 // = #text(orange)[*CHƯƠNG 1: KIẾN THỨC CHUẨN BỊ*]
-= KIẾN THỨC CHUẨN BỊ
+= KIẾN THỨC LIÊN QUAN
+// = KIẾN THỨC CHUẨN BỊ
+// = Kiến thức chuẩn bị
 
-== LÝ THUYẾT ĐỒ THỊ
+// == LÝ THUYẾT ĐỒ THỊ
+== Lý thuyết đồ thị
 
 // === Đồ thị
 
@@ -41,9 +45,20 @@
 // == #text(orange)[1. LÝ THUYẾT ĐỒ THỊ]
 // === #text(orange)[1.1 ĐỒ THỊ]
 
-=== Khái niệm đồ thị 
+#remark-Le[to-do list:
+- add figure list (LE, done): Cách thao tác với hình em xem @fig-do-thi-vo-huong. Em đặt canvas vào một biến, đặt biến đó vào figure, viết caption và label cho figure. Ref một figure bằng lệnh `@label-of-figure`
+- Issue with figure numbering (LE)
+- Issue with equation numbering (LE)
+- How to ref a theorem (LE)
+- add table list (LE)
+- template for theorem (LE)
+- add references (NGAN)
+]
 
+=== Khái niệm và các dạng đồ thị 
 
+#remark-Le[03 đoạn văn bên dưới viết hơi lòng vòng. Gợi ý cách viết: Tập trung vào ý đồ thị là quan trọng. Rồi viết các luận cứ ra. Các luận cứ gồm: ứng dụng trong mạng xã hội, trong giao thông, trong logistic,... các luận cứ phải bỏ vô chung một đoạn chung với luận điểm.
+]
 
 Trong thực tế, việc biểu diễn các đối tượng và mối quan hệ giữa chúng là vô cùng quan trọng, phục vụ cho nhiều mục đích trong các lĩnh vực khác nhau. Ví dụ, trong mạng xã hội, để nghiên cứu mối quan hệ của các cá nhân với nhau, chúng ta cần một công cụ có thể mô hình hóa các kết nối này một cách trực quan và hiệu quả. Đồ thị là công cụ hữu ích để thực hiện việc này.
 
@@ -51,73 +66,74 @@ Ngoài mạng xã hội, đồ thị còn được ứng dụng rộng rãi tron
 
 Nhờ khả năng trực quan hóa mối quan hệ giữa các đối tượng, đồ thị đã trở thành một công cụ quan trọng trong việc phân tích và giải quyết các vấn đề phức tạp trong đời sống thực tế, từ nghiên cứu mạng xã hội đến quản lý giao thông và chuỗi cung ứng. Tóm lại, đồ thị là gì?
 
-Đồ thị $G$ trong lý thuyết đồ thị là một cấu trúc toán học được sử dụng để mô tả mối quan hệ giữa các đối tượng. 
+#add-Le[Trong toán học], đồ thị #delete-Le[$G$  trong lý thuyết đồ thị là một cấu trúc toán học] được sử dụng để mô tả mối quan hệ giữa các đối tượng. 
 
-Một đồ thị (graph) $G$ là một bộ ba $(V(G),E(G),psi_G)$ bao gồm một tập khác rỗng $V(G)$ các đỉnh (vertices) của $G$, một tập $E(G)$ các cạnh (edges) của $G$, và một hàm liên thuộc (incidence function) $psi_G$ đặt tương ứng mỗi cạnh với một cặp đỉnh không theo thứ tự (hai đỉnh không nhất thiết phải khác nhau). Nếu $e$ là một cạnh và $u,v$ là hai đỉnh sao cho $psi_G(e) = u v$, thì ta nói $e$ nối $u$ và $v$; các đỉnh $u$ và $v$ được gọi là các điểm đầu mút (ends) của $e$.
+Một đồ thị (graph) $G$ là một bộ ba $(V(G),E(G),psi_G)$ bao gồm một tập khác rỗng $V(G)$ các đỉnh (vertices) của $G$, một tập $E(G)$ các cạnh (edges) của $G$, và một hàm liên thuộc (incidence function) $psi_G$ đặt tương ứng mỗi cạnh với một cặp đỉnh #delete-Le[không theo thứ tự] #remark-Le[bỏ các này đi, tại phần dưới em lặp lại.] (hai đỉnh không nhất thiết phải khác nhau). Nếu $e$ là một cạnh và $u,v$ là hai đỉnh sao cho #delete-Le[$psi_G(e) = u v$], #add-Le[$psi_(G) (e) = u v$] thì ta nói $e$ nối $u$ và $v$; các đỉnh $u$ và $v$ được gọi là các điểm đầu mút #delete-Le[(ends)] của $e$.
 
-Ví dụ, ta xét đồ thị $G=(V(G),E(G),psi_G)$ với $V(G)={v_1,v_2,v_3,v_4,v_5}, E(G)={e_1,e_2,e_3,e_4,e_5,e_6}$ và $psi_G$ được xác định bởi $psi_G(e_1)=v_1v_2, psi_G(e_2)=v_2v_3, psi_G(e_3)= v_2v_4, psi_G(e_4)=v_1v_5, psi_G(e_5)=v_3v_5, psi_G(e_6)=v_1v_4$. Hình bên dưới là một biểu diễn hình học của đồ thị $G$.
-
-#import "@preview/cetz:0.1.2": canvas, plot
-#import "@preview/cetz:0.1.2"
-// #import "@preview/cetz:0.2.2"
+Ví dụ, ta xét đồ thị $G=(V(G),E(G),psi_G)$ với $V(G)={v_1,v_2,v_3,v_4,v_5}, E(G)={e_1,e_2,e_3,e_4,e_5,e_6}$ và $psi_G$ được xác định bởi $psi_G(e_1)=v_1v_2, psi_G(e_2)=v_2v_3, psi_G(e_3)= v_2v_4, psi_G(e_4)=v_1v_5, psi_G(e_5)=v_3v_5, psi_G(e_6)=v_1v_4$. #remark-Le[Change notations of $psi_G(e_3)$ as mentioned above.] Hình bên dưới là một biểu diễn hình học của đồ thị $G$.
 
   
-  #align(center)[#canvas(length: 10%, {
-    import cetz.draw: *
+#let do-thi-vo-huong = canvas(length: 10%, {
+  import cetz.draw: *
 
-    let y = 2 
-    let x = 4
-    let y-space = 1
-    let h=1.4
+  let y = 2 
+  let x = 4
+  let y-space = 1
+  let h=1.4
 
-    circle((0*h,3), radius: 0.05,fill:black, name: "v1") 
-    content("v1.bottom", $v_1$, anchor: "left", padding: 0.2)
+  circle((0*h,3), radius: 0.05,fill:black, name: "v1") 
+  content("v1.bottom", $v_1$, anchor: "left", padding: 0.2)
 
-    circle((-3, 3), radius: 0.05, fill: black, name: "v2") 
-    content("v2.right", $v_2$, anchor: "right", padding: 0.2)
+  circle((-3, 3), radius: 0.05, fill: black, name: "v2") 
+  content("v2.right", $v_2$, anchor: "right", padding: 0.2)
 
-    circle((2, 1), radius: 0.05,fill:black, name: "v3") 
-    content("v3.right", $v_3$, anchor: "bottom", padding: 0.2)
+  circle((2, 1), radius: 0.05,fill:black, name: "v3") 
+  content("v3.right", $v_3$, anchor: "bottom", padding: 0.2)
 
-    circle((-1, 0), radius: 0.05,fill:black, name: "v4") 
-    content("v4.bottom", $v_4$, anchor: "left", padding: 0.2)
+  circle((-1, 0), radius: 0.05,fill:black, name: "v4") 
+  content("v4.bottom", $v_4$, anchor: "left", padding: 0.2)
 
-    circle((-3, 1), radius: 0.05, fill: black, name: "v5") 
-    content("v5.bottom", $v_5$, anchor: "right", padding: 0.2)
+  circle((-3, 1), radius: 0.05, fill: black, name: "v5") 
+  content("v5.bottom", $v_5$, anchor: "right", padding: 0.2)
 
-    //circle((0*h, 1), radius: 0.05, fill: black, name: "v7") 
-    //content("v7.bottom", $v_7 (0.06)$, anchor: "left", padding: 0.2)
+  //circle((0*h, 1), radius: 0.05, fill: black, name: "v7") 
+  //content("v7.bottom", $v_7 (0.06)$, anchor: "left", padding: 0.2)
 
-    //circle((2*h, 2), radius: 0.05, fill: black, name: "v4") 
-    //content("v4.bottom", $v_4 (0.15)$, anchor: "left", padding: 0.2)
+  //circle((2*h, 2), radius: 0.05, fill: black, name: "v4") 
+  //content("v4.bottom", $v_4 (0.15)$, anchor: "left", padding: 0.2)
 
-    //circle((1*h, 1), radius: 0.05, fill: black, name: "v8") 
-    //content("v8.bottom", $v_8 (0.2)$, anchor: "left", padding: 0.2)
-    //circle((3*h, 1), radius: 0.05, fill:black, name: "v9") 
-    //content("v9.bottom", $v_9 (0.1)$, anchor: "left", padding: 0.2)
-    
-    line("v1", "v2", name: "v1v2")
-    content("v1v2.bottom", $e_1$, anchor: "bottom", padding: 0.2)
-    line("v2", "v3", name: "v2v3")
-    content("v2v3.top", $e_2$, anchor: "top", padding: 0.7)
-    line("v2", "v4", name: "v2v4")
-    content("v2v4.top", $e_3$, anchor: "top", padding: 0.9)
-    line("v5", "v1", name: "v5v1")
-    content("v5v1.top", $e_4$, anchor: "top", padding: 1.1)
-    line("v3", "v5", name: "v3v5")
-    content("v3v5.top", $e_5$, anchor: "top", padding: 0.1)
-    line("v4", "v1", name: "v4v1")
-    content("v4v1.top", $e_6$, anchor: "top", padding: 1.4)
-    // line("v4", "v8")
-    // line("v4", "v9")  
+  //circle((1*h, 1), radius: 0.05, fill: black, name: "v8") 
+  //content("v8.bottom", $v_8 (0.2)$, anchor: "left", padding: 0.2)
+  //circle((3*h, 1), radius: 0.05, fill:black, name: "v9") 
+  //content("v9.bottom", $v_9 (0.1)$, anchor: "left", padding: 0.2)
+  
+  line("v1", "v2", name: "v1v2")
+  content("v1v2.bottom", $e_1$, anchor: "bottom", padding: 0.2)
+  line("v2", "v3", name: "v2v3")
+  content("v2v3.top", $e_2$, anchor: "top", padding: 0.7)
+  line("v2", "v4", name: "v2v4")
+  content("v2v4.top", $e_3$, anchor: "top", padding: 0.9)
+  line("v5", "v1", name: "v5v1")
+  content("v5v1.top", $e_4$, anchor: "top", padding: 1.1)
+  line("v3", "v5", name: "v3v5")
+  content("v3v5.top", $e_5$, anchor: "top", padding: 0.1)
+  line("v4", "v1", name: "v4v1")
+  content("v4v1.top", $e_6$, anchor: "top", padding: 1.4)
+  // line("v4", "v8")
+  // line("v4", "v9")  
 }
-  )]
+)
+#figure(
+  do-thi-vo-huong,
+  caption: [Đồ thị vô hướng],
+) <fig-do-thi-vo-huong>
+// #align(center)[#text(orange)[*Hình 1.1*] Minh họa biểu diễn hình học của một đồ thị]
 
-#align(center)[#text(orange)[*Hình 1.1*] Minh họa biểu diễn hình học của một đồ thị]
 
-
-
-Ví dụ: Trong một đồ thị, các đỉnh có thể biểu thị cho các cá nhân, trong khi các cạnh biểu thị cho mối quan hệ bạn bè giữa các cá nhân đó. Trong hệ thống giao thông, các thành phố được biểu diễn bằng cách đỉnh và các tuyến đường nối giữa chúng là các cạnh. 
+#add-Le[Lấy ví dụ trong thực tế:
+- Đồ thị có thể dùng để mô tả mới quan hệ bạn bè giữa các cá nhân. Trong đó các cá nhân các đỉnh, hai người là bạn bè có thể biểu diễn bởi một cạnh chung.
+- Trong hệ thống giao thông, ...]
+#delete-Le[Ví dụ: Trong một đồ thị, các đỉnh có thể biểu thị cho các cá nhân, trong khi các cạnh biểu thị cho mối quan hệ bạn bè giữa các cá nhân đó. Trong hệ thống giao thông, các thành phố được biểu diễn bằng cách đỉnh và các tuyến đường nối giữa chúng là các cạnh.]
 
 // //#align(center)[
 
@@ -140,54 +156,56 @@ Ví dụ: Trong một đồ thị, các đỉnh có thể biểu thị cho các 
 // )]
 //#align(center)[#text(orange)[*Hình 1.1*] Minh họa biểu diễn hình học của một đồ thị]
 
-Đồ thị vô hướng (undirected graph) là một loại đồ thị trong đó các cạnh không có hướng. Điều này có nghĩa là nếu có một cạnh giữa hai đỉnh $u$ và $v$ thì cạnh này có thể được đi từ $u$ đến $v$ và ngược lại có thể đi từ $v$ đến $u$ . Nói cách khác, mối quan hệ giữa các đỉnh là hai chiều và không có sự phân biệt về hướng. Hình 1.1 bên trên là đồ thị vô hướng.
+Đồ thị vô hướng (undirected graph) là một loại đồ thị trong đó các cạnh không có hướng #add-Le[(nghĩa là $psi_G (e) = u v  =v u$)]. Điều này có nghĩa là nếu có một cạnh giữa hai đỉnh $u$ và $v$ thì cạnh này có thể được đi từ $u$ đến $v$ và ngược lại có thể đi từ $v$ đến $u$ . Nói cách khác, mối quan hệ giữa các đỉnh là hai chiều và không có sự phân biệt về hướng. #delete-Le[Hình 1.1 bên trên là đồ thị vô hướng.]
+#remark-Le[Hình x.x không phải là đồ thị được.] #add-Le[@fig-do-thi-vo-huong minh họa một đồ thị vô hướng.]
 
-Trong khi đó, đồ thị có hướng (directed graph) là một loại đồ thị trong đó mỗi cạnh có hướng. Điều này có nghĩa là mỗi cạnh được biểu diễn bởi một cặp đỉnh có thứ tự, chỉ định hướng đi từ đỉnh đầu đến đỉnh cuối. Trong đồ thị có hướng, nếu có cạnh từ đỉnh $u$ đến đỉnh $v$ thì không nhất thiết phải có cạnh từ đỉnh $v$ đến đỉnh $u$. Hình bên dưới là một ví dụ của đồ thị có hướng.
+Trong khi đó, đồ thị có hướng (directed graph) là một loại đồ thị trong đó mỗi cạnh có hướng #add-Le[(nghĩa là $psi_G (e_1) = u v != psi_G (e_2) =v u$)]. Điều này có nghĩa là mỗi cạnh được biểu diễn bởi một cặp đỉnh có thứ tự, chỉ định hướng đi từ đỉnh đầu đến đỉnh cuối. Trong đồ thị có hướng, nếu có cạnh từ đỉnh $u$ đến đỉnh $v$ thì không nhất thiết phải có cạnh từ đỉnh $v$ đến đỉnh $u$. #delete-Le[Hình bên dưới là một ví dụ của đồ thị có hướng.] #add-Le[@fig-do-thi-co-huong minh họa một đồ thị có hướng bằng các mũi tên.]
 
-#import "@preview/cetz:0.1.2": canvas, plot
-#import "@preview/cetz:0.2.2"
-  #import "@preview/cetz:0.1.2"
+
 
   
-  #align(center)[#canvas(length: 10%, {
-    import cetz.draw: *
+#let do-thi-co-huong = canvas(length: 10%, {
+  import cetz.draw: *
 
-    let y = 2 
-    let x = 4
-    let y-space = 1
-    let h=1.4
+  let y = 2 
+  let x = 4
+  let y-space = 1
+  let h=1.4
 
-    circle((0*h,3), radius: 0.05,fill:black, name: "v1") 
-    content("v1.bottom", $v_1$, anchor: "left", padding: 0.2)
+  circle((0*h,3), radius: 0.05,fill:black, name: "v1") 
+  content("v1.bottom", $v_1$, anchor: "left", padding: 0.2)
 
-    circle((-3, 3), radius: 0.05, fill: black, name: "v2") 
-    content("v2.right", $v_2$, anchor: "right", padding: 0.2)
+  circle((-3, 3), radius: 0.05, fill: black, name: "v2") 
+  content("v2.right", $v_2$, anchor: "right", padding: 0.2)
 
-    circle((2, 1), radius: 0.05,fill:black, name: "v3") 
-    content("v3.right", $v_3$, anchor: "bottom", padding: 0.2)
+  circle((2, 1), radius: 0.05,fill:black, name: "v3") 
+  content("v3.right", $v_3$, anchor: "bottom", padding: 0.2)
 
-    circle((-1, 0), radius: 0.05,fill:black, name: "v4") 
-    content("v4.bottom", $v_4$, anchor: "left", padding: 0.2)
+  circle((-1, 0), radius: 0.05,fill:black, name: "v4") 
+  content("v4.bottom", $v_4$, anchor: "left", padding: 0.2)
 
-    circle((-3, 1), radius: 0.05, fill: black, name: "v5") 
-    content("v5.bottom", $v_5$, anchor: "right", padding: 0.2)
-    line("v1", "v2", name: "v1v2", mark:(end: ">", fill: orange))
-    content("v1v2.bottom", $e_1$, anchor: "bottom", padding: 0.2)
-    line("v2", "v3", name: "v2v3", mark:(end: ">", fill: orange))
-    content("v2v3.top", $e_2$, anchor: "top", padding: 0.7)
-    line("v2", "v4", name: "v2v4", mark:(end: ">", fill: orange))
-    content("v2v4.top", $e_3$, anchor: "top", padding: 0.9)
-    line("v5", "v1", name: "v5v1", mark:(end: ">", fill: orange))
-    content("v5v1.top", $e_4$, anchor: "top", padding: 1.1)
-    line("v3", "v5", name: "v3v5", mark: (end: ">", fill: orange))
-    content("v3v5.top", $e_5$, anchor: "top", padding: 0.1)
-    line("v4", "v1", name: "v4v1", mark:(end: ">", fill: orange))
-    content("v4v1.top", $e_6$, anchor: "top", padding: 1.4)
-    // line("v4", "v8")
-    // line("v4", "v9")  
-}
-  )]
-#align(center)[#text(orange)[*Hình 1.2*]  Đồ thị có hướng]
+  circle((-3, 1), radius: 0.05, fill: black, name: "v5") 
+  content("v5.bottom", $v_5$, anchor: "right", padding: 0.2)
+  line("v1", "v2", name: "v1v2", mark:(end: ">", fill: orange))
+  content("v1v2.bottom", $e_1$, anchor: "bottom", padding: 0.2)
+  line("v2", "v3", name: "v2v3", mark:(end: ">", fill: orange))
+  content("v2v3.top", $e_2$, anchor: "top", padding: 0.7)
+  line("v2", "v4", name: "v2v4", mark:(end: ">", fill: orange))
+  content("v2v4.top", $e_3$, anchor: "top", padding: 0.9)
+  line("v5", "v1", name: "v5v1", mark:(end: ">", fill: orange))
+  content("v5v1.top", $e_4$, anchor: "top", padding: 1.1)
+  line("v3", "v5", name: "v3v5", mark: (end: ">", fill: orange))
+  content("v3v5.top", $e_5$, anchor: "top", padding: 0.1)
+  line("v4", "v1", name: "v4v1", mark:(end: ">", fill: orange))
+  content("v4v1.top", $e_6$, anchor: "top", padding: 1.4)
+  // line("v4", "v8")
+  // line("v4", "v9")  
+})
+#figure(
+  do-thi-co-huong,
+  caption: [Đồ thị có hướng],
+) <fig-do-thi-co-huong>
+// #align(center)[#text(orange)[*Hình 1.2*]  Đồ thị có hướng]
 
 Đồ thị có trọng số (Weighted Graph) là loại đồ thị trong đó các đỉnh và các cạnh được gán các giá trị trọng số. Trọng số của đỉnh thường biểu thị các yếu tố như dân số, tài nguyên hoặc mức độ quan trọng của điểm đó, trong khi trọng số của cạnh thường đại diện cho khoảng cách, chi phí hoặc thời gian di chuyển giữa các điểm. Ví dụ, trong một đồ thị biểu diễn các điểm dân cư, mỗi đỉnh có thể gán với trọng số biểu thị dân số tại khu vực đó, còn mỗi cạnh có trọng số thể hiện khoảng cách giữa hai điểm dân cư.
 
@@ -237,9 +255,9 @@ Trong khi đó, đồ thị có hướng (directed graph) là một loại đồ
 #align(center)[#text(orange)[*Hình 1.3*]  Đồ thị có trọng số]
 
 
-Đồ thị không có trọng số(Unweighted Graph): Các cạnh và các đỉnh không có trọng số. Hình 1.1 và 1.2 là hai đồ không có trọng số.
+Đồ thị không có trọng số (Unweighted Graph): Các cạnh và các đỉnh không có trọng số. #delete-Le[Hình 1.1 và 1.2 là hai đồ không có trọng số.] #add-Le[Đồ thị trong @fig-do-thi-vo-huong và @fig-do-thi-co-huong là không có trọng số.]
 
-Đồ thị liên thông(Connected Graph): Từ một đỉnh bất kỳ, ta có thể đi đến tất cả các đỉnh khác thông qua các cạnh. (Ví dụ minh họa)
+Đồ thị liên thông (Connected Graph): Từ một đỉnh bất kỳ, ta có thể đi đến tất cả các đỉnh khác thông qua các cạnh. #delete-Le[Ví dụ minh họa.]
 
 #align(center)[#canvas(length: 10%, {
     import cetz.draw: *
@@ -286,7 +304,7 @@ Trong khi đó, đồ thị có hướng (directed graph) là một loại đồ
   )]
 #align(center)[#text(orange)[*Hình 1.4*]  Đồ thị liên thông]
 
-4. Đồ thị không liên thông(Disconnected Graph): Tồn tại ít nhất một đỉnh, mà từ đỉnh đó ta không thể đi đến một số đỉnh khác. Hình bên dưới là đồ thị không liên thông vì tồn tại đỉnh $v_4$ mà từ đỉnh này ta không thể đi đến các đỉnh còn lại của đồ thị.
+4. Đồ thị không liên thông (Disconnected Graph): Tồn tại ít nhất một đỉnh, mà từ đỉnh đó ta không thể đi đến một số đỉnh khác. Hình bên dưới #remark-Le[ref of figure] là đồ thị không liên thông vì tồn tại đỉnh $v_4$ mà từ đỉnh này ta không thể đi đến các đỉnh còn lại của đồ thị.
 
 #align(center)[#canvas(length: 10%, {
     import cetz.draw: *
@@ -335,8 +353,11 @@ Trong khi đó, đồ thị có hướng (directed graph) là một loại đồ
 
 
 // ==== #text(orange)[1.1.2 Một số khái niệm liên quan]
-=== Một số khái niệm liên quan
-(a) Nếu $u$ là một điểm đầu mút của cạnh $e$ thì ta nói $u$ và $e$ _liên thuộc(incident)_ với nhau.
+// === Một số khái niệm liên quan
+
+#add-Le[Một số khái niệm khác liên quan đến đồ thị được trình bày bên dưới.]
+
+(a) Nếu $u$ là một điểm đầu mút của cạnh $e$ thì ta nói $u$ và $e$ _liên thuộc (incident)_ với nhau.
 
 #align(center)[#canvas(length: 10%, {
     import cetz.draw: *
@@ -357,9 +378,9 @@ Trong khi đó, đồ thị có hướng (directed graph) là một loại đồ
     
     }
   )]
-#align(center)[#text(orange)[*Hình 1.5*] $u$ và $e$ liên thuộc nhau]
+#align(center)[#text(orange)[*Hình 1.5*] Đỉnh $u$ và cạnh $e$ liên thuộc nhau]
 
-(b) Hai đỉnh liên thuộc với cùng một cạnh được gọi là hai đỉnh _liền kề(adjacent)_. Trong Hình 1.5, $u$ và $v$ cùng liên thuộc cạnh $e$ nên $u$ và $v$ là hai đỉnh liền kề. 
+(b) Hai đỉnh liên thuộc với cùng một cạnh được gọi là hai đỉnh _liền kề (adjacent)_. Trong Hình 1.5, $u$ và $v$ cùng liên thuộc cạnh $e$ nên $u$ và $v$ là hai đỉnh liền kề. 
 
 (c) Hai cạnh liên thuộc với cùng một đỉnh được gọi là hai cạnh _liền kề_. Hình 1.6, rõ ràng ta có thể thấy $e_1$ và $e_2$ cùng liên thuộc đỉnh $u$ nên $e_1, e_2$ là hai cạnh liền kề. 
 
@@ -390,11 +411,11 @@ Trong khi đó, đồ thị có hướng (directed graph) là một loại đồ
 #align(center)[#text(orange)[*Hình 1.6*] $e_1$ và $e_2$ liền kề nhau]
 
 
-(d) Một cạnh có hai điểm đầu mút trùng nhau được gọi là một _vòng(loop)_. (Vẽ hình minh hoa)
+(d) Một cạnh có hai điểm đầu mút trùng nhau được gọi là một _vòng (loop)_. (Vẽ hình minh hoa)
 
 
 
-(e) Hai hay nhiều cạnh mà có hai đầu mút giống nhau được gọi là _các cạnh song song(parallel edges)_ hay còn được gọi là _các cạnh bội(multiple edges)_.
+(e) Hai hay nhiều cạnh mà có hai đầu mút giống nhau được gọi là _các cạnh song song (parallel edges)_ hay còn được gọi là _các cạnh bội (multiple edges)_.
 
 // (e) Hai hay nhiều cạnh mà có hai đầu mút giống nhau được gọi là _các cạnh song song(parallel edges)_ hay còn được gọi là _các cạnh bội(multiple edges)_.
 
@@ -548,10 +569,13 @@ Có nhiều loại đồ thị con như:
     }
   )]
 
-#align(center)[#text(orange)[*Hình 1.10*] Minh họa đồ thị cảm sinh]
+// #align(center)[#text(orange)[*Hình 1.10*] Minh họa đồ thị cảm sinh]
+#align(center)[#text(orange)[*Hình 1.10*] Đồ thị $G[V']$ cảm sinh từ đồ thị $G$]
 === Bậc của đỉnh
 
-Bậc (_Degree_) của đỉnh $v$ trong $G$ là số cạnh của $G$ liên thuộc với $v$, mỗi vòng được tính là hai cạnh. Ký hiệu: $d(v)$. Bậc của đỉnh mang ý nghĩa quan trọng trong nhiều ứng dụng thực tế. Chẳng hạn, trong mạng xã hội, bậc của một đỉnh biểu thị số lượng kết nối của một người dùng, chẳng hạn như số lượng bạn bè hoặc người theo dõi. Những đỉnh có bậc cao thường đại diện cho những cá nhân có sức ảnh hưởng lớn, do họ có nhiều kết nối và tương tác với các thành viên khác trong mạng lưới. Điều này giúp phản ánh mức độ quan trọng hoặc tầm ảnh hưởng của người dùng trong cộng đồng, từ đó hỗ trợ các nền tảng đánh giá mức độ tương tác hoặc xác định người dùng nổi bật.
+Bậc (_Degree_) của đỉnh $v$ trong $G$ là số cạnh của $G$ liên thuộc với $v$, mỗi vòng được tính là hai cạnh. Ký hiệu: $d(v)$.
+
+Bậc của đỉnh mang ý nghĩa quan trọng trong nhiều ứng dụng thực tế. Chẳng hạn, trong mạng xã hội, bậc của một đỉnh biểu thị số lượng kết nối của một người dùng, chẳng hạn như số lượng bạn bè hoặc người theo dõi. Những đỉnh có bậc cao thường đại diện cho những cá nhân có sức ảnh hưởng lớn, do họ có nhiều kết nối và tương tác với các thành viên khác trong mạng lưới. Điều này giúp phản ánh mức độ quan trọng hoặc tầm ảnh hưởng của người dùng trong cộng đồng, từ đó hỗ trợ các nền tảng đánh giá mức độ tương tác hoặc xác định người dùng nổi bật.
 
 Với đồ thị $G$ như Hình 1.11, ta có $d(v_1)=4, d(v_2)=4, d(v_3)=4, d(v_4)=2, d(v_5)=2$ và $d(v_6)=0$.
 
@@ -672,7 +696,15 @@ Với đồ thị $G$ như Hình 1.11, ta có $d(v_1)=4, d(v_2)=4, d(v_3)=4, d(v
 // )
 // ]
 
-#text(orange)[*Định lý 1.1*] _Tổng bậc của tất cả các đỉnh trong một đồ thị bằng hai lần số cạnh của đồ thị đó_
+#add-Le[Ta có định lý sau về mối liên hệ giữa tổng bậc và số cạnh của đồ thị.]
+
+// #text(orange)[*Định lý 1.1*] _Tổng bậc của tất cả các đỉnh trong một đồ thị bằng hai lần số cạnh của đồ thị đó_
+
+#theorem[
+  Tổng bậc của tất cả các đỉnh trong một đồ thị bằng hai lần số cạnh của đồ thị đó.
+]
+
+#remark-Le[Thêm trích dẫn sách của thầy Kiên.]
 
 
 // #theorem("Euclid")[
@@ -798,20 +830,22 @@ Trong phần tiếp theo, chúng ta sẽ đi sâu vào nghiên cứu đồ thị
 
 Với hai điểm $x$ và $y$ gọi $P(x,y)$ là đường đi nối $x$ và $y$.
 
+// #definition[
+//  Đặt $a,x,y$ và $z$ là bốn điểm phân biệt nằm trên cây $T$ sao cho $z in P(x,y)$ thì $z in P(a,x)$ hoặc $z in P(a,y)$
+// ]
+
 
 #lemma[
  Đặt $a,x,y$ và $z$ là bốn điểm phân biệt nằm trên cây $T$ sao cho $z in P(x,y)$ thì $z in P(a,x)$ hoặc $z in P(a,y)$
 ]
 
-#text(orange)[*Chứng minh*]
-
-Theo giả thiết, ta có $z in P(x,y)$. Ta giả sử $ z in.not P(a,x)$ và $z in.not P(a,y)$ (như hình vẽ) (vẽ hình minh họa). Bởi vì đường đi kết nối $x$ và $y$ đi qua $a$ nhưng không chứa $z$, trong khi đó đường đi $P(x,y)$ chứa $z$. Vì vậy, tồn tại hai con đường nối $x$ và $y$ và điều này mâu thuẫn với tính chất của đồ thị cây. $ quad square.stroked.medium$
-
-Tiếp theo đây, ta sẽ giới thiệu một định lý quan trọng trên đồ thị cây, được phát biểu bởi @dearing1976convex. Định lý này thường được sử dụng để giải quyết các bài toán tối ưu trong lý thuyết đồ thị.
-
-Đặt $f_1(x,a) eq.triple d(x,a)$ là hàm khoảng cách từ một điểm $x$ bất kỳ đến một điểm cố định $a$ trên đồ thị cây.
+// #text(orange)[*Chứng minh*]
+#proof[Theo giả thiết, ta có $z in P(x,y)$. Ta giả sử $ z in.not P(a,x)$ và $z in.not P(a,y)$ (như hình vẽ) (vẽ hình minh họa). Bởi vì đường đi kết nối $x$ và $y$ đi qua $a$ nhưng không chứa $z$, trong khi đó đường đi $P(x,y)$ chứa $z$. Vì vậy, tồn tại hai con đường nối $x$ và $y$ và điều này mâu thuẫn với tính chất của đồ thị cây. $ quad square.stroked.medium$
+]
  //ĐN a
+  Tiếp theo đây, ta sẽ giới thiệu một định lý quan trọng trên đồ thị cây, được phát biểu bởi @dearing1976convex. Định lý này thường được sử dụng để giải quyết các bài toán tối ưu trong lý thuyết đồ thị.
 
+  Đặt $f_1(x,a) eq.triple d(x,a)$ là hàm khoảng cách từ một điểm $x$ bất kỳ đến một điểm cố định $a$ trên đồ thị cây.
 
 
 // #text(orange)[*Định lý 1.2*] _Tổng bậc của tất cả các đỉnh trong một đồ thị bằng hai lần số cạnh của đồ thị đó_
@@ -819,8 +853,10 @@ Tiếp theo đây, ta sẽ giới thiệu một định lý quan trọng trên �
 // Hàm khoảng cách trên đồ thị cây là hàm lồi
 //Coi kĩ lại chứng minh.
 #theorem[
-$f_1(x,a)$ là hàm lồi khi và chỉ khi $T$ là đồ thị cây
-] .
+  $f_1(x,a)$ là hàm lồi khi và chỉ khi $T$ là đồ thị cây
+] //<thm-distance-function-is-convex>
+
+// @thm-distance-function-is-convex
 
 #proof[Ta sẽ tiến hành chứng minh hai chiều.
 
@@ -855,7 +891,9 @@ Tiếp theo, đặt $f_1(x,a)$ là hàm lồi trên tập các điểm thuộc �
 // -Nghiệm cục bộ cũng là nghiệm toàn cục => trên cây giải hiệu quả....
 // (Có thể chứng minh thêm nghiệm cục bộ là nghiệm toàn cục)
 
-=== Độ phức tạp tính toán
+=== Độ phức tạp tính toán 
+
+#remark-Le[Chưa có nội dung?]
 
 
 
