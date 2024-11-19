@@ -1,15 +1,29 @@
 // #par(justify: true)[
 // = Nâng cấp bán kính ổn định của điểm 1-median
+
+#include "../tools/multi-section-ref.typ"
+#import "../tools/macros.typ": eqref
+#include "../tools/multi-section-ref.typ"
+#import "../tools/macros.typ": eqref
+#import "../typst-orange.typ": theorem, proof, lemma, proposition, corollary, example
+#import "@preview/cetz:0.1.2": canvas, plot
+#import "@preview/cetz:0.1.2"
+#include "../tools/multi-section-ref.typ"
+#import "../tools/macros.typ": eqref
+#import "../typst-orange.typ": theorem, proof, lemma, proposition, corollary, example
+#include "../tools/multi-section-ref.typ"
+#import "../tools/macros.typ": eqref
+#import "../typst-orange.typ": theorem, proof
 = NÂNG CẤP BÁN KÍNH ỔN ĐỊNH CỦA ĐIỂM 1-MEDIAN
 
 // $ x^2 + y^2 = z^2 $ <eq:pytago>
 
 // Xét pt pytago @eq:pytago
 
+Trong phần này,....
+// Trong phần này, đầu tiên, chúng tôi sẽ xác định vấn đề chính của mình trong Mục 4.1. Tiếp theo, chúng tôi giới thiệu các phiên bản quyết định của bài toán và thiết lập mối quan hệ giữa chúng trong Mục 4.2. Cuối cùng, chúng tôi cho thấy rằng các vấn đề quyết định có thể được giải quyết dưới dạng đóng, từ đó đưa ra một phương pháp tiếp cận tổ hợp hiệu quả để giải quyết vấn đề lần lượt trong mục 4.3 và 4.4. 
 
-Trong phần này, đầu tiên, chúng tôi sẽ xác định vấn đề chính của mình trong Mục 4.1. Tiếp theo, chúng tôi giới thiệu các phiên bản quyết định của bài toán và thiết lập mối quan hệ giữa chúng trong Mục 4.2. Cuối cùng, chúng tôi cho thấy rằng các vấn đề quyết định có thể được giải quyết dưới dạng đóng, từ đó đưa ra một phương pháp tiếp cận tổ hợp hiệu quả để giải quyết vấn đề lần lượt trong mục 4.3 và 4.4. 
-
-*4.1 Công thức*
+== Định nghĩa bài toán
 
 Rõ ràng các biến đổi trong trọng số đỉnh trên cây có thể dẫn đến sự bất ổn định trong vị trí trung vị đã thiết lập. Trong phần này, chúng tôi nhằm mục đích tăng cường độ bền vững của vị trí trung vị bằng cách cải thiện bán kính ổn định $R(w)$. Do tính chất phức tạp của $R(w)$, thay vào đó chúng tôi tập trung vào việc nâng cấp chặn dưới của $R(w)$. Bây giờ, chúng tôi sẽ nghiên cứu chi tiết mô hình
 
@@ -53,12 +67,12 @@ Cuối cùng, đặt $ x= tilde(w) - w$ là vecto điều chỉnh. Bằng cách 
 
     & x_i in [-epsilon_0; epsilon_0], forall i = 1,...,n quad quad quad quad quad quad quad  "USR-12c"
     $
-
+== Giải thuật của bài toán nâng cấp bán kính ổn định 
 Trong phần còn lại của bài báo này, chúng tôi sẽ tập trung vào (USR-12) thay vì (USR-10). Bằng cách mở rộng hàm mục tiêu, vấn đề (USR-12) có thể biểu diễn thành một bài toán lập trình tuyến tính với $n$ chiều và có $O(n)$ ràng buộc. Do đó, nó có thể được giải bằng phương pháp đơn hình nổi tiếng. Tuy nhiên, độ phức tạp của phương pháp đơn hình không phải là bậc đa thức, theo Klee và Minty (1972). Mặc dù có các thuật toán thời gian đa thức cho lập trình tuyến tính, ví dụ như Karmarkar (1984), nhưng độ phức tạp thời gian của chúng không phải là tuyến tính theo $n$, do đó có thể chậm đối với các bài toán lập trình tuyến tính, như Megiddo (1984), nhưng những phương pháp này yêu cầu số chiều phải cố định hoặc tăng chậm theo số lượng ràng buộc, điều này không áp dụng trong trường hợp này.
 
 Trong phần tiếp theo, chúng tôi đề xuất một phương pháp tổ hợp hiệu quả để giải quyết vấn đề (USR-12) bằng cách tận dụng cấu trúc đặc thù của nó. Để phát triển thuật toán này, chúng tôi sẽ giới thiệu trong các phần tiếp theo..., có thể được giải dưới dạng đóng. Hơn nữa, giải pháp cho vấn đề quyết định có thể được chuyển đổi hiệu quả thành giải pháp cho (USR-12) dựa trên mối quan hệ giữa chúng.
 
-== Phiên bản tham số của bài toán nâng cấp bán kính ổn định
+*Phiên bản tham số của bài toán nâng cấp bán kính ổn định*
 
 Giải quyết bài toán (USR-12) thực chất là trả lời câu hỏi: "Giá trị mục tiêu nhỏ nhất có thể đạt được với ngân sách bị giới hạn bởi $B$ là bao nhiêu". Thay vì tập trung vào câu hỏi này, ta có thể khám phá một câu hỏi liên quan chặt chẽ khác: "Với một giá trị mục tiêu $t$ cho trước, ngân sách tối thiểu cần thiết để đạt được giá trị mục tiêu không lớn hơn $t$ là bao nhiêu?". Câu hỏi này có thể được biểu diễn thành bài toán sau:
 
@@ -144,7 +158,7 @@ $ z_0 + sum_(j in J <= (t)) z_j < - sum_(j in J > (t)) z_j. $
 
 Điều này vi phạm ràng buộc (PUSR-16b) và do đó, tập hợp khả thi là rỗng. (chứng minh xong).
 
-== 4.3 Giải phiên bản tham số của bài toán nâng cấp bán kính ổn định
+*4.3 Giải phiên bản tham số của bài toán nâng cấp bán kính ổn định*
 
 Trong phần trước, chúng ta đã chứng minh rằng việc giải bài toán mục tiêu (USR-12) có thể được giảm xuống bằng việc giải phiên bản tham số của nó (PUSR-16) bằng cách tìm một nghiệm tối ưu $hat(z)(t)$ và mục tiêu tối ưu $beta(t)$ tương ứng với $t$. Định lý sau đây cung cấp các biểu thức dạng đóng cho cả $hat(z)(t)$ và $beta(t)$. 
 

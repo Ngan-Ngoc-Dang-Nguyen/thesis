@@ -46,6 +46,9 @@
 )
 
 #set text(font: "Times New Roman", size: 13pt)
+// #show par: set block(spacing: 4em)
+// #show list: set block(spacing: 2em)
+// #show table: set par(leading: 0.65em)
 #set math.equation(numbering: "(1)")
 // #show math.equation: set text(blue)
 #show math.equation: it => {
