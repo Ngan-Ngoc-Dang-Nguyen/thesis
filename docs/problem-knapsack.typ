@@ -13,16 +13,19 @@
 #include "../tools/multi-section-ref.typ"
 #import "../tools/macros.typ": eqref
 #import "../typst-orange.typ": theorem, proof
-== BÀI TOÁN KNAPSACK
+// === BÀI TOÁN KNAPSACK
+
+
+// Bài toán xếp ba lô (knapsack) có thể được định nghĩa một cách chính thức như sau: Chúng ta có một chiếc ba lô với $N$ là tập hợp các vật phẩm, bao gồm $n$ vật phẩm $x_j$ với lợi nhuận $P_j$ và trọng lượng $W_j$, cùng với sức chứa $c$. Thông thường, tất cả các giá trị này đều là số nguyên dương. Mục tiêu là chọn một tập con của $N$ sao cho tổng lợi nhuận của các vật phẩm được chọn là lớn nhất và tổng trọng lượng không vượt quá $c$.
+=== Bài toán xếp ba lô
+==== Bài toán xếp ba lô 0-1
 
 Trong phần này, chúng ta sẽ khám phá bài toán xếp ba lô (_Knapsack Problem_) - một bài toán kinh điển trong tối ưu hóa tổ hợp, được sử dụng rộng rãi để giải quyết nhiều bài toán tối ưu phức tạp trong thực tế. Bài toán này đòi hỏi chúng ta phải lựa chọn các đối tượng trong một tập hợp sao cho tối đa hóa giá trị tổng thể mà không vượt quá một giới hạn nhất định, thường là về trọng lượng hoặc dung lượng.
 
 Để dễ hình dung, hãy xem xét ví dụ sau: Một tên trộm đột nhập vào cửa hàng và thấy có $n$ món hàng, mỗi món có trọng lượng và giá trị khác nhau. Tuy nhiên, hắn chỉ có một chiếc ba lô với sức chứa giới hạn $c$. Vấn đề đặt ra là tên trộm nên chọn những món nào, và số lượng bao nhiêu, để tối đa hóa tổng giá trị mà vẫn đảm bảo tổng trọng lượng của những món đồ không vượt quá khả năng chứa của chiếc ba lô.
 
-// Bài toán xếp ba lô (knapsack) có thể được định nghĩa một cách chính thức như sau: Chúng ta có một chiếc ba lô với $N$ là tập hợp các vật phẩm, bao gồm $n$ vật phẩm $x_j$ với lợi nhuận $P_j$ và trọng lượng $W_j$, cùng với sức chứa $c$. Thông thường, tất cả các giá trị này đều là số nguyên dương. Mục tiêu là chọn một tập con của $N$ sao cho tổng lợi nhuận của các vật phẩm được chọn là lớn nhất và tổng trọng lượng không vượt quá $c$.
 
-=== Bài toán xếp ba lô 0-1
-==== Định nghĩa bài toán
+// ==== Định nghĩa bài toán
 
 Bài toán ba lô 0-1 (_0-1 Knapsack Problem_) là một trong những biến thể quan trọng và phổ biến nhất của bài toán xếp ba lô. Trong phiên bản này, mỗi vật phẩm đều chỉ có hai lựa chọn: hoặc được chọn hoàn toàn để đưa vào ba lô, hoặc bị bỏ qua hoàn toàn. Điều này tạo nên tên gọi "0-1", biểu thị rằng quyết định cho mỗi vật phẩm chỉ có thể là "0" (không chọn) hoặc "1" (chọn).
 
@@ -52,7 +55,7 @@ Trong đó, nếu $x_j = 0$ nghĩa là ta không chọn vật phẩm $x_j$. Ngư
 
 Ngoài những bài toán thực tiễn liên quan đến xếp ba lô, cần lưu ý rằng nhiều phương pháp giải quyết các bài toán phức tạp hơn thường sử dụng bài toán xếp ba lô như một bài toán con. Do đó, việc nghiên cứu kỹ lưỡng về bài toán xếp ba lô không chỉ giúp ta nắm vững vấn đề này mà còn mang lại nhiều lợi ích cho việc phát triển và áp dụng các mô hình toán học đa dạng khác.
 
-==== Giải thuật tham lam cho bài toán xếp ba lô 0-1
+// ==== Giải thuật tham lam cho bài toán xếp ba lô 0-1
 
 Thuật toán tham lam là một phương pháp giải quyết bài toán tối ưu bằng cách đưa ra các lựa chọn tại mỗi bước dựa trên tiêu chí tốt nhất tại thời điểm đó, mà không xem xét các lựa chọn trong tương lai. Mỗi bước lựa chọn là _tham lam_ vì nó cố gắng tối đa hóa hoặc tối thiểu hóa một số yếu tố tức thời, với hy vọng rằng chuỗi các lựa chọn này sẽ dẫn đến kết quả tối ưu toàn cục.
 
@@ -162,15 +165,15 @@ Xét vật phẩm $x_7$, $overline(w):= overline(w)+ w_7 = 5 + 4 = 9 = c$, đưa
 
 Vậy, thuật toán tham lam đưa các đối tượng 1,2 và 7 vào ba lô và có giá trị $z_G =14$.
 
-==== Độ phức tạp tính toán
+// ==== Độ phức tạp tính toán
 
 Sau khi sắp xếp các vật phẩm theo #eqref(<eq:21>) trong thời gian $O(n log n)$, thời gian chạy của thuật toán tham lam là $O(n)$ vì mỗi đối tượng được xem xét tối đa một lần.
 
-=== Bài toán xếp ba lô liên tục
+====  Bài toán xếp ba lô liên tục
 
 Bài toán xếp ba lô liên tục (_continuous knapsack problem_) là một biến thể của bài toán xếp ba lô cổ điển, trong đó các vật phẩm có thể được chia nhỏ thay vì chỉ có thể chọn toàn bộ hoặc bỏ qua. Giả sử bạn có một chiếc ba lô với sức chứa nhất định và cần mang theo các vật phẩm như đường, muối, bột ngọt. Những vật phẩm này có thể được chia nhỏ thành từng phần nhỏ hơn, cho phép bạn tối ưu hóa giá trị tổng thể mà bạn mang theo mà không vượt quá sức chứa của ba lô.
 
-==== Định ngĩa bài toán
+// ==== Định ngĩa bài toán
 Bài toán xếp ba lô liên tục có thể được định nghĩa một cách chính thức như sau: Chúng ta có một chiếc ba lô với sức chứa tối đa $c$. Ta có $n$ vật phẩm $(j = 1,...,n)$, mỗi vật phẩm có một giá trị $p_j$ và trọng lượng $w_j$. Thông thường, tất cả các giá trị này đều là số nguyên dương. Mục tiêu của bài toán là chọn ra một tập hợp các vật phẩm sao cho tổng giá trị của chúng là lớn nhất, nhưng tổng trọng lượng không được vượt quá sức chứa $c$.
 
 Bài toán xếp ba lô liên tục được phát biểu như sau:

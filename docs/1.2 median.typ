@@ -2,18 +2,20 @@
 
 // == Bài toán 1-median
 #include "../tools/multi-section-ref.typ"
-#import "../tools/macros.typ": eqref
-#include "../tools/multi-section-ref.typ"
-#import "../tools/macros.typ": eqref
+#import "../tools/macros.typ": eqref, remark-Le, delete-Le, add-Le, remark-Ngan, delete-Ngan, add-Ngan
 #import "../typst-orange.typ": theorem, proof, lemma, proposition, corollary, example
 #import "@preview/cetz:0.1.2": canvas, plot
 #import "@preview/cetz:0.1.2"
-#include "../tools/multi-section-ref.typ"
-#import "../tools/macros.typ": eqref
-#import "../typst-orange.typ": theorem, proof, lemma, proposition, corollary, example
-#include "../tools/multi-section-ref.typ"
-#import "../tools/macros.typ": eqref
-#import "../typst-orange.typ": theorem, proof
+// #include "../tools/multi-section-ref.typ"
+// #import "../tools/macros.typ": eqref
+// #import "../typst-orange.typ": theorem, proof, lemma, proposition, corollary, example
+
+// #include "../tools/multi-section-ref.typ"
+// #import "../tools/macros.typ": eqref
+
+// #include "../tools/multi-section-ref.typ"
+// #import "../tools/macros.typ": eqref
+// #import "../typst-orange.typ": theorem, proof
 == BÀI TOÁN 1-MEDIAN
 
 Trong phần này, ta sẽ xem xét bài toán 1-median. Bài toán này là một bài toán tối ưu trong lý thuyết vị trí, với ứng dụng thực tiễn rộng rãi trong nhiều ngành khác nhau. Trong quy hoạch đô thị, bài toán này được sử dụng để chọn vị trí đặt các dịch vụ công cộng như bệnh viện, trường học, hoặc trạm xăng sao cho tổng khoảng cách di chuyển của người dân đến các địa điểm này là nhỏ nhất. Tương tự, trong quản lý chất thải, bài toán 1-median giúp tìm vị trí đặt nhà máy xử lý hoặc bãi rác nhằm tối ưu hóa chi phí vận chuyển rác từ các khu vực dân cư đến nơi xử lý, giảm thiểu chi phí và thời gian vận chuyển.
@@ -96,19 +98,34 @@ $ f(t)= 3.10 + 6.2 + 3.4 = 54 $
 
  Tiếp theo, ta sẽ nghiên cứu bài toán 1-median trên một loại đồ thị đơn giản hơn, đó là đồ thị cây. Trên cấu trúc đồ thị này, //@goldmanOptimalCenterLocation1971 đã phát triển một thuật toán tuyến tính hiệu quả để xác định điểm 1-median, mang lại lời giải tối ưu cho bài toán.
 // == #text(orange)[1.2.1 Bài toán 1-median trên cây]
-=== Bài toán 1-median đồ thị cây
+
+#remark-Le[
+  - Đề cập định lý điểm tối ưu đạt tại đỉnh của đồ thị.
+]
+
+=== Bài toán 1-median trên đồ thị cây
+
+#remark-Le[
+  - Chứng mình tính chất hàm median trên cây là convex.
+]
+
+=== Điểu kiện tối ưu của 1-median trên đồ thị cây
+
 
 Cho đồ thị cây $T(V,E)$.//Để thuận tiện cho việc chứng minh, ta ký hiệu $angle.l w, bb(1)_T_u angle.r = sum_(v_i in T_u) w_i $. 
-Đặt $u_i in N(x_0)$ là tập hợp những đỉnh liền kề với $x_0$. Khi đó $T_u$ là cây con của $T$ được lấy gốc tại đỉnh $u$.
+Đặt $u_i in N(x_0)$ là tập hợp những đỉnh liền kề với $x_0$. Gọi $T_u$ là cây con của $T$ được lấy gốc tại đỉnh $u$.
 
 
-#theorem[
+#theorem[Một điểm $x_0$ là điểm 1-median của cây $T$ khi và chỉ khi
+$
+  w(T_u_i) <= w(T)/2, quad quad forall u_i in N(x_0)
+$ <eq-opt-cond-median>
 
- Một điểm $x_0$ là điểm 1-median của cây $T$ khi và chỉ khi $ w(T_u_i) <= w(T)/2 quad quad forall u_i in N(x_0) $] //$angle.l w, bb(1)_T_u angle.r <= 1/2$ $forall u in N(x_0)$.
+] //$angle.l w, bb(1)_T_u angle.r <= 1/2$ $forall u in N(x_0)$.
 #proof[
 Định lý này gồm hai chiều, ta bắt đầu với chiều đầu tiên.
 
-Giả sử $x_0$ là điểm 1-median. Ta cần chứng minh $w(T_u_i) <= w(T)/2 quad quad forall u in N(x_0)$. 
+Giả sử $x_0$ là điểm 1-median. Ta cần chứng minh #eqref(<eq-opt-cond-median>).
 
 Trước tiên, ta đặt $ deg(x_0) = k$. Khi đó, nếu xóa bỏ $x_0$, ta được $k$ cây con với gốc lần lượt là $T_u_1, T_u_2,...,T_u_k$, trong đó $u_i in N(x_0), i=1,...,k$.
 

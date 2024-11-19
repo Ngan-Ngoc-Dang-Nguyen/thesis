@@ -12,13 +12,14 @@
 #include "../tools/multi-section-ref.typ"
 #import "../tools/macros.typ": eqref
 #import "../typst-orange.typ": theorem, proof
-== BÀI TOÁN REVERSE 1-MEDIAN TRÊN CÂY
+// == BÀI TOÁN REVERSE 1-MEDIAN TRÊN CÂY
+=== Bài toán Reverse 1-median 
 
 Trong phạm vi luận văn này, chúng ta sẽ tập trung vào bài toán reverse cơ bản, một chủ đề được nghiên cứu rộng rãi và có nhiều ứng dụng thực tiễn mạnh mẽ. Tuy nhiên, để phù hợp với mục tiêu của luận văn, chúng ta chỉ trình bày mô hình đơn giản nhất của bài toán.
 
 Một ví dụ thực tế của bài toán reverse có thể thấy trong lĩnh vực quy hoạch đô thị. Giả sử nhà nước đã xác định một vị trí quan trọng, chẳng hạn như một trường học, để phục vụ cho cộng đồng dân cư. Tuy nhiên, do các yếu tố khách quan như sự gia tăng lưu lượng giao thông, việc di chuyển từ các khu dân cư khác đến vị trí này trở nên khó khăn hơn. Mục tiêu của nhà nước là điều chỉnh quy hoạch (chẳng hạn như cải thiện đường giao thông hoặc thậm chí tái phân bố dân cư) nhằm tối ưu hóa việc di chuyển từ các khu dân cư đến vị trí quan trọng này. Đây là một ví dụ cơ bản cho bài toán reverse 1-median trên cây.
 
-=== Định nghĩa và giải thuật
+// === Định nghĩa và giải thuật
 
 Cho đồ thị cây $T = (V, E)$ gồm $n$ đỉnh, mỗi đỉnh $i, i = 1,...,n$ được gán một trọng số không âm $w_i$ và mỗi cạnh có một độ dài không âm. Xét một đỉnh $v' in V$ bất kỳ. Gọi $delta_i$ là lượng điều chỉnh trọng số của đỉnh $i$, với điều kiện $delta_i <= u_i$, trong đó $u_i$ là giới hạn điều chỉnh của đỉnh $i$. Chi phí để điều chỉnh trọng số của đỉnh $i$ một lượng $delta_i$ được ký hiệu là $c_i(delta_i)$.
 
@@ -44,9 +45,15 @@ $
 "s.t." sum_(i=1)^n c_i delta_i <= B \
 
 0 <= delta_i <= u_i \
+<<<<<<< HEAD:docs/reverse.typ
 $ <eq:reverse-problem>
 
 Rõ ràng, mô hình bài toán #eqref(<eq:reverse-problem>) tương ứng với bài toán xếp ba lô liên tục. Do đó ta có thể giải quyết bài toán này trong thời gian $O(n)$.
+=======
+$ <eq:42-in-reverse-file>
+
+Rõ ràng, mô hình bài toán #eqref(<eq:42-in-reverse-file>) tương ứng với bài toán xếp ba lô liên tục. Do đó ta có thể giải quyết bài toán này trong thời gian $O(n)$.
+>>>>>>> 944e97a3f78f111d99e2e1bfff11ccc1c15e8e8e:docs/problem-reverse.typ
 
 #theorem[ Bài toán reverse 1-median trên cây có thể được giải trong thời gian $O(n)$.]
 
