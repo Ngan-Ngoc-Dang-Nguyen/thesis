@@ -53,6 +53,7 @@
 - add table list (LE)
 - template for theorem (LE)
 - add references (NGAN)
+- spacing 1.5
 ]
 
 === Khái niệm và các dạng đồ thị 

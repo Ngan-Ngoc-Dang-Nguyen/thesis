@@ -78,7 +78,7 @@
 // --------- CHƯƠNG 2
 #part([Chương 2]) 
 #pagebreak()
-#include "../docs/xxx-how.typ"
+// #include "../docs/xxx-how.typ"
 #include "../docs/chapter1.typ"
 // #include "../docs/chapter2.typ"
 #include "../docs/1.2 median.typ"

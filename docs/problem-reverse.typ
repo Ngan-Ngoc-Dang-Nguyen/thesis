@@ -110,19 +110,18 @@ $
 Dựa vào dữ kiện ban đầu, ta có thể tính được $f(v_2)$ lúc này nhận giá trị bằng 74. Bây giờ ta sẽ tiến hành cải thiện giá trị này.
 Tức là ta cần giải bài toán sau:
 
-$
+// $
+//     max sum_(i=1)^6 delta_i d(v_i,v_2) \
 
- max sum_(i=1)^6 delta_i d(v_i,v_2) \
+//     "s.t." sum_(i=1)^6 c_i delta_i <= 3 \
 
-"s.t." sum_(i=1)^6 c_i delta_i <= 3 \
-
-0 <= delta_1 <= 2 \
-0 <= delta_2 <= 1 \
-0 <= delta_3 <= 2 \
-0 <= delta_4 <= 2 \
-0 <= delta_5 <= 1 \
-0 <= delta_6 <= 3 \
-$ 
+//     0 <= delta_1 <= 2 \
+//     0 <= delta_2 <= 1 \
+//     0 <= delta_3 <= 2 \
+//     0 <= delta_4 <= 2 \
+//     0 <= delta_5 <= 1 \
+//     0 <= delta_6 <= 3 \
+// $ 
 Sau khi giải bài toán xếp ba lô liên tục, ta thu được:
 $ delta_5 = 1, delta_6 = 3, delta_1 = 2, delta_2 = delta_3= delta_4 = 0. $
 

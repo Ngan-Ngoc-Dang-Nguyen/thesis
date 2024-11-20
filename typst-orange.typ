@@ -423,14 +423,15 @@
 
   my-outline-sec(listOfFigureTitle, figure.where(kind: image), outlineHeading3)
 
-  my-outline-sec(listOfTableTitle, figure.where(kind: table), outlineHeading3)
+  // my-outline-sec(listOfTableTitle, figure.where(kind: table), outlineHeading3)
 
 
   // Main body.
-  show par: set block(spacing: 0.5em)
+  show par: set block(spacing: 2em)
   set par(
     first-line-indent: 1em,
     justify: true,
+    leading: 1.5em,
   )
   show link: set text(fill: mainColor)
 
