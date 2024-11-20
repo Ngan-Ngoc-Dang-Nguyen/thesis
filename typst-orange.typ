@@ -226,6 +226,7 @@
     locate(loc => {
       let chapter = counter(heading.where(level: 1)).at(loc).first()
       box[#chapter.#it]
+      // box[#it]
     })
   })
 

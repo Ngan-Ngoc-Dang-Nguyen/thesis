@@ -1,6 +1,6 @@
 #include "../tools/multi-section-ref.typ"
 #import "../tools/macros.typ": eqref, remark-Le, delete-Le, add-Le, remark-Ngan, delete-Ngan, add-Ngan
-#import "../typst-orange.typ": theorem, proof, lemma, proposition, corollary, example, definition, 
+#import "../typst-orange.typ": theorem, proof, lemma, thmref, proposition, corollary, example, definition, 
 #import "@preview/cetz:0.1.2": canvas, plot
 #import "@preview/cetz:0.1.2"
 
@@ -32,11 +32,13 @@ $ R(w)=sup{epsilon>= 0: v_1 in X_tilde(w)^*, quad forall tilde(w)in [w-epsilon;w
 
 Mặc dù $R(w)$ được định nghĩa một cách ngầm định, nó có một cận dưới đơn giản nhưng chặt chẽ. 
 
-#theorem[Ta có
+#theorem(name: "xxx")[Ta có
 $ R(w) >= underline(R)(w) = min_(u in N(v_1)) 1/n (1-2 angle.l w, bb(1)_T_u angle.r). $ 
 
 Hơn nữa, dấu "=" xảy ra nếu $R(w) < min_(i=1,...,n) w_i$
 ]
+
+// #thmref("xxx")
 
 Trước khi chứng minh *Định lý...* cần lưu ý rằng cận dưới $R(w)$ được đảm bảo không âm do tính tối ưu của $v_1$ (6). Hơn nữa, điều kiện $R(w) < min_(i=1,...,n) w_i$ về cơ bản có nghĩa là $R(w)$ là một mức độ nhiễu sao cho bất kỳ trọng số nào trong khoảng $[w-R(w), w + R(w)]$ vẫn dương, khiến nó trở thành một điều kiện nhẹ nhàng. 
 
