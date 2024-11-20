@@ -45,9 +45,15 @@ $
 "s.t." sum_(i=1)^n c_i delta_i <= B \
 
 0 <= delta_i <= u_i \
+<<<<<<< HEAD:docs/reverse.typ
+$ <eq:reverse-problem>
+
+Rõ ràng, mô hình bài toán #eqref(<eq:reverse-problem>) tương ứng với bài toán xếp ba lô liên tục. Do đó ta có thể giải quyết bài toán này trong thời gian $O(n)$.
+=======
 $ <eq:42-in-reverse-file>
 
 Rõ ràng, mô hình bài toán #eqref(<eq:42-in-reverse-file>) tương ứng với bài toán xếp ba lô liên tục. Do đó ta có thể giải quyết bài toán này trong thời gian $O(n)$.
+>>>>>>> 944e97a3f78f111d99e2e1bfff11ccc1c15e8e8e:docs/problem-reverse.typ
 
 #theorem[ Bài toán reverse 1-median trên cây có thể được giải trong thời gian $O(n)$.]
 

@@ -260,6 +260,9 @@ Ta có:
 $ w(T_u_i) <= w(T)/2 <=> f(u_i) - f(x_0) >= 0 quad quad forall u_i in N(x_0). $
 Điều này nghĩa là $x_0$ là cực tiểu địa phương của hàm mục tiêu $f$ trên $T$. Theo *định lý 2.1*, hàm $f$ là hàm lồi nên $x_0$ là cực tiểu toàn cục. Nghĩa là $f(x_0)$ đạt giá trị nhỏ nhất trên hàm $f$ (điều cần phải chứng minh).]
 
+#corollary[$ angle.l w, bb(1)_T_u angle.r <= W/2 = (angle.l w, bb(1)_T_u angle.r + angle.l w, bb(1)_(T without T_u) angle.r ) /2 
+<=> angle.l w, bb(1)_T_u angle.r <= angle.l w, bb(1)_(T without T_u) angle.r $ ]  (viết lại chỗ này)
+
 //  (angle.l w, bb(1)_T_u_i angle.r) d(v',u_1)$ + $(angle.l w, bb(1)_(T without T_u_i) angle.r)d(v,u_i)$ = $(angle.l w, bb(1)_u_i angle.r)[d(w,x_0)-d(u_i,x_0)]$ + $(angle.l w, bb(1)_(T without T_u_i) angle.r)[d(v,x_0)+d(x_0,u_i)] = f(x_0) + (angle.l w, bb(1)_(T without T_u_i) angle.r - angle.l w, bb(1)_(T_u_i) angle.r) d(u_i,x_0)= 1- 2 angle.l w, bb(1)_T_u_i angle.r$.
 
 //  $f(x_0)= (angle.l w, bb(1)_T_u_i) d(v,x_0) + (angle.l w, bb(1)_(T without T_u_i))d(v,x_0)$.
