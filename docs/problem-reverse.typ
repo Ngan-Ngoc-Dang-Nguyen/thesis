@@ -45,15 +45,9 @@ $
 "s.t." sum_(i=1)^n c_i delta_i <= B \
 
 0 <= delta_i <= u_i \
-<<<<<<< HEAD:docs/reverse.typ
-$ <eq:reverse-problem>
-
-Rõ ràng, mô hình bài toán #eqref(<eq:reverse-problem>) tương ứng với bài toán xếp ba lô liên tục. Do đó ta có thể giải quyết bài toán này trong thời gian $O(n)$.
-=======
 $ <eq:42-in-reverse-file>
 
 Rõ ràng, mô hình bài toán #eqref(<eq:42-in-reverse-file>) tương ứng với bài toán xếp ba lô liên tục. Do đó ta có thể giải quyết bài toán này trong thời gian $O(n)$.
->>>>>>> 944e97a3f78f111d99e2e1bfff11ccc1c15e8e8e:docs/problem-reverse.typ
 
 #theorem[ Bài toán reverse 1-median trên cây có thể được giải trong thời gian $O(n)$.]
 
@@ -116,19 +110,18 @@ $
 Dựa vào dữ kiện ban đầu, ta có thể tính được $f(v_2)$ lúc này nhận giá trị bằng 74. Bây giờ ta sẽ tiến hành cải thiện giá trị này.
 Tức là ta cần giải bài toán sau:
 
-$
+// $
+//     max sum_(i=1)^6 delta_i d(v_i,v_2) \
 
- max sum_(i=1)^6 delta_i d(v_i,v_2) \
+//     "s.t." sum_(i=1)^6 c_i delta_i <= 3 \
 
-"s.t." sum_(i=1)^6 c_i delta_i <= 3 \
-
-0 <= delta_1 <= 2 \
-0 <= delta_2 <= 1 \
-0 <= delta_3 <= 2 \
-0 <= delta_4 <= 2 \
-0 <= delta_5 <= 1 \
-0 <= delta_6 <= 3 \
-$ 
+//     0 <= delta_1 <= 2 \
+//     0 <= delta_2 <= 1 \
+//     0 <= delta_3 <= 2 \
+//     0 <= delta_4 <= 2 \
+//     0 <= delta_5 <= 1 \
+//     0 <= delta_6 <= 3 \
+// $ 
 Sau khi giải bài toán xếp ba lô liên tục, ta thu được:
 $ delta_5 = 1, delta_6 = 3, delta_1 = 2, delta_2 = delta_3= delta_4 = 0. $
 
