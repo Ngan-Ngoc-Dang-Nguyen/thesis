@@ -295,7 +295,7 @@ Trọng số đỉnh trên cây được cải thiện như ở hình 3
 #import "@preview/cetz:0.2.2"
 #import "@preview/cetz:0.1.2"
 
-#align(center)[#canvas(length: 10%, {
+#let example-upgrading-stability-radius = canvas(length: 10%, {
   import cetz.draw: *
 
   let y = 2 
@@ -337,9 +337,11 @@ Trọng số đỉnh trên cây được cải thiện như ở hình 3
   line("v3", "v7")
   line("v4", "v8")
   line("v4", "v9")    }
-)]
-
-// ]
+)
+#figure(
+  example-upgrading-stability-radius,
+  caption: [Đồ thị cây sau upgrading stability radius],
+) <fig-example-upgrading-stability-radius>
 
 == Kết luận và thảo luận 
 
