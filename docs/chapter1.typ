@@ -53,6 +53,7 @@
 - add table list (LE)
 - template for theorem (LE)
 - add references (NGAN)
+- spacing 1.5
 ]
 
 === Khái niệm và các dạng đồ thị 
@@ -121,8 +122,7 @@ Ví dụ, ta xét đồ thị $G=(V(G),E(G),psi_G)$ với $V(G)={v_1,v_2,v_3,v_4
   content("v4v1.top", $e_6$, anchor: "top", padding: 1.4)
   // line("v4", "v8")
   // line("v4", "v9")  
-}
-)
+})
 #figure(
   do-thi-vo-huong,
   caption: [Đồ thị vô hướng],
@@ -209,57 +209,58 @@ Trong khi đó, đồ thị có hướng (directed graph) là một loại đồ
 
 Đồ thị có trọng số (Weighted Graph) là loại đồ thị trong đó các đỉnh và các cạnh được gán các giá trị trọng số. Trọng số của đỉnh thường biểu thị các yếu tố như dân số, tài nguyên hoặc mức độ quan trọng của điểm đó, trong khi trọng số của cạnh thường đại diện cho khoảng cách, chi phí hoặc thời gian di chuyển giữa các điểm. Ví dụ, trong một đồ thị biểu diễn các điểm dân cư, mỗi đỉnh có thể gán với trọng số biểu thị dân số tại khu vực đó, còn mỗi cạnh có trọng số thể hiện khoảng cách giữa hai điểm dân cư.
 
-#align(center)[#canvas(length: 10%, {
-    import cetz.draw: *
+#let do-thi-co-trong-so = canvas(length: 10%, {
+  import cetz.draw: *
 
-    let y = 2 
-    let x = 4
-    let y-space = 1
-    let h=1.4
+  let y = 2 
+  let x = 4
+  let y-space = 1
+  let h=1.4
 
-    circle((0*h,3), radius: 0.05,fill:black, name: "v1") 
-    content("v1.bottom", $v_1 (5)$, anchor: "left", padding: 0.2)
+  circle((0*h,3), radius: 0.05,fill:black, name: "v1") 
+  content("v1.bottom", $v_1 (5)$, anchor: "left", padding: 0.2)
 
-    circle((-3, 1.5), radius: 0.05, fill: black, name: "v2") 
-    content("v2.right", $v_2 (2)$, anchor: "right", padding: 0.2)
+  circle((-3, 1.5), radius: 0.05, fill: black, name: "v2") 
+  content("v2.right", $v_2 (2)$, anchor: "right", padding: 0.2)
 
-    circle((3, 1.5), radius: 0.05, fill: black, name: "v3") 
-    content("v3.right", $v_3 (3)$, anchor: "right", padding: 0.2)
-     circle((2, 5), radius: 0.05, fill: black, name: "v4") 
-    content("v4.right", $v_4 (1)$, anchor: "right", padding: 0.2)
+  circle((3, 1.5), radius: 0.05, fill: black, name: "v3") 
+  content("v3.right", $v_3 (3)$, anchor: "right", padding: 0.2)
+    circle((2, 5), radius: 0.05, fill: black, name: "v4") 
+  content("v4.right", $v_4 (1)$, anchor: "right", padding: 0.2)
 
-     circle((-2, 5), radius: 0.05, fill: black, name: "v5") 
-    content("v5.right", $v_5 (7)$, anchor: "right", padding: 0.2)
+    circle((-2, 5), radius: 0.05, fill: black, name: "v5") 
+  content("v5.right", $v_5 (7)$, anchor: "right", padding: 0.2)
 
-     circle((0, 5), radius: 0.05, fill: black, name: "v6") 
-    content("v6.right", $v_6 (2)$, anchor: "right", padding: 0.2)
+    circle((0, 5), radius: 0.05, fill: black, name: "v6") 
+  content("v6.right", $v_6 (2)$, anchor: "right", padding: 0.2)
 
-    line("v1", "v2", name: "v1v2")
-    content("v1v2.top", $3$, anchor: "top", padding: 0.5)
+  line("v1", "v2", name: "v1v2")
+  content("v1v2.top", $3$, anchor: "top", padding: 0.5)
 
-    line("v1", "v3", name: "v1v3")
-    content("v1v3.top", $3$, anchor: "top", padding: 0.5)
+  line("v1", "v3", name: "v1v3")
+  content("v1v3.top", $3$, anchor: "top", padding: 0.5)
 
-    line("v1", "v5", name: "v1v5")
-    content("v1v5.top", $2$, anchor: "top", padding: 0.7)
+  line("v1", "v5", name: "v1v5")
+  content("v1v5.top", $2$, anchor: "top", padding: 0.7)
 
-    line("v1", "v4", name: "v1v4")
-    content("v1v4.top", $2$, anchor: "top", padding: 0.5)
+  line("v1", "v4", name: "v1v4")
+  content("v1v4.top", $2$, anchor: "top", padding: 0.5)
 
-    line("v1", "v6", name: "v1v6")
-    content("v1v6.right", $1$, anchor: "right", padding: 0.1)
-    
-    }
-  )]
-
-#align(center)[#text(orange)[*Hình 1.3*]  Đồ thị có trọng số]
-
+  line("v1", "v6", name: "v1v6")
+  content("v1v6.right", $1$, anchor: "right", padding: 0.1)
+  
+})
+// #align(center)[#text(orange)[*Hình 1.3*]  Đồ thị có trọng số]
+#figure(
+  do-thi-co-trong-so,
+  caption: [Đồ thị có trọng số],
+) <fig-do-thi-co-trong-so>
 
 Đồ thị không có trọng số (Unweighted Graph): Các cạnh và các đỉnh không có trọng số. #delete-Le[Hình 1.1 và 1.2 là hai đồ không có trọng số.] #add-Le[Đồ thị trong @fig-do-thi-vo-huong và @fig-do-thi-co-huong là không có trọng số.]
 
 Đồ thị liên thông (Connected Graph): Từ một đỉnh bất kỳ, ta có thể đi đến tất cả các đỉnh khác thông qua các cạnh. #delete-Le[Ví dụ minh họa.]
 
-#align(center)[#canvas(length: 10%, {
+#let do-thi-lien-thong = canvas(length: 10%, {
     import cetz.draw: *
 
     let y = 2 
@@ -301,12 +302,17 @@ Trong khi đó, đồ thị có hướng (directed graph) là một loại đồ
     line("v3", "v5", name: "v3v5")
     line("v4", "v5", name: "v4v5")
     }
-  )]
-#align(center)[#text(orange)[*Hình 1.4*]  Đồ thị liên thông]
+  )
+// #align(center)[#text(orange)[*Hình 1.4*]  Đồ thị liên thông]
+#figure(
+  do-thi-lien-thong,
+  caption: [Đồ thị liên thông],
+) <fig-do-thi-lien-thong>
+
 
 4. Đồ thị không liên thông (Disconnected Graph): Tồn tại ít nhất một đỉnh, mà từ đỉnh đó ta không thể đi đến một số đỉnh khác. Hình bên dưới #remark-Le[ref of figure] là đồ thị không liên thông vì tồn tại đỉnh $v_4$ mà từ đỉnh này ta không thể đi đến các đỉnh còn lại của đồ thị.
 
-#align(center)[#canvas(length: 10%, {
+#let do-thi-khong-lien-thong = canvas(length: 10%, {
     import cetz.draw: *
 
     let y = 2 
@@ -347,10 +353,12 @@ Trong khi đó, đồ thị có hướng (directed graph) là một loại đồ
     // content("v1v6.right", $1$, anchor: "right", padding: 0.1)
     //line("v3", "v5", name: "v3v5")
     line("v2", "v3", name: "v2v3")
-    }
-  )]
-#align(center)[#text(orange)[*Hình 1.4*]  Đồ thị không liên thông]
-
+})
+// #align(center)[#text(orange)[*Hình 1.4*]  Đồ thị không liên thông]
+#figure(
+  do-thi-khong-lien-thong,
+  caption: [Đồ thị không liên thông],
+) <fig-do-thi-khong-lien-thong>
 
 // ==== #text(orange)[1.1.2 Một số khái niệm liên quan]
 // === Một số khái niệm liên quan
@@ -358,8 +366,7 @@ Trong khi đó, đồ thị có hướng (directed graph) là một loại đồ
 #add-Le[Một số khái niệm khác liên quan đến đồ thị được trình bày bên dưới.]
 
 (a) Nếu $u$ là một điểm đầu mút của cạnh $e$ thì ta nói $u$ và $e$ _liên thuộc (incident)_ với nhau.
-
-#align(center)[#canvas(length: 10%, {
+#let do-thi-lien-thuoc = canvas(length: 10%, {
     import cetz.draw: *
 
     let y = 2 
@@ -376,15 +383,19 @@ Trong khi đó, đồ thị có hướng (directed graph) là một loại đồ
     line("v1", "v2", name: "v1v2")
     content("v1v2.top", $e$, anchor: "top", padding: 0.1)
     
-    }
-  )]
-#align(center)[#text(orange)[*Hình 1.5*] Đỉnh $u$ và cạnh $e$ liên thuộc nhau]
+})
+// #align(center)[#text(orange)[*Hình 1.5*] Đỉnh $u$ và cạnh $e$ liên thuộc nhau]
+#figure(
+  do-thi-lien-thuoc,
+  caption: [Đỉnh $u$ và cạnh $e$ liên thuộc nhau],
+) <fig-do-thi-lien-thuoc>
 
-(b) Hai đỉnh liên thuộc với cùng một cạnh được gọi là hai đỉnh _liền kề (adjacent)_. Trong Hình 1.5, $u$ và $v$ cùng liên thuộc cạnh $e$ nên $u$ và $v$ là hai đỉnh liền kề. 
 
-(c) Hai cạnh liên thuộc với cùng một đỉnh được gọi là hai cạnh _liền kề_. Hình 1.6, rõ ràng ta có thể thấy $e_1$ và $e_2$ cùng liên thuộc đỉnh $u$ nên $e_1, e_2$ là hai cạnh liền kề. 
+(b) Hai đỉnh liên thuộc với cùng một cạnh được gọi là hai đỉnh _liền kề (adjacent)_. Trong @fig-do-thi-lien-thuoc, $u$ và $v$ cùng liên thuộc cạnh $e$ nên $u$ và $v$ là hai đỉnh liền kề. 
 
-#align(center)[#canvas(length: 10%, {
+(c) Hai cạnh liên thuộc với cùng một đỉnh được gọi là hai cạnh _liền kề_. @fig-do-thi-lien-ke, rõ ràng ta có thể thấy $e_1$ và $e_2$ cùng liên thuộc đỉnh $u$ nên $e_1, e_2$ là hai cạnh liền kề. 
+
+#let do-thi-lien-ke = canvas(length: 10%, {
     import cetz.draw: *
 
     let y = 2 
@@ -406,9 +417,12 @@ Trong khi đó, đồ thị có hướng (directed graph) là một loại đồ
     line("v1", "v3", name: "v1v3")
     content("v1v3.right", $e_2$, anchor: "right", padding: 0.1)
     
-    }
-  )]
-#align(center)[#text(orange)[*Hình 1.6*] $e_1$ và $e_2$ liền kề nhau]
+})
+// #align(center)[#text(orange)[*Hình 1.6*] $e_1$ và $e_2$ liền kề nhau]
+#figure(
+  do-thi-lien-ke,
+  caption: [Hai cạnh $e_1$ và $e_2$ liền kề nhau],
+) <fig-do-thi-lien-ke>
 
 
 (d) Một cạnh có hai điểm đầu mút trùng nhau được gọi là một _vòng (loop)_. (Vẽ hình minh hoa)

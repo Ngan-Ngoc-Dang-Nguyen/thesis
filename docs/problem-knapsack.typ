@@ -17,7 +17,7 @@
 
 
 // Bài toán xếp ba lô (knapsack) có thể được định nghĩa một cách chính thức như sau: Chúng ta có một chiếc ba lô với $N$ là tập hợp các vật phẩm, bao gồm $n$ vật phẩm $x_j$ với lợi nhuận $P_j$ và trọng lượng $W_j$, cùng với sức chứa $c$. Thông thường, tất cả các giá trị này đều là số nguyên dương. Mục tiêu là chọn một tập con của $N$ sao cho tổng lợi nhuận của các vật phẩm được chọn là lớn nhất và tổng trọng lượng không vượt quá $c$.
-=== Bài toán xếp ba lô
+=== Bài toán Xếp ba lô
 ==== Bài toán xếp ba lô 0-1
 
 Trong phần này, chúng ta sẽ khám phá bài toán xếp ba lô (_Knapsack Problem_) - một bài toán kinh điển trong tối ưu hóa tổ hợp, được sử dụng rộng rãi để giải quyết nhiều bài toán tối ưu phức tạp trong thực tế. Bài toán này đòi hỏi chúng ta phải lựa chọn các đối tượng trong một tập hợp sao cho tối đa hóa giá trị tổng thể mà không vượt quá một giới hạn nhất định, thường là về trọng lượng hoặc dung lượng.
