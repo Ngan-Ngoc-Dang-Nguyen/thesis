@@ -2,16 +2,17 @@
 // _Chương này sẽ nghiên cứu về một đối tượng ...._
 
 #include "../tools/multi-section-ref.typ"
-#import "../tools/macros.typ": eqref, remark-Le, delete-Le, add-Le, remark-Ngan, delete-Ngan, add-Ngan
-#import "../typst-orange.typ": theorem, proof, lemma, thmref, proposition, corollary, example, definition, 
+#import "../tools/macros.typ": eqref, remark-Le, delete-Le, add-Le, remark-Ngan, delete-Ngan, add-Ngan, theorem, definition, proposition, lemma, proof, example,
+// #import "../tools/macros.typ": eqref, remark-Le, delete-Le, add-Le, remark-Ngan, delete-Ngan, add-Ngan
+// #import "../typst-orange.typ": theorem, proof, lemma, thmref, proposition, corollary, example, definition, 
 #import "@preview/cetz:0.1.2": canvas, plot
 #import "@preview/cetz:0.1.2"
 #include "../tools/multi-section-ref.typ"
-#import "../tools/macros.typ": eqref
-#import "../typst-orange.typ": theorem, proof, lemma, proposition, corollary, example
-#include "../tools/multi-section-ref.typ"
-#import "../tools/macros.typ": eqref
-#import "../typst-orange.typ": theorem, proof
+// #import "../tools/macros.typ": eqref
+// #import "../typst-orange.typ": theorem, proof, lemma, proposition, corollary, example
+// #include "../tools/multi-section-ref.typ"
+// #import "../tools/macros.typ": eqref
+// #import "../typst-orange.typ": theorem, proof
 = BÁN KÍNH ỔN ĐỊNH CỦA ĐIỂM 1-MEDIAN
 // == Tổng quan bán kính ổn định 
 _Bán kính ổn định_ của một đối tượng trong lý thuyết đồ thị là một khái niệm phản ánh mức độ mà một đồ thị (hoặc một thành phần của nó) có thể duy trì các thuộc tính quan trọng khi bị tác động bởi những thay đổi nhỏ, chẳng hạn như việc loại bỏ các đỉnh hoặc cạnh. Nó đo lường khả năng "chịu đựng" của đồ thị trước các yếu tố gây rối loạn hoặc phá hủy, đồng thời xác định phạm vi ảnh hưởng của sự thay đổi đối với cấu trúc của đồ thị.
@@ -150,7 +151,7 @@ $ R(w)=sup{epsilon>= 0: v_1 in X_tilde(w)^*, quad forall tilde(w)in [w-epsilon;w
 
 Mặc dù $R(w)$ được định nghĩa một cách ngầm định, nó có một cận dưới đơn giản nhưng chặt chẽ. 
 
-#theorem(name: "xxx")[Ta có
+#theorem([xxx])[Ta có
 $ R(w) >= underline(R)(w) = min_(u in N(v_1)) 1/n (1-2 angle.l w, bb(1)_T_u angle.r). $ 
 
 Hơn nữa, dấu "=" xảy ra nếu $R(w) < min_(i=1,...,n) w_i$

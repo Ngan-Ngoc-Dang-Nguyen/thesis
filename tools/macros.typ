@@ -20,3 +20,12 @@
 #let remark-Ngan(x) = text(fill: red, size: 10pt)[\[*Remark by LE:* #x\]]
 #let delete-Ngan(x) = text(fill: red, size: 10pt)[\[*Delete by LE:* #x\]]
 #let add-Ngan(x) = text(fill: red)[#x]
+
+#import "@preview/ctheorems:1.1.3": thmbox, thmrules, thmproof
+#show: thmrules.with(qed-symbol: $square$)
+#let theorem = thmbox("theorem", "Định lý", base_level: 1, fill: rgb("#eeffee"), stroke: black, radius: 2pt)
+#let proposition = thmbox("theorem", "Mệnh đề", base_level: 1, fill: rgb("#eeffee"), stroke: black, radius: 2pt)
+#let definition = thmbox("theorem", "Định nghĩa", base_level: 1, fill: rgb("#eeffee"), stroke: black, radius: 2pt)
+#let lemma = thmbox("theorem", "Bổ đề", base_level: 1, fill: rgb("#eeffee"), stroke: black, radius: 2pt)
+#let example  = thmbox("theorem", "Ví dụ", base_level: 1, fill: none, stroke: none, radius: 2pt)
+#let proof = thmproof("proof", "Chứng minh")

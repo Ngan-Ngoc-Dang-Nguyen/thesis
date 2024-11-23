@@ -62,7 +62,11 @@
 }
 // #show cite: it => [#text(fill: blue)[#cite(it)]]
 #show cite: set text(red)
-
+#import "@preview/ctheorems:1.1.3": thmrules
+#show: thmrules.with(qed-symbol: $square$)
+// #let theorem = thmbox("theorem", "Định lý", base_level: 1, fill: rgb("#eeffee"), stroke: black, radius: 2pt)
+// #let proposition = thmbox("theorem", "Mệnh đề", base_level: 1, fill: rgb("#eeffee"), stroke: black, radius: 2pt)
+// #let definition = thmbox("theorem", "Định nghĩa", base_level: 1, fill: rgb("#eeffee"), stroke: black, radius: 2pt)
 
 // #chapter("Sectioning Examples", image: image("../images/orange2.jpg"), l: "chap1")
 // #index("Sectioning")

@@ -1,9 +1,11 @@
 
 #include "../tools/multi-section-ref.typ"
-#import "../tools/macros.typ": eqref, remark-Le, delete-Le, add-Le, remark-Ngan, delete-Ngan, add-Ngan
-#import "../typst-orange.typ": theorem, proof, lemma, proposition, corollary, example, definition, 
+#import "../tools/macros.typ": eqref, remark-Le, delete-Le, add-Le, remark-Ngan, delete-Ngan, add-Ngan, theorem, definition, proposition, lemma, proof,
+// #import "../typst-orange.typ": proof
+// #import "../typst-orange.typ": theorem, proof, lemma, proposition, corollary, example, definition, thmref
 #import "@preview/cetz:0.1.2": canvas, plot
 #import "@preview/cetz:0.1.2"
+
 // Nhớ đánh số trang và footnote// #include "../tools/multi-section-ref.typ"
 // #import "../tools/macros.typ": eqref
 // Canh đều toàn văn bản
@@ -46,10 +48,10 @@
 // === #text(orange)[1.1 ĐỒ THỊ]
 
 #remark-Le[to-do list:
-- add table list (LE, NO)
-- spacing 1.5 (DONE)
-- add figure list (LE, DONE): Cách thao tác với hình em xem @fig-do-thi-vo-huong. Em đặt canvas vào một biến, đặt biến đó vào figure, viết caption và label cho figure. Ref một figure bằng lệnh `@label-of-figure`
-- Issue with figure numbering (LE)
+// - add table list (LE, NO)
+// - spacing 1.5 (DONE)
+// - add figure list (LE, DONE): Cách thao tác với hình em xem @fig-do-thi-vo-huong. Em đặt canvas vào một biến, đặt biến đó vào figure, viết caption và label cho figure. Ref một figure bằng lệnh `@label-of-figure`
+// - Issue with figure numbering (LE)
 - Issue with equation numbering (LE)
 - How to ref a theorem (LE)
 - template for theorem (LE)
@@ -716,7 +718,23 @@ Với đồ thị $G$ như Hình 1.11, ta có $d(v_1)=4, d(v_2)=4, d(v_3)=4, d(v
 
 #theorem[
   Tổng bậc của tất cả các đỉnh trong một đồ thị bằng hai lần số cạnh của đồ thị đó.
-]
+] <theorem-tong-bac>
+
+// #show ref: it => {
+//   let eq = math.equation
+//   let el = it.element
+//   // if el != none and el.func() == eq {
+//   if el != none and 1==1 {
+//     el.func()
+//   } else {
+//     // Other references as usual.
+//     it
+//   }
+// }
+
+// #thmref(<theorem-tong-bac>)
+
+// Ta co @theorem-tong-bac
 
 #remark-Le[Thêm trích dẫn sách của thầy Kiên.]
 
