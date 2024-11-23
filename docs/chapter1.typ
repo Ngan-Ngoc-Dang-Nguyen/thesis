@@ -46,14 +46,14 @@
 // === #text(orange)[1.1 ĐỒ THỊ]
 
 #remark-Le[to-do list:
-- add figure list (LE, done): Cách thao tác với hình em xem @fig-do-thi-vo-huong. Em đặt canvas vào một biến, đặt biến đó vào figure, viết caption và label cho figure. Ref một figure bằng lệnh `@label-of-figure`
+- add table list (LE, NO)
+- spacing 1.5 (DONE)
+- add figure list (LE, DONE): Cách thao tác với hình em xem @fig-do-thi-vo-huong. Em đặt canvas vào một biến, đặt biến đó vào figure, viết caption và label cho figure. Ref một figure bằng lệnh `@label-of-figure`
 - Issue with figure numbering (LE)
 - Issue with equation numbering (LE)
 - How to ref a theorem (LE)
-- add table list (LE)
 - template for theorem (LE)
 - add references (NGAN)
-- spacing 1.5
 ]
 
 === Khái niệm và các dạng đồ thị 
