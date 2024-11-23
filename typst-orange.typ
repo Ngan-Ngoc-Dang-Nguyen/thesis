@@ -421,6 +421,8 @@
 
   my-outline(appendix_state, part_state, part_location,part_change,part_counter, mainColor, textSize1: outlinePart, textSize2: outlineHeading1, textSize3: outlineHeading2, textSize4: outlineHeading3)
 
+  // pagebreak()
+  // heading(numbering: none, level: 1)[Danh sách hình vẽ]
   my-outline-sec(listOfFigureTitle, figure.where(kind: image), outlineHeading3)
 
   // my-outline-sec(listOfTableTitle, figure.where(kind: table), outlineHeading3)

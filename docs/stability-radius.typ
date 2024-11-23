@@ -1,5 +1,5 @@
 
-_Chương này sẽ nghiên cứu về một đối tượng ...._
+// _Chương này sẽ nghiên cứu về một đối tượng ...._
 
 #include "../tools/multi-section-ref.typ"
 #import "../tools/macros.typ": eqref, remark-Le, delete-Le, add-Le, remark-Ngan, delete-Ngan, add-Ngan
@@ -34,7 +34,7 @@ $u= vec(u_1,u_2,u_3), v= vec(v_1, v_2, v_3).$ Ta định nghĩa phép nhân Hada
 
 $ u dot.circle v = vec(u_1,u_2,u_3) dot.circle vec(v_1, v_2, v_3) = vec(u_1 + v_1, u_2 + v_2, u_3 + v_3) $
 
-Ký hiệu $dot.circle$ được gọi là _tích Hadamard_ và phép toán này được thực hiện bằng cách cộng từng thành phần tương ứng của hai vectơ.
+Ký hiệu $dot.circle$ được gọi là _tích Hadamard_ và phép toán này được thực hiện bằng cách cộng từng thành phần tương ứng của hai vectơ. #remark-Le[Phép nhân Hadamard k phải cộng. Em cho ví dụ lộn rồi.]
 
 *Ví dụ* Cho $u = vec(1,2,3), v= vec(4,5,6)$. Khi đó
 $ u dot.circle v = vec(1,2,3) dot.circle vec(4,5,6) = vec(1+4,2+5,3+6)=(5,7,9) $
@@ -61,6 +61,8 @@ Nói cách khác, chuẩn 1 tính tổng các giá trị tuyệt đối của c�
 
 *Ví dụ* Giả sử $x=(1,-3,2)$, khi đó:
 $ norm(x)_1 =  abs(1) + abs(-3) + abs(2) = 1 + 3 + 2= 6. $
+
+#remark-Le[Giải thích thêm ký hiệu $[w - epsilon, w+ epsilon]$]
 
 == Định nghĩa bán kính ổn định
 Như đã trình bày ở *Chương 1*, $v_1$ được gọi là điểm 1-median nếu $f(v_1)$ nhỏ nhất. Đồng thời, *Goldman* cũng đã đưa ra được điều kiện tối ưu như sau:
@@ -98,7 +100,7 @@ Khi đó ta gọi $R(w)$ là _bán kính ổn định_ của điểm $v_1$ tươ
 
 Trong mục này, chúng ta sẽ ước lượng cận dưới bán kính ổn định bằng một công thức được tính toán một cách tường minh. Điều này đóng vai trò quan trọng trong việc nâng cấp cận dưới này ở chương tiếp theo.
 
-$v_1$ là điểm 1-median ứng với vecto trọng số $w$. Gọi $N(v_1)$ là tập hợp những đỉnh liền kề với $v_1$. Ta có định lý sau:
+Gọi $v_1$ là điểm 1-median ứng với vecto trọng số $w$. Gọi $N(v_1)$ là tập hợp những đỉnh liền kề với $v_1$. Ta có định lý sau:
 
 #theorem[
 $ R(w) >= underline(R)(w) = min_(u in N(v_1)) 1/n (1-2 angle.l w, bb(1)_T_u angle.r). $ <eq:epsilonu>
@@ -117,7 +119,7 @@ $ angle.l w+ epsilon_u, bb(1)_T_u angle.r = angle.l w- epsilon_u, bb(1)_(T witho
 
 $ angle.l tilde(w), bb(1)_T_u angle.r <= angle.l w+ epsilon_u, bb(1)_T_u angle.r = angle.l w - epsilon_u, bb(1)_(T without T_u) angle.r <= angle.l tilde(w), bb(1)_(T without T_u) angle.r. $
 
-Theo *Hệ quả ...* có thể kết luận rằng $v_1 in X_tilde(w)^*$. 
+Theo *Hệ quả ...* có thể kết luận rằng $v_1 in X_tilde(w)^*$. #remark-Le[Ref Hệ quả XXX]
 //  (Ở chương thêm, thêm 1 hệ quả...$ angle.l w, bb(1)_T_u angle.r <= W/2 = (angle.l w, bb(1)_T_u angle.r + angle.l w, bb(1)_(T without T_u) angle.r ) /2 
 //  <=> angle.l w, bb(1)_T_u angle.r <= angle.l w, bb(1)_(T without T_u) angle.r $ )
 
@@ -129,7 +131,7 @@ Giả sử rằng $underline(R)(w) < min_(i=1,...,n) w_i$, ta cần chứng minh
 Cụ thể, giả sử $epsilon in (R(w), min_(i=1,...,n)w_i)$, sau đó chúng tôi xây dựng một số $tilde(w) in [w-epsilon,w+epsilon] sect RR_n^+$ sao cho $v_1 in.not X_tilde(w)^*$. Vì $epsilon > R(w)$, tồn tại một số $u in N(v_1)$ sao cho $epsilon > epsilon_u$. Do đó
 $ angle.l w + epsilon, bb(1)_T_u angle.r > angle.l w + epsilon_u, bb(1)_T_u angle.r  = angle.l w - epsilon_u, bb(1)_(T without T_u) angle.r > angle.l w- epsilon, bb(1)_(T without T_u) angle.r. $ (9)
 
-Đặt $tilde(w)= (w+ epsilon) dot.circle bb(1)_T_u + (w-epsilon) dot.circle bb(1)_(T without T_u)$, trong đó $dot.circle$ là pháp nhân Hadamard giữa hai vecto. Lưu ý rằng $tilde(w) in [w - epsilon, w + epsilon]$ và dương vì $epsilon <= min_(i=1,...,n) w_i$. Quan sát rằng (9) có thể được viết lại dưới dạng $ angle.l tilde(w), bb(1)_T_u angle.r > angle.l tilde(w), bb(1)_(T without T_u) angle.r$. Do đó, $X_tilde(w)^* subset T_u$ theo bổ đề 2.1. Vì $v_1 in.not T_u$, ta có $v_1 in.not X_tilde(w)^*$
+Đặt $tilde(w)= (w+ epsilon) dot.circle bb(1)_T_u + (w-epsilon) dot.circle bb(1)_(T without T_u)$, trong đó $dot.circle$ là phép nhân Hadamard giữa hai vecto. Lưu ý rằng $tilde(w) in [w - epsilon, w + epsilon]$ và dương vì $epsilon <= min_(i=1,...,n) w_i$. Quan sát rằng (9) có thể được viết lại dưới dạng $ angle.l tilde(w), bb(1)_T_u angle.r > angle.l tilde(w), bb(1)_(T without T_u) angle.r$. Do đó, $X_tilde(w)^* subset T_u$ theo bổ đề 2.1. #remark-Le[Ref Bổ đề] Vì $v_1 in.not T_u$, ta có $v_1 in.not X_tilde(w)^*$
 
 Vậy ta hoàn thành chứng minh.]
 
@@ -171,7 +173,7 @@ Trước khi chứng minh *Định lý...* cần lưu ý rằng cận dưới $R
   Giả sử rằng $underline(R)(w) < min_(i=1,...,n) w_i$, mục tiêu của ta là chứng minh rằng $R(w)= underline(R)(w).$ Để đạt được mục tiêu này, chúng tôi chứng minh rằng đối với mức độ nhiễu $epsilon$ lớn hơn $R(w)$, thì sẽ tồn tại một trọng số nhiễu khả thi $tilde(w)$ sao cho $v_1$ không còn là tối ưu đối với $tilde(w)$. Cụ thể, giả sử $epsilon in (R(w), min_(i=1,...,n)w_i)$, sau đó chúng tôi xây dựng một số $tilde(w) in [w-epsilon,w+epsilon] sect RR_n^+$ sao cho $v_1 in.not X_tilde(w)^*$. Vì $epsilon > R(w)$, tồn tại một số $u in N(v_1)$ sao cho $epsilon > epsilon_u$. Do đó
   $ angle.l w + epsilon, bb(1)_T_u angle.r > angle.l w + epsilon_u, bb(1)_T_u angle.r  = angle.l w - epsilon_u, bb(1)_(T without T_u) angle.r > angle.l w- epsilon, bb(1)_(T without T_u) angle.r. $ (9)
 
-  Đặt $tilde(w)= (w+ epsilon) dot.circle bb(1)_T_u + (w-epsilon) dot.circle bb(1)_(T without T_u)$, trong đó $dot.circle$ là pháp nhân Hadamard giữa hai vecto. Lưu ý rằng $tilde(w) in [w - epsilon, w + epsilon]$ và dương vì $epsilon <= min_(i=1,...,n) w_i$. Quan sát rằng (9) có thể được viết lại dưới dạng $ angle.l tilde(w), bb(1)_T_u angle.r > angle.l tilde(w), bb(1)_(T without T_u) angle.r$. Do đó, $X_tilde(w)^* subset T_u$ theo bổ đề 2.1. Vì $v_1 in.not T_u$, ta có $v_1 in.not X_tilde(w)^*$
+  Đặt $tilde(w)= (w+ epsilon) dot.circle bb(1)_T_u + (w-epsilon) dot.circle bb(1)_(T without T_u)$, trong đó $dot.circle$ là pháp nhân Hadamard giữa hai vecto. Lưu ý rằng $tilde(w) in [w - epsilon, w + epsilon]$ và dương vì $epsilon <= min_(i=1,...,n) w_i$. Quan sát rằng (9) có thể được viết lại dưới dạng $ angle.l tilde(w), bb(1)_T_u angle.r > angle.l tilde(w), bb(1)_(T without T_u) angle.r$. Do đó, $X_tilde(w)^* subset T_u$ theo bổ đề 2.1. #remark-Le[Ref Bổ đề] Vì $v_1 in.not T_u$, ta có $v_1 in.not X_tilde(w)^*$
 
   Vậy ta hoàn thành chứng minh.
 ]

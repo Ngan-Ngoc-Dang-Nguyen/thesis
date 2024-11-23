@@ -69,6 +69,9 @@
 // #include "../tools/multi-section-ref.typ"
 // #import "../tools/macros.typ": eqref
 // #import "../typst-orange.typ": theorem, proof, lemma, proposition, corollary, example
+#pagebreak()
+#include "../docs/thanks.typ"
+
 
 // --------- CHƯƠNG 1
 #part([Chương 1]) 

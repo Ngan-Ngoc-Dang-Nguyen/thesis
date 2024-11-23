@@ -905,7 +905,7 @@ Tiếp theo, đặt $f_1(x,a)$ là hàm lồi trên tập các điểm thuộc �
 // -Nghiệm cục bộ cũng là nghiệm toàn cục => trên cây giải hiệu quả....
 // (Có thể chứng minh thêm nghiệm cục bộ là nghiệm toàn cục)
 
-=== Độ phức tạp tính toán 
+== Độ phức tạp tính toán 
 
 #remark-Le[Chưa có nội dung?]
 
