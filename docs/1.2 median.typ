@@ -16,7 +16,8 @@
 // #include "../tools/multi-section-ref.typ"
 // #import "../tools/macros.typ": eqref
 // #import "../typst-orange.typ": theorem, proof
-== BÀI TOÁN 1-MEDIAN
+// == BÀI TOÁN 1-MEDIAN
+== Bài toán 1-median
 
 Trong phần này, ta sẽ xem xét bài toán 1-median. Bài toán này là một bài toán tối ưu trong lý thuyết vị trí, với ứng dụng thực tiễn rộng rãi trong nhiều ngành khác nhau. Trong quy hoạch đô thị, bài toán này được sử dụng để chọn vị trí đặt các dịch vụ công cộng như bệnh viện, trường học, hoặc trạm xăng sao cho tổng khoảng cách di chuyển của người dân đến các địa điểm này là nhỏ nhất. Tương tự, trong quản lý chất thải, bài toán 1-median giúp tìm vị trí đặt nhà máy xử lý hoặc bãi rác nhằm tối ưu hóa chi phí vận chuyển rác từ các khu vực dân cư đến nơi xử lý, giảm thiểu chi phí và thời gian vận chuyển.
 

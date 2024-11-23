@@ -46,14 +46,14 @@
 // === #text(orange)[1.1 ĐỒ THỊ]
 
 #remark-Le[to-do list:
-- add figure list (LE, done): Cách thao tác với hình em xem @fig-do-thi-vo-huong. Em đặt canvas vào một biến, đặt biến đó vào figure, viết caption và label cho figure. Ref một figure bằng lệnh `@label-of-figure`
+- add table list (LE, NO)
+- spacing 1.5 (DONE)
+- add figure list (LE, DONE): Cách thao tác với hình em xem @fig-do-thi-vo-huong. Em đặt canvas vào một biến, đặt biến đó vào figure, viết caption và label cho figure. Ref một figure bằng lệnh `@label-of-figure`
 - Issue with figure numbering (LE)
 - Issue with equation numbering (LE)
 - How to ref a theorem (LE)
-- add table list (LE)
 - template for theorem (LE)
 - add references (NGAN)
-- spacing 1.5
 ]
 
 === Khái niệm và các dạng đồ thị 
@@ -905,7 +905,7 @@ Tiếp theo, đặt $f_1(x,a)$ là hàm lồi trên tập các điểm thuộc �
 // -Nghiệm cục bộ cũng là nghiệm toàn cục => trên cây giải hiệu quả....
 // (Có thể chứng minh thêm nghiệm cục bộ là nghiệm toàn cục)
 
-=== Độ phức tạp tính toán 
+== Độ phức tạp tính toán 
 
 #remark-Le[Chưa có nội dung?]
 

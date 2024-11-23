@@ -12,11 +12,12 @@
   box(inset: (y: insetSize), width: 100% - 1.2cm, )[
     #link(location, title)
     #box(width: 1fr, repeat(text(weight: "regular")[. #h(4pt)])) 
+    // #box(width: auto, repeat(text(weight: "regular")[. #h(4pt)])) 
     #link(location, heading_page)
   ]
 }
 
-#let my-outline(appendix_state, part_state, part_location,part_change,part_counter, mainColor, textSize1:none, textSize2:none, textSize3:none, textSize4:none) = {
+#let my-outline(appendix_state, part_state, part_location,part_change, part_counter, mainColor, textSize1:none, textSize2:none, textSize3:none, textSize4:none) = {
   show outline.entry: it => {
     let appendix_state = appendix_state.at(it.element.location())
     let numberingFormat = if appendix_state != none {"A.1"} else {"1.1"}
@@ -56,7 +57,7 @@
     }
   }
   pagebreak(to: "odd")
-  outline(depth: 3, indent: false)
+  outline(depth: 3, indent: false, title: "Mục lục")
 }
 
 #let my-outline-small(partTitle, appendix_state, part_state, part_location,part_change,part_counter, mainColor, textSize1:none, textSize2:none, textSize3:none, textSize4:none) = {
@@ -93,6 +94,7 @@
     [
       #set text(size: textSize)
       #box(width: 0.75cm, align(right, [#it.body.at("children").at(2) #h(0.2cm)]))
+    //   #box(width: 0.75cm, align(right, [#it.body.at("children").at(0)  #it.body.at("children").at(2) #h(0.2cm)]))
       #link(it.element.location(), it.body.at("children").at(4))
       #box(width: 1fr, repeat(text(weight: "regular")[. #h(4pt)])) 
       #link(it.element.location(),heading_page)
@@ -101,6 +103,7 @@
   pagebreak(to: "odd")
   outline(
     title: listOfFigureTitle,
+    // title: none,
     target: target,
   )
 }

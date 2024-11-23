@@ -2,8 +2,8 @@
 
 = GIỚI THIỆU 
 
-== Lời cảm tạ
-#remark-Le[XXXX]
+// == Lời cảm tạ
+// #remark-Le[XXXX]
 
 
 == Lý do chọn đề tài 

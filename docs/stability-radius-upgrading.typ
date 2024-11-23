@@ -3,6 +3,7 @@
 #import "../typst-orange.typ": theorem, proof, lemma, proposition, corollary, example, definition, 
 #import "@preview/cetz:0.1.2": canvas, plot
 #import "@preview/cetz:0.1.2"
+#import "@preview/equate:0.2.1": equate
 
 // #par(justify: true)[
 // = Nâng cấp bán kính ổn định của điểm 1-median
@@ -33,17 +34,35 @@ Trong đó, chi phí thay đổi trọng số từ $w$ thành $tilde(w)$ đượ
 Bài toán này được gọi là nâng cấp bán kính ổn định $"(USR- Upgrading Stability Radius)"$ của điểm 1-median $v_1$ với dữ liệu đầu vào là trọng số ban đầu $w$.
 
 Khi đó, mô hình của bài toán $"(USR)"$ có thể được viết lại như sau:
+// $
+// max quad & underline(R)(tilde(w)) quad quad quad quad quad quad quad quad quad quad quad #text(blue)[(USR-20)]\ 
+
+// "s.t." quad & norm(tilde(w)-w)_1 <= B quad quad quad quad quad quad quad("USR"-20a)\
+
+//  & v_1 "is 1-median w.r.t" tilde(w) quad quad quad quad quad quad quad ("USR" - 20b)\
+
+//  & sum^n_(i=1) tilde(w)_i = 1 quad quad quad quad quad quad quad ("USR" -20c)\
+
+//  & norm(tilde(w)-w)_infinity <= epsilon_0 quad quad quad quad quad quad quad ("USR" - 20d)
+// $
+
 $
-max quad & underline(R)(tilde(w)) quad quad quad quad quad quad quad quad quad quad quad #text(blue)[(USR-20)]\ 
+max quad & underline(R)(tilde(w)) &  #h(1fr) #text(blue)[(USR-20)]\ 
 
-"s.t." quad & norm(tilde(w)-w)_1 <= B quad quad quad quad quad quad quad("USR"-20a)\
+"s.t." quad & norm(tilde(w)-w)_1 <= B & #h(1fr) quad("USR"-20a)\
 
- & v_1 "is 1-median w.r.t" tilde(w) quad quad quad quad quad quad quad ("USR" - 20b)\
+ & v_1 "is 1-median w.r.t" tilde(w) & #h(1fr) ("USR" - 20b)\
 
- & sum^n_(i=1) tilde(w)_i = 1 quad quad quad quad quad quad quad ("USR" -20c)\
+ & sum^n_(i=1) tilde(w)_i = 1 & #h(1fr) ("USR" -20c)\
 
- & norm(tilde(w)-w)_infinity <= epsilon_0 quad quad quad quad quad quad quad ("USR" - 20d)
-$
+ & norm(tilde(w)-w)_infinity <= epsilon_0 & #h(1fr) ("USR" - 20d)
+$ 
+// #equate($
+//   E &= m c^2 #<short> \
+//     &= sqrt(p^2 c^2 + m^2 c^4) #<long2>
+// $)
+
+// #eqref(<long2>)
 
 Đến đây, có thể nhận thấy rằng bài toán đang xem xét chứa nhiều điều kiện ràng buộc, khiến việc giải quyết trở nên phức tạp. Do đó, để đơn giản hóa, chúng ta sẽ tìm cách giảm bớt các ràng buộc và điều chỉnh một số biến, nhưng vẫn đảm bảo mục tiêu tối ưu ban đầu được duy trì. Cụ thể, các thay đổi sẽ được thực hiện như sau:
 
