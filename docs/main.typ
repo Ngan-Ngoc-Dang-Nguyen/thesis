@@ -99,6 +99,6 @@
 // --------- CHƯƠNG 4
 #part([#v(0.65em)]) 
 #pagebreak()
-#heading(numbering: none, level: auto, depth: 1, offset: 0)[Tài liệu tham khảo]
+#heading(numbering: none, level: auto, depth: 1, offset: 1)[Tài liệu tham khảo]
 // #set heading(numbering: none)
 #bibliography("../docs/ref.bib", title: none, style: "annual-reviews-author-date", )
