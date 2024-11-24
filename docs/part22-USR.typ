@@ -86,7 +86,9 @@ $
 
 3. Thay đổi biến từ vecto trọng số $tilde(w)$ sang $x$, trong đó $x$ được gọi là vecto điều chỉnh, nghĩa là $x = tilde(w) - w.$
 
-Dựa vào *Định lý 3.1*, bài toán tối ưu hóa $underline(R)(w)$ có thể được chuyển đổi thành một bài toán tối thiểu hóa tương đương như sau:
+// *Định lý 3.1* --> @thm-lower-bound-SR 
+
+Dựa vào @thm-lower-bound-SR, bài toán tối ưu hóa $underline(R)(w)$ có thể được chuyển đổi thành một bài toán tối thiểu hóa tương đương như sau:
 
 $ max_tilde(w) underline(R)(tilde(w)) = max_tilde(w) min_(u in N(v_1)) 1/n (1- 2 angle.l tilde(w), bb(1)_T_u angle.r) = 1/n -2/n min_tilde(w) max_( u in N(v_1)) angle.l tilde(w), bb(1)_T_u angle.r. $
 
@@ -94,8 +96,8 @@ Tiếp theo, giả sử $w^*$ là nghiệm tối ưu của bài (USR-20), dễ t
 $ max_(u in N(v_1)) angle.l w^*, bb(1)_T_u angle.r <= max_(u in N(v_1)) angle.l w, bb(1)_T_u angle.r <= 1/2. $
 
 //giải thích ra tại sao.
-
-Từ đó, ta thấy rằng $v_1$ cũng là điểm 1-median đối với $w^*$. Do đó, ràng buộc (USR-20b) là dư thừa và có thể loại bỏ. Nói cách khác, nếu $w^*$ là nghiệm tối ưu của bài toán (USR-20) thì nó hiển nhiên thỏa mãn ràng buộc (USR-20b).
+// (USR-20b)
+Từ đó, ta thấy rằng $v_1$ cũng là điểm 1-median đối với $w^*$. Do đó, ràng buộc về tính tối ưu trong #USR1 là dư thừa và có thể loại bỏ. Nói cách khác, nếu $w^*$ là nghiệm tối ưu của bài toán (USR-20) thì nó hiển nhiên thỏa mãn ràng buộc (USR-20b).
 
 Cuối cùng, đặt $ x= tilde(w) - w$ là vecto điều chỉnh. 
 
@@ -169,7 +171,7 @@ Từ quan sát thú vị này, ta có được bổ đề bên dưới:
 
 #lemma[Ta có 
 $ beta(t) <= B <=> t>= t^* $ trong đó $beta(t)$ là ngân sách cần thiết nhỏ nhất để đạt được giá trị $t$ và $t^*$ là giá trị mục tiêu tối ưu của bài toán #eqref(<eq:23>).
-]
+] <thm-beta-t>
 
 Để chứng minh bổ đề này, trước hết ta xem xét một số ký hiệu liên quan. Với ngân sách cố định $B$, giả sử $x^*$ và $t^*$ lần lượt là nghiệm tối ưu và giá trị mục tiêu tối ưu của bài toán #eqref(<eq:23>). Với mỗi tham số $t$ cho trước, giả sử $hat(x)(t)$ và $beta(t)$ lần lượt là nghiệm tối ưu và ngân sách tối thiểu tương ứng trong #eqref(<eq:24>). Cần lưu ý rằng, $beta(dot)$ là một hàm không giảm trên miền xác định của nó và nhận giá trị $+infinity$ nếu tập khả thi của #eqref(<eq:24>) rỗng. Cuối cùng, ta đặt $P(x)= max_(u in N(v_1)) angle.l w + x, bb(1)_T_u angle.r $ là hàm mục tiêu của #eqref(<eq:23>).
 
@@ -191,23 +193,25 @@ Nếu $beta(t) <= B$, thì $hat(x)(t)$ là một nghiệm khả thi ứng với 
 
 Ta tiến hành chứng minh chiều ngược lại. Giả sử rằng $t >= t^*$. Bởi vì $t^* = P(x^*)$, suy ra $P(x^*) <= t$. Do đó, $norm(hat(x)(t))_1 <= norm(x^*)_1$. Vì $x^*$ là nghiệm tối ưu đối với #eqref(<eq:24>) nên $norm(x^*)_1 <= B$. Vì vậy, $beta(t)= norm(hat(x)(t))_1 <= norm(x^*)_1 <= B$. Ta hoàn thành chứng minh.]
 
-Từ *Bổ đề 4.1*, ta có thể thấy rằng 
+// *Bổ đề 4.1*--> @thm-beta-t
+
+Từ @thm-beta-t, ta có thể thấy rằng 
 $ beta(t^*) <= B $. <eq:26>
 
-
-Trong phần tiếp theo, chúng ta sẽ khai thác *Bổ đề 4.1* xây dựng một sự chuyển đổi từ $(hat(x)(t), beta(t))$ của bài toán #eqref(<eq:23>) sang $(x^*, t^*)$ của #eqref(<eq:24>).
+Trong phần tiếp theo, chúng ta sẽ khai thác @thm-beta-t xây dựng một sự chuyển đổi từ $(hat(x)(t), beta(t))$ của bài toán #eqref(<eq:23>) sang $(x^*, t^*)$ của #eqref(<eq:24>).
 
 // *Định lý 4.1*
 
 #theorem[_Giá trị hàm mục tiêu $t^*$ của #eqref(<eq:23>) được tính_
 $ t^* = inf{t: beta(t) <= B}. $
-_và $hat(x)(t^*)$ là nghiệm tối ưu của #eqref(<eq:23>)._]
-<eq:27>
+_và $hat(x)(t^*)$ là nghiệm tối ưu của #eqref(<eq:23>)._] <thm-computing-topt>
+
+// <eq:27>
 
 // *Chứng minh* 
 
 #proof[
-Từ *Bổ đề 4.1*, ta có thể thấy rằng $t^* <= inf{t: beta(t)<= B}$. Nếu $t^* < inf{t: beta(t) <= B}$ thì dễ thấy rằng $beta(t^*) > B$, điều này mâu thuẫn với #eqref(<eq:26>). Vì thế, $t^*= inf{t: beta(t)<= B}$.
+Từ @thm-beta-t, ta có thể thấy rằng $t^* <= inf{t: beta(t)<= B}$. Nếu $t^* < inf{t: beta(t) <= B}$ thì dễ thấy rằng $beta(t^*) > B$, điều này mâu thuẫn với #eqref(<eq:26>). Vì thế, $t^*= inf{t: beta(t)<= B}$.
 
 Hơn nữa từ #eqref(<eq:26>), ta biết rằng $hat(x)(t^*)$ là một nghiệm khả thi của #eqref(<eq:23>). Do đó, $ P(hat(x)(t^*)) >= P(x^*) = t^* $. 
 
@@ -215,7 +219,9 @@ Hơn nữa, tính khả thi của $hat(t^*)$ tương ứng với (PUSR-24a) có 
 
 Từ đây, ta được $ hat(x)(t^*) = t^* $ nghĩa là $hat(x)(t^*)$ là nghiệm tối ưu của #eqref(<eq:23>).]
 
-Từ *Định lý 3.3*, có thể thấy rằng nếu ta có thể giải được bài toán (PUSR-24) #eqref(<eq:24>), tức là tìm được $beta(t)$ và $hat(x)(t)$ với $t$ bất kỳ, thì ta có thể xây dựng một nghiệm tối ưu $x^* = hat(x)(t^*)$, trong đó $t^*$ có thể được tính bằng #eqref(<eq:27>). 
+// *Định lý 3.3* --> @thm-computing-topt
+
+Từ @thm-computing-topt, có thể thấy rằng nếu ta có thể giải được bài toán (PUSR-24) #eqref(<eq:24>), tức là tìm được $beta(t)$ và $hat(x)(t)$ với $t$ bất kỳ, thì ta có thể xây dựng một nghiệm tối ưu $x^* = hat(x)(t^*)$, trong đó $t^*$ có thể được tính bằng @thm-computing-topt. 
 
 Để giải bài toán (PUSR-24) #eqref(<eq:24>) một cách đơn giản và nhanh chóng, trước hết, tôi xin đề xuất một phép đổi biến nhằm giải chiều bài toán. Để thực hiện được điều này, ta cần lưu ý rằng, tồn tại một nghiệm tối ưu mà trong đó các giá trị của $x_i$ trong mỗi cây con $T_u$, với $u in N(v_1)$ là bằng nhau. Do đó, ta có thể đối thành biến mới, trong đó mỗi biến đại diện cho tổng của $x_i$ đối với các đỉnh $v_i$ thuộc cây con $T_u$. Bằng cách đổi biến như trên, ta có thể giảm chiều bài toán, cụ thể giảm từ $n$ chiều về $k$ chiều, với $k$ là bậc của đỉnh $v_1$. Khi đó, số chiều của bài toán được giảm một cách đáng kể.
 
@@ -313,7 +319,7 @@ $ z_0 + sum_(j in J <= (t)) z_j < - sum_(j in J > (t)) z_j. $
 // == 4.3 Giải phiên bản tham số của bài toán nâng cấp bán kính ổn định
 == Giải thuật 
 
-Trong phần trước, chúng ta đã chứng minh rằng việc giải bài toán mục tiêu (USR-12) có thể được giảm xuống bằng việc giải phiên bản tham số của nó (PUSR-16) bằng cách tìm một nghiệm tối ưu $hat(z)(t)$ và mục tiêu tối ưu $beta(t)$ tương ứng với $t$. Định lý sau đây cung cấp các biểu thức dạng đóng cho cả $hat(z)(t)$ và $beta(t)$. 
+Trong phần trước, chúng ta đã chứng minh rằng việc giải bài toán mục tiêu (USR-12) có thể được đưa về giải bài toán tham số của nó (PUSR-16) bằng cách tìm một nghiệm tối ưu $hat(z)(t)$ và mục tiêu tối ưu $beta(t)$ tương ứng với $t$. Định lý sau đây cung cấp các biểu thức dạng đóng cho cả $hat(z)(t)$ và $beta(t)$. 
 
 // *Định lý 4.3* 
 
@@ -371,14 +377,9 @@ Quan sát rằng với mỗi giá trị cố định của $t$, ta có thể tì
 
 Bây giờ chúng tôi sẽ mô tả một cách tiếp cận tổ hợp để tìm nghiệm tối ưu $w*$ của bài toán nâng cấp bán kính ổn định ban đầu (USR-10) thông qua các phép biến đổi đã được phát triển trong các tiểu mục trước đó.
 
-Ta có $w* = w + x^* $, trong đó $x*$ là nghiệm khả thi của (USR-12). Dựa vào định lý 4.1, ta có thể chọn $x*= hat(x)(t*)$. Lưu ý rằng, ta có thể xây dựng $hat(x)(t)$ từ $hat(z)(t)$ cho bất kỳ $t$ nào bằng cách sử dụng Định lý 4.2, phương trình (17), và biểu thức của $hat(z)(t)$ được cho bởi (21) hoặc (22). Về giá trị $t*$, nó có thể được tìm thấy trong thời gian $O(k log k)$, với $k$ là bậc của $v_1$, bằng cách sử dụng tìm kiếm nhị phân vì $t* = inf{t >= 0: beta(t) <= B}$ và hàm $beta(.)$ được xác định trong Định lý 4.3 là hàm tuyến tính từng khúc và giảm dần. Xem Hình 2 để có cái nhìn tổng quan về các phép biến đổi giữa các bài toán và lời giải.
+Ta có $w^* = w + x^* $, trong đó $x^*$ là nghiệm khả thi của (USR-12). Dựa vào @thm-computing-topt, ta có thể chọn $x^*= hat(x)(t^*)$. Lưu ý rằng, ta có thể xây dựng $hat(x)(t)$ từ $hat(z)(t)$ cho bất kỳ $t$ nào bằng cách sử dụng Định lý 4.2, phương trình (17), và biểu thức của $hat(z)(t)$ được cho bởi (21) hoặc (22). Về giá trị $t^*$, nó có thể được tìm thấy trong thời gian $O(k log k)$, với $k$ là bậc của $v_1$, bằng cách sử dụng tìm kiếm nhị phân vì $t^* = inf{t >= 0: beta(t) <= B}$ và hàm $beta(.)$ được xác định trong Định lý 4.3 là hàm tuyến tính từng khúc và giảm dần. Xem @fig-so-do-cac-bai-toan để có cái nhìn tổng quan về các phép biến đổi giữa các bài toán và lời giải.
 
-#align(center)[
-  #import "@preview/cetz:0.1.2"
-  #import "@preview/cetz:0.1.2": canvas, plot
-// #import "@preview/cetz:0.2.2"
-//   #import "@preview/cetz:0.1.2
-  #canvas(length: 10%, {
+#let so-do-cac-bai-toan  = canvas(length: 10%, {
     import cetz.draw: *
     let (y1, y2, y3, y4) = (3,2,1, 4) 
     let (x1, x2, x3, x4) = (1, 3, 5, 7) 
@@ -386,31 +387,36 @@ Ta có $w* = w + x^* $, trong đó $x*$ là nghiệm khả thi của (USR-12). D
     let r = 0.5
     let h =-2
 
-    rect((0,0), (2.2, 0.5), name: "p1")
-    rect((6,0), (6.5+2, 0.5), name: "p2")
-    rect((0,h), (2.5, h+0.5), name: "p4")
-    rect((6,h), (6.5+2, h+0.5), name: "p3")
+    rect((0,0), (2.2, 0.5), name: "p1", stroke: none)
+    rect((6,0), (6.5+2, 0.5), name: "p2", stroke: none)
+    rect((0,h), (2.5, h+0.5), name: "p4", stroke: none)
+    rect((6,h), (6.5+2, h+0.5), name: "p3", stroke: none)
     line("p1.right", "p2.left",  mark: (end: ">"), name: "l1")
     line("p2.bottom", "p3.top",  mark: (end: ">"), name: "l2")
     line("p3.left", "p4.right",  mark: (end: ">"), name: "l3")
 
 
-    content("p1.center",  [#text(blue)[$("USR"-1) quad "&" quad w^*$]], anchor: none, padding: 0.3)
-    content("p2.center",  [#text(blue)[$("USR"-2) quad "&" quad x^*$]], anchor: none, padding: 0.3)
-    content("p3.center",  [#text(blue)[$("PUSR"-3) quad "&" quad hat(x)(t)$]], anchor: none, padding: 0.3)
-    content("p4.center",  [#text(blue)[$("PUSR"-4) quad "&" quad hat(z)(t)$]], anchor: none, padding: 0.2)
+    // content("p1.center",  [#text(blue)[$("USR"-1) quad "&" quad w^*$]], anchor: none, padding: 0.3)
+    // content("p2.center",  [#text(blue)[$("USR"-2) quad "&" quad x^*$]], anchor: none, padding: 0.3)
+    // content("p3.center",  [#text(blue)[$("PUSR"-3) quad "&" quad hat(x)(t)$]], anchor: none, padding: 0.3)
+    // content("p4.center",  [#text(blue)[$("PUSR"-4) quad "&" quad hat(z)(t)$]], anchor: none, padding: 0.2)
+    content("p1.center",  box(stroke: black, inset: 0.5em)[#USR1 & $w^*$], anchor: none, padding: 0.2)
+    content("p2.center",  box(stroke: black, inset: 0.5em)[#USR2 & $x^*$], anchor: none, padding: 0.2)
+    content("p3.center",  box(stroke: black, inset: 0.5em)[#PUSR1 & $hat(x)(t)$], anchor: none, padding: 0.2)
+    content("p4.center",  box(stroke: black, inset: 0.5em)[#PUSR2 & $hat(z)(t)$], anchor: none, padding: 0.2)
 
     content("l1.bottom",  [*Loại bỏ ràng buộc median*], anchor: "bottom", padding: 0.2)
     content("l1.top",  [*$x^* = w^* - w$*], anchor: "top", padding: 0.2)
-    content("l2.left",  [*Đổi hàm mục tiêu và*
-
-*điều kiện ngân sách*], anchor: "left", padding: 0.2)
+    content("l2.left",  [*Đổi hàm mục tiêu và\ điều kiện ngân sách*], anchor: "left", padding: 0.2)
     content("l2.right",  [*Định lý 3*], anchor: "right", padding: 0.2)
     content("l3.bottom",  [*Định lý 4.2 4.3 & (17)*], anchor: "bottom", padding: 0.2)
     content("l3.top",  [*Giảm chiều*], anchor: "top", padding: 0.2)
-  })]
-
-Hình 2. Các phép biến đổi của bốn bài toán nâng cấp. Mỗi hộp chứa một bài toán và nghiệm tối ưu của nó. Mỗi mũi tên đại diện cho phép biến đổi giữa các bài toán cùng với những kết quả chính kết nối chúng.
+})
+#figure(
+  so-do-cac-bai-toan,
+  caption: [Các phép biến đổi của bốn bài toán nâng cấp. Mỗi hình chữ nhật đại diện cho một bài toán và nghiệm tối ưu của nó. Mỗi mũi tên đại diện cho phép biến đổi giữa các bài toán cùng với những kết quả chính kết nối chúng.],
+) <fig-so-do-cac-bai-toan>
+// Hình 2. Các phép biến đổi của bốn bài toán nâng cấp. Mỗi hộp chứa một bài toán và nghiệm tối ưu của nó. Mỗi mũi tên đại diện cho phép biến đổi giữa các bài toán cùng với những kết quả chính kết nối chúng.
 
 Nhớ rằng việc giải quyết bài toán (PUSR_13) tốn chi phí $O(n + k log k)$ và việc tìm kiếm $t*$ có thể thực hiện trong $O(k log k)$, do đó độ phức tạp tổng thể của việc giải bài toán (USR-10) là $O(n + k log k)$. 
 

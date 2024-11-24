@@ -898,7 +898,7 @@ Với hai điểm $x$ và $y$ gọi $P(x,y)$ là đường đi nối $x$ và $y$
 
 Trước tiên ta nhắc lại về hàm lồi trên đồ thị cây. Cho hàm số $f$ liên tục trên đồ thị cây $T$.
 
-#definition[Hàm $f$ được gọi là _lồi_ trên $T$ nếu với mọi đường đi $P(a, b)$, $a, b in T$, và với mọi $lambda in [0, 1]$, ta có 
+#definition[Hàm $f$ liên tục trên đồ thị $T$ được gọi là _lồi_ nếu với mọi đường đi $P(a, b)$, $a, b in T$, và với mọi $lambda in [0, 1]$, ta có 
 $
   f(x_lambda) <= lambda f(a) + (1- lambda) f(b).
 $
@@ -945,7 +945,7 @@ Thay #eqref(<eq:distance-3>) và #eqref(<eq:distance-4>) vào #eqref(<eq:distanc
 
 Trường hợp $x in P(y,a)$ cũng được chứng minh tương tự.
 
-Tiếp theo, giả sử $x arrow.bar d(x,a)$ là hàm lồi trên tập các điểm thuộc đồ thị $T$ và giả sử rằng $T$ không phải là cây. Nói cách khác, tồn tại một chu trình $C$ của $T$ có độ dài ngắn nhất, giả sử là $l>0$, trong tất cả các chu trình của $T$. Bởi vì $C$ là một chu trình ngắn nhất trong $T$, nên ta có thể chọn $x,y,z$ và $a$ trong $C$ sao cho $d(a,x)=d(y,z)=l/2$, $d(a,y)=d(x,y)=d(z,a)=d(x,z)=l/4$ và $d(x,z)=1/2 d(y,z)$. Khi đó $d(x,a)=l/2 > 1/2d(y,a) + 1/2d(z,a)=l/4 $, điều này mâu thuẫn với giả thiết $d(x,a)$ là hàm lồi. Vậy $T$ là đồ thị cây.]
+Ta chứng mình chiều ngược lại bằng phản chứng. Giả sử $x arrow.bar d(x,a)$ là hàm lồi trên tập các điểm thuộc đồ thị $T$ và giả sử rằng $T$ không phải là cây. Nói cách khác, tồn tại một chu trình $C$ của $T$ có độ dài ngắn nhất, giả sử là $l>0$, trong tất cả các chu trình của $T$. Bởi vì $C$ là một chu trình ngắn nhất trong $T$, nên ta có thể chọn $x,y,z$ và $a$ trong $C$ sao cho $d(a,x)=d(y,z)=l/2$, $d(a,y)=d(x,y)=d(z,a)=d(x,z)=l/4$ và $d(x,z)=1/2 d(y,z)$. Khi đó $d(x,a)=l/2 > 1/2d(y,a) + 1/2d(z,a)=l/4 $, điều này mâu thuẫn với giả thiết $d(x,a)$ là hàm lồi. Vậy $T$ là đồ thị cây.]
 
 // (Có thể thêm bổ đề 3)
 
