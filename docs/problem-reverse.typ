@@ -1,17 +1,24 @@
 
+// #include "../tools/multi-section-ref.typ"
+// #import "../tools/macros.typ": eqref
+// #include "../tools/multi-section-ref.typ"
+// #import "../tools/macros.typ": eqref
+// #import "../typst-orange.typ": theorem, proof, lemma, proposition, corollary, example
+// #import "@preview/cetz:0.1.2": canvas, plot
+// #import "@preview/cetz:0.1.2"
+// #include "../tools/multi-section-ref.typ"
+// #import "../tools/macros.typ": eqref
+// #import "../typst-orange.typ": theorem, proof, lemma, proposition, corollary, example
+// #include "../tools/multi-section-ref.typ"
+// #import "../tools/macros.typ": eqref
+// #import "../typst-orange.typ": theorem, proof
+
 #include "../tools/multi-section-ref.typ"
-#import "../tools/macros.typ": eqref
-#include "../tools/multi-section-ref.typ"
-#import "../tools/macros.typ": eqref
-#import "../typst-orange.typ": theorem, proof, lemma, proposition, corollary, example
 #import "@preview/cetz:0.1.2": canvas, plot
 #import "@preview/cetz:0.1.2"
-#include "../tools/multi-section-ref.typ"
-#import "../tools/macros.typ": eqref
-#import "../typst-orange.typ": theorem, proof, lemma, proposition, corollary, example
-#include "../tools/multi-section-ref.typ"
-#import "../tools/macros.typ": eqref
-#import "../typst-orange.typ": theorem, proof
+#import "../tools/macros.typ": eqref, remark-Le, delete-Le, add-Le, remark-Ngan, delete-Ngan, add-Ngan, theorem, definition, proposition, lemma, proof, example
+
+
 // == BÀI TOÁN REVERSE 1-MEDIAN TRÊN CÂY
 === Bài toán Reverse 1-median 
 

@@ -65,7 +65,8 @@ $ norm(x)_1 =  abs(1) + abs(-3) + abs(2) = 1 + 3 + 2= 6. $
 
 #remark-Le[Giải thích thêm ký hiệu $[w - epsilon, w+ epsilon]$]
 
-== Định nghĩa bán kính ổn định
+== Bán kính ổn định
+=== Định nghĩa 
 Như đã trình bày ở *Chương 1*, $v_1$ được gọi là điểm 1-median nếu $f(v_1)$ nhỏ nhất. Đồng thời, *Goldman* cũng đã đưa ra được điều kiện tối ưu như sau:
 
 $ angle.l w, bb(1)_T_u angle.r <= W/2 $ <eq:dktu>
@@ -97,7 +98,7 @@ Trong đó: $X_tilde(w)^*$ là tập hợp các điểm 1-median tương ứng v
 Khi đó ta gọi $R(w)$ là _bán kính ổn định_ của điểm $v_1$ tương ứng với vecto $w$.
 
 // Mặc dù $R(w)$ được định nghĩa một cách ngầm định, nó có một cận dưới đơn giản nhưng chặt chẽ.
-== Ước lượng cận dưới bán kính ổn định
+=== Ước lượng cận dưới bán kính ổn định
 
 Trong mục này, chúng ta sẽ ước lượng cận dưới bán kính ổn định bằng một công thức được tính toán một cách tường minh. Điều này đóng vai trò quan trọng trong việc nâng cấp cận dưới này ở chương tiếp theo.
 
@@ -147,7 +148,7 @@ $ R(w)=sup{epsilon>= 0: v_1 in X_tilde(w)^*, quad forall tilde(w)in [w-epsilon;w
 
 
 
-== Chặn dưới của bán kính ổn định 
+===  Chặn dưới của bán kính ổn định 
 
 Mặc dù $R(w)$ được định nghĩa một cách ngầm định, nó có một cận dưới đơn giản nhưng chặt chẽ. 
 

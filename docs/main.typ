@@ -75,11 +75,6 @@
 // #import "../typst-orange.typ": theorem, proof, lemma, proposition, corollary, example
 #pagebreak()
 #include "../docs/thanks.typ"
-
-
-// --------- CHƯƠNG 1
-// #part([Chương 1]) 
-#pagebreak()
 #include "../docs/intro.typ"
 
 // --------- CHƯƠNG 2

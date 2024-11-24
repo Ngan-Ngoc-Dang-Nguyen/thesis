@@ -1,6 +1,7 @@
 #include "../tools/multi-section-ref.typ"
-#import "../tools/macros.typ": eqref, remark-Le, delete-Le, add-Le, remark-Ngan, delete-Ngan, add-Ngan
-#import "../typst-orange.typ": theorem, proof, lemma, proposition, corollary, example, definition, 
+// #import "../tools/macros.typ": eqref, remark-Le, delete-Le, add-Le, remark-Ngan, delete-Ngan, add-Ngan
+// #import "../typst-orange.typ": theorem, proof, lemma, proposition, corollary, example, definition, 
+#import "../tools/macros.typ": eqref, remark-Le, delete-Le, add-Le, remark-Ngan, delete-Ngan, add-Ngan, theorem, definition, proposition, lemma, proof, example
 #import "@preview/cetz:0.1.2": canvas, plot
 #import "@preview/cetz:0.1.2"
 #import "@preview/equate:0.2.1": equate
@@ -118,14 +119,18 @@ $
 
     & x_i in [-epsilon_0; epsilon_0], forall i = 1,...,n 
 $ <eq:23>
-=== Giải thuật của bài toán nâng cấp bán kính ổn định 
+// === Giải thuật của bài toán nâng cấp bán kính ổn định 
+// == Giải thuật 
+// === Giải bài toán tham số
+
+
+
+===  Tham số hóa bài toán
+// nâng cấp bán kính ổn định
 
 Sau khi chuyển đổi sang bài toán đơn giản hơn #eqref(<eq:23>), phần này sẽ tập trung vào việc giải quyết #eqref(<eq:23>). Dễ dàng nhận thấy bài toán này có thể được biểu diễn dưới dạng một bài toán quy hoạch tuyến tính với không gian $n$ chiều và $n+2$ ràng buộc. Nhờ vậy, nó có thể được giải bằng các phương pháp kinh điển như thuật toán đơn hình hoặc các thuật toán thời gian đa thức do @karmarkar1984new và @megiddo1984linear đề xuất.
 
 Tuy nhiên, khi số chiều tăng lên, thời gian tính toán tăng đáng kể. Điều này đặc biệt quan trọng trong thực tế, khi các đồ thị cây được phân tích có thể chứa hàng trăm hoặc thậm chí hàng chục nghìn đỉnh, khiến việc giải bài toán trở nên không khả thi bằng các phương pháp thông thường. Do đó, trong phần này, tôi sẽ đề xuất một thuật toán tổ hợp nhằm giải quyết bài toán một cách hiệu quả hơn.
-
-====  Tham số hóa bài toán
-// nâng cấp bán kính ổn định
 
 Việc giải quyết bài toán #eqref(<eq:23>) thực chất là trả lời cho câu hỏi: _"Giá trị mục tiêu nhỏ nhất có thể đạt được trong ngân sách $B$ là bao nhiêu?"_. Tuy nhiên, thay vì tập trung vào câu hỏi này, ta có thể chuyển sang một câu hỏi có mối liên hệ chặt chẽ khác như sau: _"Với một giá trị mục tiêu $t$ cho trước, ngân sách tối thiểu cần thiết để đạt được giá trị mục tiêu không lớn hơn $t$ là bao nhiêu?"_. Câu hỏi này có thể được diễn đạt dưới dạng bài toán sau:
 
@@ -306,13 +311,13 @@ $ z_0 + sum_(j in J <= (t)) z_j < - sum_(j in J > (t)) z_j. $
 Điều này vi phạm ràng buộc (PUSR-16b) và do đó, tập hợp khả thi là rỗng. (chứng minh xong).]
 
 // == 4.3 Giải phiên bản tham số của bài toán nâng cấp bán kính ổn định
-=== Giải thuật 
+== Giải thuật 
 
 Trong phần trước, chúng ta đã chứng minh rằng việc giải bài toán mục tiêu (USR-12) có thể được giảm xuống bằng việc giải phiên bản tham số của nó (PUSR-16) bằng cách tìm một nghiệm tối ưu $hat(z)(t)$ và mục tiêu tối ưu $beta(t)$ tương ứng với $t$. Định lý sau đây cung cấp các biểu thức dạng đóng cho cả $hat(z)(t)$ và $beta(t)$. 
 
 // *Định lý 4.3* 
 
-==== Giải bài toán tham số
+=== Giải bài toán tham số
 #remark-Le[Xem lại cách trình bày lại định lý này trong bản mới của bài báo]
 Hơn nữa, một nghiệm tối ưu của (PUSR-16), gọi là $hat(z)(t)$ có thể được chọn bằng cách xem xét hai trường hợp. Nếu $overline(z_0) >= sum_(i=1)^k [gamma_i - t]_+$ thì ta chọn
 $ hat(z)_(j)(t) = -(gamma_j - t), quad quad j in J > (t) quad (21a) $
@@ -362,7 +367,7 @@ Bây giờ chúng ta chỉ ra sự tồn tại của $underline(t)$. Đặt $phi
 
 Quan sát rằng với mỗi giá trị cố định của $t$, ta có thể tìm $underline(t)$ trong (23) bằng cách sử dụng tìm kiếm nhị phân vì hàm $z_0 + sum_(j in J <= (t)) min (z_j, . - gamma_j)$ là hàm tuyến tính từng khúc và không giảm. Lưu ý rằng việc đánh giá hàm này tốn chi phi $O(k)$, với $k$ là bậc của $v_1$. Do đó, các bài toán tham số (PUSR-16) có thể được giải quyết trong thời gian $O(k log k)$. Vì phép biến đổi (17) tốn chi phí $O(n)$, bài toán (PUSR-13) có thể được giải trong thời gian $O(n+k log k).$
 
-==== Giải bài toán nâng cấp bán kính ổn định
+=== Giải bài toán nâng cấp cận dưới bán kính ổn định
 
 Bây giờ chúng tôi sẽ mô tả một cách tiếp cận tổ hợp để tìm nghiệm tối ưu $w*$ của bài toán nâng cấp bán kính ổn định ban đầu (USR-10) thông qua các phép biến đổi đã được phát triển trong các tiểu mục trước đó.
 
@@ -479,7 +484,7 @@ Trọng số đỉnh trên cây được cải thiện như ở hình 3
 )
 #figure(
   example-upgrading-stability-radius,
-  caption: [Đồ thị cây sau upgrading stability radius],
+  caption: [Đồ thị cây sau nâng cấp cận dưới bán kính ổn định],
 ) <fig-example-upgrading-stability-radius>
 
 == Kết luận và thảo luận 

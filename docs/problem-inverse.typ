@@ -2,14 +2,15 @@
 
 // Thêm ý nghĩa của bài toán vào luận văn
 
+// #import "../tools/macros.typ": eqref
+// #import "../typst-orange.typ": theorem, proof
+// #include "../tools/multi-section-ref.typ"
+// #import "../tools/macros.typ": eqref
+// #import "../typst-orange.typ": theorem, proof, lemma, proposition, corollary, example
 #include "../tools/multi-section-ref.typ"
-#import "../tools/macros.typ": eqref
-#import "../typst-orange.typ": theorem, proof
-#include "../tools/multi-section-ref.typ"
-#import "../tools/macros.typ": eqref
-#import "../typst-orange.typ": theorem, proof, lemma, proposition, corollary, example
 #import "@preview/cetz:0.1.2": canvas, plot
 #import "@preview/cetz:0.1.2"
+#import "../tools/macros.typ": eqref, remark-Le, delete-Le, add-Le, remark-Ngan, delete-Ngan, add-Ngan, theorem, definition, proposition, lemma, proof, example
 
 // == BÀI TOÁN INVERSE 1-MEDIAN TRÊN CÂY
 // == INVERSE 1-MEDIAN VÀ CÁC BÀI TOÁN LIÊN QUAN 
@@ -44,7 +45,7 @@ $.
 
 Định lý sau đây được chứng minh trong @burkard2004inverse
 
-#lemma(name: "Điều kiện tối ưu")[
+#lemma("Điều kiện tối ưu")[
   
 Giả sử $tilde(w)_1 <= W/2,...,tilde(w)_(k-1)<= W/2$. Đỉnh $s$ là 1-median nếu và chỉ nếu $R=0$.
 

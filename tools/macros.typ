@@ -27,5 +27,6 @@
 #let proposition = thmbox("theorem", "Mệnh đề", base_level: 1, fill: rgb("#eeffee"), stroke: black, radius: 2pt)
 #let definition = thmbox("theorem", "Định nghĩa", base_level: 1, fill: rgb("#eeffee"), stroke: black, radius: 2pt)
 #let lemma = thmbox("theorem", "Bổ đề", base_level: 1, fill: rgb("#eeffee"), stroke: black, radius: 2pt)
+#let corollary = thmbox("theorem", "Hệ quả", base_level: 1, fill: rgb("#eeffee"), stroke: black, radius: 2pt)
 #let example  = thmbox("theorem", "Ví dụ", base_level: 1, fill: none, stroke: none, radius: 2pt)
 #let proof = thmproof("proof", "Chứng minh")

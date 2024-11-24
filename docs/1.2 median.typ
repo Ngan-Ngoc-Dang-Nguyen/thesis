@@ -1,11 +1,11 @@
 // == #text(orange)[1.2 Bài toán 1-median]
 
 // == Bài toán 1-median
-#include "../tools/multi-section-ref.typ"
-#import "../tools/macros.typ": eqref, remark-Le, delete-Le, add-Le, remark-Ngan, delete-Ngan, add-Ngan
-#import "../typst-orange.typ": theorem, proof, lemma, proposition, corollary, example
-#import "@preview/cetz:0.1.2": canvas, plot
-#import "@preview/cetz:0.1.2"
+// #include "../tools/multi-section-ref.typ"
+// #import "../tools/macros.typ": eqref, remark-Le, delete-Le, add-Le, remark-Ngan, delete-Ngan, add-Ngan
+// #import "../typst-orange.typ": theorem, proof, lemma, proposition, corollary, example
+// #import "@preview/cetz:0.1.2": canvas, plot
+// #import "@preview/cetz:0.1.2"
 // #include "../tools/multi-section-ref.typ"
 // #import "../tools/macros.typ": eqref
 // #import "../typst-orange.typ": theorem, proof, lemma, proposition, corollary, example
@@ -16,6 +16,13 @@
 // #include "../tools/multi-section-ref.typ"
 // #import "../tools/macros.typ": eqref
 // #import "../typst-orange.typ": theorem, proof
+
+#include "../tools/multi-section-ref.typ"
+#import "@preview/cetz:0.1.2": canvas, plot
+#import "@preview/cetz:0.1.2"
+#import "../tools/macros.typ": eqref, remark-Le, delete-Le, add-Le, remark-Ngan, delete-Ngan, add-Ngan, theorem, definition, proposition, lemma, proof, example, corollary
+
+
 // == BÀI TOÁN 1-MEDIAN
 == Bài toán 1-median
 

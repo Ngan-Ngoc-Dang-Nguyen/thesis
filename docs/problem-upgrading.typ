@@ -1,11 +1,16 @@
 // trích bài báo Up- down grading the 1-median in a network Gassner
 // #text(orange)[*Bài toán nâng cấp 1-median*]
 
+// #include "../tools/multi-section-ref.typ"
+// #import "../tools/macros.typ": eqref
+// #import "../typst-orange.typ": theorem, proof, lemma, proposition, corollary, example
+// #import "@preview/cetz:0.1.2": canvas, plot
+// #import "@preview/cetz:0.1.2"
+
 #include "../tools/multi-section-ref.typ"
-#import "../tools/macros.typ": eqref
-#import "../typst-orange.typ": theorem, proof, lemma, proposition, corollary, example
 #import "@preview/cetz:0.1.2": canvas, plot
 #import "@preview/cetz:0.1.2"
+#import "../tools/macros.typ": eqref, remark-Le, delete-Le, add-Le, remark-Ngan, delete-Ngan, add-Ngan, theorem, definition, proposition, lemma, proof, example
 
 Mục tiếp theo, ta sẽ xem xét một lớp bài toán khác được gọi là bài toán nâng cấp.
 
