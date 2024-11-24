@@ -11,11 +11,15 @@
 #import "@preview/cetz:0.1.2": canvas, plot
 #import "@preview/cetz:0.1.2"
 #import "../tools/macros.typ": eqref, remark-Le, delete-Le, add-Le, remark-Ngan, delete-Ngan, add-Ngan, theorem, definition, proposition, lemma, proof, example
+#import "@preview/equate:0.2.1": equate
+#show: equate.with(breakable: true, sub-numbering: true)
+#set math.equation(numbering: "(1.1)", supplement: "Eq.")
 
-Mục tiếp theo, ta sẽ xem xét một lớp bài toán khác được gọi là bài toán nâng cấp.
 
 // == BÀI TOÁN NÂNG CẤP 1-MEDIAN TRÊN CÂY
 === Bài toán Upgrading 1-median 
+
+Trong mục này, ta sẽ xem xét một lớp bài toán khác được gọi là bài toán nâng cấp.
 
 Giả sử một thành phố có mạng lưới các con đường nối liền các quận với nhau, với một bến xe buýt trung tâm đặt tại quận A - vị trí được chọn làm điểm trung chuyển tối ưu để người dân dễ dàng di chuyển tới các khu vực khác. Tuy nhiên, theo thời gian, khi dân số tăng lên và lưu lượng giao thông trở nên quá tải, việc di chuyển từ các quận tới quận A ngày càng mất nhiều thời gian, gây ra tình trạng tắc nghẽn và phiền toái.
 
@@ -25,7 +29,7 @@ Mục tiêu của việc nâng cấp này là làm sao giảm thiểu thời gia
 
 Nói tóm lại, bài toán nâng cấp khác với các bài toán vị trí cổ điển. Các bài toán vị trí cổ điển vốn tập trung vào việc xác định vị trí tối ưu cho các cơ sở hạ tầng. Trong khi đó, bài toán nâng cấp tập trung vào việc điều chỉnh và nâng cấp mạng lưới cơ sở hạ tầng trong các giới hạn cho phép, nhằm tối ưu hóa kết quả trên mạng lưới đã thay đổi. 
 
-Luận văn này sẽ tập trung vào bài toán nâng cấp 1-median, trong đó mục tiêu là tối ưu hóa mạng lưới hiện có bằng cách điều chỉnh trọng số của các đỉnh trong một giới hạn cho phép. Quá trình nâng cấp phải đảm bảo tuân thủ các ràng buộc ngân sách tuyến tính, tức là việc phân bổ chi phí phải nằm trong mức ngân sách đã định. Bên cạnh việc phân tích chi tiết bài toán, luận văn cũng sẽ trình bày lại giới một thuật toán có độ phức tạp thời gian $O(n^2)$ đã được *Gassner* tìm ra, giúp giải quyết hiệu quả bài toán này trong thực tế.
+Trong phần này chúng ta sẽ tập trung vào bài toán nâng cấp hàm median tối ưu với mục tiêu là tối ưu hóa mạng lưới hiện có bằng cách điều chỉnh trọng số của các đỉnh trong một giới hạn cho phép. Quá trình nâng cấp phải đảm bảo tuân thủ các ràng buộc ngân sách tuyến tính, tức là việc phân bổ chi phí phải nằm trong mức ngân sách đã định. Chúng ta cũng sẽ trình bày lại một thuật toán có độ phức tạp $O(n^2)$ đã được *Gassner* tìm ra, giúp giải quyết hiệu quả bài toán.
 
 // Giả sử một công ty có kế hoạch mở một nhà máy mới với sức chứa $B$. Hiện tại, công ty có $n$ kho hàng, mỗi kho có sức chứa $w_i$ với $i=1,...,n$, (và tổng lượng nguyên liệu thô tại nhà máy là $sum_(i=1)^n w_i$). Công ty muốn xác định số lượng nguyên liệu lưu trữ tại mỗi kho cũng như vị trí tối ưu để đặt nhà máy nhằm giảm thiểu tổng chi phí vận chuyển từ các kho đến nhà máy.
 
@@ -51,20 +55,20 @@ Khi đó, bài toán nâng cấp 1-median được biểu diễn như sau:
 
 $
 
- min_(delta in Delta) f(w- delta) = min_(delta in Delta) min_(x in V) sum_(v in V) (w_v - delta_v) d(v,x) \
+ min_(delta in Delta) f(w- delta) = min_(delta in Delta) min_(x in V) quad & sum_(v in V) (w_v - delta_v) d(v,x) \
 
-"s.t." sum_(v in V) c_v delta_v <= B \
+"s.t." quad & sum_(v in V) c_v delta_v <= B \
 
-0 <= delta_v <= u_v \
+& 0 <= delta_v <= u_v \
 $
 
 Hoán đổi hai phép lấy giá trị nhỏ nhất, ta được:
 
 $ 
-min_(x in V) min_(delta in Delta) sum_(v in V) (w_v - delta_v) d(v,x) \
-"s.t." sum_(v in V) c_v delta_v <= B \
+min_(x in V) min_(delta in Delta) quad & sum_(v in V) (w_v - delta_v) d(v,x) \
+"s.t." quad & sum_(v in V) c_v delta_v <= B \
 
-0 <= delta_v <= u_v \
+& 0 <= delta_v <= u_v \
 $ <eq:42>
 
 
@@ -79,12 +83,11 @@ Cho đồ thị $G=(V,E)$ có trọng số đỉnh và cạnh như hình bên d�
   columns: 4,
   [$v$], [1], [2], [3],
   [$c_v$], [1], [1], [1],
-  [$u_v$], [2], [2], [2]
-  
+  [$u_v$], [2], [2], [2] 
 )]
 với ngân sách $B=2.$
 
-#align(center)[#canvas(length: 7%, {
+#let do-thi-upgrading = canvas(length: 7%, {
     import cetz.draw: *
 
     let y = 2 
@@ -105,8 +108,12 @@ với ngân sách $B=2.$
 
     line("v2","v3")
 
-      }
-  )]
+})
+
+#figure(
+  do-thi-upgrading,
+  caption: [Đồ thị cây ví dụ cho bài toán upgrading],
+) <fig-do-thi-upgrading>
   
   Các giá trị hàm mục tiêu với trọng số ban đầu là $f(v_1)=f(v_3)=9$ và $f(v_2)=8$. Do đó, đỉnh $v_2$ là điểm 1-median.
 
@@ -119,7 +126,7 @@ với ngân sách $B=2.$
   Cuối cùng, cố định đỉnh $v_2$, giải bài toán xếp ba lô liên tục ta được $ delta_1 = delta_3 = 1 $ và $ delta_2 = 0. $
   Do đó, giá trị mục tiêu sau khi cải thiện là $tilde(f)(v_2) = 6.$
 
-  vậy sau khi nâng cấp, đỉnh $v_1$ và $v_3$ có thể trở thành 1-median và giá trị mục tiêu đạt được là 5. Đồng thời, dẫn đến việc đỉnh $v_2$ không còn giữ được tính tối ưu của nó. 
+  Vậy sau khi nâng cấp, đỉnh $v_1$ và $v_3$ có thể trở thành 1-median và giá trị mục tiêu đạt được là 5. Đồng thời, dẫn đến việc đỉnh $v_2$ không còn giữ được tính tối ưu của nó. 
 
 
 // Ký hiệu giá trị mục tiêu 1-median tối ưu với trọng số đỉnh $w$ là $f(w)$. Sau đó, nhiệm vụ của bài toán nâng cấp 1-median là tăng các trọng số bằng \( \delta = (\delta_v){v \in V} \) sao cho \( \delta \) là một sự thay đổi trọng số đỉnh khả thi và \( z(w - \delta) \) được tối thiểu hóa. Tương tự, bài toán hạ cấp 1-median là tìm một sự thay đổi trọng số khả thi \( \delta \) sao cho \( z(w + \delta) \) được tối đa hóa.

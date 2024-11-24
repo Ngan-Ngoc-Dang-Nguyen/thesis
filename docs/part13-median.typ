@@ -131,7 +131,10 @@ $
   w(T_u_i) <= w(T)/2, quad quad forall u_i in N(x_0)
 $ <eq-opt-cond-median>
 
-] //$angle.l w, bb(1)_T_u angle.r <= 1/2$ $forall u in N(x_0)$.
+] <thm-opt-cond>
+
+
+//$angle.l w, bb(1)_T_u angle.r <= 1/2$ $forall u in N(x_0)$.
 #proof[
 Định lý này gồm hai chiều, ta bắt đầu với chiều đầu tiên.
 
@@ -271,10 +274,16 @@ Vậy ta đã hoàn thành chứng minh chiều đầu tiên. Tiếp theo, ta gi
 Ta cần chứng minh $x_0$ là điểm 1-median. Nói cách khác, ta cần chỉ ra rằng $f(x_0)$ là giá trị nhỏ nhất. 
 Ta có:
 $ w(T_u_i) <= w(T)/2 <=> f(u_i) - f(x_0) >= 0 quad quad forall u_i in N(x_0). $
-Điều này nghĩa là $x_0$ là cực tiểu địa phương của hàm mục tiêu $f$ trên $T$. Theo *định lý 2.1*, hàm $f$ là hàm lồi nên $x_0$ là cực tiểu toàn cục. Nghĩa là $f(x_0)$ đạt giá trị nhỏ nhất trên hàm $f$ (điều cần phải chứng minh).]
+Điều này nghĩa là $x_0$ là cực tiểu địa phương của hàm mục tiêu $f$ trên $T$. Theo @thm-distance-function-is-convex, hàm $f$ là hàm lồi nên $x_0$ là cực tiểu toàn cục. Nghĩa là $f(x_0)$ đạt giá trị nhỏ nhất trên hàm $f$ (điều cần phải chứng minh).]
 
-#corollary[$ angle.l w, bb(1)_T_u angle.r <= W/2 = (angle.l w, bb(1)_T_u angle.r + angle.l w, bb(1)_(T without T_u) angle.r ) /2 
-<=> angle.l w, bb(1)_T_u angle.r <= angle.l w, bb(1)_(T without T_u) angle.r $ ]  (viết lại chỗ này)
+$ angle.l w, bb(1)_T_u angle.r <= W/2 = (angle.l w, bb(1)_T_u angle.r + angle.l w, bb(1)_(T without T_u) angle.r ) /2 
+<=> angle.l w, bb(1)_T_u angle.r <= angle.l w, bb(1)_(T without T_u) angle.r $ 
+
+#corollary[ Điểm $x_0$ là 1-median khi và chỉ khi với mọi $u in N(x_0)$,
+$ angle.l w, bb(1)_T_u angle.r <= angle.l w, bb(1)_(T without T_u) angle.r $ 
+] <cor-opt-cond>
+
+// (viết lại chỗ này)
 
 //  (angle.l w, bb(1)_T_u_i angle.r) d(v',u_1)$ + $(angle.l w, bb(1)_(T without T_u_i) angle.r)d(v,u_i)$ = $(angle.l w, bb(1)_u_i angle.r)[d(w,x_0)-d(u_i,x_0)]$ + $(angle.l w, bb(1)_(T without T_u_i) angle.r)[d(v,x_0)+d(x_0,u_i)] = f(x_0) + (angle.l w, bb(1)_(T without T_u_i) angle.r - angle.l w, bb(1)_(T_u_i) angle.r) d(u_i,x_0)= 1- 2 angle.l w, bb(1)_T_u_i angle.r$.
 

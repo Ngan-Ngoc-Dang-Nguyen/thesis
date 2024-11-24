@@ -1,11 +1,13 @@
 
 #include "../tools/multi-section-ref.typ"
 #import "../tools/macros.typ": eqref, remark-Le, delete-Le, add-Le, remark-Ngan, delete-Ngan, add-Ngan, theorem, definition, proposition, lemma, proof,
-// #import "../typst-orange.typ": proof
-// #import "../typst-orange.typ": theorem, proof, lemma, proposition, corollary, example, definition, thmref
 #import "@preview/cetz:0.1.2": canvas, plot
 #import "@preview/cetz:0.1.2"
-
+#import "@preview/equate:0.2.1": equate
+#show: equate.with(breakable: true, sub-numbering: true)
+#set math.equation(numbering: "(1.1)", supplement: "Eq.")
+// #import "../typst-orange.typ": proof
+// #import "../typst-orange.typ": theorem, proof, lemma, proposition, corollary, example, definition, thmref
 // Nhớ đánh số trang và footnote// #include "../tools/multi-section-ref.typ"
 // #import "../tools/macros.typ": eqref
 // Canh đều toàn văn bản
@@ -877,30 +879,45 @@ Với hai điểm $x$ và $y$ gọi $P(x,y)$ là đường đi nối $x$ và $y$
 
 #lemma[
  Đặt $a,x,y$ và $z$ là bốn điểm phân biệt nằm trên cây $T$ sao cho $z in P(x,y)$ thì $z in P(a,x)$ hoặc $z in P(a,y)$
-]
+] <thm-paths-on-trees>
 
 // #text(orange)[*Chứng minh*]
 #proof[Theo giả thiết, ta có $z in P(x,y)$. Ta giả sử $ z in.not P(a,x)$ và $z in.not P(a,y)$ (như hình vẽ) (vẽ hình minh họa). Bởi vì đường đi kết nối $x$ và $y$ đi qua $a$ nhưng không chứa $z$, trong khi đó đường đi $P(x,y)$ chứa $z$. Vì vậy, tồn tại hai con đường nối $x$ và $y$ và điều này mâu thuẫn với tính chất của đồ thị cây. $ quad square.stroked.medium$
 ]
  //ĐN a
-  Tiếp theo đây, ta sẽ giới thiệu một định lý quan trọng trên đồ thị cây, được phát biểu bởi @dearing1976convex. Định lý này thường được sử dụng để giải quyết các bài toán tối ưu trong lý thuyết đồ thị.
 
-  Đặt $f_1(x,a) eq.triple d(x,a)$ là hàm khoảng cách từ một điểm $x$ bất kỳ đến một điểm cố định $a$ trên đồ thị cây.
+=== Tính lồi của hàm khoảng cách trên cây
 
+#remark-Le[
+  - Tại sao lại đặt $f_1(x,a) eq.triple d(x,a)$? Tại sao không dùng trực tiếp $d(x, a)$? Anh đã sửa lại chứng minh bằng cách bỏ đi ký hiệu $f_1(x,a)$
+  - Tính chất lồi trên cây là gì? Anh đã định nghĩa thêm.
+  - chứng minh bị sai, anh mới sửa lại
+]
+
+Đồ thị cây là một lớp đồ thị đơn giản có nhiều tính chất đẹp và quan trọng. Một trong số đó là tính lồi của hàm khoảng cách được phát biểu bởi @dearing1976convex. Tính chất này đặc biệt quan trọng trong các bài toán vị trí trên đồ thị cây.
+
+Trước tiên ta nhắc lại về hàm lồi trên đồ thị cây. Cho hàm số $f$ liên tục trên đồ thị cây $T$.
+
+#definition[Hàm $f$ được gọi là _lồi_ trên $T$ nếu với mọi đường đi $P(a, b)$, $a, b in T$, và với mọi $lambda in [0, 1]$, ta có 
+$
+  f(x_lambda) <= lambda f(a) + (1- lambda) f(b).
+$
+trong đó $x_lambda in P(a, b)$ sao cho $d(a, x_lambda) = lambda d(a, b)$.]
+
+Xét điểm $a$ cố định thuộc $T$. Ta chứng minh hàm khoảng cách từ một điểm $x$ bất kỳ đến một điểm cố định $a$, $d(x,a)$, là  hàm lồi trên đồ thị cây.
 
 // #text(orange)[*Định lý 1.2*] _Tổng bậc của tất cả các đỉnh trong một đồ thị bằng hai lần số cạnh của đồ thị đó_
-
 // Hàm khoảng cách trên đồ thị cây là hàm lồi
 //Coi kĩ lại chứng minh.
 #theorem[
-  $f_1(x,a)$ là hàm lồi khi và chỉ khi $T$ là đồ thị cây
-] //<thm-distance-function-is-convex>
+  Hàm khoảng cách $x arrow.bar d(x,a)$ là lồi với mọi $a in T$ khi và chỉ khi $T$ là đồ thị cây.
+] <thm-distance-function-is-convex>
 
 // @thm-distance-function-is-convex
 
 #proof[Ta sẽ tiến hành chứng minh hai chiều.
 
-Giả sử, $T$ là đồ thị cây. Chọn $y,z$ bất kỳ nằm trên cây $T$, $0<lambda<1$ và $x in P(y,z)$. Để chứng minh $f_1(x,a)$ là hàm lồi, ta cần chứng minh $d(x,a) <= lambda d(y,a) + (1-lambda) d(z,a)$ hoặc ta có thể chứng minh bất đẳng thức sau:
+Giả sử, $T$ là đồ thị cây. Chọn $y,z$ bất kỳ nằm trên cây $T$, $0<lambda<1$ và $x in P(z, x)$ thỏa $d(z, x) = lambda d(z, y)$. Để chứng minh $d(x,a)$ là hàm lồi, ta cần chứng minh $d(x,a) <= lambda d(y,a) + (1-lambda) d(z,a)$ hoặc ta có thể chứng minh bất đẳng thức sau:
 
 $ d(x,a) d(y,z) <= d(x,z) d(y,a) + d(x,y) d(z,a) $ <eq:distance-1>
 
@@ -908,32 +925,33 @@ $ d(x,a) d(y,z) <= d(x,z) d(y,a) + d(x,y) d(z,a) $ <eq:distance-1>
 
 // (Cách trích dẫn @eq:distance-a )
 
-Vì $x in P(y,z)$ nên theo *Bổ đề 1.2.2*, ta có $x in P(y,a)$ hoặc $x in P(z,a)$.
+// *Bổ đề 1.2.2*
 
-Mặt khác, vì $x in P(y,z)$ nên 
+Vì $x in P(y,z)$ nên theo @thm-paths-on-trees, ta có $x in P(y,a)$ hoặc $x in P(z,a)$.
 
-$ d(x,a)d(y,z)=d(x,a)[d(y,x)+d(x,z)]=d(x,a)d(y,x)+d(x,a)d(x,z) $. <eq:distance-2>
+Mặt khác, ta có $d(y,z) = d(y,x)+d(x,z)$ do $x in P(y,z)$, nên
+
+$
+  d(x,a)d(y, z)=d(x,a)d(y,x)+d(x,a)d(x,z)
+$ <eq:distance-2>
 
 Giả sử, $x in P(z,a)$ ta có:
 
 $ d(x,a)=d(z,a)-d(z,x) $ <eq:distance-3>
 
-Hơn nữa, $ d(x,a)=d(y,x)-d(a,y) <= d(a,y)+d(y,x) $ <eq:distance-4>
+Hơn nữa, theo bất đẳng thức tam giác ta có, $ d(x,a)<= d(a,y)+d(y,x) $ <eq:distance-4>
 
 Thay #eqref(<eq:distance-3>) và #eqref(<eq:distance-4>) vào #eqref(<eq:distance-2>) ta được #eqref(<eq:distance-1>).
 
 Trường hợp $x in P(y,a)$ cũng được chứng minh tương tự.
 
-Tiếp theo, đặt $f_1(x,a)$ là hàm lồi trên tập các điểm thuộc đồ thị $T$ và giả sử rằng $T$ không phải là cây. Nói cách khác, tồn tại một chu trình $C$ của $T$ có độ dài ngắn nhất, giả sử là $l$, trong tất cả các chu trình của $T$. Bởi vì $C$ là một chu trình ngắn nhất trong $T$, nên ta có thể chọn $x,y,z$ và $a$ trong $C$ sao cho $d(a,x)=d(y,z)=l/2$, $d(a,y)=d(x,y)=d(z,a)=d(x,z)=l/4$ và $d(x,z)=1/2 d(y,z)$. Khi đó $f_1(x,a)=(l/2) > (1/2)f_1(y,a) + (1/2)f_1(z,a)=l/4 $, điều này mâu thuẫn với giả thiết $f_1(x,a)$ là hàm lồi. Vậy $T$ là đồ thị cây.]
+Tiếp theo, giả sử $x arrow.bar d(x,a)$ là hàm lồi trên tập các điểm thuộc đồ thị $T$ và giả sử rằng $T$ không phải là cây. Nói cách khác, tồn tại một chu trình $C$ của $T$ có độ dài ngắn nhất, giả sử là $l>0$, trong tất cả các chu trình của $T$. Bởi vì $C$ là một chu trình ngắn nhất trong $T$, nên ta có thể chọn $x,y,z$ và $a$ trong $C$ sao cho $d(a,x)=d(y,z)=l/2$, $d(a,y)=d(x,y)=d(z,a)=d(x,z)=l/4$ và $d(x,z)=1/2 d(y,z)$. Khi đó $d(x,a)=l/2 > 1/2d(y,a) + 1/2d(z,a)=l/4 $, điều này mâu thuẫn với giả thiết $d(x,a)$ là hàm lồi. Vậy $T$ là đồ thị cây.]
 
 // (Có thể thêm bổ đề 3)
 
 // -Nghiệm cục bộ cũng là nghiệm toàn cục => trên cây giải hiệu quả....
 // (Có thể chứng minh thêm nghiệm cục bộ là nghiệm toàn cục)
 
-== Độ phức tạp tính toán 
-
-#remark-Le[Chưa có nội dung?]
 
 
 
