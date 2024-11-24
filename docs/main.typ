@@ -28,7 +28,9 @@
 // #show raw: set text(font: "Fira Code")
 
 #show: project.with(
-  title: "Bài toán nâng cấp bán kính ổn định cho vị trí 1-median trên cây",
+  // title: "Bài toán nâng cấp bán kính ổn định cho vị trí 1-median trên cây",
+//   title: [Bài toán nâng cấp bán kính ổn định\ cho vị trí 1-median trên cây],
+  title: [NÂNG CẤP BÁN KÍNH ỔN ĐỊNH\ CHO VỊ TRÍ 1-MEDIAN TRÊN CÂY],
   //subtitle: "A Practical Guide",
   date: "2024",
   author: "Nguyễn Đặng Ngọc Ngân",
@@ -74,33 +76,42 @@
 // #import "../tools/macros.typ": eqref
 // #import "../typst-orange.typ": theorem, proof, lemma, proposition, corollary, example
 #pagebreak()
-#include "../docs/thanks.typ"
-#include "../docs/intro.typ"
+#include "../docs/part01-thanks.typ"
+#include "../docs/part02-intro.typ"
 
 // --------- CHƯƠNG 2
-#part([Chương 1]) 
+// #part([Chương 1]) 
 #pagebreak()
-// #include "../docs/xxx-how.typ"
-#include "../docs/chapter1.typ"
-// #include "../docs/chapter2.typ"
-#include "../docs/1.2 median.typ"
-== Inverse 1-median và các bài toán liên quan
-#include "../docs/problem-knapsack.typ"
-#include "../docs/problem-inverse.typ"
-#include "../docs/problem-reverse.typ"
-#include "../docs/problem-upgrading.typ"
+// // #include "../docs/xxx-how.typ"
+// #include "../docs/chapter1.typ"
+// // #include "../docs/chapter2.typ"
+// #include "../docs/1.2 median.typ"
+// == Inverse 1-median và các bài toán liên quan
+// #include "../docs/problem-knapsack.typ"
+// #include "../docs/problem-inverse.typ"
+// #include "../docs/problem-reverse.typ"
+// #include "../docs/problem-upgrading.typ"
+
+#include "../docs/part11-graphs.typ"
+#include "../docs/part12-complexity.typ"
+#include "../docs/part13-median.typ"
+#include "../docs/part141-knapsack.typ"
+#include "../docs/part142-inverse.typ"
+#include "../docs/part143-reverse.typ"
+#include "../docs/part144-upgrading.typ"
 
 // --------- CHƯƠNG 3
-#part([Chương 2]) 
+// #part([Chương 2]) 
 #pagebreak()
-#include "../docs/stability-radius.typ"
-#include "../docs/stability-radius-upgrading.typ"
+#include "../docs/part21-SR.typ"
+#include "../docs/part22-USR.typ"
 
 
 // --------- CHƯƠNG 4
-#part([#v(0.65em)]) 
-#include "../docs/conclusion.typ"
+// #part([#v(0.65em)]) 
 #pagebreak()
-#heading(numbering: none, level: auto, depth: 1, offset: 1)[Tài liệu tham khảo]
+#include "../docs/part31-conclusion.typ"
+#pagebreak()
+#heading(numbering: none, level: 1)[Tài liệu tham khảo]
 // #set heading(numbering: none)
 #bibliography("../docs/ref.bib", title: none, style: "annual-reviews-author-date", )

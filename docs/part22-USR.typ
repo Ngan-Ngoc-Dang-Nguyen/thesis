@@ -445,7 +445,7 @@ Trọng số đỉnh trên cây được cải thiện như ở hình 3
   let y = 2 
   let x = 4
   let y-space = 1
-  let h=1.4
+  let h=1.6
 
   circle((0*h,3), radius: 0.05,fill:black, name: "v1") 
   content("v1.bottom", $v_1 (0.15)$, anchor: "left", padding: 0.2)
