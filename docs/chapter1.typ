@@ -435,7 +435,7 @@ Trong khi đó, đồ thị có hướng (directed graph) là một loại đồ
 
 // (e) Hai hay nhiều cạnh mà có hai đầu mút giống nhau được gọi là _các cạnh song song(parallel edges)_ hay còn được gọi là _các cạnh bội(multiple edges)_.
 
-#align(center)[#canvas(length: 10%, {
+#let do-thi-canh-boi = canvas(length: 10%, {
     import cetz.draw: *
 
     let y = 2 
@@ -465,11 +465,14 @@ Trong khi đó, đồ thị có hướng (directed graph) là một loại đồ
     content("v2v3.left", $e_3$, anchor: "left", padding: 1)
 
     bezier("z","v", (-4,-3), name: "be2")
-    content("be2.right", $e_5$, anchor: "right", padding: 2.7)
-    
-    }
-  )]
-#align(center)[#text(orange)[*Hình 1.8*] Minh họa các cạnh bội]
+    content("be2.right", $e_5$, anchor: "right", padding: 2.7)   
+})
+// #align(center)[#text(orange)[*Hình 1.8*] Minh họa các cạnh bội]
+#figure(
+  do-thi-canh-boi,
+  caption: [Đồ thị có các cạnh bội. $e_1, e_4$ và $e_3, e_5$ là hai cặp cạnh bội.],
+) <fig-do-thi-canh-boi>
+
 
 (f) Đồ thị hữu hạn (_finite graph_) là đồ thị có cả tập hợp cạnh và tập hợp đỉnh đều hữu hạn. Các hình được đề cập bên trên đều là đồ thị hữu hạn.
 
@@ -541,7 +544,7 @@ Có nhiều loại đồ thị con như:
     }
   )]
 
-  #align(right)[#canvas(length: 7%, {
+#let do-thi-cam-sinh = canvas(length: 7%, {
     import cetz.draw: *
 
     let y = 2 
@@ -582,11 +585,16 @@ Có nhiều loại đồ thị con như:
     // line("v1", "v6", name: "v1v6")
     // content("v1v6.right", $1$, anchor: "right", padding: 0.1)
     
-    }
-  )]
+})
 
 // #align(center)[#text(orange)[*Hình 1.10*] Minh họa đồ thị cảm sinh]
-#align(center)[#text(orange)[*Hình 1.10*] Đồ thị $G[V']$ cảm sinh từ đồ thị $G$]
+// #align(center)[#text(orange)[*Hình 1.10*] Đồ thị $G[V']$ cảm sinh từ đồ thị $G$]
+#figure(
+  do-thi-cam-sinh,
+  caption: [Đồ thị $G[V']$ cảm sinh từ đồ thị $G$],
+) <fig-do-thi-cam-sinh>
+
+
 === Bậc của đỉnh
 
 Bậc (_Degree_) của đỉnh $v$ trong $G$ là số cạnh của $G$ liên thuộc với $v$, mỗi vòng được tính là hai cạnh. Ký hiệu: $d(v)$.
@@ -595,8 +603,7 @@ Bậc của đỉnh mang ý nghĩa quan trọng trong nhiều ứng dụng thự
 
 Với đồ thị $G$ như Hình 1.11, ta có $d(v_1)=4, d(v_2)=4, d(v_3)=4, d(v_4)=2, d(v_5)=2$ và $d(v_6)=0$.
 
-#align(center)[
-  #canvas(length: 10%, {
+#let do-thi-tong-bac = canvas(length: 10%, {
     import cetz.draw: *
 
     let y = 2 
@@ -648,10 +655,13 @@ Với đồ thị $G$ như Hình 1.11, ta có $d(v_1)=4, d(v_2)=4, d(v_3)=4, d(v
 
   
     
-    }
-)]
+})
 
-#align(center)[#text(orange)[*Hình 1.11*] Minh họa bậc của đỉnh]
+// #align(center)[#text(orange)[*Hình 1.11*] Minh họa bậc của đỉnh]
+#figure(
+  do-thi-tong-bac,
+  caption: [Bậc của đồ thị],
+) <fig-do-thi-tong-bac>
 
 // #figure(
 //   caption: [Một hình XXX]
@@ -770,8 +780,7 @@ Trong phần tiếp theo, chúng ta sẽ đi sâu vào nghiên cứu đồ thị
 
 Đồ thị cây (_tree graph_) là đồ thị liên thông và không chứa chu trình sơ cấp.
 
-#align(center)[
-  #canvas(length: 10%, {
+#let do-thi-cay = canvas(length: 10%, {
     import cetz.draw: *
 
     let y = 2 
@@ -832,13 +841,12 @@ Trong phần tiếp theo, chúng ta sẽ đi sâu vào nghiên cứu đồ thị
      line("v6", "v7", name: "v6v7")
 
       line("v6", "v8", name: "v6v8")
-
-  
-    
-    }
-)]
-
-#align(center)[#text(orange)[*Hình 1.12*] Minh họa đồ thị cây]
+})
+// #align(center)[#text(orange)[*Hình 1.12*] Minh họa đồ thị cây]
+#figure(
+  do-thi-cay,
+  caption: [Đồ thị cây],
+) <fig-do-thi-cay>
 
 Đồ thị cây có những đặc điểm nổi bật sau:
 

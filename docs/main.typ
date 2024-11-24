@@ -84,8 +84,9 @@
 #include "../docs/chapter1.typ"
 // #include "../docs/chapter2.typ"
 #include "../docs/1.2 median.typ"
-#include "../docs/problem-inverse.typ"
+== Inverse 1-median và các bài toán liên quan
 #include "../docs/problem-knapsack.typ"
+#include "../docs/problem-inverse.typ"
 #include "../docs/problem-reverse.typ"
 #include "../docs/problem-upgrading.typ"
 
@@ -98,6 +99,7 @@
 
 // --------- CHƯƠNG 4
 #part([#v(0.65em)]) 
+#include "../docs/conclusion.typ"
 #pagebreak()
 #heading(numbering: none, level: auto, depth: 1, offset: 1)[Tài liệu tham khảo]
 // #set heading(numbering: none)

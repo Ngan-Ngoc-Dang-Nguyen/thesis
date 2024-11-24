@@ -58,7 +58,7 @@ $ f(u)= 3.4 + 4.3 + 1.6 = 30 $
 $ f(z)= 3.6 + 2.3 + 1.3 = 27 $
 $ f(t)= 3.10 + 6.2 + 3.4 = 54 $
 
-#align(center)[#canvas(length: 10%, {
+#let do-thi-co-trong-so = canvas(length: 10%, {
     import cetz.draw: *
 
     let y = 2 
@@ -67,16 +67,16 @@ $ f(t)= 3.10 + 6.2 + 3.4 = 54 $
     let h=1.4
 
     circle((0*h,3), radius: 0.05,fill:black, name: "u")
-    content("u.left", $u (2)$, anchor: "left", padding: 0.2)
+    content("u", $u (2)$, anchor: "left", padding: 0.2)
 
     circle((-3, 3), radius: 0.05, fill: black, name: "v") 
-    content("v.right", $v (3)$, anchor: "right", padding: 0.2)
+    content("v", $v (3)$, anchor: "right", padding: 0.2)
 
     circle((0, 0), radius: 0.05, fill: black, name: "z") 
-    content("z.top", $z (4)$, anchor: "top", padding: 0.2)
+    content("z", $z (4)$, anchor: "left", padding: 0.2)
 
      circle((-3, 0), radius: 0.05, fill: black, name: "t") 
-    content("t.right", $t (1)$, anchor: "right", padding: 0.2)
+    content("t", $t (1)$, anchor: "right", padding: 0.2)
 
     line("u", "v", name: "v1v2")
     content("v1v2.bottom", $4$, anchor: "bottom", padding: 0.1)
@@ -98,9 +98,11 @@ $ f(t)= 3.10 + 6.2 + 3.4 = 54 $
 
     // bezier("z","v", (-4,-3), name: "be2")
     // content("be2.right", $e_5$, anchor: "right", padding: 2.7)
-    
-    }
-  )]
+})
+#figure(
+  do-thi-co-trong-so,
+  caption: [Đồ thị có trọng số với đỉnh $z$ là median],
+) <fig-do-thi-co-trong-so>
 
   Vì $f(z) < f(u) < f(v) < f(t)$, nên $z$ là điểm 1-median cần tìm. 
 
@@ -124,7 +126,7 @@ Cho đồ thị cây $T(V,E)$.//Để thuận tiện cho việc chứng minh, ta
 Đặt $u_i in N(x_0)$ là tập hợp những đỉnh liền kề với $x_0$. Gọi $T_u$ là cây con của $T$ được lấy gốc tại đỉnh $u$.
 
 
-#theorem[Một điểm $x_0$ là điểm 1-median của cây $T$ khi và chỉ khi
+#theorem[Điều kiện tối ưu của 1-median trên cây][Một điểm $x_0$ là điểm 1-median của cây $T$ khi và chỉ khi
 $
   w(T_u_i) <= w(T)/2, quad quad forall u_i in N(x_0)
 $ <eq-opt-cond-median>
@@ -154,7 +156,7 @@ Ta lại có $x_0$ là một điểm 1-median, nghĩa là giá trị $f(x_0)$ nh
 
  Chứng minh tương tự với các trường hợp còn lại. Từ đó ta được $ w(T_u_i) <= w(T)/2 quad quad forall u_i in N(x_0). $
 
-#align(center)[#canvas(length: 8%, {
+#let do-thi-cay-median = canvas(length: 8%, {
     import cetz.draw: *
 
     let y = 2 
@@ -256,13 +258,16 @@ Ta lại có $x_0$ là một điểm 1-median, nghĩa là giá trị $f(x_0)$ nh
     // bezier("z","v", (-4,-3), name: "be2")
     // content("be2.right", $e_5$, anchor: "right", padding: 2.7)
     
-    }
-  )]
+})
 
-  *Hình... ĐỒ THỊ MINH HỌA*
+  // *Hình... ĐỒ THỊ MINH HỌA*
+#figure(
+  do-thi-cay-median,
+  caption: [Đồ thị cây với gốc tại $x_0$ và các đỉnh liền kề $N(x_0) = {u_1, u_2, u_3}$],
+) <fig-do-thi-tong-bac>
 
 
- Vậy ta đã hoàn thành chứng minh chiều đầu tiên. Tiếp theo, ta giả sử rằng $ w(T_u_i) <= w(T)/2 quad quad forall u_i in N(x_0). $
+Vậy ta đã hoàn thành chứng minh chiều đầu tiên. Tiếp theo, ta giả sử rằng $ w(T_u_i) <= w(T)/2 quad quad forall u_i in N(x_0). $
 Ta cần chứng minh $x_0$ là điểm 1-median. Nói cách khác, ta cần chỉ ra rằng $f(x_0)$ là giá trị nhỏ nhất. 
 Ta có:
 $ w(T_u_i) <= w(T)/2 <=> f(u_i) - f(x_0) >= 0 quad quad forall u_i in N(x_0). $
@@ -310,7 +315,7 @@ Thuật toán tuyến tính tìm 1-median trên cây được độc lập đưa
 
 *Ví dụ* Tìm điểm 1-median của đồ thị được cho hình như bên dưới
 
-#align(center)[#canvas(length: 6%, {
+#let do-thi-cay-median-vi-du = canvas(length: 6%, {
     import cetz.draw: *
 
     let y = 2 
@@ -319,22 +324,22 @@ Thuật toán tuyến tính tìm 1-median trên cây được độc lập đưa
     let h=1.4
 
     circle((0*h,3), radius: 0.05,fill:black, name: "v2")
-    content("v2.left", $v_2 (1)$, anchor: "left", padding: 0.2)
+    content("v2", $v_2 (1)$, anchor: "bottom-left", padding: 0.2)
 
-     circle((-3,0), radius: 0.05,fill:black, name: "v1")
+    circle((-3,0), radius: 0.05,fill:black, name: "v1")
     content("v1.left", $v_1 (1)$, anchor: "left", padding: 0.2)
 
-     circle((-3,6), radius: 0.05,fill:black, name: "v3")
+    circle((-3,6), radius: 0.05,fill:black, name: "v3")
     content("v3.left", $v_3 (3)$, anchor: "left", padding: 0.2)
 
-     circle((-4,9), radius: 0.05,fill:black, name: "v4")
+    circle((-4,9), radius: 0.05,fill:black, name: "v4")
     content("v4.left", $v_4 (2)$, anchor: "left", padding: 0.2)
 
-     circle((-6,5), radius: 0.05,fill:black, name: "v5")
+    circle((-6,5), radius: 0.05,fill:black, name: "v5")
     content("v5.left", $v_5 (3)$, anchor: "left", padding: 0.2)
 
-     circle((3,3), radius: 0.05,fill:black, name: "v6")
-    content("v6.left", $v_6 (4)$, anchor: "left", padding: 0.2)
+    circle((3,3), radius: 0.05,fill:black, name: "v6")
+    content("v6", $v_6 (4)$, anchor: "bottom", padding: 0.2)
 
      circle((5,4), radius: 0.05,fill:black, name: "v7")
     content("v7.left", $v_7 (1)$, anchor: "left", padding: 0.2)
@@ -345,10 +350,10 @@ Thuật toán tuyến tính tìm 1-median trên cây được độc lập đưa
      circle((5,1.5), radius: 0.05,fill:black, name: "v9")
     content("v9.left", $v_9 (2)$, anchor: "left", padding: 0.2)
 
-     circle((6,-1), radius: 0.05,fill:black, name: "v10")
-    content("v10.left", $v_10 (1)$, anchor: "left", padding: 0.2)
+    circle((6,-1), radius: 0.05,fill:black, name: "v10")
+    content("v10.left", $v_10 (1)$, anchor: "top", padding: 0.2)
 
-     circle((9,0), radius: 0.05,fill:black, name: "v11")
+    circle((9,0), radius: 0.05,fill:black, name: "v11")
     content("v11.left", $v_11 (1)$, anchor: "left", padding: 0.2)
 
     line("v1", "v2")
@@ -372,8 +377,12 @@ Thuật toán tuyến tính tìm 1-median trên cây được độc lập đưa
     line("v10", "v11")
 
 
- }
-  )]
+})
+#figure(
+  do-thi-cay-median-vi-du,
+  caption: [Đồ thị cây có trọng số đỉnh với đỉnh median $v_6$],
+) <fig-do-thi-cay-median-vi-du>
+// do-thi-cay-median-vi-du
 
 Ta có $W(T)=22$, các lá $s:= {v_1, v_4, v_5, v_8, v_11}$
 

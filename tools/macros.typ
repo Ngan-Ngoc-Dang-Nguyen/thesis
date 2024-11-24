@@ -1,5 +1,7 @@
 #let remLE(x) = text(fill: blue, size: 0.75em)[[*LE:* #x]]
 
+#let defeq = $=$
+
 //--------------- eqref
 // #let reffmt = it => box(stroke: rgb("#ff0000") + 0.5pt, outset: 2pt)[#smallcaps[#it]]
 #let reffmt = it => text(fill: blue)[#it]

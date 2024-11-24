@@ -487,10 +487,5 @@ Trọng số đỉnh trên cây được cải thiện như ở hình 3
   caption: [Đồ thị cây sau nâng cấp cận dưới bán kính ổn định],
 ) <fig-example-upgrading-stability-radius>
 
-== Kết luận và thảo luận 
 
-#remark-Le[
-  - Kết luận: Các kết quả đạt được
-  - Thảo luận: Lấy conclusion của bài báo vô. Các hướng nghiên cứu tiếp theo
-]
 

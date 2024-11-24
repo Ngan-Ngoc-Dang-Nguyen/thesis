@@ -11,11 +11,18 @@
 #import "@preview/cetz:0.1.2": canvas, plot
 #import "@preview/cetz:0.1.2"
 #import "../tools/macros.typ": eqref, remark-Le, delete-Le, add-Le, remark-Ngan, delete-Ngan, add-Ngan, theorem, definition, proposition, lemma, proof, example
-
+#import "@preview/equate:0.2.1": equate
+#show: equate.with(breakable: true, sub-numbering: true)
+#set math.equation(numbering: "(1.1)", supplement: "Eq.")
 // == BÀI TOÁN INVERSE 1-MEDIAN TRÊN CÂY
 // == INVERSE 1-MEDIAN VÀ CÁC BÀI TOÁN LIÊN QUAN 
-== Inverse 1-median và các bài toán liên quan
+// == Inverse 1-median và các bài toán liên quan
 
+
+
+
+// === Định nghĩa bài toán
+=== Bài toán Inverse 1-median 
 
 Trong mục này, chúng ta sẽ xem xét một bài toán khác cũng có nhiều ứng dụng thực tiễn rộng rãi trong cuộc sống, đặc biệt là trong các lĩnh vực như quy hoạch đô thị, logistics và quản lý hệ thống hạ tầng. Một ví dụ điển hình là trong quy hoạch đô thị, chính phủ thường có nhu cầu cố định vị trí của các công trình công cộng quan trọng như trường học, bệnh viện, hoặc các cơ sở y tế khác để đảm bảo người dân có thể dễ dàng tiếp cận các dịch vụ thiết yếu. Tuy nhiên, việc lựa chọn các vị trí này đôi khi chưa phải là tối ưu nhất so với sự phân bố dân cư và hệ thống giao thông hiện có.
 
@@ -24,9 +31,6 @@ Trong mục này, chúng ta sẽ xem xét một bài toán khác cũng có nhi�
 Việc tối ưu hóa này không chỉ giúp giảm chi phí và thời gian di chuyển của người dân khi tiếp cận các dịch vụ công cộng, mà còn tạo điều kiện thuận lợi cho việc quản lý và vận hành các hệ thống hạ tầng đô thị. Chính vì vậy, bài toán này đóng vai trò quan trọng trong nhiều khía cạnh của quy hoạch đô thị, đặc biệt trong bối cảnh các thành phố đang phát triển nhanh chóng và dân số ngày càng đông đúc. 
 
 Lớp bài toán này được gọi là bài toán inverse 1-median trên cây.
-
-// === Định nghĩa bài toán
-=== Bài toán Inverse 1-median
 
 #let wt = $tilde(w)$
 
@@ -60,18 +64,17 @@ $ <eq:29>.
 Do đó, bài toán inverse 1-median trên một cây với các trọng số dương có thể được viết dưới dạng tuyến tính như sau:
 
 $
-("LP")\
+  min quad & sum_(i=1)^n c_i (p_i + q_i)\
 
-min quad & sum_(i=1)^n c_i (p_i + q_i)\
+  "s.t." quad & sum_(i=s)^n (p_i - q_i) - sum_(i=1)^(s-1) (p_i - q_i) = 2 wt_k - W\
 
-"s.t." quad & sum_(i=s)^n (p_i - q_i) - sum_(i=1)^(s-1) (p_i - q_i) = 2 wt_k - W\
+  & p_i <= overline(w)_i - w_i &, i=1,2...,n\
 
- & p_i <= overline(w)_i - w_i quad quad quad quad quad quad quad quad quad quad quad i=1,2...,n\
+  & q_i <= w_i -underline(w)_i &, i=1,2...,n \
 
- & q_i <= w_i -underline(w)_i quad quad quad quad quad quad quad quad quad quad quad i=1,2...,n \
-
- & p_i, q_i >= 0quad quad quad quad quad quad quad quad quad quad quad quad quad i=1,2...,n
+  & p_i, q_i >= 0 &, i=1,2...,n
 $
+
 
 ==== Giải thuật cho bài toán inverse 1-median trên cây
 
@@ -79,9 +82,11 @@ $
 
 Như đã được @burkard2004inverse chỉ ra, giá trị $R$ sẽ giảm nếu: Trọng số của $s$(hoặc của một đỉnh trong $T_i, i=1,2,...,k-1$) tăng lên hoặc trọng lượng của một đỉnh trong $T_k$ giảm đi. 
 Từ nhận xét trên, chúng ta có thể định nghĩa biến mới $x_i$ như sau:
- $ x_i := q_i, quad quad i=1,...,s-1 $
+$
+  x_i &:= q_i,&  quad i&=1,...,s-1\
  
- $ x_i := p_i, quad quad i=s,...,n. $ 
+  x_i &:= p_i,&  quad i&=s,...,n.
+$ 
  Lưu ý rằng $q_i = 0 $ với mọi $i= s,...,n$ và $p_i = 0$ với mọi $i=1,...,s-1$. Vì vậy phương trình #eqref(<eq:29>) có thể viết lại như sau: 
 $ sum_(i=1)^n x_i = 2tilde(w)_k - W. $
 
@@ -98,16 +103,14 @@ $ 0<=x_i<=u_i  quad quad forall i=1,2,...,n. $
 Tóm lại, từ #eqref(<eq:34>) và #eqref(<eq:35>), ta được:
 
 $
+  // ("LKP") \
+  min quad & sum_(i=1)^n c_i x_i\
 
-("LKP") \
+  "s.t." quad & sum_(i=1)^n x_i = b\
 
-min quad & sum_(i=1)^n c_i x_i\
+  & x_i <= u_i &, i=1,2...,n\
 
-"s.t." quad & sum_(i=1)^n x_i = b\
-
- & x_i <= u_i quad quad quad quad quad quad quad quad quad quad quad i=1,2...,n\
-
- & x_i >= 0 quad quad quad quad quad quad quad quad quad quad quad i=1,2...,n
+  & x_i >= 0 &, i=1,2...,n
 $ <eq:37>
 
 Trong đó $c_i$ và $b= 2tilde(w)_k - W$ không âm. 
@@ -214,7 +217,7 @@ $
 
 Ta được đồ thị cây $T=(V,E)$ với trọng số mới được biểu diễn ở hình bên dưới.
 
-#align(center)[#canvas(length: 7%, {
+#let do-thi-cay-trong-so-moi = canvas(length: 7%, {
     import cetz.draw: *
 
     let y = 2 
@@ -223,7 +226,7 @@ Ta được đồ thị cây $T=(V,E)$ với trọng số mới được biểu 
     let h=1.4
 
     circle((0*h,3), radius: 0.05,fill:black, name: "v2")
-    content("v2.left", $v_2 (4)$, anchor: "left", padding: 0.2)
+    content("v2.left", $v_2 (4)$, anchor: "bottom-left", padding: 0.2)
 
     circle((-3,0), radius: 0.05,fill:black, name: "v1")
     content("v1.left", $v_1 (4)$, anchor: "left", padding: 0.2)
@@ -232,7 +235,7 @@ Ta được đồ thị cây $T=(V,E)$ với trọng số mới được biểu 
     content("v3.left", $v_3 (5)$, anchor: "left", padding: 0.2)
 
     circle((4,3), radius: 0.05,fill:black, name: "v4")
-    content("v4.left", $v_4 (5)$, anchor: "left", padding: 0.2)
+    content("v4.left", $v_4 (5)$, anchor: "bottom-right", padding: 0.2)
 
     circle((7,6), radius: 0.05,fill:black, name: "v5")
     content("v5.left", $v_5 (5)$, anchor: "left", padding: 0.2)
@@ -250,8 +253,11 @@ Ta được đồ thị cây $T=(V,E)$ với trọng số mới được biểu 
 
     line("v4","v6")
 
-     }
-  )]
+})
+#figure(
+  do-thi-cay-trong-so-moi,
+  caption: [Đồ thị cây với trọng số mới sau khi giải Inverse 1-median],
+) <fig-do-thi-cay-trong-so-moi>
 
 
 

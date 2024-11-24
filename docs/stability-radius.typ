@@ -2,7 +2,7 @@
 // _Chương này sẽ nghiên cứu về một đối tượng ...._
 
 #include "../tools/multi-section-ref.typ"
-#import "../tools/macros.typ": eqref, remark-Le, delete-Le, add-Le, remark-Ngan, delete-Ngan, add-Ngan, theorem, definition, proposition, lemma, proof, example, hypothesis
+#import "../tools/macros.typ": eqref, defeq, remark-Le, delete-Le, add-Le, remark-Ngan, delete-Ngan, add-Ngan, theorem, definition, proposition, lemma, proof, example, hypothesis
 // #import "../tools/macros.typ": eqref, remark-Le, delete-Le, add-Le, remark-Ngan, delete-Ngan, add-Ngan
 // #import "../typst-orange.typ": theorem, proof, lemma, thmref, proposition, corollary, example, definition, 
 #import "@preview/cetz:0.1.2": canvas, plot
@@ -108,7 +108,10 @@ Ta giả sử rằng sự sai khác giữ $w$ và $tilde(w)$ là nhỏ, cụ th�
 $ norm(tilde(w)-w)_infinity <= epsilon_0 $ điều này tương đương $tilde(w) in [w-epsilon; w+ epsilon] $ với một mức nhiễu nhỏ $epsilon>0$. Điều này có nghĩa là mỗi thành phần trọng số của $tilde(w)$ chỉ có thể thay đổi trong một khoảng nhất định xung quanh giá trị tương ứng của nó trong $w$, phản ánh sự biến động nhẹ trong hệ thống.
 
 Trong bối cảnh tồn tại sự nhiễu này, mục tiêu của chúng ta là xem xét sự ổn định của điểm 1-median $v_1$. Nói cách khác, chúng ta muốn biết mức độ nhiễu lớn nhất có thể, ký hiệu là $epsilon$, sao cho $v_1$ vẫn là điểm 1-median tối ưu đối với vector trọng số bị nhiễu $tilde(w)$, tức là:
-$ R(w)=sup{epsilon>= 0: v_1 in X_tilde(w)^*, quad forall tilde(w)in [w-epsilon;w+epsilon] sect RR_+^n} $
+
+#definition[Bán kính ổn định][Bán kính ổn định của điểm median $v_1$ ứng với trọng số $w$ được ký hiệu bởi $R(w)$ xác định như sau:
+$ R(w) defeq sup{epsilon>= 0: v_1 in X_tilde(w)^*, quad forall tilde(w)in [w-epsilon;w+epsilon] sect RR_+^n} $
+] <def-stability-radius>
 Trong đó: $X_tilde(w)^*$ là tập hợp các điểm 1-median tương ứng với vector trọng số bị nhiễu $tilde(w)$
 
 Khi đó ta gọi $R(w)$ là _bán kính ổn định_ của điểm $v_1$ tương ứng với vecto $w$.
@@ -119,23 +122,29 @@ Khi đó ta gọi $R(w)$ là _bán kính ổn định_ của điểm $v_1$ tươ
 
 ===  Chặn dưới của bán kính ổn định 
 
+#remark-Le[
+  Một số từ vựng sau nên được chỉnh lại:
+  - Vấn đề --> Bài toán
+  - Với tất cả --> với mọi
+]
+
 Mặc dù $R(w)$ được định nghĩa một cách ngầm định, nó có một cận dưới đơn giản nhưng chặt chẽ. 
 
-#theorem([xxx])[Ta có
+#theorem([Chặn dưới của bán kính ổn định])[Ta có
 $ R(w) >= underline(R)(w) = min_(u in N(v_1)) 1/n (1-2 angle.l w, bb(1)_T_u angle.r). $ 
 
 Hơn nữa, dấu "=" xảy ra nếu $R(w) < min_(i=1,...,n) w_i$
-]
+] <thm-lower-bound-SR>
 
 // #thmref("xxx")
 
-Trước khi chứng minh *Định lý...* cần lưu ý rằng cận dưới $R(w)$ được đảm bảo không âm do tính tối ưu của $v_1$ (6). Hơn nữa, điều kiện $R(w) < min_(i=1,...,n) w_i$ về cơ bản có nghĩa là $R(w)$ là một mức độ nhiễu sao cho bất kỳ trọng số nào trong khoảng $[w-R(w), w + R(w)]$ vẫn dương, khiến nó trở thành một điều kiện nhẹ nhàng. 
+Trước khi chứng minh @thm-lower-bound-SR cần lưu ý rằng cận dưới $R(w)$ được đảm bảo không âm do tính tối ưu của $v_1$ (6). Hơn nữa, điều kiện $R(w) < min_(i=1,...,n) w_i$ về cơ bản có nghĩa là $R(w)$ là một mức độ nhiễu sao cho bất kỳ trọng số nào trong khoảng $[w-R(w), w + R(w)]$ vẫn dương, khiến nó trở thành một điều kiện nhẹ nhàng. 
 
 #proof[
   Đặt $epsilon_u = 1/n (1-2 angle.l w, bb(1)_T_u angle.r)$. Không khó để thấy rằng $epsilon_u$ thỏa mãn phương trình sau:
   $ angle.l w+ epsilon_u, bb(1)_T_u angle.r = angle.l w- epsilon_u, bb(1)_(T without T_u) angle.r $
 
-  Để chứng minh (7), chỉ cần chứng minh rằng với bất kỳ $epsilon$ nào thỏa mãn $epsilon <= min_(u in N(v_1)) epsilon_u$ thì $v_1$ là một điểm trung vị đối với bất kỳ $tilde(w) in [w-epsilon, w+epsilon] sect RR_+^n$. Với tất cả $epsilon <= min_(u in N(v_1) epsilon_u), tilde(w) in [w - epsilon, w+ epsilon] sect RR_+^n$ và $u in N(v_1)$, ta có:
+  Để chứng minh (7), chỉ cần chứng minh rằng với bất kỳ $epsilon$ nào thỏa mãn $epsilon <= min_(u in N(v_1)) epsilon_u$ thì $v_1$ là một điểm trung vị đối với bất kỳ $tilde(w) in [w-epsilon, w+epsilon] sect RR_+^n$. Với mọi $epsilon <= min_(u in N(v_1)) epsilon_u, tilde(w) in [w - epsilon, w+ epsilon] sect RR_+^n$ và $u in N(v_1)$, ta có:
 
   $ angle.l tilde(w), bb(1)_T_u angle.r <= angle.l w+ epsilon_u, bb(1)_T_u angle.r = angle.l w - epsilon_u, bb(1)_(T without T_u) angle.r <= angle.l tilde(w), bb(1)_(T without T_u) angle.r. $
 
