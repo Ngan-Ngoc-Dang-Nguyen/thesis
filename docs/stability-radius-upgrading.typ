@@ -4,6 +4,13 @@
 #import "@preview/cetz:0.1.2": canvas, plot
 #import "@preview/cetz:0.1.2"
 #import "@preview/equate:0.2.1": equate
+#show: equate.with(breakable: true, sub-numbering: true)
+#set math.equation(numbering: "(1.1)", supplement: "Eq.")
+#let USR1 = [(USR1)]
+#let USR2 = [(USR2)]
+#let PUSR1 = [(PUSR1)]
+#let PUSR2 = [(PUSR2)]
+
 
 // #par(justify: true)[
 // = Nâng cấp bán kính ổn định của điểm 1-median
@@ -31,7 +38,7 @@ Giả sử $v_1 in V $ là điểm 1-median trên cây $T$ tương ứng với t
 
 Trong đó, chi phí thay đổi trọng số từ $w$ thành $tilde(w)$ được đo bằng chuẩn $"L1"$, tức là $norm(w - tilde(w))_1$. Đồng thời, tổng trọng số trên cây vẫn giữ nguyên giá trị, hay nói cách khác $sum_(i=1) ^n tilde(w) = 1$. Ngoài ra, vecto trọng số mới $tilde(w)$ không được chênh lệch quá lớn so với $w$ ban đầu, cụ thể là $tilde(w) in [w-epsilon_0, w + epsilon_0]$, với một hằng số $epsilon_0 >0 $. 
 
-Bài toán này được gọi là nâng cấp bán kính ổn định $"(USR- Upgrading Stability Radius)"$ của điểm 1-median $v_1$ với dữ liệu đầu vào là trọng số ban đầu $w$.
+Bài toán này được gọi là nâng cấp bán kính ổn định (USR - Upgrading Stability Radius) của điểm 1-median $v_1$ với dữ liệu đầu vào là trọng số ban đầu $w$.
 
 Khi đó, mô hình của bài toán $"(USR)"$ có thể được viết lại như sau:
 // $
@@ -46,23 +53,29 @@ Khi đó, mô hình của bài toán $"(USR)"$ có thể được viết lại n
 //  & norm(tilde(w)-w)_infinity <= epsilon_0 quad quad quad quad quad quad quad ("USR" - 20d)
 // $
 
+// $
+// max quad & underline(R)(tilde(w)) &  #h(1fr) #text(blue)[(USR-20)]\ 
+
+// "s.t." quad & norm(tilde(w)-w)_1 <= B & #h(1fr) quad("USR"-20a)\
+
+//  & v_1 "is 1-median w.r.t" tilde(w) & #h(1fr) ("USR" - 20b)\
+
+//  & sum^n_(i=1) tilde(w)_i = 1 & #h(1fr) ("USR" -20c)\
+
+//  & norm(tilde(w)-w)_infinity <= epsilon_0 & #h(1fr) ("USR" - 20d)
+// $ 
+
 $
-max quad & underline(R)(tilde(w)) &  #h(1fr) #text(blue)[(USR-20)]\ 
+"(USR1)" quad quad max quad & underline(R)(tilde(w)) \ 
 
-"s.t." quad & norm(tilde(w)-w)_1 <= B & #h(1fr) quad("USR"-20a)\
+"s.t." quad & norm(tilde(w)-w)_1 <= B \
 
- & v_1 "is 1-median w.r.t" tilde(w) & #h(1fr) ("USR" - 20b)\
+ & v_1 "is 1-median w.r.t" tilde(w) \
 
- & sum^n_(i=1) tilde(w)_i = 1 & #h(1fr) ("USR" -20c)\
+ & sum^n_(i=1) tilde(w)_i = 1 \
 
- & norm(tilde(w)-w)_infinity <= epsilon_0 & #h(1fr) ("USR" - 20d)
+ & norm(tilde(w)-w)_infinity <= epsilon_0 
 $ 
-// #equate($
-//   E &= m c^2 #<short> \
-//     &= sqrt(p^2 c^2 + m^2 c^4) #<long2>
-// $)
-
-// #eqref(<long2>)
 
 Đến đây, có thể nhận thấy rằng bài toán đang xem xét chứa nhiều điều kiện ràng buộc, khiến việc giải quyết trở nên phức tạp. Do đó, để đơn giản hóa, chúng ta sẽ tìm cách giảm bớt các ràng buộc và điều chỉnh một số biến, nhưng vẫn đảm bảo mục tiêu tối ưu ban đầu được duy trì. Cụ thể, các thay đổi sẽ được thực hiện như sau:
 
@@ -87,17 +100,24 @@ Cuối cùng, đặt $ x= tilde(w) - w$ là vecto điều chỉnh.
 
 Khi đó, bài toán (USR-20) có thể được viết lại như sau:
 
- $
-    min quad & max_(u in N(v_1)) angle.l w + x, bb(1)_T_u angle.r quad quad  #text(blue)[(USR-23)]\ 
+// $
+//     "(USR2)" quad quad min quad & max_(u in N(v_1)) angle.l w + x, bb(1)_T_u angle.r quad quad  #text(blue)[(USR-23)]\ 
 
-    "s.t." quad & norm(x)_1 <= B  quad quad quad quad quad quad quad  "USR-23a"\
+//     "s.t." quad & norm(x)_1 <= B  quad quad quad quad quad quad quad  "USR-23a"\
 
-    & sum^n_(i=1) x_i = 0 quad quad quad quad quad quad quad  "USR-23b"\
+//     & sum^n_(i=1) x_i = 0 quad quad quad quad quad quad quad  "USR-23b"\
 
-    & x_i in [-epsilon_0; epsilon_0], forall i = 1,...,n quad quad quad quad quad quad quad  "USR-23c"
-    
-    $
-    <eq:23>
+//     & x_i in [-epsilon_0; epsilon_0], forall i = 1,...,n quad quad quad quad quad quad quad  "USR-23c"
+// $ <eq:23>
+$
+    "(USR2)" quad quad min quad & max_(u in N(v_1)) angle.l w + x, bb(1)_T_u angle.r \ 
+
+    "s.t." quad & norm(x)_1 <= B \
+
+    & sum^n_(i=1) x_i = 0 \
+
+    & x_i in [-epsilon_0; epsilon_0], forall i = 1,...,n 
+$ <eq:23>
 === Giải thuật của bài toán nâng cấp bán kính ổn định 
 
 Sau khi chuyển đổi sang bài toán đơn giản hơn #eqref(<eq:23>), phần này sẽ tập trung vào việc giải quyết #eqref(<eq:23>). Dễ dàng nhận thấy bài toán này có thể được biểu diễn dưới dạng một bài toán quy hoạch tuyến tính với không gian $n$ chiều và $n+2$ ràng buộc. Nhờ vậy, nó có thể được giải bằng các phương pháp kinh điển như thuật toán đơn hình hoặc các thuật toán thời gian đa thức do @karmarkar1984new và @megiddo1984linear đề xuất.
@@ -109,16 +129,26 @@ Tuy nhiên, khi số chiều tăng lên, thời gian tính toán tăng đáng k�
 
 Việc giải quyết bài toán #eqref(<eq:23>) thực chất là trả lời cho câu hỏi: _"Giá trị mục tiêu nhỏ nhất có thể đạt được trong ngân sách $B$ là bao nhiêu?"_. Tuy nhiên, thay vì tập trung vào câu hỏi này, ta có thể chuyển sang một câu hỏi có mối liên hệ chặt chẽ khác như sau: _"Với một giá trị mục tiêu $t$ cho trước, ngân sách tối thiểu cần thiết để đạt được giá trị mục tiêu không lớn hơn $t$ là bao nhiêu?"_. Câu hỏi này có thể được diễn đạt dưới dạng bài toán sau:
 
+// $
+//     min quad & norm(x)_1 quad quad quad quad quad quad #text(blue)[(PUSR-13)]\
+
+//     "s.t." quad & max_(u in N(v_1)) angle.l w + x, bb(1)_T_u angle.r <= t quad quad quad "PUSR-13a"\
+
+//     & sum^n_(i=1) x_i = 0 quad quad quad "PUSR-13b"\
+
+//     & x_i in [-epsilon_0; epsilon_0], forall i = 1,...,n quad quad quad "PUSR-13b"
+//     $
+//     <eq:24>
+
 $
-    min quad & norm(x)_1 quad quad quad quad quad quad #text(blue)[(PUSR-13)]\
+    "(PUSR1)" quad quad min quad & norm(x)_1 \
 
-    "s.t." quad & max_(u in N(v_1)) angle.l w + x, bb(1)_T_u angle.r <= t quad quad quad "PUSR-13a"\
+    "s.t." quad & max_(u in N(v_1)) angle.l w + x, bb(1)_T_u angle.r <= t \
 
-    & sum^n_(i=1) x_i = 0 quad quad quad "PUSR-13b"\
+    & sum^n_(i=1) x_i = 0 \
 
-    & x_i in [-epsilon_0; epsilon_0], forall i = 1,...,n quad quad quad "PUSR-13b"
-    $
-    <eq:24>
+    & x_i in [-epsilon_0; epsilon_0], forall i = 1,...,n 
+$ <eq:24>
 
 Khi đó, ta gọi bài toán này là _phiên bản tham số của bài toán nâng cấp bán kính ổn định (PUSR)_. Thoạt nhìn, bài toán (PUSR-13) #eqref(<eq:24>) được xây dựng từ (USR-23) #eqref(<eq:23>) bằng cách hoán đổi vai trò giữa mục tiêu và ràng buộc ngân sách. Với các bổ đề và định lý sẽ được trình bày ở phần tiếp theo, độc giả sẽ thấy rằng việc giải bài toán #eqref(<eq:24>) không chỉ đơn giản hơn so với #eqref(<eq:23>), mà còn cho phép ta dễ dàng tìm lại được nghiệm của #eqref(<eq:23>) khi đã tìm được nghiệm của #eqref(<eq:24>).
 
@@ -132,9 +162,7 @@ Nói cách khác, giải quyết bài toán mới này cho phép chúng ta xác 
 
 Từ quan sát thú vị này, ta có được bổ đề bên dưới:
 
-#lemma[
-
-Ta có 
+#lemma[Ta có 
 $ beta(t) <= B <=> t>= t^* $ trong đó $beta(t)$ là ngân sách cần thiết nhỏ nhất để đạt được giá trị $t$ và $t^*$ là giá trị mục tiêu tối ưu của bài toán #eqref(<eq:23>).
 ]
 
@@ -193,17 +221,27 @@ $ overline(z)_j=epsilon_0.abs(T_u_j). $
 
 Từ cách đổi biến như trên, bài toán #eqref(<eq:24>) ban đầu trở thành bài toán với số chiều giảm đi rất nhiều, cụ thể:
 
+// $
+//     min quad & sum_(j=0)^k abs(z_j) quad quad quad quad #text(blue)[(PUSR-33)]\
+
+//     "s.t." quad & max_(j=1,...,k) (gamma_j + z_j) <= t    quad quad ("PUSR-33a")\
+
+//     & sum^k_(j=1) z_j = 0 quad quad ("PUSR-33b")\
+
+//     & z_j in [-overline(z)_j; overline(z)_j], forall j = 0,1,...,k quad quad ("PUSR-33c")
+
+//     $
+//     <eq:33>
+
 $
-    min quad & sum_(j=0)^k abs(z_j) quad quad quad quad #text(blue)[(PUSR-33)]\
+    "(PUSR2)" quad quad min quad & sum_(j=0)^k abs(z_j) \
 
-    "s.t." quad & max_(j=1,...,k) (gamma_j + z_j) <= t    quad quad ("PUSR-33a")\
+    "s.t." quad & max_(j=1,...,k) (gamma_j + z_j) <= t    \
 
-    & sum^k_(j=1) z_j = 0 quad quad ("PUSR-33b")\
+    & sum^k_(j=1) z_j = 0 \
 
-    & z_j in [-overline(z)_j; overline(z)_j], forall j = 0,1,...,k quad quad ("PUSR-33c")
-
-    $
-    <eq:33>
+    & z_j in [-overline(z)_j; overline(z)_j], forall j = 0,1,...,k 
+$ <eq:33>
 
     Kết luận sau khẳng định rằng, từ nghiệm của bài toán (PUSR-33) #eqref(<eq:33>), ta có thể tìm lại nghiệm của (PUSR-24) #eqref(<eq:24>) mà không làm thay đổi giá trị mục tiêu.
 

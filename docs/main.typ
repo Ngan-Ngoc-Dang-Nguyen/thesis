@@ -78,12 +78,12 @@
 
 
 // --------- CHƯƠNG 1
-#part([Chương 1]) 
+// #part([Chương 1]) 
 #pagebreak()
 #include "../docs/intro.typ"
 
 // --------- CHƯƠNG 2
-#part([Chương 2]) 
+#part([Chương 1]) 
 #pagebreak()
 // #include "../docs/xxx-how.typ"
 #include "../docs/chapter1.typ"
@@ -95,7 +95,7 @@
 #include "../docs/problem-upgrading.typ"
 
 // --------- CHƯƠNG 3
-#part([Chương 3]) 
+#part([Chương 2]) 
 #pagebreak()
 #include "../docs/stability-radius.typ"
 #include "../docs/stability-radius-upgrading.typ"
@@ -104,4 +104,6 @@
 // --------- CHƯƠNG 4
 #part([#v(0.65em)]) 
 #pagebreak()
-#bibliography("../docs/ref.bib", title: "TÀI LIỆU THAM KHẢO", style: "annual-reviews-author-date", )
+#heading(numbering: none, level: auto, depth: 1, offset: 0)[Tài liệu tham khảo]
+// #set heading(numbering: none)
+#bibliography("../docs/ref.bib", title: none, style: "annual-reviews-author-date", )
