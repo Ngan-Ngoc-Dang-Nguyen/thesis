@@ -118,7 +118,7 @@ Trước khi chứng minh *Định lý...* cần lưu ý rằng cận dưới $R
 
   $ angle.l tilde(w), bb(1)_T_u angle.r <= angle.l w+ epsilon_u, bb(1)_T_u angle.r = angle.l w - epsilon_u, bb(1)_(T without T_u) angle.r <= angle.l tilde(w), bb(1)_(T without T_u) angle.r. $
 
-  Theo *Định lý 2.1* có thể kết luận rằng $v_1 in X_tilde(w)^*$. 
+  Theo @cor-opt-cond có thể kết luận rằng $v_1 in X_tilde(w)^*$. 
 
   Giả sử rằng $underline(R)(w) < min_(i=1,...,n) w_i$, mục tiêu của ta là chứng minh rằng $R(w)= underline(R)(w).$ Để đạt được mục tiêu này, chúng tôi chứng minh rằng đối với mức độ nhiễu $epsilon$ lớn hơn $R(w)$, thì sẽ tồn tại một trọng số nhiễu khả thi $tilde(w)$ sao cho $v_1$ không còn là tối ưu đối với $tilde(w)$. Cụ thể, giả sử $epsilon in (R(w), min_(i=1,...,n)w_i)$, sau đó chúng tôi xây dựng một số $tilde(w) in [w-epsilon,w+epsilon] sect RR_n^+$ sao cho $v_1 in.not X_tilde(w)^*$. Vì $epsilon > R(w)$, tồn tại một số $u in N(v_1)$ sao cho $epsilon > epsilon_u$. Do đó
   $ angle.l w + epsilon, bb(1)_T_u angle.r > angle.l w + epsilon_u, bb(1)_T_u angle.r  = angle.l w - epsilon_u, bb(1)_(T without T_u) angle.r > angle.l w- epsilon, bb(1)_(T without T_u) angle.r. $ (9)

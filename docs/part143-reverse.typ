@@ -1,17 +1,24 @@
 
+// #include "../tools/multi-section-ref.typ"
+// #import "../tools/macros.typ": eqref
+// #include "../tools/multi-section-ref.typ"
+// #import "../tools/macros.typ": eqref
+// #import "../typst-orange.typ": theorem, proof, lemma, proposition, corollary, example
+// #import "@preview/cetz:0.1.2": canvas, plot
+// #import "@preview/cetz:0.1.2"
+// #include "../tools/multi-section-ref.typ"
+// #import "../tools/macros.typ": eqref
+// #import "../typst-orange.typ": theorem, proof, lemma, proposition, corollary, example
+// #include "../tools/multi-section-ref.typ"
+// #import "../tools/macros.typ": eqref
+// #import "../typst-orange.typ": theorem, proof
+
 #include "../tools/multi-section-ref.typ"
-#import "../tools/macros.typ": eqref
-#include "../tools/multi-section-ref.typ"
-#import "../tools/macros.typ": eqref
-#import "../typst-orange.typ": theorem, proof, lemma, proposition, corollary, example
 #import "@preview/cetz:0.1.2": canvas, plot
 #import "@preview/cetz:0.1.2"
-#include "../tools/multi-section-ref.typ"
-#import "../tools/macros.typ": eqref
-#import "../typst-orange.typ": theorem, proof, lemma, proposition, corollary, example
-#include "../tools/multi-section-ref.typ"
-#import "../tools/macros.typ": eqref
-#import "../typst-orange.typ": theorem, proof
+#import "../tools/macros.typ": eqref, remark-Le, delete-Le, add-Le, remark-Ngan, delete-Ngan, add-Ngan, theorem, definition, proposition, lemma, proof, example
+
+
 // == BÀI TOÁN REVERSE 1-MEDIAN TRÊN CÂY
 === Bài toán Reverse 1-median 
 
@@ -107,7 +114,7 @@ $
      }
   )]
 
-Dựa vào dữ kiện ban đầu, ta có thể tính được $f(v_2)$ lúc này nhận giá trị bằng 74. Bây giờ ta sẽ tiến hành cải thiện giá trị này.
+Dựa vào dữ kiện ban đầu, ta có thể tính được $f(v_2)$ lúc này nhận giá trị bằng $74$. Bây giờ ta sẽ tiến hành cải thiện giá trị này.
 Tức là ta cần giải bài toán sau:
 
 // $
@@ -127,7 +134,7 @@ $ delta_5 = 1, delta_6 = 3, delta_1 = 2, delta_2 = delta_3= delta_4 = 0. $
 
 Ta được đồ thị cây $T$ với trọng số các đỉnh sau khi được cải thiện như sau:
 
-#align(center)[#canvas(length: 7%, {
+#let do-thi-cay-reverse = canvas(length: 7%, {
     import cetz.draw: *
 
     let y = 2 
@@ -169,7 +176,11 @@ Ta được đồ thị cây $T$ với trọng số các đỉnh sau khi đượ
     line("v4","v6", name: "v4v6")
     content("v4v6.left", $4$)
 
-     }
-  )]
+})
 Khi đó, $f(v_2) = 44.$
+#figure(
+  do-thi-cay-reverse,
+  caption: [Đồ thị cây sau khi giải bài toán reverse],
+) <fig-do-thi-cay-reverse>
+
   
