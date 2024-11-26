@@ -951,13 +951,7 @@ Tiếp theo, ta sẽ xem xét một bổ đề quan trọng sau:
 
 === Tính lồi của hàm khoảng cách trên cây
 
-#remark-Le[
-  - Tại sao lại đặt $f_1(x,a) eq.triple d(x,a)$? Tại sao không dùng trực tiếp $d(x, a)$? Anh đã sửa lại chứng minh bằng cách bỏ đi ký hiệu $f_1(x,a)$
-  - Tính chất lồi trên cây là gì? Anh đã định nghĩa thêm.
-  - chứng minh bị sai, anh mới sửa lại
-]
-
-Đồ thị cây là một lớp đồ thị đơn giản có nhiều tính chất đẹp và quan trọng. Một trong số đó là tính lồi của hàm khoảng cách được phát biểu bởi @dearing1976convex. Tính chất này đặc biệt quan trọng trong các bài toán vị trí trên đồ thị cây.
+Mặc dù đồ thị cây là một loại đồ thị đơn giản, nhưng nó sở hữu nhiều tính chất đẹp và thú vị. Một trong những tính chất nổi bật là tính lồi của hàm khoảng cách được phát biểu bởi @dearing1976convex. Tính chất này đóng vai trò đặc biệt quan trọng trong các bài toán vị trí trên đồ thị cây.
 
 Trước tiên ta nhắc lại về hàm lồi trên đồ thị cây. Cho hàm số $f$ liên tục trên đồ thị cây $T$.
 
