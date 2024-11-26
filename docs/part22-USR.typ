@@ -319,7 +319,22 @@ $ z_0 + sum_(j in J <= (t)) z_j < - sum_(j in J > (t)) z_j. $
 // == 4.3 Giải phiên bản tham số của bài toán nâng cấp bán kính ổn định
 == Giải thuật 
 
-Trong phần trước, chúng ta đã chứng minh rằng việc giải bài toán mục tiêu (USR-12) có thể được đưa về giải bài toán tham số của nó (PUSR-16) bằng cách tìm một nghiệm tối ưu $hat(z)(t)$ và mục tiêu tối ưu $beta(t)$ tương ứng với $t$. Định lý sau đây cung cấp các biểu thức dạng đóng cho cả $hat(z)(t)$ và $beta(t)$. 
+
+// *Định lý 4.3* 
+
+// ==== Giải bài toán tham số
+// // #remark-Le[Xem lại cách trình bày lại định lý này trong bản mới của bài báo]
+// Bây giờ, ta sẽ chứng minh rằng bài toán tham số hóa #eqref(<eq:33>)tồn tại nghiệm tối ưu $hat(z)(t)$
+// và giá trị mục tiêu tối ưu $beta(t)$ được biểu diễn dưới dạng công thức tường minh.
+// Để làm rõ điều này, ta định nghĩa $hat(z)(t)$ dựa trên hai trường hợp.
+
+// Nếu $overline(z_0) >= sum_(i=1)^k [gamma_i - t]_+$ thì ta chọn
+// $ hat(z)_(j)(t) = -(gamma_j - t), quad quad j in J > (t)\
+
+// & hat(z)_(j) (t) = 0, quad quad j in J <= (t) quad quad quad \
+// & hat(z)_0(t)= sum_(j in J > (t)) (gamma_j - t). $
+// <eq:40>
+// Trong phần trước, chúng ta đã chứng minh rằng việc giải bài toán mục tiêu (USR-12) có thể được đưa về giải bài toán tham số của nó (PUSR-16) bằng cách tìm một nghiệm tối ưu $hat(z)(t)$ và mục tiêu tối ưu $beta(t)$ tương ứng với $t$. Định lý sau đây cung cấp các biểu thức dạng đóng cho cả $hat(z)(t)$ và $beta(t)$. 
 
 // *Định lý 4.3* 
 
@@ -328,46 +343,63 @@ Trong phần trước, chúng ta đã chứng minh rằng việc giải bài to�
 Hơn nữa, một nghiệm tối ưu của (PUSR-16), gọi là $hat(z)(t)$ có thể được chọn bằng cách xem xét hai trường hợp. Nếu $overline(z_0) >= sum_(i=1)^k [gamma_i - t]_+$ thì ta chọn
 $ hat(z)_(j)(t) = -(gamma_j - t), quad quad j in J > (t) quad (21a) $
 $ hat(z)_(j) (t) = 0, quad quad j in J <= (t) quad quad (21b) $
-$ hat(z_0)(t)= sum_(j in J > (t)) (gamma_j - t). quad quad (21c)  $
+$ hat(z_0)(t)= sum_(j in J > (t)) (gamma_j - t). quad quad (21c)  $ <eq:40>
 Ngược lại,
-$ hat(z_j)(t)= -(gamma_j -t), quad quad j in J > (t)
-(22a) $
-$ hat(z_j)(t)= min(overline(z_j), underline(t)-gamma_j), quad quad j in J <= (t) (22b) $
-$ hat(z_0)(t)=overline(z_0), quad (22c) $
+$ hat(z_j)(t)= -(gamma_j -t), quad quad j in J > (t)\ 
+ & hat(z_j)(t)= min(overline(z_j), underline(t)-gamma_j), quad quad j in J <= (t)\
+
+& hat(z_0)(t)=overline(z)_0, $
+<eq:otherwise>
 trong đó $underline(t)$ được chọn sao cho 
-$ overline(z_0)+ sum_(j in J <= (t)) min(overline(z_j), underline(t)-gamma_j)= sum_(j in J >(t)) (gamma_j - t). quad (23) $
+$ overline(z)_0+ sum_(j in J <= (t)) min(overline(z_j), underline(t)-gamma_j)= sum_(j in J >(t)) (gamma_j - t).  $
 
+<eq:deft>
 
-#theorem[Nếu giá trị mục tiêu tối ưu $beta(t)$ là hữu hạn, thì nó có thể được tính dưới dạng biểu thức đóng:
+Định lý sau đây trình bày biểu thức tường minh của $beta(t)$ và cho thấy rằng $hat(z)(t)$ là nghiệm tối ưu của bài toán.
+
+#proposition[Nếu giá trị mục tiêu tối ưu $beta(t)$ là hữu hạn thì
 $ beta(t) = 2 sum_(i=1)^k [gamma_i -t]_+ $
 
-Trong đó $[alpha]_+ = max(0,alpha)$ với $alpha in RR$. ]
+Trong đó $[alpha]_+ = max(0,alpha)$ với $alpha in RR$. Hơn nữa, $hat(z)(t)$ là nghiệm tối ưu của #eqref(<eq:33>) đồng thời được tính bằng #eqref(<eq:40>) và #eqref(<eq:otherwise>). ]
 
 
 
 // *Chứng minh*
 #proof[
-Chứng minh gồm hai phần, chúng tôi chia thành hai bước. Trong bước đầu tiên, chúng tôi chứng minh rằng $2 sum_(i=1)^k [gamma_j - t]_+$ là cận dưới cho mục tiêu (PUSR-16), tức là $beta(t)>= 2 sum_(i=1)^k [gamma_j - t]_+$. Trong bước thứ hai, chúng tôi chứng minh rằng $2 sum_(i=1)^k [gamma_j-t]_+$ thực sự là giá trị nhỏ nhất của (PUSR-16) bằng cách chứng minh rằng $hat(z)(t)$, được định nghĩa trong (21) hoặc (22), thỏa mãn $norm(hat(z)(t))_1 = 2 sum_(i=1)^k [gamma_j - t]_+.$
+Ta thấy rằng chứng minh gồm hai phần và ta sẽ chia thành hai bước. 
 
-*Bước 1.* Trực giác cho thấy, với một giá trị $t$ nào đó, ta cần phải giảm $gamma_j$ với $ j in J <= (t)$ để duy trì phương trình (PUSR-16b). Nói cách khác, $z_j$ nên là số không dương đối với $j in J>(t)$ và nên là số không âm đối với $j in J <= (t)$. Trực giác này thúc đẩy các ước lượng khéo léo sau đây để đạt được một cận dưới chặt chẽ cho hàm mục tiêu:
+Bước đầu tiên, ta chứng minh rằng $2 sum_(i=1)^k [gamma_j - t]_+$ là cận dưới giá trị hàm mục tiêu của bài toán #eqref(<eq:33>), tức là $beta(t)>= 2 sum_(i=1)^k [gamma_j - t]_+$. 
+
+Bước thứ hai, ta chứng minh rằng $2 sum_(i=1)^k [gamma_j-t]_+$ thực sự là giá trị nhỏ nhất của #eqref(<eq:33>) bằng cách chứng minh rằng $hat(z)(t)$, được định nghĩa trong #eqref(<eq:40>) hoặc #eqref(<eq:otherwise>), thỏa mãn $norm(hat(z)(t))_1 = 2 sum_(i=1)^k [gamma_j - t]_+.$
+
+*Bước 1.* Trực giác cho thấy rằng, với một giá trị $t$ nhất định, ta cần giảm $gamma_j$ với $j in J>(t)$ và đồng thời tăng $gamma_j$ với $j in J <= (t) $ nhằm đảm bảo rằng phương trình (PUSR-33b) được thỏa mãn. Nói cách khác, $z_j$ cần nhận giá trị không dương khi $j in J>(t)$ và cần nhận giá trị không âm khi $j in J <= (t)$. Dựa trên quan sát này, ta sẽ đề xuất các ước lượng sau để thiết lập một cận dưới chặt cho hàm mục tiêu.
+
+// Quan sát thấy, với một giá trị $t$ nào đó, ta cần phải giảm $gamma_j$ với $ j in J <= (t)$ để duy trì phương trình (PUSR-16b). Nói cách khác, $z_j$ nên là số không dương đối với $j in J>(t)$ và nên là số không âm đối với $j in J <= (t)$. Trực giác này thúc đẩy các ước lượng khéo léo sau đây để đạt được một cận dưới chặt chẽ cho hàm mục tiêu:
 $ norm(z)_1 = sum_(j=0)^k abs(z_j)= abs(z_0)+ sum_(i in J <= (t)) abs(z_i)+ sum_(j in J >(t)) abs(z_i) >= z_0 + sum_(i in J <= (t)) z_j - sum_(i in J > (t)) z_j. $
-Bằng điều kiện (PUSR-16b), chúng ta có $z_0 + sum_(i in J <= (t)) z_j = - sum_(i in J >(t)) z_j.$ Do đó,
+Dựa vào điều kiện (PUSR-33b), ta có $z_0 + sum_(i in J <= (t)) z_j = - sum_(i in J >(t)) z_j.$ 
+
+Do đó,
 $ norm(z)_1 >= -2 sum_(i in J > (t)) z_j. $
 Chú ý rằng với mọi $j in J >(t)$, ta có $-z_j >= gamma_j - t >0$, do đó,
 $ norm(z)_1 >= 2 sum_(j in J > (t))(gamma_j - t)= 2 sum_(j=1)^k [gamma_j - t]_+. $
-Từ ước lượng trên, ta thấy rằng $ 2sum_(j in J > (t))(gamma_j -t )$ là chặn dưới của giá trị mục tiêu của (PUSR-16).
+Từ ước lượng trên, ta thấy rằng $ 2 sum_(j in J > (t))(gamma_j -t ) $ là chặn dưới của giá trị mục tiêu của (PUSR-33) #eqref(<eq:33>).
 
-*Bước 2.* Ta biết rằng tồn tại một vài vecto khả thi $z$ của (PUSR-16) để mà
-$ norm(z)_1= 2sum_(j in J >(t))(gamma_j -t). quad quad (24) $
-Vecto $z$ có thể được định nghĩa như sau. Đối với tập hợp chỉ số $J > (t)$, chúng ta đặt
+*Bước 2.* Bây giờ, ta sẽ chứng minh rằng tồn tại một vài nghiệm khả thi $z$ của #eqref(<eq:33>) sao cho 
+$ norm(z)_1= 2sum_(j in J >(t))(gamma_j -t). quad quad $
+$z$ có thể được định nghĩa như sau:
+
+Đối với tập hợp các chỉ số $J > (t)$, ta đặt:
 $ z_j = -(gamma_j - t), quad forall j in J >(t). $
-Với $j in {0} union J <= (t)$, mục tiêu của ta là chọn $z_j$ là một số không âm sao cho tổng của chúng bằng $sum_(j in J > (t)) (gamma_j -t)$. Để làm điều này, hãy xem xét hai trường hợp. Nếu $z_0 >= sum_(j in J > (t))(gamma_j -t)$, thì ta có thể đơn giản đặt
+Với $j in {0} union J <= (t)$, mục tiêu của ta là chọn $z_j$ là một số không âm sao cho tổng của chúng bằng $sum_(j in J > (t)) (gamma_j -t)$. Để làm rõ, ta xem xét hai trường hợp. 
+
+Nếu $overline(z)_0 >= sum_(j in J > (t))(gamma_j -t)$ ta có thể đặt 
 $ z_0 =sum_(j in J >(t))(gamma_j -t), $
 $ z_j =0, quad forall j in J <= (t). $
-Ngược lại, ta có $overline(z_0) < sum_(j in J >(t))(gamma_j -t)$. Trong trường hợp này, ta đặt 
-$ z_0 = overline(z_0), $
-$ z_j = min (overline(z_j), underline(t)-gamma_j), quad forall j in J <= (t), $
-trong đó $underline(t)$ được định nghĩa ở (23).
+
+Ngược lại, ta có $overline(z)_0 < sum_(j in J >(t))(gamma_j -t)$. Trong trường hợp này, ta đặt 
+$ z_0 = overline(z)_0, $
+$ z_j = min (overline(z)_j, underline(t)-gamma_j), quad forall j in J <= (t), $
+trong đó $underline(t)$ được định nghĩa ở #eqref(<eq:deft>).
 
 Bây giờ chúng ta chỉ ra sự tồn tại của $underline(t)$. Đặt $phi(t')= overline(z_0) < sum_(j in J >(t))(gamma_j -t)$ và $phi(t)>= sum_(j in J > (t))(gamma_j -t)$ vì mệnh đề 4.1. Do tính liên tục của $phi$ ngụ ý sự tồn tại của $underline(t)$. Cuối cùng, không khó để thấy rằng $z$ là một nghiệm khả thi của (PUSR-16) và thỏa (24). Bằng cách chọn $hat(z)(t)=z$, chúng ta hoàn thành chứng minh. (chứng minh xong)]
 
