@@ -58,6 +58,15 @@
 - How to ref a theorem (LE)
 - template for theorem (LE)
 - add references (NGAN)
+- Chỉnh ref cua USR 
+- Chinh size chu
+
+
+- some solution (một nghiệm nào đó --chứ k phải một vài nghiệm)
+- solution (nghiệm chứ k phải lời giải)
+- solution 
+- Vấn đề --> Bài toán
+- Với tất cả --> với mọi
 ]
 
 === Khái niệm và các dạng đồ thị 

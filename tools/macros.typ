@@ -15,6 +15,10 @@
 #let customEqref = eqref.with(fmt: customEqfmt, style: emph) // alternate options
 //--------------- eqref
 
+#let myref(x) = text(fill: blue,)[(#x)]
+#let figref(x) = text(fill: red,)[#x]
+
+
 #let remark-Le(x) = text(fill: blue, size: 10pt)[\[*Remark by LE:* #x\]]
 #let delete-Le(x) = text(fill: blue, size: 10pt)[\[*Delete by LE:* #x\]]
 #let add-Le(x) = text(fill: blue)[#x]
