@@ -375,9 +375,11 @@ Quan sát rằng với mỗi giá trị cố định của $t$, ta có thể tì
 
 === Giải bài toán nâng cấp cận dưới bán kính ổn định
 
-Bây giờ chúng tôi sẽ mô tả một cách tiếp cận tổ hợp để tìm nghiệm tối ưu $w*$ của bài toán nâng cấp bán kính ổn định ban đầu (USR-10) thông qua các phép biến đổi đã được phát triển trong các tiểu mục trước đó.
+Bây giờ chúng tôi sẽ mô tả một cách tiếp cận tổ hợp để tìm nghiệm tối ưu $w^*$ của bài toán nâng cấp bán kính ổn định ban đầu (USR-10) thông qua các phép biến đổi đã được phát triển trong các tiểu mục trước đó.
 
-Ta có $w^* = w + x^* $, trong đó $x^*$ là nghiệm khả thi của (USR-12). Dựa vào @thm-computing-topt, ta có thể chọn $x^*= hat(x)(t^*)$. Lưu ý rằng, ta có thể xây dựng $hat(x)(t)$ từ $hat(z)(t)$ cho bất kỳ $t$ nào bằng cách sử dụng Định lý 4.2, phương trình (17), và biểu thức của $hat(z)(t)$ được cho bởi (21) hoặc (22). Về giá trị $t^*$, nó có thể được tìm thấy trong thời gian $O(k log k)$, với $k$ là bậc của $v_1$, bằng cách sử dụng tìm kiếm nhị phân vì $t^* = inf{t >= 0: beta(t) <= B}$ và hàm $beta(.)$ được xác định trong Định lý 4.3 là hàm tuyến tính từng khúc và giảm dần. Xem @fig-so-do-cac-bai-toan để có cái nhìn tổng quan về các phép biến đổi giữa các bài toán và lời giải.
+Ta có $w^* = w + x^* $, trong đó $x^*$ là nghiệm khả thi của (USR-12). Dựa vào @thm-computing-topt, ta có thể chọn $x^*= hat(x)(t^*)$. Lưu ý rằng, ta có thể xây dựng $hat(x)(t)$ từ $hat(z)(t)$ cho bất kỳ $t$ nào bằng cách sử dụng Định lý 4.2, phương trình (17), và biểu thức của $hat(z)(t)$ được cho bởi (21) hoặc (22). Về giá trị $t^*$, nó có thể được tìm thấy trong thời gian $O(k log k)$, với $k$ là bậc của $v_1$, bằng cách sử dụng tìm kiếm nhị phân vì $t^* = inf{t >= 0: beta(t) <= B}$ và hàm $beta(.)$ được xác định trong Định lý 4.3 là hàm tuyến tính từng khúc và giảm dần.
+
+Xem @fig-so-do-cac-bai-toan để có cái nhìn tổng quan về các phép biến đổi giữa các bài toán và lời giải. Trong đó, mỗi hình chữ nhật đại diện cho một bài toán và nghiệm tối ưu của nó. Mỗi mũi tên đại diện cho phép biến đổi giữa các bài toán cùng với những kết quả chính kết nối chúng.
 
 #let so-do-cac-bai-toan  = canvas(length: 10%, {
     import cetz.draw: *
@@ -414,11 +416,11 @@ Ta có $w^* = w + x^* $, trong đó $x^*$ là nghiệm khả thi của (USR-12).
 })
 #figure(
   so-do-cac-bai-toan,
-  caption: [Các phép biến đổi của bốn bài toán nâng cấp. Mỗi hình chữ nhật đại diện cho một bài toán và nghiệm tối ưu của nó. Mỗi mũi tên đại diện cho phép biến đổi giữa các bài toán cùng với những kết quả chính kết nối chúng.],
+  caption: [Các phép biến đổi của bốn bài toán nâng cấp.],
 ) <fig-so-do-cac-bai-toan>
 // Hình 2. Các phép biến đổi của bốn bài toán nâng cấp. Mỗi hộp chứa một bài toán và nghiệm tối ưu của nó. Mỗi mũi tên đại diện cho phép biến đổi giữa các bài toán cùng với những kết quả chính kết nối chúng.
 
-Nhớ rằng việc giải quyết bài toán (PUSR_13) tốn chi phí $O(n + k log k)$ và việc tìm kiếm $t*$ có thể thực hiện trong $O(k log k)$, do đó độ phức tạp tổng thể của việc giải bài toán (USR-10) là $O(n + k log k)$. 
+Nhớ rằng việc giải quyết bài toán (PUSR_13) tốn chi phí $O(n + k log k)$ và việc tìm kiếm $t^*$ có thể thực hiện trong $O(k log k)$, do đó độ phức tạp tổng thể của việc giải bài toán (USR-10) là $O(n + k log k)$. 
 
 // *Định lý 4.4*
 

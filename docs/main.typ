@@ -112,6 +112,6 @@
 #pagebreak()
 #include "../docs/part31-conclusion.typ"
 #pagebreak()
-#heading(numbering: none, level: 1)[Tài liệu tham khảo]
+#heading(numbering: none, level: 1, outlined: false)[Tài liệu tham khảo]
 // #set heading(numbering: none)
 #bibliography("../docs/ref.bib", title: none, style: "annual-reviews-author-date", )

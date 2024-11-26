@@ -78,20 +78,18 @@ $ norm(x)_1 =  abs(1) + abs(-3) + abs(2) = 1 + 3 + 2= 6. $
 
 == Bán kính ổn định
 === Định nghĩa 
-Như đã trình bày ở *Chương 1*, $v_1$ được gọi là điểm 1-median nếu $f(v_1)$ nhỏ nhất. Đồng thời, *Goldman* cũng đã đưa ra được điều kiện tối ưu như sau:
-
-$ angle.l w, bb(1)_T_u angle.r <= W/2, quad quad forall u in N(v_1) $ <eq:dktu>
-trong đó $W = angle.l w, bb(1)_T angle.r$ là tổng trọng số của cây ứng với $w$ và $N(v_1)$ là tập các đỉnh liền kề với $v_1$.
-
-Điều này tương đương với 
+Nhắc lại rằng $v_1$ là điểm 1-median ứng với bộ trọng số $w$ nếu thỏa điều kiện tối ưu như sau:
+$ angle.l w, bb(1)_T_u angle.r <= W/2, quad quad forall u in N(v_1), $ <eq:dktu>
+trong đó $W = angle.l w, bb(1)_T angle.r$ là tổng trọng số của cây ứng với $w$ và $N(v_1)$ là tập các đỉnh liền kề với $v_1$. Chú ý rằng, theo @cor-opt-cond, bất đẳng thức @eq:dktu tương đương
 $
-angle.l w, bb(1)_T_u angle.r <= angle.l w, bb(1)_(T without T_u) angle.r, quad quad forall u in N(v_1)
+angle.l w, bb(1)_T_u angle.r <= angle.l w, bb(1)_(T without T_u) angle.r, quad quad forall u in N(v_1).
 $
 
 Trong chương này ta giả sử tổng trọng số của $w$ có độ lớn không đổi và $v_1$ là điểm 1-median ứng với $w$. 
 #hypothesis[Giả sử $w in RR_+^n$ là một vecto trọng số thỏa 
 $ W = angle.l w, bb(1)_T angle.r = 1. $ <eq:dk>
-và $v_1$ là điểm 1-median ứng với $w$.]
+// và $v_1$ là điểm 1-median ứng với $w$.
+]
 
 #remark-Le[Việc giải sử này là hợp lý do?]
 
@@ -105,7 +103,7 @@ $ angle.l w, bb(1)_T_u angle.r <= 1/2, quad quad forall u in N(v_1). $
 Trong thực tế, vector trọng số $w$ có thể bị nhiễu, dẫn đến việc nó bị thay đổi thành một vector $ tilde(w) in RR_+^n$. Chẳng hạn, trong một thành phố, trọng số tại mỗi điểm dân cư có thể thay đổi do các yếu tố như biến động dân số, điều kiện giao thông, hoặc sự phát triển của cơ sở hạ tầng. Một ví dụ khác có thể thấy trong hệ thống chuỗi cửa hàng, nơi trọng số về khối lượng hàng hóa tại mỗi cửa hàng có thể dao động do ảnh hưởng của thời tiết, tính chất mùa vụ, hoặc tình hình kinh tế.
 
 Ta giả sử rằng sự sai khác giữ $w$ và $tilde(w)$ là nhỏ, cụ thể được mô tả bởi bất đẳng thức:
-$ norm(tilde(w)-w)_infinity <= epsilon_0 $ điều này tương đương $tilde(w) in [w-epsilon; w+ epsilon] $ với một mức nhiễu nhỏ $epsilon>0$. Điều này có nghĩa là mỗi thành phần trọng số của $tilde(w)$ chỉ có thể thay đổi trong một khoảng nhất định xung quanh giá trị tương ứng của nó trong $w$, phản ánh sự biến động nhẹ trong hệ thống.
+$ norm(tilde(w)-w)_infinity <= epsilon $ điều này tương đương $tilde(w) in [w-epsilon; w+ epsilon] $ với một mức nhiễu nhỏ $epsilon>0$. Điều này có nghĩa là mỗi thành phần trọng số của $tilde(w)$ chỉ có thể thay đổi trong một khoảng nhất định xung quanh giá trị tương ứng của nó trong $w$, phản ánh sự biến động nhẹ trong hệ thống.
 
 Trong bối cảnh tồn tại sự nhiễu này, mục tiêu của chúng ta là xem xét sự ổn định của điểm 1-median $v_1$. Nói cách khác, chúng ta muốn biết mức độ nhiễu lớn nhất có thể, ký hiệu là $epsilon$, sao cho $v_1$ vẫn là điểm 1-median tối ưu đối với vector trọng số bị nhiễu $tilde(w)$, tức là:
 
