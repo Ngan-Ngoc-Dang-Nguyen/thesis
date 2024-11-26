@@ -209,8 +209,9 @@
 
   set document(author: author, title: title)
   set text(size: fontSize, lang: lang)
-  set par(leading: 0.5em)
-  // set par(first-line-indent: 2em, leading: 0.5em)
+  // set par(leading: 0.5em)
+  set par(first-line-indent: 2em, leading: 0.5em)
+  // show: fix-indent(unsafe: true)
   // show: fix-indent() // fix indent of line of first paragraph
   set enum(numbering: "1.a.i.")
   set list(marker: ([•], [--], [◦]))

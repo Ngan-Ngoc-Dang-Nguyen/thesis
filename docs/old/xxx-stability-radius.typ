@@ -13,9 +13,9 @@ _Chương này sẽ nghiên cứu về một đối tượng ...._
 
 
 
-#remark-Le[Chương kiến thức chuẩn bị là 30 trang. Chương này mớ có 10 trang. Em phải cố gắng viết thêm 10 trang nữa nha.]
+// #remark-Le[Chương kiến thức chuẩn bị là 30 trang. Chương này mớ có 10 trang. Em phải cố gắng viết thêm 10 trang nữa nha.]
 
-#remark-Le[Phải đặt tiêu đề ngắn, vì nếu không, tiêu đề chương sẽ bị xuống hàng k đẹp.]
+// #remark-Le[Phải đặt tiêu đề ngắn, vì nếu không, tiêu đề chương sẽ bị xuống hàng k đẹp.]
 
 _Bán kính ổn định_ của một đối tượng trong lý thuyết đồ thị là một khái niệm phản ánh mức độ mà một đồ thị (hoặc một thành phần của nó) có thể duy trì các thuộc tính quan trọng khi bị tác động bởi những thay đổi nhỏ, chẳng hạn như việc loại bỏ các đỉnh hoặc cạnh. Nó đo lường khả năng "chịu đựng" của đồ thị trước các yếu tố gây rối loạn hoặc phá hủy, đồng thời xác định phạm vi ảnh hưởng của sự thay đổi đối với cấu trúc của đồ thị.
 

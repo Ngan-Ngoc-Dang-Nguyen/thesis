@@ -37,7 +37,7 @@ $ angle.l w + epsilon, bb(1)_T_u angle.r > angle.l w + epsilon_u, bb(1)_T_u angl
 
 Vậy ta hoàn thành chứng minh.]
 
-#remark-Le[Nhắc lại setting: đồ thị cây, điểm một median .... ]
+// #remark-Le[Nhắc lại setting: đồ thị cây, điểm một median .... ]
 
 Giả sử $w in RR_+^n$ là một vecto trọng số thỏa mãn điều kiện (1) và $v_1$ là một trung vị tương ứng với $w$.
 

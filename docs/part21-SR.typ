@@ -41,7 +41,7 @@ Trong chương này, chúng ta sẽ nghiên cứu chi tiết về bán kính ổ
 
 Trước khi đi vào nội dung chính, chúng ta sẽ giới thiệu một số ký hiệu quan trọng được sử dụng xuyên suốt trong chương này. Các ký hiệu này sẽ giúp việc trình bày và phân tích trở nên rõ ràng và nhất quán hơn.
 
-#remark-Le[Thêm ký hiệu đồ thị cây, cây con gốc tại u là gì?]
+// #remark-Le[Thêm ký hiệu đồ thị cây, cây con gốc tại u là gì?]
 
 1. Ta định nghĩa _tích Hadamard_ giữa hai vector $u= vec(u_1,u_2,u_3), v= vec(v_1, v_2, v_3)$ bằng cách nhân từng thành phần tương ứng của hai vectơ, ký hiệu như sau: 
 
@@ -77,7 +77,7 @@ Nói cách khác, chuẩn 1 tính tổng các giá trị tuyệt đối của c�
 *Ví dụ* Giả sử $x=(1,-3,2)$, khi đó:
 $ norm(x)_1 =  abs(1) + abs(-3) + abs(2) = 1 + 3 + 2= 6. $
 
-#remark-Le[Giải thích thêm ký hiệu $[w - epsilon, w+ epsilon]$]
+// #remark-Le[Giải thích thêm ký hiệu $[w - epsilon, w+ epsilon]$]
 
 == Bán kính ổn định
 === Định nghĩa 

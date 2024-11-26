@@ -94,7 +94,7 @@ Trước khi giải bài toán này, ta sẽ để đơn giản hóa nó bằng 
 
 1. Viết lại bài toán $max$ thành $min$.
 
-2. Loại bỏ ràng buộc #myref[@USR-med-cond].
+2. Loại bỏ ràng buộc median trong #USR1. // #myref[@USR-med-cond].
 
 3. Đổi biến từ vecto trọng số $tilde(w)$ sang $x = tilde(w) - w$, trong đó $x$ được gọi là vecto điều chỉnh.
 
@@ -487,15 +487,15 @@ Cụ thể hơn, việc giải #USR1 gồm 04 bước như sau:
     content("p4.center",  box(stroke: black, inset: 0.5em)[#PUSR2 & $hat(z)(t)$], anchor: none, padding: 0.2)
 
     content("l1.bottom",  [*Loại bỏ ràng buộc median*], anchor: "bottom", padding: 0.2)
-    content("l1.top",  [*$x^* = w^* - w$*], anchor: "top", padding: 0.2)
+    // content("l1.top",  [*$x^* = w^* - w$*], anchor: "top", padding: 0.2)
     content("l2.left",  [*Đổi hàm mục tiêu và\ điều kiện ngân sách*], anchor: "left", padding: 0.2)
-    content("l2.right",  [*Định lý 3*], anchor: "right", padding: 0.2)
-    content("l3.bottom",  [*Định lý 4.2 4.3 & (17)*], anchor: "bottom", padding: 0.2)
+    // content("l2.right",  [*Định lý 3*], anchor: "right", padding: 0.2)
+    // content("l3.bottom",  [*Định lý 4.2 4.3 & (17)*], anchor: "bottom", padding: 0.2)
     content("l3.top",  [*Giảm chiều*], anchor: "top", padding: 0.2)
 })
 #figure(
   so-do-cac-bai-toan,
-  caption: [Các phép biến đổi của bốn bài toán nâng cấp.],
+  caption: [Mối liên hệ giữa bốn bài toán nâng cấp bán kính ổn định],
 ) <fig-so-do-cac-bai-toan>
 // Hình 2. Các phép biến đổi của bốn bài toán nâng cấp. Mỗi hộp chứa một bài toán và nghiệm tối ưu của nó. Mỗi mũi tên đại diện cho phép biến đổi giữa các bài toán cùng với những kết quả chính kết nối chúng.
 

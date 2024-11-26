@@ -55,23 +55,23 @@
 // - Issue with figure numbering (LE)
 // - Chinh size chu = 13pt (DONE)
 // - can le 3cm (DONE)
+// - coloring ref of figures (DONE)
 // - Chỉnh ref cua USR (DONE)
 
-- Issue with equation numbering (LE)
+// - Issue with equation numbering (LE)
 - How to ref a theorem (LE, DONE)
 - template for theorem (LE)
 - add references (NGAN)
 
 - Indent first paragraph 
-- coloring ref of figures
 - 
 
 
-- some solution (một nghiệm nào đó --chứ k phải một vài nghiệm)
-- solution (nghiệm chứ k phải lời giải)
-- solution 
-- Vấn đề --> Bài toán
-- Với tất cả --> với mọi
+// - some solution (một nghiệm nào đó --chứ k phải một vài nghiệm)
+// - solution (nghiệm chứ k phải lời giải)
+// - solution 
+// - Vấn đề --> Bài toán
+// - Với tất cả --> với mọi
 ]
 
 === Khái niệm và các dạng đồ thị 
