@@ -1,6 +1,6 @@
 
 #include "../tools/multi-section-ref.typ"
-#import "../tools/macros.typ": eqref, remark-Le, delete-Le, add-Le, remark-Ngan, delete-Ngan, add-Ngan, theorem, definition, proposition, lemma, proof,
+#import "../tools/macros.typ": eqref, myref, figref, remark-Le, delete-Le, add-Le, remark-Ngan, delete-Ngan, add-Ngan, theorem, definition, proposition, lemma, proof,
 #import "@preview/cetz:0.1.2": canvas, plot
 #import "@preview/cetz:0.1.2"
 #import "@preview/equate:0.2.1": equate
@@ -52,21 +52,26 @@
 #remark-Le[to-do list:
 // - add table list (LE, NO)
 // - spacing 1.5 (DONE)
-// - add figure list (LE, DONE): Cách thao tác với hình em xem @fig-do-thi-vo-huong. Em đặt canvas vào một biến, đặt biến đó vào figure, viết caption và label cho figure. Ref một figure bằng lệnh `@label-of-figure`
 // - Issue with figure numbering (LE)
-- Issue with equation numbering (LE)
-- How to ref a theorem (LE)
+// - Chinh size chu = 13pt (DONE)
+// - can le 3cm (DONE)
+// - coloring ref of figures (DONE)
+// - Chỉnh ref cua USR (DONE)
+
+// - Issue with equation numbering (LE)
+- How to ref a theorem (LE, DONE)
 - template for theorem (LE)
 - add references (NGAN)
-- Chỉnh ref cua USR 
-- Chinh size chu
+
+- Indent first paragraph 
+- 
 
 
-- some solution (một nghiệm nào đó --chứ k phải một vài nghiệm)
-- solution (nghiệm chứ k phải lời giải)
-- solution 
-- Vấn đề --> Bài toán
-- Với tất cả --> với mọi
+// - some solution (một nghiệm nào đó --chứ k phải một vài nghiệm)
+// - solution (nghiệm chứ k phải lời giải)
+// - solution 
+// - Vấn đề --> Bài toán
+// - Với tất cả --> với mọi
 ]
 
 === Khái niệm và các dạng đồ thị 
@@ -166,9 +171,9 @@ Lấy ví dụ trong thực tế:
 
 Tiếp theo, ta sẽ xét các dạng đồ thị thường gặp.
 
-1. _Đồ thị vô hướng (undirected graph)_ là một loại đồ thị trong đó các cạnh không có hướng ($psi_G (e) = u v  =v u$). Điều này có nghĩa là nếu có một cạnh nối hai đỉnh $u$ và $v$ thì cạnh này có thể được đi từ $u$ đến $v$ và ngược lại có thể đi từ $v$ đến $u$ . Nói cách khác, mối quan hệ giữa các đỉnh là hai chiều và không có sự phân biệt về hướng. @fig-do-thi-vo-huong minh họa một đồ thị vô hướng.
+1. _Đồ thị vô hướng (undirected graph)_ là một loại đồ thị trong đó các cạnh không có hướng ($psi_G (e) = u v  =v u$). Điều này có nghĩa là nếu có một cạnh nối hai đỉnh $u$ và $v$ thì cạnh này có thể được đi từ $u$ đến $v$ và ngược lại có thể đi từ $v$ đến $u$ . Nói cách khác, mối quan hệ giữa các đỉnh là hai chiều và không có sự phân biệt về hướng. #figref[@fig-do-thi-vo-huong] minh họa một đồ thị vô hướng.
 
-2. _Đồ thị có hướng (directed graph)_ là một loại đồ thị trong đó mỗi cạnh có hướng ($psi_G (e_1) = u v != psi_G (e_2) =v u$). Điều này có nghĩa là mỗi cạnh được biểu diễn bởi một cặp đỉnh có thứ tự, chỉ định hướng đi từ đỉnh đầu đến đỉnh cuối. Trong đồ thị có hướng, nếu có cạnh từ đỉnh $u$ đến đỉnh $v$ thì không nhất thiết phải có cạnh từ đỉnh $v$ đến đỉnh $u$. @fig-do-thi-co-huong minh họa một đồ thị có hướng bằng các mũi tên.
+2. _Đồ thị có hướng (directed graph)_ là một loại đồ thị trong đó mỗi cạnh có hướng ($psi_G (e_1) = u v != psi_G (e_2) =v u$). Điều này có nghĩa là mỗi cạnh được biểu diễn bởi một cặp đỉnh có thứ tự, chỉ định hướng đi từ đỉnh đầu đến đỉnh cuối. Trong đồ thị có hướng, nếu có cạnh từ đỉnh $u$ đến đỉnh $v$ thì không nhất thiết phải có cạnh từ đỉnh $v$ đến đỉnh $u$. #figref[@fig-do-thi-co-huong] minh họa một đồ thị có hướng bằng các mũi tên.
 
 
 
@@ -265,7 +270,8 @@ Tiếp theo, ta sẽ xét các dạng đồ thị thường gặp.
   caption: [Đồ thị có trọng số],
 ) <fig-do-thi-co-trong-so-xxx>
 
-4. _Đồ thị không có trọng số (unweighted graph)_ là đồ thị mà các cạnh và các đỉnh không có trọng số. Đồ thị trong @fig-do-thi-vo-huong và @fig-do-thi-co-huong là những đồ thị không có trọng số.
+4. _Đồ thị không có trọng số (unweighted graph)_ là đồ thị mà các cạnh và các đỉnh không có trọng số. Đồ thị trong #figref[@fig-do-thi-vo-huong] và
+#figref[@fig-do-thi-co-huong] là những đồ thị không có trọng số.
 
 5. _Đồ thị liên thông (connected graph)_ là đồ thị mà từ một đỉnh bất kỳ, ta có thể đi đến tất cả các đỉnh khác thông qua các cạnh.
 
@@ -319,7 +325,7 @@ Tiếp theo, ta sẽ xét các dạng đồ thị thường gặp.
 ) <fig-do-thi-lien-thong>
 
 
-5. _Đồ thị không liên thông (disconnected graph)_ là đồ thị sao cho tồn tại ít nhất một đỉnh, mà từ đỉnh đó ta không thể đi đến một số đỉnh khác. @fig-do-thi-khong-lien-thong là một ví dụ của đồ thị không liên thông vì tồn tại đỉnh $v_4$ mà từ đỉnh này ta không thể đi đến các đỉnh còn lại của đồ thị.
+5. _Đồ thị không liên thông (disconnected graph)_ là đồ thị sao cho tồn tại ít nhất một đỉnh, mà từ đỉnh đó ta không thể đi đến một số đỉnh khác. #figref[@fig-do-thi-khong-lien-thong] là một ví dụ của đồ thị không liên thông vì tồn tại đỉnh $v_4$ mà từ đỉnh này ta không thể đi đến các đỉnh còn lại của đồ thị.
 
 #let do-thi-khong-lien-thong = canvas(length: 10%, {
     import cetz.draw: *
@@ -374,6 +380,8 @@ Tiếp theo, ta sẽ xét các dạng đồ thị thường gặp.
 
 Một số khái niệm khác liên quan đến đồ thị được trình bày bên dưới.
 
+
+
 - Nếu $u$ là một điểm đầu mút của cạnh $e$ thì ta nói $u$ và $e$ _liên thuộc (incident)_ với nhau.
 #let do-thi-lien-thuoc = canvas(length: 10%, {
     import cetz.draw: *
@@ -400,9 +408,9 @@ Một số khái niệm khác liên quan đến đồ thị được trình bày
 ) <fig-do-thi-lien-thuoc>
 
 
-- Hai đỉnh liên thuộc với cùng một cạnh được gọi là hai đỉnh _liền kề (adjacent)_. Trong @fig-do-thi-lien-thuoc, $u$ và $v$ cùng liên thuộc cạnh $e$ nên $u$ và $v$ là hai đỉnh liền kề. 
+- Hai đỉnh liên thuộc với cùng một cạnh được gọi là hai đỉnh _liền kề (adjacent)_. Trong #figref[@fig-do-thi-lien-thuoc], $u$ và $v$ cùng liên thuộc cạnh $e$ nên $u$ và $v$ là hai đỉnh liền kề. 
 
-- Hai cạnh liên thuộc với cùng một đỉnh được gọi là hai cạnh _liền kề_. Trong @fig-do-thi-lien-ke, rõ ràng ta có thể thấy $e_1$ và $e_2$ cùng liên thuộc đỉnh $u$ nên $e_1, e_2$ là hai cạnh liền kề. 
+- Hai cạnh liên thuộc với cùng một đỉnh được gọi là hai cạnh _liền kề_. Trong #figref[@fig-do-thi-lien-ke], rõ ràng ta có thể thấy $e_1$ và $e_2$ cùng liên thuộc đỉnh $u$ nên $e_1, e_2$ là hai cạnh liền kề. 
 
 #let do-thi-lien-ke = canvas(length: 10%, {
     import cetz.draw: *
@@ -481,7 +489,7 @@ Một số khái niệm khác liên quan đến đồ thị được trình bày
 
 - _Đồ thị hữu hạn (finite graph)_ là đồ thị có cả tập hợp cạnh và tập hợp đỉnh đều hữu hạn. Các hình được đề cập bên trên đều là đồ thị hữu hạn.
 
-- _Đơn đồ thị (simple graph)_ là một đồ thị không có vòng và không có cạnh song song. @fig-do-thi-co-trong-so-xxx là một ví dụ của đơn đồ thị.
+- _Đơn đồ thị (simple graph)_ là một đồ thị không có vòng và không có cạnh song song. #figref[@fig-do-thi-co-trong-so-xxx] là một ví dụ của đơn đồ thị.
 
 - _Đồ thị tầm thường (trivial graph)_ là đồ thị chỉ có một đỉnh và không có cạnh.
 
@@ -667,7 +675,7 @@ Bậc của một đỉnh trong đồ thị mang nhiều ý nghĩa quan trọng 
   caption: [Bậc của đồ thị],
 ) <fig-do-thi-tong-bac-xxx>
 
-Trong @fig-do-thi-tong-bac-xxx, ta có thể tính được bậc của các đỉnh như sau: 
+Trong #figref[@fig-do-thi-tong-bac-xxx], ta có thể tính được bậc của các đỉnh như sau: 
 
 $ d(v_1)=4, d(v_2)=4, d(v_3)=4, d(v_4)=2, d(v_5)=2$ và $d(v_6)=0 $.
 
