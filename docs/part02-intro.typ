@@ -54,6 +54,13 @@ Chương 2: Cận dưới bán kính ổn định và nâng cấp cận dưới.
 
 Luận văn đã thành công trong việc tìm ra công thức tường minh cho cận dưới bán kính ổn định của vị trí 1-median trên cây và đồng thời đề xuất một thuật toán để nâng cấp cận dưới nói trên.
 
+Kết quả của luận văn được trình bày trong bài báo khoa học đang được phản biện bởi Tạp chí Asia-Pacific Journal of Operational Research (Q3 Scopus): 
+#align(center)[_Stability Radius and an Upgrading Model 
+of Median Location on Trees_]
+
+
+
+
 // #pagebreak()
 // #heading(numbering: none, level: 1)[Kết quả đạt được]
 
