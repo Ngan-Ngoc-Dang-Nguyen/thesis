@@ -31,6 +31,7 @@
   // title: "Bài toán nâng cấp bán kính ổn định cho vị trí 1-median trên cây",
 //   title: [Bài toán nâng cấp bán kính ổn định\ cho vị trí 1-median trên cây],
   title: [NÂNG CẤP BÁN KÍNH ỔN ĐỊNH\ CHO VỊ TRÍ 1-MEDIAN TRÊN CÂY],
+  // title: [],
   //subtitle: "A Practical Guide",
   date: "2024",
   author: "Nguyễn Đặng Ngọc Ngân",
