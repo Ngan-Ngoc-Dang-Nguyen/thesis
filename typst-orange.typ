@@ -204,7 +204,8 @@
   bodyfmt: body => [#body #h(1fr) $square$]
 ).with(numbering: none)
 
-#let project(title: "", subtitle: "", date: "", author: (), logo: none, cover: none, imageIndex:none, body, mainColor: blue,copyright: [], lang: "en", listOfFigureTitle: none, listOfTableTitle: none, supplementChapter: "Chapter", supplementPart: "Part", fontSize: 10pt, part_style: 0) = {
+#let project(title: "", subtitle: "", date: "", author: (), logo: none, cover: none, imageIndex:none, body, mainColor: blue,copyright: [], lang: "en", listOfFigureTitle: none, listOfTableTitle: none, supplementChapter: "Chapter", supplementPart: "Part", fontSize: 13pt, part_style: 0) = {
+
   set document(author: author, title: title)
   set text(size: fontSize, lang: lang)
   set par(leading: 0.5em)
@@ -240,7 +241,7 @@
 
   set page(
     paper: "a4",
-    margin: (x: 3cm, bottom: 2.5cm, top: 3cm),
+    margin: (bottom: 3cm, top: 3cm, left: 3.5cm, right: 3cm),
      header: locate(loc => {
       set text(size: title5)
       let page_number = counter(page).at(loc).first()

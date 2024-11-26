@@ -4,12 +4,12 @@
 
 // = Kết luận và thảo luận 
 #heading(numbering: none, level: 1)[Kết luận]
-#remark-Le[Kết luận]
+// #remark-Le[Kết luận]
 
-#remark-Le[
-  - Kết luận: Các kết quả đạt được
-  - Thảo luận: Lấy conclusion của bài báo vô. Các hướng nghiên cứu tiếp theo
-]
+// #remark-Le[
+//   - Kết luận: Các kết quả đạt được
+//   - Thảo luận: Lấy conclusion của bài báo vô. Các hướng nghiên cứu tiếp theo
+// ]
 
 Trong bài báo này, chúng tôi nghiên cứu bán kính ổn định của vị trí trung vị trên đồ thị cây, trong đó trọng số các đỉnh là các tham số có thể thay đổi. 
 
