@@ -56,11 +56,12 @@
 // - Issue with figure numbering (LE)
 // - Chinh size chu = 13pt (DONE)
 // - can le 3cm (DONE)
+// - Chỉnh ref cua USR (DONE)
+
 - Issue with equation numbering (LE)
 - How to ref a theorem (LE, DONE)
 - template for theorem (LE)
 - add references (NGAN)
-- Chỉnh ref cua USR 
 
 - Indent first paragraph 
 - 

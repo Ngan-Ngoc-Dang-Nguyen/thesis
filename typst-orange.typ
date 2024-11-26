@@ -1,6 +1,7 @@
 #import("my-outline.typ"): *
 #import("my-index.typ"): *
 #import("theorems.typ"): *
+#import "@preview/indenta:0.0.3": fix-indent
 
 #let mathcal = (it) => {
   set text(size: 1.3em, font: "OPTIOriginal", fallback: false)
@@ -209,6 +210,8 @@
   set document(author: author, title: title)
   set text(size: fontSize, lang: lang)
   set par(leading: 0.5em)
+  // set par(first-line-indent: 2em, leading: 0.5em)
+  // show: fix-indent() // fix indent of line of first paragraph
   set enum(numbering: "1.a.i.")
   set list(marker: ([•], [--], [◦]))
   // show math.equation.where(block: true): e => {

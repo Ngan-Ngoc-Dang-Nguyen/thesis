@@ -9,10 +9,12 @@
 #set math.equation(numbering: "(1.1)", supplement: none)
 // #let myref(x) = text(fill: blue,)[(#x)]
 #let USR = [USR]
-#let USR1 = text(fill: blue)[(USR1)]
-#let USR2 = text(fill: blue)[(USR2)]
-#let PUSR1 = text(fill: blue)[(PUSR1)]
-#let PUSR2 = text(fill: blue)[(PUSR2)]
+#let USR1 = link(<eq-USR1>)[#text(fill: blue)[(USR1)]]
+#let USR2 = link(<eq:23>)[#text(fill: blue)[(USR2)]]
+// #let USR1 = text(fill: blue)[(USR1)]
+// #let USR2 = text(fill: blue)[(USR2)]
+#let PUSR1 = link(<eq:24>)[#text(fill: blue)[(PUSR1)]]
+#let PUSR2 = link(<eq:33>)[#text(fill: blue)[(PUSR2)]]
 
 
 // #par(justify: true)[
@@ -84,7 +86,7 @@ $
  & sum^n_(i=1) tilde(w)_i = 1 \
 
  & norm(tilde(w)-w)_infinity <= epsilon_0 
-$ 
+$ <eq-USR1>
 
 
 
