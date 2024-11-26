@@ -24,15 +24,15 @@
 // == BÀI TOÁN REVERSE 1-MEDIAN TRÊN CÂY
 === Bài toán Reverse 1-median 
 
-Trong phạm vi luận văn này, chúng ta sẽ tập trung vào bài toán reverse cơ bản, một chủ đề được nghiên cứu rộng rãi và có nhiều ứng dụng thực tiễn mạnh mẽ. Tuy nhiên, để phù hợp với mục tiêu của luận văn, chúng ta chỉ trình bày mô hình đơn giản nhất của bài toán.
+Trong phần này, chúng ta sẽ tập trung vào _Bài toán reverse_—một bài toán được nghiên cứu rộng rãi và có nhiều ứng dụng thực tế. Trong mô hình reverse các trọng số đỉnh và cạnh có thể thay đổi.Tuy nhiên, trong luận văn này, chúng ta chỉ xem xét một mô hình đơn giản của bài toán, đó là chỉ điều chỉnh trọng số các đỉnh trên đồ thị.
 
-Một ví dụ thực tế của bài toán reverse có thể thấy trong lĩnh vực quy hoạch đô thị. Giả sử nhà nước đã xác định một vị trí quan trọng, chẳng hạn như một trường học, để phục vụ cho cộng đồng dân cư. Tuy nhiên, do các yếu tố khách quan như sự gia tăng lưu lượng giao thông, việc di chuyển từ các khu dân cư khác đến vị trí này trở nên khó khăn hơn. Mục tiêu của nhà nước là điều chỉnh quy hoạch (chẳng hạn như cải thiện đường giao thông hoặc thậm chí tái phân bố dân cư) nhằm tối ưu hóa việc di chuyển từ các khu dân cư đến vị trí quan trọng này. Đây là một ví dụ cơ bản cho bài toán reverse 1-median trên cây.
+Giả sử chính phủ đã xác định một vị trí quan trọng. Mục tiêu ở đây là tái phân bố dân cư, nhằm tối ưu hóa tổng khoảng cách di chuyển từ các khu dân cư đến vị trí quan trọng đó. Đây là một ví dụ điển hình cho _Bài toán reverse 1-median_.
 
 // === Định nghĩa và giải thuật
 
-Cho đồ thị cây $T = (V, E)$ gồm $n$ đỉnh, mỗi đỉnh $i, i = 1,...,n$ được gán một trọng số không âm $w_i$ và mỗi cạnh có một độ dài không âm. Xét một đỉnh $v' in V$ bất kỳ. Gọi $delta_i$ là lượng điều chỉnh trọng số của đỉnh $i$, với điều kiện $delta_i <= u_i$, trong đó $u_i$ là giới hạn điều chỉnh của đỉnh $i$. Chi phí để điều chỉnh trọng số của đỉnh $i$ một lượng $delta_i$ được ký hiệu là $c_i(delta_i)$.
+Cho đồ thị cây $G = (V, E)$ gồm $n$ đỉnh, mỗi đỉnh $i, i = 1,...,n$ được gán một trọng số không âm $w_i$ và mỗi cạnh cũng có một độ dài không âm. Gọi $delta_i$ là lượng điều chỉnh trọng số của đỉnh $i$, với điều kiện $delta_i <= u_i$, trong đó $u_i$ là giới hạn điều chỉnh của đỉnh $i$ và đặt $c_i$ là chi phí điều chỉnh trọng số của đỉnh $i$.
 
-Mục tiêu của bài toán reverse 1-median trên cây là tìm cách điều chỉnh trọng số của các đỉnh sao cho hàm $f(v')$ đạt giá trị nhỏ nhất. Đồng thời, quá trình điều chỉnh phải tuân theo các ràng buộc về ngân sách tổng chi phí và giới hạn điều chỉnh tại mỗi đỉnh.
+Xét một đỉnh $v' in V$ bất kỳ, mục tiêu của bài toán reverse 1-median là điều chỉnh trọng số của các đỉnh sao cho hàm mục tiêu $f(v')$ đạt giá trị nhỏ nhất. Đồng thời, việc điều chỉnh phải nằm trong ngân sách cho trước và việc điều chỉnh trọng số mỗi đỉnh phải nằm trong giới hạn nhất định.
 
 Ta có thể viết lại bài toán như sau:
 
@@ -60,18 +60,20 @@ Rõ ràng, mô hình bài toán #eqref(<eq:42-in-reverse-file>) tương ứng v�
 
 #theorem[ Bài toán reverse 1-median trên cây có thể được giải trong thời gian $O(n)$.]
 
-*Ví dụ* Cho cây $T(V,E)$ có trọng số như hình bên dưới. Chọn điểm $v_2$ và điều chỉnh trọng số đỉnh trên cây $T$ trong ngân sách $B= 5$ để $f(v_2)$ nhỏ nhất. Đồng thời vẫn thỏa mãn các ràng buộc sau:
-$c_1=1, c_2 = 2, c_3 = 4, c_4 =3, c_5=1, c_6 = 3 $
-$
-0 <= delta_1 <= 2, 
-0 <= delta_2 <= 1,
-0 <= delta_3 <= 2,
-0 <= delta_4 <= 2,
-0 <= delta_5 <= 1,
-0 <= delta_6 <= 3.
-$
+#example[ Cho đồ thị $G=(V,E)$ có trọng số như hình bên dưới. Ta cần điều chỉnh trọng số các đỉnh trên đồ thị sao cho $f(v_2)$ nhỏ nhất. Đồng thời, thỏa mãn ràng buộc về ngân sách $B=5$ và các ràng buộc sau:
 
-#align(center)[#canvas(length: 7%, {
+$c_1=1, quad c_2 = 2, quad c_3 = 4, quad c_4 =3, quad c_5=1, quad c_6 = 3$
+
+$
+0 <= delta_1 <= 2, quad
+0 <= delta_2 <= 1, quad
+0 <= delta_3 <= 2, quad
+0 <= delta_4 <= 2, quad
+0 <= delta_5 <= 1, 
+quad$
+$0 <= delta_6 <= 3.$]
+
+#let do-thi-cay-trong-so-moi-reverse = canvas(length: 7%, {
     import cetz.draw: *
 
     let y = 2 
@@ -108,16 +110,22 @@ $
     content("v4v2.left", $3$)
 
     line("v4","v5", name: "v4v5")
-    content("v4v5.left", $2$)
+    content("v4v5.left", $2$, padding: 0.2)
 
     line("v4","v6", name: "v4v6")
-    content("v4v6.left", $4$)
+    content("v4v6.left", $4$, anchor: "bottom", padding: 0.1)
 
      }
   )]
+#figure(
+  do-thi-cay-trong-so-moi-reverse,
+  caption: [Đồ thị cây với trọng số mới sau khi giải Inverse 1-median],
+) 
+<fig-do-thi-cay-trong-so-moi-reverse>
 
-Dựa vào dữ kiện ban đầu, ta có thể tính được $f(v_2)$ lúc này nhận giá trị bằng $74$. Bây giờ ta sẽ tiến hành cải thiện giá trị này.
-Tức là ta cần giải bài toán sau:
+
+Dựa vào dữ kiện ban đầu, ta có $f(v_2)$ nhận giá trị bằng $74$. Bây giờ ta sẽ tiến hành cải thiện giá trị này.
+// Tức là ta cần giải bài toán sau:
 
 // $
 //     max sum_(i=1)^6 delta_i d(v_i,v_2) \
@@ -131,10 +139,11 @@ Tức là ta cần giải bài toán sau:
 //     0 <= delta_5 <= 1 \
 //     0 <= delta_6 <= 3 \
 // $ 
+
 Sau khi giải bài toán xếp ba lô liên tục, ta thu được:
 $ delta_5 = 1, delta_6 = 3, delta_1 = 2, delta_2 = delta_3= delta_4 = 0. $
 
-Ta được đồ thị cây $T$ với trọng số các đỉnh sau khi được cải thiện như sau:
+Ta được đồ thị cây $G$ với trọng số các đỉnh sau khi được cải thiện như sau:
 
 #let do-thi-cay-reverse = canvas(length: 7%, {
     import cetz.draw: *
@@ -179,10 +188,10 @@ Ta được đồ thị cây $T$ với trọng số các đỉnh sau khi đượ
     content("v4v6.left", $4$)
 
 })
-Khi đó, $f(v_2) = 44.$
+
 #figure(
   do-thi-cay-reverse,
   caption: [Đồ thị cây sau khi giải bài toán reverse],
 ) <fig-do-thi-cay-reverse>
-
+Khi đó, $f(v_2) = 44.$
   
