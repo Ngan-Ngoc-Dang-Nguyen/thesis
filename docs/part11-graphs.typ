@@ -64,6 +64,7 @@
 - add references (NGAN)
 
 - Indent first paragraph 
+- coloring ref of figures
 - 
 
 
