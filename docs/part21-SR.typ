@@ -160,4 +160,52 @@ Trước khi chứng minh @thm-lower-bound-SR cần lưu ý rằng cận dưới
 #example[
 Ta xem xét cây có trọng số $T$ trong hình 1. Bán kính ổn định $R(w)$ bị chặn dưới bởi $underline(R)(w) = min{epsilon_v_2, epsilon_v_3, epsilon_v_4}= 0.1/9$, trong đó $epsilon_v_2 = 0.34/9, epsilon_v_3 = 0.76/9, epsilon_v_4 = 0.1/9 $. Bởi vì $0.1/9 < min_(i=1,...,n) w_i = 0.06$, ta thu được $R(w)= 0.1/9$.]
 
-#remark-Le[Em bé có thể tính toán ví dụ chi tiết ra, nếu có thời gian.]
+// #remark-Le[Em bé có thể tính toán ví dụ chi tiết ra, nếu có thời gian.]
+
+#let example-stability-radius = canvas(length: 10%, {
+  import cetz.draw: *
+
+  let y = 2 
+  let x = 4
+  let y-space = 1
+  let h=1.6
+
+  circle((0*h,3), radius: 0.05,fill:black, name: "v1") 
+  content("v1.bottom", $v_1 (0.1)$, anchor: "left", padding: 0.2)
+
+  circle((-2*h, 2), radius: 0.05, fill: black, name: "v2") 
+  content("v2.bottom", $v_2 (0.13)$, anchor: "left", padding: 0.2)
+
+  circle((-3*h, 1), radius: 0.05,fill:black, name: "v5") 
+  content("v5.bottom", $v_5 (0.1)$, anchor: "left", padding: 0.2)
+
+  circle((-1*h, 1), radius: 0.05,fill:black, name: "v6") 
+  content("v6.bottom", $v_6 (0.1)$, anchor: "left", padding: 0.2)
+
+  circle((0*h, 2), radius: 0.05, fill: black, name: "v3") 
+  content("v3.bottom", $v_3 (0.06)$, anchor: "left", padding: 0.2)
+
+  circle((0*h, 1), radius: 0.05, fill: black, name: "v7") 
+  content("v7.bottom", $v_7 (0.06)$, anchor: "left", padding: 0.2)
+
+  circle((2*h, 2), radius: 0.05, fill: black, name: "v4") 
+  content("v4.bottom", $v_4 (0.15)$, anchor: "left", padding: 0.2)
+
+  circle((1*h, 1), radius: 0.05, fill: black, name: "v8") 
+  content("v8.bottom", $v_8 (0.2)$, anchor: "left", padding: 0.2)
+  circle((3*h, 1), radius: 0.05, fill:black, name: "v9") 
+  content("v9.bottom", $v_9 (0.1)$, anchor: "left", padding: 0.2)
+  
+  line("v1", "v2")
+  line("v1", "v3")
+  line("v1", "v4")
+  line("v2", "v5")
+  line("v2", "v6")
+  line("v3", "v7")
+  line("v4", "v8")
+  line("v4", "v9")    }
+)
+#figure(
+  example-stability-radius,
+  caption: [Đồ thị cây để tính bán kính ổn định],
+) <fig-example-stability-radius>

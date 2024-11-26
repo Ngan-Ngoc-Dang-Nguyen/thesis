@@ -6,11 +6,13 @@
 #import "@preview/cetz:0.1.2"
 #import "@preview/equate:0.2.1": equate
 #show: equate.with(breakable: true, sub-numbering: true)
-#set math.equation(numbering: "(1.1)", supplement: "Eq.")
-#let USR1 = [(USR1)]
-#let USR2 = [(USR2)]
-#let PUSR1 = [(PUSR1)]
-#let PUSR2 = [(PUSR2)]
+#set math.equation(numbering: "(1.1)", supplement: none)
+#let myref(x) = text(fill: blue,)[(#x)]
+#let USR = [USR]
+#let USR1 = text(fill: blue)[(USR1)]
+#let USR2 = text(fill: blue)[(USR2)]
+#let PUSR1 = text(fill: blue)[(PUSR1)]
+#let PUSR2 = text(fill: blue)[(PUSR2)]
 
 
 // #par(justify: true)[
@@ -41,9 +43,9 @@ Trong đó, chi phí thay đổi trọng số từ $w$ thành $tilde(w)$ đượ
 
 Bài toán này được gọi là nâng cấp bán kính ổn định (USR - Upgrading Stability Radius) của điểm 1-median $v_1$ với dữ liệu đầu vào là trọng số ban đầu $w$.
 
-Khi đó, mô hình của bài toán $"(USR)"$ có thể được viết lại như sau:
+Khi đó, mô hình của bài toán #USR có thể được viết lại như sau:
 // $
-// max quad & underline(R)(tilde(w)) quad quad quad quad quad quad quad quad quad quad quad #text(blue)[(USR-20)]\ 
+// max quad & underline(R)(tilde(w)) quad quad quad quad quad quad quad quad quad quad quad #text(blue)[#USR1]\ 
 
 // "s.t." quad & norm(tilde(w)-w)_1 <= B quad quad quad quad quad quad quad("USR"-20a)\
 
@@ -55,7 +57,7 @@ Khi đó, mô hình của bài toán $"(USR)"$ có thể được viết lại n
 // $
 
 // $
-// max quad & underline(R)(tilde(w)) &  #h(1fr) #text(blue)[(USR-20)]\ 
+// max quad & underline(R)(tilde(w)) &  #h(1fr) #text(blue)[#USR1]\ 
 
 // "s.t." quad & norm(tilde(w)-w)_1 <= B & #h(1fr) quad("USR"-20a)\
 
@@ -71,7 +73,7 @@ $
 
 "s.t." quad & norm(tilde(w)-w)_1 <= B \
 
- & v_1 "is 1-median w.r.t" tilde(w) \
+ & v_1 "is 1-median w.r.t" tilde(w) #<USR-med-cond>\
 
  & sum^n_(i=1) tilde(w)_i = 1 \
 
@@ -82,7 +84,7 @@ $
 
 1. Viết lại bài toán $max$ thành $min$.
 
-2. Loại bỏ ràng buộc (USR - 20b).
+2. Loại bỏ ràng buộc #myref[@USR-med-cond].
 
 3. Thay đổi biến từ vecto trọng số $tilde(w)$ sang $x$, trong đó $x$ được gọi là vecto điều chỉnh, nghĩa là $x = tilde(w) - w.$
 
@@ -92,16 +94,15 @@ Dựa vào @thm-lower-bound-SR, bài toán tối ưu hóa $underline(R)(w)$ có 
 
 $ max_tilde(w) underline(R)(tilde(w)) = max_tilde(w) min_(u in N(v_1)) 1/n (1- 2 angle.l tilde(w), bb(1)_T_u angle.r) = 1/n -2/n min_tilde(w) max_( u in N(v_1)) angle.l tilde(w), bb(1)_T_u angle.r. $
 
-Tiếp theo, giả sử $w^*$ là nghiệm tối ưu của bài (USR-20), dễ thấy
+Tiếp theo, giả sử $w^*$ là nghiệm tối ưu của bài #USR1, dễ thấy
 $ max_(u in N(v_1)) angle.l w^*, bb(1)_T_u angle.r <= max_(u in N(v_1)) angle.l w, bb(1)_T_u angle.r <= 1/2. $
 
 //giải thích ra tại sao.
-// (USR-20b)
-Từ đó, ta thấy rằng $v_1$ cũng là điểm 1-median đối với $w^*$. Do đó, ràng buộc về tính tối ưu trong #USR1 là dư thừa và có thể loại bỏ. Nói cách khác, nếu $w^*$ là nghiệm tối ưu của bài toán (USR-20) thì nó hiển nhiên thỏa mãn ràng buộc (USR-20b).
+Từ đó, ta thấy rằng $v_1$ cũng là điểm 1-median đối với $w^*$. Do đó, ràng buộc về tính tối ưu trong #USR1 là dư thừa và có thể loại bỏ. Nói cách khác, nếu $w^*$ là nghiệm tối ưu của bài toán #USR1 thì nó hiển nhiên thỏa mãn ràng buộc #myref[@USR-med-cond].
 
 Cuối cùng, đặt $ x= tilde(w) - w$ là vecto điều chỉnh. 
 
-Khi đó, bài toán (USR-20) có thể được viết lại như sau:
+Khi đó, bài toán #USR1 có thể được viết lại như sau:
 
 // $
 //     "(USR2)" quad quad min quad & max_(u in N(v_1)) angle.l w + x, bb(1)_T_u angle.r quad quad  #text(blue)[(USR-23)]\ 
@@ -157,9 +158,9 @@ $
     & x_i in [-epsilon_0; epsilon_0], forall i = 1,...,n 
 $ <eq:24>
 
-Khi đó, ta gọi bài toán này là _phiên bản tham số của bài toán nâng cấp bán kính ổn định (PUSR)_. Thoạt nhìn, bài toán (PUSR-13) #eqref(<eq:24>) được xây dựng từ (USR-23) #eqref(<eq:23>) bằng cách hoán đổi vai trò giữa mục tiêu và ràng buộc ngân sách. Với các bổ đề và định lý sẽ được trình bày ở phần tiếp theo, độc giả sẽ thấy rằng việc giải bài toán #eqref(<eq:24>) không chỉ đơn giản hơn so với #eqref(<eq:23>), mà còn cho phép ta dễ dàng tìm lại được nghiệm của #eqref(<eq:23>) khi đã tìm được nghiệm của #eqref(<eq:24>).
+Khi đó, ta gọi bài toán này là _phiên bản tham số của bài toán nâng cấp bán kính ổn định (PUSR)_. Thoạt nhìn, bài toán #PUSR1 được xây dựng từ #USR2 bằng cách hoán đổi vai trò giữa mục tiêu và ràng buộc ngân sách. Với các bổ đề và định lý sẽ được trình bày ở phần tiếp theo, độc giả sẽ thấy rằng việc giải bài toán #PUSR1 không chỉ đơn giản hơn so với #USR2, mà còn cho phép ta dễ dàng tìm lại được nghiệm của #USR2 khi biết nghiệm của #PUSR1.
 
-Bằng trực quan, ta có thể thấy rằng mối liên hệ giữa #eqref(<eq:23>) và #eqref(<eq:24>) như sau: 
+Ta có nhận xét về mối liên hệ giữa #PUSR1 và #USR2:
 
 1. Nếu ngân sách tối thiểu cần thiết để đạt được giá trị mục tiêu không lớn hơn $t$ không vượt quá $B$, thì việc tăng ngân sách lên $B$ sẽ cho phép giảm $t$ để đạt được giá trị mục tiêu nhỏ nhất của bài toán ban đầu. 
 
@@ -176,7 +177,7 @@ $ beta(t) <= B <=> t>= t^* $ trong đó $beta(t)$ là ngân sách cần thiết 
 Để chứng minh bổ đề này, trước hết ta xem xét một số ký hiệu liên quan. Với ngân sách cố định $B$, giả sử $x^*$ và $t^*$ lần lượt là nghiệm tối ưu và giá trị mục tiêu tối ưu của bài toán #eqref(<eq:23>). Với mỗi tham số $t$ cho trước, giả sử $hat(x)(t)$ và $beta(t)$ lần lượt là nghiệm tối ưu và ngân sách tối thiểu tương ứng trong #eqref(<eq:24>). Cần lưu ý rằng, $beta(dot)$ là một hàm không giảm trên miền xác định của nó và nhận giá trị $+infinity$ nếu tập khả thi của #eqref(<eq:24>) rỗng. Cuối cùng, ta đặt $P(x)= max_(u in N(v_1)) angle.l w + x, bb(1)_T_u angle.r $ là hàm mục tiêu của #eqref(<eq:23>).
 
 
-// Để phát biểu bổ đề, chúng ta hãy giới thiệu một số ký hiệu bổ sung. Gọi $P(x)= max_(u in N(v_1)) angle.l w + x, bb(1)_T_u angle.r $ là hàm mục tiêu của (USR-12). Chúng ta cũng ký hiệu $x^*$ là nghiệm tối ưu và $t^*$ là giá trị mục tiêu tối ưu của (USR-12). Khi đó, $P(x^*)= t^*$. Tiếp theo, gọi $hat(x)(t)$ là nghiệm tối ưu và $beta(t)$ là giá trị mục tiêu tối ưu của (PUSR-13) tương ứng với tham số $t$. Nếu tập hợp nghiệm khả thi của (PUSR-13) rỗng, chúng ta đặt $beta(t)= + infinity$. Rõ ràng bằng $beta(.)$ là một hàm không giảm trên miền của nó. Mối quan hệ giữa $(t,beta(t))$ và $(t^*,B)$ được thiết lập như sau:
+// Để phát biểu bổ đề, chúng ta hãy giới thiệu một số ký hiệu bổ sung. Gọi $P(x)= max_(u in N(v_1)) angle.l w + x, bb(1)_T_u angle.r $ là hàm mục tiêu của #USR2. Chúng ta cũng ký hiệu $x^*$ là nghiệm tối ưu và $t^*$ là giá trị mục tiêu tối ưu của #USR2. Khi đó, $P(x^*)= t^*$. Tiếp theo, gọi $hat(x)(t)$ là nghiệm tối ưu và $beta(t)$ là giá trị mục tiêu tối ưu của (PUSR-13) tương ứng với tham số $t$. Nếu tập hợp nghiệm khả thi của (PUSR-13) rỗng, chúng ta đặt $beta(t)= + infinity$. Rõ ràng bằng $beta(.)$ là một hàm không giảm trên miền của nó. Mối quan hệ giữa $(t,beta(t))$ và $(t^*,B)$ được thiết lập như sau:
 
 // == Bổ đề 4.1 
 // *Bổ đề 4.1*
@@ -203,7 +204,7 @@ Trong phần tiếp theo, chúng ta sẽ khai thác @thm-beta-t xây dựng mộ
 // *Định lý 4.1*
 
 #theorem[_Giá trị hàm mục tiêu $t^*$ của #eqref(<eq:23>) được tính_
-$ t^* = inf{t: beta(t) <= B}. $
+$ t^* = inf{t: beta(t) <= B}. $ <eq-computing-topt>
 _và $hat(x)(t^*)$ là nghiệm tối ưu của #eqref(<eq:23>)._] <thm-computing-topt>
 
 // <eq:27>
@@ -254,20 +255,20 @@ $
     & z_j in [-overline(z)_j; overline(z)_j], forall j = 0,1,...,k 
 $ <eq:33>
 
-    Kết luận sau khẳng định rằng, từ nghiệm của bài toán (PUSR-33) #eqref(<eq:33>), ta có thể tìm lại nghiệm của (PUSR-24) #eqref(<eq:24>) mà không làm thay đổi giá trị mục tiêu.
+    Kết luận sau khẳng định rằng, từ nghiệm của bài toán #PUSR2, ta có thể tìm lại nghiệm của (PUSR-24) #eqref(<eq:24>) mà không làm thay đổi giá trị mục tiêu.
 
-    #proposition[ Bài toán #eqref(<eq:33>) và #eqref(<eq:24>) có cùng giá trị mục tiêu $beta(t)$. Hơn nữa, nếu $hat(z)(t)$ là nghiệm tối ưu của #eqref(<eq:33>), thì nghiệm tối ưu của bài toán #eqref(<eq:24>) được xác định như sau:
+#proposition[ Bài toán #PUSR2 và #eqref(<eq:24>) có cùng giá trị mục tiêu $beta(t)$. Hơn nữa, nếu $hat(z)(t)$ là nghiệm tối ưu của #PUSR2, thì nghiệm tối ưu của bài toán #eqref(<eq:24>) được xác định như sau:
 
-    $ hat(x)_i(t) = (hat(z)_(j)(t))/ abs(T_u_j), quad forall v_i in T_u_j, forall j= 0,1,...,k. $
-    
-    ]
+$ hat(x)_i(t) = (hat(z)_(j)(t))/ abs(T_u_j), quad forall v_i in T_u_j, forall j= 0,1,...,k. $ <eq-z-x>
+
+]
 
 // (cần viết kỹ lại)
 
-Tiếp theo, ta sẽ xem xét điều kiện để tập nghiệm khả thi của #eqref(<eq:33>) không rỗng. Giả sử:
-$ J <= (t)={j in {i,...,k}: gamma_j <=t}
+Tiếp theo, ta sẽ xem xét điều kiện để tập nghiệm khả thi của #PUSR2 không rỗng. Giả sử:
+$ J^(<=) (t)={j in {i,...,k}: gamma_j <=t}
 $
-$ J > (t)={j in {1,...,k}: gamma_j >t} $
+$ J^> (t)={j in {1,...,k}: gamma_j >t} $
 
 // *Định lý 4.2*
 
@@ -284,7 +285,7 @@ $ J > (t)={j in {1,...,k}: gamma_j >t} $
 // Với các ký hiệu mới, thay vì xem xét bài toán (PUSR-13), người ta có thể tập trung vào bài toán sau, với số chiều nhỏ hơn bằng cách giữ nguyên tất cả các ràng buộc, nhưng thay thế $norm(x)_1$ bằng giới hạn dưới của nó $norm(z)_1:$
 
 // $
-//     min quad & sum_(j=0)^k abs(z_j) quad quad quad quad #text(blue)[(PUSR-16)]\
+//     min quad & sum_(j=0)^k abs(z_j) quad quad quad quad #text(blue)[#PUSR2]\
 
 //     "s.t." quad & max_(j=1,...,k) (gamma_j + z_j) <= t    quad quad ("PUSR-16a")\
 
@@ -293,26 +294,26 @@ $ J > (t)={j in {1,...,k}: gamma_j >t} $
 //     & z_j in [-overline(z)_j; overline(z)_j], forall j = 0,1,...,k quad quad ("PUSR-16c")
 //     $
 
-// Giả sử $hat(z)(t)$ là nghiệm tối ưu của (PUSR-16). Lưu ý rằng $beta(t)$ cũng là giá trị mục tiêu tối ưu của (PUSR-16). Điều quan trọng cần lưu ý là (PUSR-13) và (PUSR-16) "tương đương" theo nghĩa nếu biết $hat(x)(t)$ như được mô tả trong Định lý 4.2, thì ta có thể xây dựng $hat(z)(t)$ và nếu biết $hat(z)(t)$ thì ta có thể tìm ra $hat(x)(t)$ bằng cách
+// Giả sử $hat(z)(t)$ là nghiệm tối ưu của #PUSR2. Lưu ý rằng $beta(t)$ cũng là giá trị mục tiêu tối ưu của #PUSR2. Điều quan trọng cần lưu ý là (PUSR-13) và #PUSR2 "tương đương" theo nghĩa nếu biết $hat(x)(t)$ như được mô tả trong Định lý 4.2, thì ta có thể xây dựng $hat(z)(t)$ và nếu biết $hat(z)(t)$ thì ta có thể tìm ra $hat(x)(t)$ bằng cách
 // $ hat(z)_(j)(t)= sum_(v_i in T_u_j) hat(x)_(i)(t), quad forall j= 0,1,...,k. $
 
 // và nếu biết $hat(z)(t)$, chúng ta có thể tìm $hat(x)(t)$ bằng 
 // $ hat(x)_i(t) = (hat(z)_(j)(t))/ abs(T_u_j), quad forall v_i in T_u_j, forall j= 0,1,...,k. $
 
-// Chúng ta kết thúc phần này với một đặc trưng về tính không rỗng của tập hợp khả thi của (PUSR-16). Gọi $ J <= (t)= {j in {1,...,k}: gamma_j <= t}$ và $J > (t) = {j in {1,...,k}: gamma_j > t}.$
+// Chúng ta kết thúc phần này với một đặc trưng về tính không rỗng của tập hợp khả thi của #PUSR2. Gọi $ J^(<=) (t)= {j in {1,...,k}: gamma_j <= t}$ và $J^> (t) = {j in {1,...,k}: gamma_j > t}.$
 
 // // *Mệnh đề 4.1*.
 
-#proposition[Tập khả thi của (PUSR-33) #eqref(<eq:33>) là không rỗng nếu
-$ overline(z_0) + sum_(j in J <= (t)) min(overline(z)_j, t- gamma_j) >= sum_(i in J>(t)) (gamma_i- t). $]
+#proposition[Tập khả thi của #PUSR2 là không rỗng nếu
+$ overline(z_0) + sum_(j in J^(<=) (t)) min(overline(z)_j, t- gamma_j) >= sum_(i in J>(t)) (gamma_i- t). $]
 
 // *Chứng minh*
 #proof[
-Nếu tập khả thi của (PUSR-16) không rỗng thì tồn tại một số nghiệm khả thi $z in RR^(k+1)$ thỏa mãn ràng buộc (PUSR-16), nghĩa là
-$ z_0 + sum_(j in J<=(t)) z_j = - sum_(j in J > (t)) z_j. $ (19)
+Nếu tập khả thi của #PUSR2 không rỗng thì tồn tại một số nghiệm khả thi $z in RR^(k+1)$ thỏa mãn ràng buộc #PUSR2, nghĩa là
+$ z_0 + sum_(j in J<=(t)) z_j = - sum_(j in J^> (t)) z_j. $ (19)
 
 Từ tính khả thi của $z$, không khó để xác minh rằng vế trái của (19) bị chặn trên bởi vế trái của (18) và vế phải của (19) bị chặn dưới bởi vế phải của (18). Do đó, ta thu được (18). Ngược lại, giả sử rằng (18) không thỏa mãn. Bằng cách sử dụng các ước lượng tương tự, ta có thể thu được
-$ z_0 + sum_(j in J <= (t)) z_j < - sum_(j in J > (t)) z_j. $
+$ z_0 + sum_(j in J^(<=) (t)) z_j < - sum_(j in J^> (t)) z_j. $
 
 Điều này vi phạm ràng buộc (PUSR-16b) và do đó, tập hợp khả thi là rỗng. (chứng minh xong).]
 
@@ -324,35 +325,36 @@ $ z_0 + sum_(j in J <= (t)) z_j < - sum_(j in J > (t)) z_j. $
 
 // ==== Giải bài toán tham số
 // // #remark-Le[Xem lại cách trình bày lại định lý này trong bản mới của bài báo]
-// Bây giờ, ta sẽ chứng minh rằng bài toán tham số hóa #eqref(<eq:33>)tồn tại nghiệm tối ưu $hat(z)(t)$
+// Bây giờ, ta sẽ chứng minh rằng bài toán tham số hóa #PUSR2tồn tại nghiệm tối ưu $hat(z)(t)$
 // và giá trị mục tiêu tối ưu $beta(t)$ được biểu diễn dưới dạng công thức tường minh.
 // Để làm rõ điều này, ta định nghĩa $hat(z)(t)$ dựa trên hai trường hợp.
 
 // Nếu $overline(z_0) >= sum_(i=1)^k [gamma_i - t]_+$ thì ta chọn
-// $ hat(z)_(j)(t) = -(gamma_j - t), quad quad j in J > (t)\
+// $ hat(z)_(j)(t) = -(gamma_j - t), quad quad j in J^> (t)\
 
-// & hat(z)_(j) (t) = 0, quad quad j in J <= (t) quad quad quad \
-// & hat(z)_0(t)= sum_(j in J > (t)) (gamma_j - t). $
+// & hat(z)_(j) (t) = 0, quad quad j in J^(<=) (t) quad quad quad \
+// & hat(z)_0(t)= sum_(j in J^> (t)) (gamma_j - t). $
 // <eq:40>
-// Trong phần trước, chúng ta đã chứng minh rằng việc giải bài toán mục tiêu (USR-12) có thể được đưa về giải bài toán tham số của nó (PUSR-16) bằng cách tìm một nghiệm tối ưu $hat(z)(t)$ và mục tiêu tối ưu $beta(t)$ tương ứng với $t$. Định lý sau đây cung cấp các biểu thức dạng đóng cho cả $hat(z)(t)$ và $beta(t)$. 
+// Trong phần trước, chúng ta đã chứng minh rằng việc giải bài toán mục tiêu #USR2 có thể được đưa về giải bài toán tham số của nó #PUSR2 bằng cách tìm một nghiệm tối ưu $hat(z)(t)$ và mục tiêu tối ưu $beta(t)$ tương ứng với $t$. Định lý sau đây cung cấp các biểu thức dạng đóng cho cả $hat(z)(t)$ và $beta(t)$. 
 
 // *Định lý 4.3* 
 
 === Giải bài toán tham số
-#remark-Le[Xem lại cách trình bày lại định lý này trong bản mới của bài báo]
-Hơn nữa, một nghiệm tối ưu của (PUSR-16), gọi là $hat(z)(t)$ có thể được chọn bằng cách xem xét hai trường hợp. Nếu $overline(z_0) >= sum_(i=1)^k [gamma_i - t]_+$ thì ta chọn
-$ hat(z)_(j)(t) = -(gamma_j - t), quad quad j in J > (t) quad (21a) $
-$ hat(z)_(j) (t) = 0, quad quad j in J <= (t) quad quad (21b) $
-$ hat(z_0)(t)= sum_(j in J > (t)) (gamma_j - t). quad quad (21c)  $ <eq:40>
+// #remark-Le[Xem lại cách trình bày lại định lý này trong bản mới của bài báo]
+Hơn nữa, một nghiệm tối ưu của #PUSR2, gọi là $hat(z)(t)$ có thể được chọn bằng cách xem xét hai trường hợp. Nếu $overline(z_0) >= sum_(i=1)^k [gamma_i - t]_+$ thì ta chọn
+$
+  hat(z)_(j)(t) & = -(gamma_j - t), & quad quad j in J^> (t) \
+  hat(z)_(j) (t) & = 0, & quad quad j in J^(<=)(t) \
+  hat(z_0)(t) &= sum_(j in J^> (t)) (gamma_j - t). &
+$ <eq:40>
 Ngược lại,
-$ hat(z_j)(t)= -(gamma_j -t), quad quad j in J > (t)\ 
- & hat(z_j)(t)= min(overline(z_j), underline(t)-gamma_j), quad quad j in J <= (t)\
-
-& hat(z_0)(t)=overline(z)_0, $
-<eq:otherwise>
+$
+ hat(z_j)(t)& = -(gamma_j -t), & quad quad j in J^> (t)\ 
+ hat(z_j)(t) &= min(overline(z_j), underline(t)-gamma_j), & quad quad j in J^(<=) (t)\
+ hat(z_0)(t) &=overline(z)_0,
+$ <eq:otherwise>
 trong đó $underline(t)$ được chọn sao cho 
-$ overline(z)_0+ sum_(j in J <= (t)) min(overline(z_j), underline(t)-gamma_j)= sum_(j in J >(t)) (gamma_j - t).  $
-
+$ overline(z)_0+ sum_(j in J^(<=) (t)) min(overline(z_j), underline(t)-gamma_j)= sum_(j in J^>(t)) (gamma_j - t).  $
 <eq:deft>
 
 Định lý sau đây trình bày biểu thức tường minh của $beta(t)$ và cho thấy rằng $hat(z)(t)$ là nghiệm tối ưu của bài toán.
@@ -360,7 +362,7 @@ $ overline(z)_0+ sum_(j in J <= (t)) min(overline(z_j), underline(t)-gamma_j)= s
 #proposition[Nếu giá trị mục tiêu tối ưu $beta(t)$ là hữu hạn thì
 $ beta(t) = 2 sum_(i=1)^k [gamma_i -t]_+ $
 
-Trong đó $[alpha]_+ = max(0,alpha)$ với $alpha in RR$. Hơn nữa, $hat(z)(t)$ là nghiệm tối ưu của #eqref(<eq:33>) đồng thời được tính bằng #eqref(<eq:40>) và #eqref(<eq:otherwise>). ]
+Trong đó $[alpha]_+ = max(0,alpha)$ với $alpha in RR$. Hơn nữa, $hat(z)(t)$ được cho bởi công thức #eqref(<eq:40>) hoặc #eqref(<eq:otherwise>) là nghiệm tối ưu của #PUSR2. ] <thm-computing-beta-t>
 
 
 
@@ -368,48 +370,48 @@ Trong đó $[alpha]_+ = max(0,alpha)$ với $alpha in RR$. Hơn nữa, $hat(z)(t
 #proof[
 Ta thấy rằng chứng minh gồm hai phần và ta sẽ chia thành hai bước. 
 
-Bước đầu tiên, ta chứng minh rằng $2 sum_(i=1)^k [gamma_j - t]_+$ là cận dưới giá trị hàm mục tiêu của bài toán #eqref(<eq:33>), tức là $beta(t)>= 2 sum_(i=1)^k [gamma_j - t]_+$. 
+Bước đầu tiên, ta chứng minh rằng $2 sum_(i=1)^k [gamma_j - t]_+$ là cận dưới giá trị hàm mục tiêu của bài toán #PUSR2, tức là $beta(t)>= 2 sum_(i=1)^k [gamma_j - t]_+$. 
 
-Bước thứ hai, ta chứng minh rằng $2 sum_(i=1)^k [gamma_j-t]_+$ thực sự là giá trị nhỏ nhất của #eqref(<eq:33>) bằng cách chứng minh rằng $hat(z)(t)$, được định nghĩa trong #eqref(<eq:40>) hoặc #eqref(<eq:otherwise>), thỏa mãn $norm(hat(z)(t))_1 = 2 sum_(i=1)^k [gamma_j - t]_+.$
+Bước thứ hai, ta chứng minh rằng $2 sum_(i=1)^k [gamma_j-t]_+$ thực sự là giá trị nhỏ nhất của #PUSR2 bằng cách chứng minh rằng $hat(z)(t)$, được định nghĩa trong #eqref(<eq:40>) hoặc #eqref(<eq:otherwise>), thỏa mãn $norm(hat(z)(t))_1 = 2 sum_(i=1)^k [gamma_j - t]_+.$
 
-*Bước 1.* Trực giác cho thấy rằng, với một giá trị $t$ nhất định, ta cần giảm $gamma_j$ với $j in J>(t)$ và đồng thời tăng $gamma_j$ với $j in J <= (t) $ nhằm đảm bảo rằng phương trình (PUSR-33b) được thỏa mãn. Nói cách khác, $z_j$ cần nhận giá trị không dương khi $j in J>(t)$ và cần nhận giá trị không âm khi $j in J <= (t)$. Dựa trên quan sát này, ta sẽ đề xuất các ước lượng sau để thiết lập một cận dưới chặt cho hàm mục tiêu.
+*Bước 1.* Trực giác cho thấy rằng, với một giá trị $t$ nhất định, ta cần giảm $gamma_j$ với $j in J>(t)$ và đồng thời tăng $gamma_j$ với $j in J^(<=) (t) $ nhằm đảm bảo rằng phương trình thứ hai của #PUSR2 được thỏa mãn. Nói cách khác, $z_j$ cần nhận giá trị không dương khi $j in J>(t)$ và cần nhận giá trị không âm khi $j in J^(<=) (t)$. Dựa trên quan sát này, ta sẽ đề xuất các ước lượng sau để thiết lập một cận dưới chặt cho hàm mục tiêu.
 
-// Quan sát thấy, với một giá trị $t$ nào đó, ta cần phải giảm $gamma_j$ với $ j in J <= (t)$ để duy trì phương trình (PUSR-16b). Nói cách khác, $z_j$ nên là số không dương đối với $j in J>(t)$ và nên là số không âm đối với $j in J <= (t)$. Trực giác này thúc đẩy các ước lượng khéo léo sau đây để đạt được một cận dưới chặt chẽ cho hàm mục tiêu:
-$ norm(z)_1 = sum_(j=0)^k abs(z_j)= abs(z_0)+ sum_(i in J <= (t)) abs(z_i)+ sum_(j in J >(t)) abs(z_i) >= z_0 + sum_(i in J <= (t)) z_j - sum_(i in J > (t)) z_j. $
-Dựa vào điều kiện (PUSR-33b), ta có $z_0 + sum_(i in J <= (t)) z_j = - sum_(i in J >(t)) z_j.$ 
+// Quan sát thấy, với một giá trị $t$ nào đó, ta cần phải giảm $gamma_j$ với $ j in J^(<=) (t)$ để duy trì phương trình (PUSR-16b). Nói cách khác, $z_j$ nên là số không dương đối với $j in J>(t)$ và nên là số không âm đối với $j in J^(<=) (t)$. Trực giác này thúc đẩy các ước lượng khéo léo sau đây để đạt được một cận dưới chặt chẽ cho hàm mục tiêu:
+$ norm(z)_1 = sum_(j=0)^k abs(z_j)= abs(z_0)+ sum_(i in J^(<=) (t)) abs(z_i)+ sum_(j in J^>(t)) abs(z_i) >= z_0 + sum_(i in J^(<=) (t)) z_j - sum_(i in J^> (t)) z_j. $
+Dựa vào điều kiện thứ hai của #PUSR2, ta có $z_0 + sum_(i in J^(<=) (t)) z_j = - sum_(i in J^>(t)) z_j.$ 
 
 Do đó,
-$ norm(z)_1 >= -2 sum_(i in J > (t)) z_j. $
-Chú ý rằng với mọi $j in J >(t)$, ta có $-z_j >= gamma_j - t >0$, do đó,
-$ norm(z)_1 >= 2 sum_(j in J > (t))(gamma_j - t)= 2 sum_(j=1)^k [gamma_j - t]_+. $
-Từ ước lượng trên, ta thấy rằng $ 2 sum_(j in J > (t))(gamma_j -t ) $ là chặn dưới của giá trị mục tiêu của (PUSR-33) #eqref(<eq:33>).
+$ norm(z)_1 >= -2 sum_(i in J^> (t)) z_j. $
+Chú ý rằng với mọi $j in J^>(t)$, ta có $-z_j >= gamma_j - t >0$, do đó,
+$ norm(z)_1 >= 2 sum_(j in J^> (t))(gamma_j - t)= 2 sum_(j=1)^k [gamma_j - t]_+. $
+Từ ước lượng trên, ta thấy rằng $ 2 sum_(j in J^> (t))(gamma_j -t ) $ là chặn dưới của giá trị mục tiêu của #PUSR2.
 
-*Bước 2.* Bây giờ, ta sẽ chứng minh rằng tồn tại một vài nghiệm khả thi $z$ của #eqref(<eq:33>) sao cho 
-$ norm(z)_1= 2sum_(j in J >(t))(gamma_j -t). quad quad $
+*Bước 2.* Bây giờ, ta sẽ chứng minh rằng tồn tại nghiệm khả thi $z$ của #PUSR2 sao cho 
+$ norm(z)_1= 2sum_(j in J^>(t))(gamma_j -t). quad quad $
 $z$ có thể được định nghĩa như sau:
 
-Đối với tập hợp các chỉ số $J > (t)$, ta đặt:
-$ z_j = -(gamma_j - t), quad forall j in J >(t). $
-Với $j in {0} union J <= (t)$, mục tiêu của ta là chọn $z_j$ là một số không âm sao cho tổng của chúng bằng $sum_(j in J > (t)) (gamma_j -t)$. Để làm rõ, ta xem xét hai trường hợp. 
+Đối với tập hợp các chỉ số $J^> (t)$, ta đặt:
+$ z_j = -(gamma_j - t), quad forall j in J^>(t). $
+Với $j in {0} union J^(<=) (t)$, mục tiêu của ta là chọn $z_j$ là một số không âm sao cho tổng của chúng bằng $sum_(j in J^> (t)) (gamma_j -t)$. Để làm rõ, ta xem xét hai trường hợp. 
 
-Nếu $overline(z)_0 >= sum_(j in J > (t))(gamma_j -t)$ ta có thể đặt 
-$ z_0 =sum_(j in J >(t))(gamma_j -t), $
-$ z_j =0, quad forall j in J <= (t). $
+Nếu $overline(z)_0 >= sum_(j in J^> (t))(gamma_j -t)$ ta có thể đặt 
+$ z_0 =sum_(j in J^>(t))(gamma_j -t), $
+$ z_j =0, quad forall j in J^(<=) (t). $
 
-Ngược lại, ta có $overline(z)_0 < sum_(j in J >(t))(gamma_j -t)$. Trong trường hợp này, ta đặt 
+Ngược lại, ta có $overline(z)_0 < sum_(j in J^>(t))(gamma_j -t)$. Trong trường hợp này, ta đặt 
 $ z_0 = overline(z)_0, $
-$ z_j = min (overline(z)_j, underline(t)-gamma_j), quad forall j in J <= (t), $
+$ z_j = min (overline(z)_j, underline(t)-gamma_j), quad forall j in J^(<=) (t), $
 trong đó $underline(t)$ được định nghĩa ở #eqref(<eq:deft>).
 
-Bây giờ chúng ta chỉ ra sự tồn tại của $underline(t)$. Đặt $phi(t')= overline(z_0) < sum_(j in J >(t))(gamma_j -t)$ và $phi(t)>= sum_(j in J > (t))(gamma_j -t)$ vì mệnh đề 4.1. Do tính liên tục của $phi$ ngụ ý sự tồn tại của $underline(t)$. Cuối cùng, không khó để thấy rằng $z$ là một nghiệm khả thi của (PUSR-16) và thỏa (24). Bằng cách chọn $hat(z)(t)=z$, chúng ta hoàn thành chứng minh. (chứng minh xong)]
+Bây giờ chúng ta chỉ ra sự tồn tại của $underline(t)$. Đặt $phi(t')= overline(z_0) < sum_(j in J^>(t))(gamma_j -t)$ và $phi(t)>= sum_(j in J^> (t))(gamma_j -t)$ vì mệnh đề 4.1. Do tính liên tục của $phi$ ngụ ý sự tồn tại của $underline(t)$. Cuối cùng, không khó để thấy rằng $z$ là một nghiệm khả thi của #PUSR2 và thỏa (24). Bằng cách chọn $hat(z)(t)=z$, chúng ta hoàn thành chứng minh. (chứng minh xong)]
 
-Quan sát rằng với mỗi giá trị cố định của $t$, ta có thể tìm $underline(t)$ trong (23) bằng cách sử dụng tìm kiếm nhị phân vì hàm $z_0 + sum_(j in J <= (t)) min (z_j, . - gamma_j)$ là hàm tuyến tính từng khúc và không giảm. Lưu ý rằng việc đánh giá hàm này tốn chi phi $O(k)$, với $k$ là bậc của $v_1$. Do đó, các bài toán tham số (PUSR-16) có thể được giải quyết trong thời gian $O(k log k)$. Vì phép biến đổi (17) tốn chi phí $O(n)$, bài toán (PUSR-13) có thể được giải trong thời gian $O(n+k log k).$
+Quan sát rằng với mỗi giá trị cố định của $t$, ta có thể tìm $underline(t)$ trong (23) bằng cách sử dụng tìm kiếm nhị phân vì hàm $z_0 + sum_(j in J^(<=) (t)) min (z_j, . - gamma_j)$ là hàm tuyến tính từng khúc và không giảm. Lưu ý rằng việc đánh giá hàm này tốn chi phi $O(k)$, với $k$ là bậc của $v_1$. Do đó, các bài toán tham số #PUSR2 có thể được giải quyết trong thời gian $O(k log k)$. Vì phép biến đổi #eqref(<eq-z-x>) tốn chi phí $O(n)$, bài toán #PUSR1 có thể được giải trong thời gian $O(n+k log k).$
 
 === Giải bài toán nâng cấp cận dưới bán kính ổn định
 
-Bây giờ chúng tôi sẽ mô tả một cách tiếp cận tổ hợp để tìm nghiệm tối ưu $w^*$ của bài toán nâng cấp bán kính ổn định ban đầu (USR-10) thông qua các phép biến đổi đã được phát triển trong các tiểu mục trước đó.
+Bây giờ chúng tôi sẽ mô tả một cách tiếp cận tổ hợp để tìm nghiệm tối ưu $w^*$ của bài toán nâng cấp bán kính ổn định ban đầu #USR1 thông qua các phép biến đổi đã được phát triển trong các tiểu mục trước đó.
 
-Ta có $w^* = w + x^* $, trong đó $x^*$ là nghiệm khả thi của (USR-12). Dựa vào @thm-computing-topt, ta có thể chọn $x^*= hat(x)(t^*)$. Lưu ý rằng, ta có thể xây dựng $hat(x)(t)$ từ $hat(z)(t)$ cho bất kỳ $t$ nào bằng cách sử dụng Định lý 4.2, phương trình (17), và biểu thức của $hat(z)(t)$ được cho bởi (21) hoặc (22). Về giá trị $t^*$, nó có thể được tìm thấy trong thời gian $O(k log k)$, với $k$ là bậc của $v_1$, bằng cách sử dụng tìm kiếm nhị phân vì $t^* = inf{t >= 0: beta(t) <= B}$ và hàm $beta(.)$ được xác định trong Định lý 4.3 là hàm tuyến tính từng khúc và giảm dần.
+Ta có $w^* = w + x^* $, trong đó $x^*$ là nghiệm khả thi của #USR2. Dựa vào @thm-computing-topt, ta có thể chọn $x^*= hat(x)(t^*)$. Lưu ý rằng, ta có thể xây dựng $hat(x)(t)$ từ $hat(z)(t)$ cho bất kỳ $t$ nào bằng cách sử dụng phương trình #eqref(<eq-z-x>), và biểu thức của $hat(z)(t)$ được cho bởi #eqref(<eq:40>) hoặc #eqref(<eq:otherwise>). Giá trị $t^*$ có thể tính được trong thời gian $O(k log k)$, với $k$ là bậc của $v_1$, bằng cách sử dụng tìm kiếm nhị phân vì $t^* = inf{t >= 0: beta(t) <= B}$ và hàm $beta(.)$ được xác định trong @thm-computing-beta-t là hàm tuyến tính từng khúc và giảm dần.
 
 Xem @fig-so-do-cac-bai-toan để có cái nhìn tổng quan về các phép biến đổi giữa các bài toán và lời giải. Trong đó, mỗi hình chữ nhật đại diện cho một bài toán và nghiệm tối ưu của nó. Mỗi mũi tên đại diện cho phép biến đổi giữa các bài toán cùng với những kết quả chính kết nối chúng.
 
@@ -452,32 +454,31 @@ Xem @fig-so-do-cac-bai-toan để có cái nhìn tổng quan về các phép bi�
 ) <fig-so-do-cac-bai-toan>
 // Hình 2. Các phép biến đổi của bốn bài toán nâng cấp. Mỗi hộp chứa một bài toán và nghiệm tối ưu của nó. Mỗi mũi tên đại diện cho phép biến đổi giữa các bài toán cùng với những kết quả chính kết nối chúng.
 
-Nhớ rằng việc giải quyết bài toán (PUSR_13) tốn chi phí $O(n + k log k)$ và việc tìm kiếm $t^*$ có thể thực hiện trong $O(k log k)$, do đó độ phức tạp tổng thể của việc giải bài toán (USR-10) là $O(n + k log k)$. 
+Nhớ rằng việc giải quyết bài toán #PUSR1 tốn chi phí $O(n + k log k)$ và việc tìm kiếm $t^*$ có thể thực hiện trong $O(k log k)$, do đó độ phức tạp tổng thể của việc giải bài toán #USR1 là $O(n + k log k)$. 
 
 // *Định lý 4.4*
 
-#theorem[Bài toán nâng cấp cận dưới của bán kính ổn định cho điểm trung vị trên đồ thị cây (USR-10) có thể được giải quyết trong thời gian $O(n + k log k )$, trong đó $n$ là số đỉnh của cây và $k$ là bậc của điểm trung vị $v_1$.]
+#theorem[Bài toán nâng cấp cận dưới của bán kính ổn định cho điểm trung vị trên đồ thị cây #USR1 có thể được giải quyết trong thời gian $O(n + k log k )$, trong đó $n$ là số đỉnh của cây và $k$ là bậc của điểm trung vị $v_1$.]
 
-Cuối cùng, ta kết thúc mục này bằng ví dụ minh họa cho những bước chính để giải quyết bài toán (USR-10).
+Cuối cùng, ta kết thúc mục này bằng ví dụ minh họa cho những bước chính để giải quyết bài toán #USR1.
 
 // *Ví dụ 4.1* 
 
-#example[Xem xét bài toán (USR-12) với ngân sách $B = 0.36$, mức độ nhiễu $epsilon_0 = 0.05$ và cây có trọng số như hình 1. Đặt $u_0 = v_1$, $u_1 = v_2$ $u_2 = v_3$ và $u_3 = v_4$. Nhớ rằng $gamma_j = angle.l w, bb(1)_T_u_j angle.r $ với $j= 0,1,2,3$, ta có $gamma_1 = 0.33$, $gamma_2 = 0.12$ và $gamma_3 = 0.45$. Hơn nữa $ beta(t)= 2([gamma_1 - t]_+ + [gamma_2 - t]_+ + [gamma_3 - t]_+) $.
-
-Bằng (15), ta có $t^*=inf{t: beta(t) <= B}= 0.3$. Trong trường hợp này, ta có $beta(t^*)=B$. Bởi vì $overline(z_0)= epsilon_0 = 0.05 < beta(t^*)/2 =0.18$, ta có thể chọn $hat(z)(t^*)$ dựa vào (22), chú ý rằng $J > (t^*)= {1,3}$, $J <= (t^*)= {2}$ và ta có
+#example[Xem xét bài toán #USR2 với ngân sách $B = 0.36$, mức độ nhiễu $epsilon_0 = 0.05$ và cây có trọng số như  @fig-example-stability-radius. Đặt $u_0 = v_1$, $u_1 = v_2$ $u_2 = v_3$ và $u_3 = v_4$. Nhớ rằng $gamma_j = angle.l w, bb(1)_T_u_j angle.r $ với $j= 0,1,2,3$, ta có $gamma_1 = 0.33$, $gamma_2 = 0.12$ và $gamma_3 = 0.45$. Hơn nữa
+$ beta(t)= 2([gamma_1 - t]_+ + [gamma_2 - t]_+ + [gamma_3 - t]_+) $
+Bằng #myref[@eq-computing-topt], ta có $t^*=inf{t: beta(t) <= B}= 0.3$. Trong trường hợp này, ta có $beta(t^*)=B$. Bởi vì $overline(z_0)= epsilon_0 = 0.05 < beta(t^*)/2 =0.18$, ta có thể chọn $hat(z)(t^*)$ dựa vào #myref[@eq:otherwise], chú ý rằng $J^> (t^*)= {1,3}$, $J^(<=) (t^*)= {2}$ và ta có
 $ hat(z)(t^*)=(0.05, -0.03, 0.13, -0.15). $
-Bằng (17), ta có $ hat(x)(t^*)=(0.05, -0.01, 0.065, -0,05, -0.01, -0,01, 0.065, -0.05, -0.05). $ 
+Bằng #myref[@eq-z-x], ta có $ hat(x)(t^*)$ bằng $ (0.05, -0.01, 0.065, -0,05, -0.01, -0,01, 0.065, -0.05, -0.05). $ 
 
 Dựa vào định lý 4.1, ta có thể chọn $x^* = hat(x)(t^*)$. Bởi vì $w^* = w+x$, ta được
 $ w^* = (0.15, 0.12, 0.125, 0.1, 0.09, 0.09, 0.125, 0.1, 0.15, 0.05). $
-Chặn dưới lớn nhất của bán kính ổn định sau khi được nâng cấp là $underline(R)(w^*)= 0.4/9$. 
-
-Trọng số đỉnh trên cây được cải thiện như ở hình 3
+Chặn dưới lớn nhất của bán kính ổn định sau khi được nâng cấp là $ underline(R)(w^*)= 0.4/9 $
+Trọng số đỉnh trên cây được cải thiện như ở @fig-example-upgrading-stability-radius
 ]
 
-#import "@preview/cetz:0.1.2": canvas, plot
-#import "@preview/cetz:0.2.2"
-#import "@preview/cetz:0.1.2"
+// #import "@preview/cetz:0.1.2": canvas, plot
+// #import "@preview/cetz:0.2.2"
+// #import "@preview/cetz:0.1.2"
 
 #let example-upgrading-stability-radius = canvas(length: 10%, {
   import cetz.draw: *

@@ -10,6 +10,7 @@
 #import "@preview/equate:0.2.1": equate
 #show: equate.with(breakable: true, sub-numbering: true)
 #set math.equation(numbering: "(1.1)", supplement: "Eq.")
+#let myref(x) = text(fill: red)[(#x)]
 = Ref of theorem 
 == xxx
 #theorem[
