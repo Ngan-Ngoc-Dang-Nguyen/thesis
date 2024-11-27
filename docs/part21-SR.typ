@@ -29,13 +29,12 @@
 
 // Trong phạm vi luận văn này, chúng ta sẽ nghiên cứu về bán kính ổn định của điểm 1-median trên đồ thị cây.] 
 
-#add-Le[_Bán kính ổn định_ là một khái niệm đo lường khả năng của hệ thống trong việc duy trì trạng thái "ổn định" khi chịu ảnh hưởng từ các yếu tố nhiễu động môi trường. Tùy thuộc vào ngữ cảnh, khái niệm này có thể mang các ý nghĩa khác nhau. Trong phạm vi của luận văn này, chúng ta tập trung nghiên cứu bán kính ổn định của điểm 1-median trên đồ thị cây.
+_Bán kính ổn định_ là một khái niệm đo lường khả năng của hệ thống trong việc duy trì trạng thái "ổn định" khi chịu ảnh hưởng từ các yếu tố nhiễu động môi trường. Tùy thuộc vào ngữ cảnh, khái niệm này có thể mang các ý nghĩa khác nhau. Trong phạm vi của luận văn này, chúng ta tập trung nghiên cứu bán kính ổn định của điểm 1-median trên đồ thị cây.
 
 Trong lĩnh vực logistics, các kho hàng thường được đặt tại các vị trí trung tâm, đặc trưng bởi hàm median (trung vị) trên một mạng lưới giao thông. Trong đó, mỗi nút giao thông được gán trọng số dựa trên nhu cầu tương ứng. Tuy nhiên, các trọng số này thường xuyên thay đổi theo mùa, làm ảnh hưởng đến tính tối ưu của vị trí kho hàng. Bán kính ổn định cung cấp một cách đo lường mức độ ổn định của vị trí kho hàng trước sự biến động nhu cầu.
 
 Trong chương này, chúng ta sẽ nghiên cứu chi tiết về bán kính ổn định của điểm 1-median trên đồ thị cây. Chúng tôi nhận thấy rằng, mặc dù việc tính toán chính xác giá trị bán kính ổn định có thể phức tạp, vẫn có thể xác định một cận dưới đơn giản và chặt chẽ. Ngoài ra, chúng tôi còn xem xét bài toán nâng cấp cận dưới của bán kính ổn định bằng cách tham số hóa bài toán và đề xuất một thuật toán tổ hợp hiệu quả để giải quyết bài toán này.
 
-]
 
 == Một số ký hiệu liên quan 
 

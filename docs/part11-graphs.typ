@@ -49,7 +49,7 @@
 // == #text(orange)[1. LÝ THUYẾT ĐỒ THỊ]
 // === #text(orange)[1.1 ĐỒ THỊ]
 
-#remark-Le[to-do list:
+// #remark-Le[to-do list:
 // - add table list (LE, NO)
 // - spacing 1.5 (DONE)
 // - Issue with figure numbering (LE)
@@ -59,12 +59,12 @@
 // - Chỉnh ref cua USR (DONE)
 
 // - Issue with equation numbering (LE)
-- How to ref a theorem (LE, DONE)
-- template for theorem (LE)
-- add references (NGAN)
+// - How to ref a theorem (LE, DONE)
+// - template for theorem (LE)
+// - add references (NGAN)
 
-- Indent first paragraph 
-- 
+// - Indent first paragraph 
+// - 
 
 
 // - some solution (một nghiệm nào đó --chứ k phải một vài nghiệm)
@@ -72,7 +72,7 @@
 // - solution 
 // - Vấn đề --> Bài toán
 // - Với tất cả --> với mọi
-]
+// ]
 
 === Khái niệm và các dạng đồ thị 
 

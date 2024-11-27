@@ -80,6 +80,7 @@
 #pagebreak()
 #include "../docs/part01-thanks.typ"
 #include "../docs/part02-intro.typ"
+#include "../docs/part03-notations.typ"
 
 // --------- CHƯƠNG 2
 // #part([Chương 1]) 
