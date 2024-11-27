@@ -44,7 +44,7 @@
   ): it => {
     text(weight: "bold", it)
   }
-  outline(title: none, indent: true)
+  outline(title: [Mục lục\ #v(1em)], indent: true)
 }
 
 

@@ -13,7 +13,7 @@ Tôi cũng xin bày tỏ lòng biết ơn đến anh Trần Thủ Lễ, người
 Bên cạnh đó, tôi không thể không nhắc đến sự động viên và ủng hộ từ gia đình, bạn bè, và những người thân yêu. Họ đã luôn ở bên cạnh, chia sẻ niềm vui, cổ vũ tinh thần và tiếp thêm sức mạnh cho tôi trong hành trình học tập và nghiên cứu.
 Xin gửi lời cảm ơn trân trọng đến tất cả!
 
-#let end-point = [_Cần Thơ, ngày 25 tháng 11 năm 2024_ \ \ \
+#let end-point = [_Cần Thơ, ngày ... tháng ... năm 2024_ \ \ \
 
 *Nguyễn Đặng Ngọc Ngân*]
 

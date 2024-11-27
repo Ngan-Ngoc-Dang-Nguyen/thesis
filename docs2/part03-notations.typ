@@ -1,7 +1,8 @@
 #pagebreak()
 #heading(numbering: none, level: 1)[Danh mục các ký hiệu / từ viết tắt ]
+#v(1em)
 
-#set table.hline(stroke: 1pt)
+// #set table.hline(stroke: 1pt)
 
 #table(
   stroke: none,

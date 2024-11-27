@@ -29,7 +29,7 @@ Tôi cam kết bằng danh dự và uy tín cá nhân về tính xác thực c�
   // stroke: black,
   stroke: none,
   align(center)[\ *Cán bộ hướng dẫn*\ \ \ *PGS.TS. Nguyễn Trung Kiên*],
-  align(center)[_Cần Thơ, ngày 25 tháng 11 năm 2024_
+  align(center)[_Cần Thơ, ngày ... tháng ... năm 2024_
 *Sinh viên thực hiện*\ \ \ *Nguyễn Đặng Ngọc Ngân*]
 )
 
