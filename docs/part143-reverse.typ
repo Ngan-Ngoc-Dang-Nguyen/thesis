@@ -189,7 +189,7 @@ Ta được đồ thị cây $T$ với trọng số các đỉnh sau khi đượ
 Khi đó, $f(v_2) = 44.$
 #figure(
   do-thi-cay-reverse,
-  caption: [Đồ thị cây sau khi giải bài toán reverse],
+  caption: [Đồ thị cây sau khi giải bài toán Reverse 1-median],
 ) <fig-do-thi-cay-reverse>
 
   

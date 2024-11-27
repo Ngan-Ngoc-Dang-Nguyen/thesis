@@ -108,7 +108,7 @@ $ f(t)= 3.10 + 6.2 + 3.4 = 54 $
 })
 #figure(
   do-thi-co-trong-so,
-  caption: [Đồ thị có trọng số với đỉnh $z$ là median],
+  caption: [Đồ thị tổng quát với điểm median],
 ) <fig-do-thi-co-trong-so>
 
   Vì $f(z) < f(u) < f(v) < f(t)$, nên $z$ là điểm 1-median cần tìm. 
@@ -274,7 +274,7 @@ Ta lại có $x_0$ là một điểm 1-median, nghĩa là giá trị $f(x_0)$ nh
   // *Hình... ĐỒ THỊ MINH HỌA*
 #figure(
   do-thi-cay-median,
-  caption: [Đồ thị cây với gốc tại $x_0$],
+  caption: [Đồ thị cây có gốc],
 ) <fig-do-thi-tong-bac>
 
 
@@ -419,7 +419,7 @@ Thuật toán được biểu diễn bên dưới như sau:
 })
 #figure(
   do-thi-cay-median-vi-du,
-  caption: [Đồ thị cây có trọng số đỉnh với đỉnh median $v_6$],
+  caption: [Đồ thị cây với điểm median],
 ) <fig-do-thi-cay-median-vi-du>
 // do-thi-cay-median-vi-du
 

@@ -137,7 +137,7 @@ Cho đồ thị $G=(V(G),E(G),psi_G)$ với $V(G)={v_1,v_2,v_3,v_4,v_5}, E(G)={e
 })
 #figure(
   do-thi-vo-huong,
-  caption: [Biểu diễn hình học của $G$],
+  caption: [Biểu diễn hình học của đồ thị],
 ) <fig-do-thi-vo-huong>
 // #align(center)[#text(orange)[*Hình 1.1*] Minh họa biểu diễn hình học của một đồ thị]
 
@@ -267,7 +267,7 @@ Tiếp theo, ta sẽ xét các dạng đồ thị thường gặp.
 // #align(center)[#text(orange)[*Hình 1.3*]  Đồ thị có trọng số]
 #figure(
   do-thi-co-trong-so,
-  caption: [Đồ thị có trọng số],
+  caption: [Đồ thị có trọng số đỉnh và cạnh],
 ) <fig-do-thi-co-trong-so-xxx>
 
 4. _Đồ thị không có trọng số (unweighted graph)_ là đồ thị mà các cạnh và các đỉnh không có trọng số. Đồ thị trong #figref[@fig-do-thi-vo-huong] và
@@ -404,7 +404,7 @@ Một số khái niệm khác liên quan đến đồ thị được trình bày
 // #align(center)[#text(orange)[*Hình 1.5*] Đỉnh $u$ và cạnh $e$ liên thuộc nhau]
 #figure(
   do-thi-lien-thuoc,
-  caption: [Đỉnh $u$ và cạnh $e$ liên thuộc nhau],
+  caption: [Đỉnh và cạnh liên thuộc nhau],
 ) <fig-do-thi-lien-thuoc>
 
 
@@ -605,7 +605,7 @@ Có nhiều loại đồ thị con như:
 // #align(center)[#text(orange)[*Hình 1.10*] Đồ thị $G[V']$ cảm sinh từ đồ thị $G$]
 #figure(
   do-thi-cam-sinh,
-  caption: [Đồ thị $G[V']$ cảm sinh từ đồ thị $G$],
+  caption: [Đồ thị cảm sinh],
 ) <fig-do-thi-cam-sinh>
 
 
@@ -949,7 +949,7 @@ Tiếp theo, ta sẽ xem xét một bổ đề quan trọng sau:
 // #align(center)[#text(orange)[*Hình 1.12*] Minh họa đồ thị cây]
 #figure(
   do-thi-cay,
-  caption: [Minh họa phản chứng],
+  caption: [Đồ thị vòng của bốn điểm],
 ) <phan-chung>
  //ĐN a
 

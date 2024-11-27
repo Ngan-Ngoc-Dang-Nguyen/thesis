@@ -254,7 +254,7 @@ Ta được đồ thị cây $T=(V,E)$ với trọng số mới được biểu 
 })
 #figure(
   do-thi-cay-trong-so-moi,
-  caption: [Đồ thị cây với trọng số mới sau khi giải Inverse 1-median],
+  caption: [Đồ thị cây sau khi giải Inverse 1-median],
 ) <fig-do-thi-cay-trong-so-moi>
 
 

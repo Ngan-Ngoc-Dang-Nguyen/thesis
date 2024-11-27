@@ -112,7 +112,7 @@ với ngân sách $B=2.$
 
 #figure(
   do-thi-upgrading,
-  caption: [Đồ thị cây ví dụ cho bài toán upgrading],
+  caption: [Đồ thị cây ví dụ cho bài toán Upgrading 1-median],
 ) <fig-do-thi-upgrading>
   
   Các giá trị hàm mục tiêu với trọng số ban đầu là $f(v_1)=f(v_3)=9$ và $f(v_2)=8$. Do đó, đỉnh $v_2$ là điểm 1-median.

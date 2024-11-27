@@ -77,9 +77,13 @@
 // #include "../tools/multi-section-ref.typ"
 // #import "../tools/macros.typ": eqref
 // #import "../typst-orange.typ": theorem, proof, lemma, proposition, corollary, example
-#pagebreak()
+// #pagebreak()
+#include "../docs/part04-images.typ"
 #include "../docs/part01-thanks.typ"
 #include "../docs/part02-intro.typ"
+#pagebreak()
+#pagebreak()
+
 
 // --------- CHƯƠNG 2
 // #part([Chương 1]) 

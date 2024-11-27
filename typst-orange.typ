@@ -245,7 +245,8 @@
 
   set page(
     paper: "a4",
-    margin: (bottom: 3cm, top: 3cm, left: 3.5cm, right: 3cm),
+    margin: (bottom: 3cm, top: 3cm, left: 3.5cm, right: 2cm),
+    // margin: (bottom: 3cm, top: 3cm, x: 2cm),
      header: locate(loc => {
       set text(size: title5)
       let page_number = counter(page).at(loc).first()
@@ -428,7 +429,7 @@
 
   // pagebreak()
   // heading(numbering: none, level: 1)[Danh sách hình vẽ]
-  my-outline-sec(listOfFigureTitle, figure.where(kind: image), outlineHeading3)
+  // my-outline-sec(listOfFigureTitle, figure.where(kind: image), outlineHeading3)
 
   // my-outline-sec(listOfTableTitle, figure.where(kind: table), outlineHeading3)
 

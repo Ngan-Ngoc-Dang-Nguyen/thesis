@@ -586,7 +586,7 @@ Trọng số đỉnh $w^*$ trên cây được cải thiện như ở #figref[@f
 )
 #figure(
   example-upgrading-stability-radius,
-  caption: [Đồ thị cây với trọng số mới sau khi nâng cấp cận dưới bán kính ổn định],
+  caption: [Đồ thị cây mới sau khi nâng cấp bán kính ổn định],
 ) <fig-example-upgrading-stability-radius>
 
 

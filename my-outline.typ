@@ -97,6 +97,7 @@
     //   #box(width: 0.75cm, align(right, [#it.body.at("children").at(0)  #it.body.at("children").at(2) #h(0.2cm)]))
       #link(it.element.location(), it.body.at("children").at(4))
       #box(width: 1fr, repeat(text(weight: "regular")[. #h(4pt)])) 
+      // #box(width: 1fr, repeat(text(weight: "regular")[. #h(3pt)])) 
       #link(it.element.location(),heading_page)
     ]
   }
