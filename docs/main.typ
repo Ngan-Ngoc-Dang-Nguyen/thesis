@@ -31,7 +31,7 @@
 #show: project.with(
   // title: "Bài toán nâng cấp bán kính ổn định cho vị trí 1-median trên cây",
 //   title: [Bài toán nâng cấp bán kính ổn định\ cho vị trí 1-median trên cây],
-  title: [NÂNG CẤP BÁN KÍNH ỔN ĐỊNH\ CHO VỊ TRÍ 1-MEDIAN TRÊN CÂY],
+  title: [NÂNG CẤP BÁN KÍNH ỔN ĐỊNH CHO VỊ TRÍ 1-MEDIAN TRÊN CÂY],
   // title: [],
   //subtitle: "A Practical Guide",
   date: "2024",
@@ -81,11 +81,12 @@
 #include "../docs/part03-notations.typ"
 #include "../docs/part04-images.typ"
 #include "../docs/part01-thanks.typ"
+#include "../docs/part05-commit.typ"
 #include "../docs/part02-intro.typ"
 
 // <<<<<<< HEAD
 #pagebreak()
-#pagebreak()
+// #pagebreak()
 
 // =======
 // #include "../docs/part03-notations.typ"
