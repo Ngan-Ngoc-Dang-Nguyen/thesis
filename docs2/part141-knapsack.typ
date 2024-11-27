@@ -22,7 +22,7 @@
 #show: equate.with(breakable: true, sub-numbering: true)
 #set math.equation(numbering: "(1.1)", supplement: none)
 
-
+#import "@preview/lovelace:0.3.0": pseudocode-list
 // === BÀI TOÁN KNAPSACK
 == Inverse 1-median và các bài toán liên quan
 
@@ -82,7 +82,7 @@ _Thuật toán tham lam_ là thuật toán giải các bài toán tối ưu bằ
 $ e_j = p_j / w_j. $
 
 Sau đó, ta sẽ cố gắng đặt các vật phẩm có hiệu suất cao nhất vào ba lô. Rõ ràng, những vật phẩm này sẽ tạo ra giá trị cao nhất trong khi tiêu tốn ít không gian nhất. Do đó, trong phần này, chúng ta sẽ giả định rằng các vật phẩm được sắp xếp theo thứ tự giảm dần hiệu suất của chúng. Nghĩa là:
-$ p_1 / w_i >= p_2/w_2  >= ... >= p_n/w_n $ <eq:21>
+$ p_1 / w_1 >= p_2/w_2  >= ... >= p_n/w_n $ <eq:21>
 
 Ý tưởng của thuật toán tham lam áp dụng trong bài toán này là: Bắt đầu với một chiếc ba lô rỗng, sau đó lần lượt xem xét các vật phẩm theo thứ tự giảm dần của hiệu suất và thêm từng vật phẩm vào ba lô đến khi đạt giới hạn sức chứa của chiếc ba lô đó.
 
@@ -105,33 +105,63 @@ $ p_1 / w_i >= p_2/w_2  >= ... >= p_n/w_n $ <eq:21>
 //   [*ĐẦU RA*],  [$X^*$ là tập hợp tất cả các điểm 1-median.],
 // )
 
-#import "@preview/showybox:2.0.1": showybox
+// #import "@preview/showybox:2.0.1": showybox
 
-#showybox(
-  [*THUẬT TOÁN THAM LAM*
+// #showybox(
+//   [*THUẬT TOÁN THAM LAM*
 
-  *ĐẦU VÀO:* Ta có $n$ vật phẩm $x_j$, trong đó, $p_j, w_j$ lần lượt là giá trị và khối lượng vật phẩm, các vật phẩm này đã được sắp xếp theo giá trị giảm dần của hiệu suất $e_j$ và ba lô có sức chứa $c$.
+//   *ĐẦU VÀO:* Ta có $n$ vật phẩm $x_j$, trong đó, $p_j, w_j$ lần lượt là giá trị và khối lượng vật phẩm, các vật phẩm này đã được sắp xếp theo giá trị giảm dần của hiệu suất $e_j$ và ba lô có sức chứa $c$.
 
-  $overline(w) := 0 quad quad quad$ $overline(w)$: _cân nặng của các vật phẩm đã được thêm vào ba lô_
+//   $overline(w) := 0 quad quad quad$ $overline(w)$: _cân nặng của các vật phẩm đã được thêm vào ba lô_
 
-  $z_G:=0 quad quad quad$ $z_G$: _giá trị các vật phẩm được bỏ vào ba lô_
+//   $z_G:=0 quad quad quad$ $z_G$: _giá trị các vật phẩm được bỏ vào ba lô_
 
-  *for* $quad$ $j:= 1$ đến $n$ $quad$ *do*
+//   *for* $quad$ $j:= 1$ đến $n$ $quad$ *do*
 
-  $quad quad $ *if*  $quad$ $overline(w)+w_j <= c$ $quad$ *then*
+//   $quad quad $ *if*  $quad$ $overline(w)+w_j <= c$ $quad$ *then*
 
-   $quad quad quad quad x_j:=1$  $quad quad$ _đặt vật phẩm thứ $j$ vào ba lô_
+//    $quad quad quad quad x_j:=1$  $quad quad$ _đặt vật phẩm thứ $j$ vào ba lô_
 
-   $quad quad quad quad overline(w):= overline(w) + w_j$
+//    $quad quad quad quad overline(w):= overline(w) + w_j$
 
-   $quad quad quad quad z_G := z_G + p_j$
+//    $quad quad quad quad z_G := z_G + p_j$
 
-   $quad quad$ *else* $quad$ $x_j := 0$
+//    $quad quad$ *else* $quad$ $x_j := 0$
 
- *ĐẦU RA:* $z_G$ và $overline(w)$.
+//  *ĐẦU RA:* $z_G$ và $overline(w)$.
   
+//   ]
+// )
+
+#figure(
+  kind: "algorithm",
+  supplement: [Thuật toán],
+
+  pseudocode-list(booktabs: true, line-gap: 1.6em, numbered-title: [Thuật toán tham lam cho bài toán xếp ba lô 0-1], line-numbering: none)[
+    - *Input:* $n$ vật phẩm $1,..., n$
+      + $p_j, w_j$ lần lượt là giá trị và khối lượng vật phẩm
+      + $e_j = p_j/w_j$ thỏa $e_1 >= ...>=e_n$
+      + Ba lô có sức chứa $c$
+      + 
+    - Khởi tạo:
+      + $x_j in {0, 1}$, bằng $0$ nếu $j$ không được chọn, bằng $1$ nếu ngược lại
+      + $overline(w) := 0$, $overline(w)$ là cân nặng của các vật phẩm đã được thêm vào ba lô
+      + $z_G:=0$, $z_G$ là tổng giá trị các vật phẩm được bỏ vào ba lô
+    - *for* $j=1,...,n$
+      - *if*  $overline(w)+w_j <= c$
+        - $x_j:=1$  (cho vật phẩm thứ $j$ vào ba lô)
+        - $overline(w):= overline(w) + w_j$
+        - $z_G := z_G + p_j$
+      - *else*
+          - $x_j := 0$ (không cho vật phẩm thứ $j$ vào ba lô)
+      - *end if*
+    - *end for*
+    - *Output:* $x_j$, $j=1,..., n$, $overline(w)$,  $z_G$ 
   ]
-)
+) <alg-greedy>
+
+
+
 
 #example[
 Ta có một chiếc ba lô với sức chứa $c=9$ và có $n=7$ vật phẩm có thể để vào ba lô với giá trị và trọng lượng được cho ở bảng bên dưới.]
@@ -214,26 +244,49 @@ Bằng cách tương tự, ta cũng sẽ bắt đầu với một chiếc ba lô
 
 #set table.hline(stroke: .7pt)
 
-#table(
-  table.hline(),
-  stroke: none,
-  columns: (auto, 4fr),
-  table.hline(),
-  [*ĐẦU VÀO*],  [ $n$ vật phẩm, mỗi vật phẩm có giá trị $p_j$ và $w_j$ tương ứng, $j= 1,...,n$, $z := 0, overline(w):= c, x_j := 0, j:= 1$. Các vật phẩm đã được xếp theo thứ tự giảm dần của hiệu suất.],
-  table.hline(),
-  [],[],
-  [*Bước 1*],  [],
-  [],[],
-  [Nếu $w_j <= overline(w)$],   [$ x_j:= 1, quad z:= z + p_j.x_j, quad overline(w):= overline(w) - w_i$],
-  [], [],
-  [Nếu $w_j > overline(w)$],  [$ x_j:= overline(w)/w_j, quad z:= z + p_j.x_j, quad overline(w):= overline(w) - w_i, quad overline(w):= 0$],
-  [],[],
-  [*Bước 2*],  [$j:= j+ 1$, trở về Bước 1],
-  [],[],
-  table.hline(),
-  [*ĐẦU RA*],  [$z$ và $x_j$],
-  table.hline(),
-)
+// #table(
+//   table.hline(),
+//   stroke: none,
+//   columns: (auto, 4fr),
+//   table.hline(),
+//   [*ĐẦU VÀO*],  [ $n$ vật phẩm, mỗi vật phẩm có giá trị $p_j$ và $w_j$ tương ứng, $j= 1,...,n$, $z := 0, overline(w):= c, x_j := 0, j:= 1$. Các vật phẩm đã được xếp theo thứ tự giảm dần của hiệu suất.],
+//   table.hline(),
+//   [],[],
+//   [*Bước 1*],  [],
+//   [],[],
+//   [Nếu $w_j <= overline(w)$],   [$ x_j:= 1, quad z:= z + p_j.x_j, quad overline(w):= overline(w) - w_i$],
+//   [], [],
+//   [Nếu $w_j > overline(w)$],  [$ x_j:= overline(w)/w_j, quad z:= z + p_j.x_j, quad overline(w):= overline(w) - w_i, quad overline(w):= 0$],
+//   [],[],
+//   [*Bước 2*],  [$j:= j+ 1$, trở về Bước 1],
+//   [],[],
+//   table.hline(),
+//   [*ĐẦU RA*],  [$z$ và $x_j$],
+//   table.hline(),
+// )
+
+#figure(
+  kind: "algorithm",
+  supplement: [Thuật toán],
+
+  pseudocode-list(booktabs: true, line-gap: 1.6em, numbered-title: [Thuật toán tham lam cho bài toán xếp ba lô liên tục], line-numbering: none)[
+    - *Input:* $n$ vật phẩm $1,..., n$
+      + $p_j, w_j$ lần lượt là giá trị và khối lượng vật phẩm $j$
+      + $e_j = p_j/w_j$ thỏa $e_1 >= ...>=e_n$
+      + Ba lô có sức chứa $c$
+    - Khởi tạo:
+      + $x_j in [0, 1]$, $j=1,..., n$
+      + $overline(w):=c$ (sức chứa còn lại của ba lô)
+    - *for* $j=1,...,n$
+      - Nếu $w_j <= overline(w)$, thì $x_j:=1$, $overline(w):= overline(w) - w_j$
+      - Nếu $w_j > overline(w)$, thì $x_j:=overline(w)/w_j$, $overline(w):= 0$. Kết thúc.
+    - *end for*
+    - *Output:* $x_j$, $j=1,..., n$
+  ]
+) <alg-greedy-knapsack-continuous>
+
+
+
 #example[
 Giả sử, ta là một nhà buôn muốn vận chuyển hàng hóa bằng một chiếc xe với sức chứa tối đa $c=50$ kg và ta có một số loại hàng hóa như sau (mỗi loại hàng hóa bên dưới đều có thể chia nhỏ được):]
 

@@ -25,7 +25,7 @@
 #show: equate.with(breakable: true, sub-numbering: true)
 #set math.equation(numbering: "(1.1)", supplement: none)
 
-
+#import "@preview/lovelace:0.3.0": pseudocode-list
 // == BÀI TOÁN 1-MEDIAN
 == Bài toán 1-median
 
@@ -319,36 +319,54 @@ Thuật toán được biểu diễn bên dưới như sau:
 
 
 
-#set table.hline(stroke: .7pt)
+// #set table.hline(stroke: .7pt)
 
-#table(
-  table.hline(),
-  stroke: none,
-  columns: (auto, 4fr),
-  [*ĐẦU VÀO*],  [Cây $T=(V,E)$, mỗi cạnh có chiều dài $l$, mỗi đỉnh $v_i$ được gán một trọng số không âm $w_i$],
-   table.hline(),
-  [*Bước 0*],  [Tính $W=w(T)$.],
+// #table(
+//   table.hline(),
+//   stroke: none,
+//   columns: (auto, 4fr),
+//   [*ĐẦU VÀO*],  [Cây $T=(V,E)$, mỗi cạnh có chiều dài $l$, mỗi đỉnh $v_i$ được gán một trọng số không âm $w_i$],
+//    table.hline(),
+//   [*Bước 0*],  [Tính $W=w(T)$.],
 
-  [*Bước 1*],  [Chọn một lá $v_k in V(T)$.],
+//   [*Bước 1*],  [Chọn một lá $v_k in V(T)$.],
 
-  [*Bước 2*],  [Nếu $V={v_k}$ thì $X^*={v_k}.$],
+//   [*Bước 2*],  [Nếu $V={v_k}$ thì $X^*={v_k}.$],
 
-  [*Bước 3*],  [],
-  [], [],
-  [],[],
-  [$w_k$ = $W/2$],  [$X^*={x in v_k v_l}$, trong đó $v_l$ liền kề $v_k$.],
-  [], [],
-  [], [],
-  [$w_k >$ $W/2$],  [Trả về: $X^*={v_k}$],
-  [], [],
-  [], [],
-  [$w_k <$ $W/2$],  [Sang Bước 4.],
-  [], [],
-  [*Bước 4*],  [Đặt $w_l := w_l + w_k$ với $v_l$ liền kề $v_k$ và xét cây mới $T:= T without {v_k}$. Trở về Bước 1.],
-  table.hline(),
-  [*ĐẦU RA*],  [$X^*$ là tập hợp tất cả các điểm 1-median.],
-  table.hline(),
-)
+//   [*Bước 3*],  [],
+//   [], [],
+//   [],[],
+//   [$w_k$ = $W/2$],  [$X^*={x in v_k v_l}$, trong đó $v_l$ liền kề $v_k$.],
+//   [], [],
+//   [], [],
+//   [$w_k >$ $W/2$],  [Trả về: $X^*={v_k}$],
+//   [], [],
+//   [], [],
+//   [$w_k <$ $W/2$],  [Sang Bước 4.],
+//   [], [],
+//   [*Bước 4*],  [Đặt $w_l := w_l + w_k$ với $v_l$ liền kề $v_k$ và xét cây mới $T:= T without {v_k}$. Trở về Bước 1.],
+//   table.hline(),
+//   [*ĐẦU RA*],  [$X^*$ là tập hợp tất cả các điểm 1-median.],
+//   table.hline(),
+// )
+
+#figure(
+  kind: "algorithm",
+  supplement: [Thuật toán],
+
+  pseudocode-list(booktabs: true, line-gap: 1.6em, numbered-title: [Tìm điểm 1-median], line-numbering: none)[
+    - *Input:* Cây $T$ với trọng số $w$
+    - *Bước 0:* Đặt $W=w(T), X^*= emptyset$
+    - *Bước 1:* Chọn một lá $v_k in V(T)$
+    - *Bước 2:* Nếu $V={v_k}$ thì $X^*={v_k}$. Kết thúc.
+    - *Bước 3:* Xét các trường hợp sau:
+      + Nếu $w_k$ = $W/2$, thì $X^*={x in (v_k v_l)}$, trong đó $v_l$ liền kề $v_k$. Kết thúc.
+      + Nếu $w_k >$ $W/2$, thì $X^*:={v_k}$. Kết thúc. 
+      + Nếu $w_k <$ $W/2$, thì chuyển sang Bước 4.
+    - *Bước 4:* Đặt $w_l := w_l + w_k$ với $v_l$ liền kề $v_k$ và $T := T without {v_k}$. Trở về Bước 1.
+    - *Output:* $X^*$ là tập các điểm 1-median
+  ]
+) <alg-find-all-medians>
 
 
 Để hiểu rõ hơn về cách hoạt động của thuật toán, ta xét ví dụ sau:

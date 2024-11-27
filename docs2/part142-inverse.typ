@@ -47,10 +47,7 @@ $.
 
 Định lý bên dưới là điều kiện tối ưu để một đỉnh $s$ bất kỳ trở thành điểm 1-median. Định lý này đã được @burkard2004inverse chứng minh.
 
-#lemma("Điều kiện tối ưu")[
-  
-Giả sử $tilde(w)_1 <= W/2,...,tilde(w)_(k-1)<= W/2$. Đỉnh $s$ là 1-median nếu và chỉ nếu $R=0$.
-
+#lemma("Điều kiện tối ưu")[Giả sử $tilde(w)_1 <= W/2,...,tilde(w)_(k-1)<= W/2$. Đỉnh $s$ là 1-median nếu và chỉ nếu $R=0$.
 ]
 
 Phương trình $R=0$ nghĩa là 
@@ -122,7 +119,7 @@ Từ #eqref(<eq:37>), ta thấy rằng đây là bài toán xếp ba lô liên t
 
 Bây giờ, ta sẽ xét ví dụ sau.
 
-#example[Cho cây $T=(V,E)$ có trọng số như hình bên dưới. $v_2$ là điểm 1-median ứng với trọng số đã cho. Ta cần phải chỉnh $w_i, i=1,...,6$ sao cho $v_4$ trở thành điểm 1-median, đồng thời vẫn thỏa mãn các giới hạn cho trước. Cụ thể:
+#example[Cho cây $T=(V,E)$ có trọng số như hình bên dưới. $v_2$ là điểm 1-median ứng với trọng số đã cho. Ta cần phải chỉnh $w_i, i=1,...,6$ sao cho $v_4$ trở thành điểm 1-median, đồng thời vẫn thỏa mãn các ràng buộc cho trước. Cụ thể:
 $c_1=1, c_2 = 6, c_3 = 4, c_4 =5, c_5=7, c_6 = 8,
 
 4 <= w_1 <= 8, 
@@ -141,13 +138,13 @@ $c_1=1, c_2 = 6, c_3 = 4, c_4 =5, c_5=7, c_6 = 8,
     let h=1.4
 
     circle((0*h,3), radius: 0.05,fill:black, name: "v2")
-    content("v2.top", $v_2 (5)$, anchor: "top", padding: 0.3)
+    content("v2.top", $v_2 (5)$, anchor: "right", padding: 0.3)
 
     circle((-3,0), radius: 0.05,fill:black, name: "v1")
-    content("v1.left", $v_1 (6)$, anchor: "left", padding: 0.2)
+    content("v1.left", $v_1 (6)$, anchor: "right", padding: 0.2)
 
     circle((-3,6), radius: 0.05,fill:black, name: "v3")
-    content("v3.left", $v_3 (7)$, anchor: "left", padding: 0.2)
+    content("v3.left", $v_3 (7)$, anchor: "right", padding: 0.2)
 
     circle((4,3), radius: 0.05,fill:black, name: "v4")
     content("v4.left", $v_4 (4)$, anchor: "left", padding: 0.2)
@@ -170,8 +167,9 @@ $c_1=1, c_2 = 6, c_3 = 4, c_4 =5, c_5=7, c_6 = 8,
 
      }
   )]
-  
-$b = 2 tilde(w)_k - W = 2.18 - 28 = 8  $
+
+Ta có
+$ b = 2 tilde(w)_k - W = 2.18 - 28 = 8  $
 
 Thế vào #eqref(<eq:37>), ta được:
 $

@@ -75,7 +75,7 @@ Ngoài ra, để bổ khuyết cho nghiên cứu trên, chúng tôi cũng nghiê
 
 Luận văn đã thành công trong việc tìm ra công thức tường minh cho cận dưới bán kính ổn định của vị trí 1-median trên cây và đồng thời đề xuất một thuật toán để nâng cấp cận dưới nói trên.
 
-Kết quả của luận văn được trình bày trong bài báo khoa học đang được phản biện bởi Tạp chí _Asia-Pacific Journal of Operational Research (Q3 Scopus)_.
+Kết quả của luận văn được trình bày trong bài báo khoa học đã gửi và đang được phản biện bởi tạp chí _Asia-Pacific Journal of Operational Research (Q3 Scopus)_.
 // #align(center)[_Stability Radius and an Upgrading Model of Median Location on Trees_]
 
 

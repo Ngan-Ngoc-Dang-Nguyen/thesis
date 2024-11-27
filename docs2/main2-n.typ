@@ -22,12 +22,17 @@
 #show: thmrules.with(qed-symbol: $square$)
 
 
+// -----------------------------------
+//    THESIS COVER
+// -----------------------------------
+#include "../docs2/part00-cover.typ"
 
+// -----------------------------------
+//    CONTENTS  LIST
+// -----------------------------------
 #set page(numbering: "I")
 #set page(footer: context [#line(length: 100%)\ #v(-2.5em) #h(1fr) _Trang #counter(page).display("I")_ #h(1fr)])
-// -----------------------------------
-//    CONTENTS
-// -----------------------------------
+
 // #include "../docs2/part06-contents.typ"
 // #heading(numbering: none, level: 1)[Mục lục ]
 // #v(2em)
@@ -50,7 +55,9 @@
 
 
 
-
+// -----------------------------------
+//    CONTENTS
+// -----------------------------------
 #include "../docs2/part03-notations.typ"
 #include "../docs2/part04-images.typ"
 #include "../docs2/part01-thanks.typ"
