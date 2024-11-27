@@ -2,6 +2,7 @@
 
 #pagebreak()
 #heading(numbering: none, level: 1)[Lời cảm ơn]
+\
 
 Đề tài _Nâng cấp bán kính ổn định cho vị trí 1-median trên cây_ là kết quả của quá trình nghiên cứu và nỗ lực học tập trong suốt bốn năm tôi theo học ngành Sư phạm Toán học tại Trường Đại học Cần Thơ. Để hoàn thành luận văn này, tôi đã nhận được rất nhiều sự giúp đỡ.
 

@@ -1,27 +1,13 @@
 // #include "./thesis-template.typ"
 // #let 
 
-#set page(numbering: "1", margin: (top: 3cm, bottom: 3cm, left: 3.5cm, right: 2cm))
+#set page(margin: (top: 3cm, bottom: 3cm, left: 3.5cm, right: 2cm))
 #set heading(numbering: "1.1.1.")
 #show heading.where(level: 1): set text(red)
 #show heading.where(level: 2): set text(red, weight: "bold")
-#set figure(supplement: [Hình])
+#set figure(supplement: [*Hình*])
 #set text(font: "Times New Roman", size: 13pt)
 #set par(leading: 1.5em, first-line-indent: 1.5em)
-#show outline.entry.where(
-  level: 1
-): it => {
-  // v(12pt, weak: true)
-  // text(fill: red, weight: "bold", it)
-  strong(it)
-}
-#show outline.entry.where(
-  level: 2
-): it => {
-  // v(12pt, weak: true)
-  text(weight: "bold", it)
-  // strong(it)
-}
 // #set math.equation(numbering: "(1)")
 // #show math.equation: set text(blue)
 #show math.equation: it => {
@@ -37,26 +23,43 @@
 
 
 
-
-#set page(footer: context [#h(1fr) Trang #counter(page).display("I")])
+#set page(numbering: "I")
+#set page(footer: context [#line(length: 100%)\ #v(-2.5em) #h(1fr) _Trang #counter(page).display("I")_ #h(1fr)])
 // -----------------------------------
 //    CONTENTS
 // -----------------------------------
-#outline(title: "Mục lục", indent: true)
+// #include "../docs2/part06-contents.typ"
+// #heading(numbering: none, level: 1)[Mục lục ]
+// #v(2em)
+#{
+  // set page(numbering: "I")
+  // set page(footer: context [#line(length: 100%)\ #v(-2.5em) #h(1fr) Trang #counter(page).display("I")])
+  show outline.entry.where(
+    level: 1
+  ): it => {
+    strong(it)
+  }
+  show outline.entry.where(
+    level: 2
+  ): it => {
+    text(weight: "bold", it)
+  }
+  outline(title: none, indent: true)
+}
 
 
 
 
 
-// #set page(footer: context [#h(1fr) #counter(page).display()])
-// #set page(numbering: "1")
 #include "../docs2/part03-notations.typ"
 #include "../docs2/part04-images.typ"
 #include "../docs2/part01-thanks.typ"
 #include "../docs2/part05-commit.typ"
 #include "../docs2/part02-intro.typ"
 
-#set page(footer: context [#h(1fr) Trang #counter(page).display()])
+#set page(footer: context [#line(length: 100%)\ #v(-2.5em) #h(1fr) _Trang #counter(page).display()_ #h(1fr)])
+// #set page(footer: context [#h(1fr) Trang #counter(page).display()])
+#set page(numbering: "1")
 #counter(page).update(1)
 // // --------- CHƯƠNG 2
 #pagebreak()

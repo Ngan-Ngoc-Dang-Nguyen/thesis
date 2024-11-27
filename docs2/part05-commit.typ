@@ -1,6 +1,8 @@
 #pagebreak()
 #heading(numbering: none, level: 1)[Lời cam đoan]
 
+#v(5em)
+
 #align(center, text(size: 20pt)[*Lời cam đoan*])
 
 

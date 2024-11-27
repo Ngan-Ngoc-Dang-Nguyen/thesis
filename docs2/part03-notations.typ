@@ -1,5 +1,5 @@
 #pagebreak()
-#heading(numbering: none, level: 1)[Danh mục các ký hiệu ]
+#heading(numbering: none, level: 1)[Danh mục các ký hiệu / từ viết tắt ]
 
 #set table.hline(stroke: 1pt)
 
