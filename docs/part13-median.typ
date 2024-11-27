@@ -335,6 +335,7 @@ Thuật toán được biểu diễn bên dưới như sau:
 
   [*Bước 3*],  [],
   [], [],
+  [],[],
   [$w_k$ = $W/2$],  [$X^*={x in v_k v_l}$, trong đó $v_l$ liền kề $v_k$.],
   [], [],
   [], [],

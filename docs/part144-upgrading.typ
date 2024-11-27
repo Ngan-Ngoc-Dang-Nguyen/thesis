@@ -19,17 +19,17 @@
 // == BÀI TOÁN NÂNG CẤP 1-MEDIAN TRÊN CÂY
 === Bài toán Upgrading 1-median 
 
-Trong mục này, ta sẽ xem xét một lớp bài toán khác được gọi là bài toán nâng cấp.
+Trong mục này, ta sẽ xem xét một bài toán được gọi là _Nâng cấp đồ thị (Upgrading graphs)_ .
 
-Giả sử một thành phố có mạng lưới các con đường nối liền các quận với nhau, với một bến xe buýt trung tâm đặt tại quận A - vị trí được chọn làm điểm trung chuyển tối ưu để người dân dễ dàng di chuyển tới các khu vực khác. Tuy nhiên, theo thời gian, khi dân số tăng lên và lưu lượng giao thông trở nên quá tải, việc di chuyển từ các quận tới quận A ngày càng mất nhiều thời gian, gây ra tình trạng tắc nghẽn và phiền toái.
+// Giả sử một thành phố có mạng lưới các con đường nối liền các quận với nhau, với một bến xe buýt trung tâm đặt tại quận A - vị trí được chọn làm điểm trung chuyển tối ưu để người dân dễ dàng di chuyển tới các khu vực khác. Tuy nhiên, theo thời gian, khi dân số tăng lên và lưu lượng giao thông trở nên quá tải, việc di chuyển từ các quận tới quận A ngày càng mất nhiều thời gian, gây ra tình trạng tắc nghẽn và phiền toái.
 
-Trong bối cảnh đó, thành phố đối mặt với thách thức lớn: ngân sách hạn chế không cho phép xây dựng lại hoàn toàn mạng lưới đường sá hay thay đổi vị trí của bến xe buýt trung tâm. Do vậy, giải pháp khả thi nhất là nâng cấp một số tuyến đường hiện có - có thể là mở rộng đường, nâng cao chất lượng cơ sở hạ tầng hoặc giảm tải giao thông ở những tuyến trọng điểm - nhưng vẫn phải đảm bảo không vượt quá giới hạn ngân sách. 
+// Trong bối cảnh đó, thành phố đối mặt với thách thức lớn: ngân sách hạn chế không cho phép xây dựng lại hoàn toàn mạng lưới đường sá hay thay đổi vị trí của bến xe buýt trung tâm. Do vậy, giải pháp khả thi nhất là nâng cấp một số tuyến đường hiện có - có thể là mở rộng đường, nâng cao chất lượng cơ sở hạ tầng hoặc giảm tải giao thông ở những tuyến trọng điểm - nhưng vẫn phải đảm bảo không vượt quá giới hạn ngân sách. 
 
-Mục tiêu của việc nâng cấp này là làm sao giảm thiểu thời gian di chuyển trung bình của người dân từ các quận khác đến bến xe buýt tại quận A, giúp giao thông trở nên thuận tiện và hiệu quả hơn. Đây chính là một ví dụ cơ bản của bài toán nâng cấp, trong đó thành phố cố gắng tối ưu hóa hệ thống giao thông hiện tại thay vì xây dựng lại từ đầu, nhằm đạt được hiệu quả cao nhất trong giới hạn chi phí có sẵn.
+// Mục tiêu của việc nâng cấp này là làm sao giảm thiểu thời gian di chuyển trung bình của người dân từ các quận khác đến bến xe buýt tại quận A, giúp giao thông trở nên thuận tiện và hiệu quả hơn. Đây chính là một ví dụ cơ bản của bài toán nâng cấp, trong đó thành phố cố gắng tối ưu hóa hệ thống giao thông hiện tại thay vì xây dựng lại từ đầu, nhằm đạt được hiệu quả cao nhất trong giới hạn chi phí có sẵn.
 
-Nói tóm lại, bài toán nâng cấp khác với các bài toán vị trí cổ điển. Các bài toán vị trí cổ điển vốn tập trung vào việc xác định vị trí tối ưu cho các cơ sở hạ tầng. Trong khi đó, bài toán nâng cấp tập trung vào việc điều chỉnh và nâng cấp mạng lưới cơ sở hạ tầng trong các giới hạn cho phép, nhằm tối ưu hóa kết quả trên mạng lưới đã thay đổi. 
+Bài toán Upgrading khác với các bài toán vị trí cổ điển. Trong khi, các bài toán vị trí cổ điển vốn tập trung vào việc xác định vị trí tối ưu cho các cơ sở hạ tầng, bài toán Upgrading tập trung vào việc điều chỉnh và nâng cấp mạng lưới cơ sở hạ tầng trong các giới hạn cho phép, nhằm tối ưu hóa giá trị của hàm mục tiêu. 
 
-Trong phần này chúng ta sẽ tập trung vào bài toán nâng cấp hàm median tối ưu với mục tiêu là tối ưu hóa mạng lưới hiện có bằng cách điều chỉnh trọng số của các đỉnh trong một giới hạn cho phép. Quá trình nâng cấp phải đảm bảo tuân thủ các ràng buộc ngân sách tuyến tính, tức là việc phân bổ chi phí phải nằm trong mức ngân sách đã định. Chúng ta cũng sẽ trình bày lại một thuật toán có độ phức tạp $O(n^2)$ đã được *Gassner* tìm ra, giúp giải quyết hiệu quả bài toán.
+Trong phần này, chúng ta sẽ tập trung vào _Bài toán nâng cấp hàm mục tiêu 1-median_, trong đó trọng số của các đỉnh được điều chỉnh trong một phạm vi giới hạn, đồng thời phải thỏa mãn một ràng buộc ngân sách nhất định. Bài toán này đã được trình bày bởi @gassner2007up.
 
 // Giả sử một công ty có kế hoạch mở một nhà máy mới với sức chứa $B$. Hiện tại, công ty có $n$ kho hàng, mỗi kho có sức chứa $w_i$ với $i=1,...,n$, (và tổng lượng nguyên liệu thô tại nhà máy là $sum_(i=1)^n w_i$). Công ty muốn xác định số lượng nguyên liệu lưu trữ tại mỗi kho cũng như vị trí tối ưu để đặt nhà máy nhằm giảm thiểu tổng chi phí vận chuyển từ các kho đến nhà máy.
 
