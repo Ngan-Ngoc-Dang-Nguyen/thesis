@@ -82,16 +82,16 @@ $0 <= delta_6 <= 3.$]
     let h=1.4
 
     circle((0*h,3), radius: 0.05,fill:black, name: "v2")
-    content("v2.left", $v_2 (5)$, anchor: "bottom-left", padding: 0.2)
+    content("v2.left", $v_2 (5)$, anchor: "right", padding: 0.2)
 
     circle((-3,0), radius: 0.05,fill:black, name: "v1")
-    content("v1.left", $v_1 (6)$, anchor: "left", padding: 0.2)
+    content("v1.left", $v_1 (6)$, anchor: "right", padding: 0.2)
 
     circle((-3,6), radius: 0.05,fill:black, name: "v3")
-    content("v3.left", $v_3 (7)$, anchor: "left", padding: 0.2)
+    content("v3.left", $v_3 (7)$, anchor: "right", padding: 0.2)
 
     circle((4,3), radius: 0.05,fill:black, name: "v4")
-    content("v4.left", $v_4 (4)$, anchor: "bottom-right", padding: 0.2)
+    content("v4.left", $v_4 (4)$, anchor: "left", padding: 0.2)
 
     circle((7,6), radius: 0.05,fill:black, name: "v5")
     content("v5.left", $v_5 (3)$, anchor: "left", padding: 0.2)
@@ -161,13 +161,13 @@ Ta được đồ thị cây $G$ với trọng số các đỉnh sau khi đượ
     let h=1.4
 
     circle((0*h,3), radius: 0.05,fill:black, name: "v2")
-    content("v2.left", $v_2 (5)$, anchor: "left", padding: 0.2)
+    content("v2.left", $v_2 (5)$, anchor: "right", padding: 0.2)
 
     circle((-3,0), radius: 0.05,fill:black, name: "v1")
-    content("v1.left", $v_1 (4)$, anchor: "left", padding: 0.2)
+    content("v1.left", $v_1 (4)$, anchor: "right", padding: 0.2)
 
     circle((-3,6), radius: 0.05,fill:black, name: "v3")
-    content("v3.left", $v_3 (7)$, anchor: "left", padding: 0.2)
+    content("v3.left", $v_3 (7)$, anchor: "right", padding: 0.2)
 
     circle((4,3), radius: 0.05,fill:black, name: "v4")
     content("v4.left", $v_4 (4)$, anchor: "left", padding: 0.2)
@@ -179,20 +179,19 @@ Ta được đồ thị cây $G$ với trọng số các đỉnh sau khi đượ
     content("v6.left", $v_6 (0)$, anchor: "left", padding: 0.2)
 
     line("v1","v2", name: "v1v2")
-    content("v1v2.left", $2$)
+    content("v1v2", $2$, anchor: "right", padding: 0.2)
 
     line("v3","v2", name: "v2v3")
-
-    content("v2v3.left", $2$)
+    content("v2v3", $2$, anchor: "right", padding: 0.2)
 
     line("v4","v2", name: "v4v2")
-    content("v4v2.left", $3$)
+    content("v4v2", $3$, anchor: "bottom", padding: 0.2)
 
     line("v4","v5", name: "v4v5")
-    content("v4v5.left", $2$)
+    content("v4v5", $2$, anchor: "left", padding: 0.2)
 
     line("v4","v6", name: "v4v6")
-    content("v4v6.left", $4$)
+    content("v4v6", $4$, anchor: "left", padding: 0.2)
 
 })
 

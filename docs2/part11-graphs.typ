@@ -243,8 +243,7 @@ Tiếp theo, ta sẽ xét các dạng đồ thị thường gặp.
   caption: [Đồ thị có trọng số đỉnh và cạnh],
 ) <fig-do-thi-co-trong-so-xxx>
 
-4. _Đồ thị không có trọng số (unweighted graph)_ là đồ thị mà các cạnh và các đỉnh không có trọng số. Đồ thị trong #figref[@fig-do-thi-vo-huong] và
-#figref[@fig-do-thi-co-huong] là những đồ thị không có trọng số.
+4. _Đồ thị không có trọng số (unweighted graph)_ là đồ thị mà các cạnh và các đỉnh không có trọng số. Đồ thị trong #figref[@fig-do-thi-vo-huong] và #figref[@fig-do-thi-co-huong] là những đồ thị không có trọng số.
 
 5. _Đồ thị liên thông (connected graph)_ là đồ thị mà từ một đỉnh bất kỳ, ta có thể đi đến tất cả các đỉnh khác thông qua các cạnh.
 
