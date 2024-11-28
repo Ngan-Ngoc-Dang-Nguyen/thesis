@@ -95,6 +95,7 @@ Cho đồ thị $G=(V(G),E(G),psi_G)$ với $V(G)={v_1,v_2,v_3,v_4,v_5}, E(G)={e
   
   line("v1", "v2", name: "v1v2")
   content("v1v2.bottom", $e_1$, anchor: "bottom", padding: 0.2)
+  // content(("v1", 50%, "v2"), $e_1$, anchor: "bottom", padding: 0.2)
   line("v2", "v3", name: "v2v3")
   content("v2v3.top", $e_2$, anchor: "top", padding: 0.7)
   line("v2", "v4", name: "v2v4")

@@ -7,7 +7,7 @@
 #show heading.where(level: 2): set text(red, weight: "bold")
 #set figure(supplement: [*Hình*])
 #set text(font: "Times New Roman", size: 13pt)
-#set par(leading: 1.5em, first-line-indent: 1.5em)
+#set par(leading: 1.5em, first-line-indent: 1.5em, justify: true)
 // #set math.equation(numbering: "(1)")
 // #show math.equation: set text(blue)
 #show math.equation: it => {
