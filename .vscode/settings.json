@@ -2,5 +2,6 @@
     "files.exclude": {
         // hiden pdf files of bama and bamato packages
         "**/*[^n].pdf": true, // exclude all pdf files except files end with s.pdf
+        "*docs": true, 
     }
 }

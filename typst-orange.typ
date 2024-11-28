@@ -1,4 +1,5 @@
-#import("my-outline.typ"): *
+// #import("my-outline.typ"): *
+#import("my-outline-x.typ"): *
 #import("my-index.typ"): *
 #import("theorems.typ"): *
 #import "@preview/indenta:0.0.3": fix-indent
