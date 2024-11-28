@@ -126,7 +126,7 @@ $0 <= delta_6 <= 3.$]
   )
 #figure(
   do-thi-cay-trong-so-moi-reverse,
-  caption: [Đồ thị cây với trọng số mới sau khi giải Inverse 1-median],
+  caption: [Đồ thị cây ví dụ cho bài toán Reverse 1-median],
 ) 
 <fig-do-thi-cay-trong-so-moi-reverse>
 
