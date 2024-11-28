@@ -49,7 +49,8 @@ Trong phần này, chúng ta sẽ tập trung vào _Bài toán nâng cấp hàm 
 // Mô tả bài toán: Cho đồ thị $G$, mỗi đỉnh trên đồ thị được gán một trọng số không âm. Từ trọng số trên, ta có thể tìm được điểm 1-median và giá trị hàm mục tiêu đạt được tại điểm đó. Nhiệm vụ của bài toán nâng cấp là điều chỉnh trọng số đỉnh thỏa mãn các ràng buộc nhất định, sao cho giá trị hàm mục tiêu median được tối thiểu. Sau đây, ta sẽ tiến hành mô hình hóa bài toán.
 
 Cho đồ thị $G=(V,E)$, có $n$ đỉnh, mỗi đỉnh được gán một trọng số không âm, gọi là $w_v$. 
-Gọi $f(w)$ là giá trị mục tiêu 1-median với vecto trọng số $w$. Mục tiêu của bài toán nâng cấp 1-median là điều chỉnh trọng số đỉnh bằng $delta= (delta_v)_(v in V)$ sao cho $delta$ thỏa mãn điều kiện ràng buộc về ngân sách $B$, giới hạn điều chỉnh $u$ và đồng thời $f(w- delta)$ nhỏ nhất.
+Gọi $f(w)$ là giá trị mục tiêu 1-median với vecto trọng số $w$. Mục tiêu của bài toán nâng cấp 1-median là điều chỉnh trọng số đỉnh bằng $delta= (delta_v)_(v in V)$ sao cho $delta$ thỏa mãn điều kiện ràng buộc về ngân sách $B$, nằm trong giới hạn điều chỉnh $u$ và đồng thời $f(w- delta)$ nhỏ nhất. Nghĩa là 
+$ Delta={delta: sum_(v in V) c_v delta_v <= B, 0<= delta_v <= u_v, forall v in V}. $
 
 Khi đó, bài toán nâng cấp 1-median được biểu diễn như sau:
 
