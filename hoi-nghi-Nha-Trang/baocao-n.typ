@@ -18,13 +18,28 @@
 #import "@preview/cetz:0.2.2"
 #import "@preview/cetz:0.1.2"
 
+#let author = table(
+      // width: 100%,
+      columns: (1fr, 1fr),
+      align: (left, left), 
+      inset: 2em,
+      // stroke: black,
+      stroke: none,
+      [_GV hướng dẫn_\ *PGS.TS. Nguyễn Trung Kiên*],
+      [
+      _Sinh viên thực hiện_\
+      *Nguyễn Đặng Ngọc Ngân*\
+      *MSSV: B2100137*\
+      *Lớp: SP Toán học - K47*
+      ]
+    )
+
 #title-slide(
     title: [#text(size: 32pt)[LUẬN VĂN TỐT NGHIỆP]
 
     Nâng cấp bán kính ổn định cho vị trí 1-median trên cây ],
     //subtitle: "An overview over all the features",
-    authors:[
-    Nguyễn Đặng Ngọc Ngân],
+    authors: author,
     date: "Tháng 12 năm 2024",
 )
 
@@ -57,6 +72,63 @@
 
 ]
 
+
+#slide[
+  #let logistic-image = image(height: 100%, "../images/logistic.jpg")
+  #let tree = canvas(length: 10%, {
+    import cetz.draw: *
+
+    let y = 2 
+    let x = 4
+    let y-space = 1
+    let h=1.4
+
+    circle((0*h,3), radius: 0.05,fill:black, name: "v1") 
+    content("v1.bottom", $v_1 (0.1)$, anchor: "left", padding: 0.2)
+
+    circle((-2*h, 2), radius: 0.05, fill: black, name: "v2") 
+    content("v2.bottom", $v_2 (0.13)$, anchor: "left", padding: 0.2)
+
+    circle((-3*h, 1), radius: 0.05,fill:black, name: "v5") 
+    content("v5.bottom", $v_5 (0.1)$, anchor: "left", padding: 0.2)
+
+    // circle((-1*h, 1), radius: 0.05,fill:black, name: "v6") 
+    // content("v6.bottom", $v_6 (0.1)$, anchor: "left", padding: 0.2)
+
+    circle((0*h, 2), radius: 0.05, fill: black, name: "v3") 
+    content("v3.bottom", $v_3 (0.06)$, anchor: "left", padding: 0.2)
+
+    circle((0*h, 1), radius: 0.05, fill: black, name: "v7") 
+    content("v7.bottom", $v_7 (0.06)$, anchor: "left", padding: 0.2)
+
+    // circle((2*h, 2), radius: 0.05, fill: black, name: "v4") 
+    // content("v4.bottom", $v_4 (0.15)$, anchor: "left", padding: 0.2)
+
+    // circle((1*h, 1), radius: 0.05, fill: black, name: "v8") 
+    // content("v8.bottom", $v_8 (0.2)$, anchor: "left", padding: 0.2)
+    // circle((3*h, 1), radius: 0.05, fill:black, name: "v9") 
+    // content("v9.bottom", $v_9 (0.1)$, anchor: "left", padding: 0.2)
+    
+    line("v1", "v2")
+    line("v1", "v3")
+    // line("v1", "v4")
+    line("v2", "v5")
+    // line("v2", "v6")
+    line("v3", "v7")
+    // line("v4", "v8")
+    // line("v4", "v9")    
+  })
+
+
+  #table(
+    columns: (1fr, 1fr),
+    stroke: black,
+    // stroke: none,
+    logistic-image,
+    tree
+  )
+]
+
 #slide[#text(size: 32pt)[#align(center)[*BÁN KÍNH ỔN ĐỊNH*]]
 
 Đồ thị cây $T=(V,E)$ có $V={v_1, v_2,...,v_n}$ và tập cạnh $E$. 
@@ -66,51 +138,6 @@ $w_i$: trọng số đỉnh $v_i$, $w_i >= 0, i= 1,...n.$
 $sum_(i=1)^n w_i =1$.
 
 
-
-// #only(1)[
-//   #align(center)[#canvas(length: 10%, {
-//     import cetz.draw: *
-
-//     let y = 2 
-//     let x = 4
-//     let y-space = 1
-//     let h=1.4
-
-//     circle((0*h,3), radius: 0.05,fill:black, name: "v1") 
-//     content("v1.bottom", $v_1 (0.1)$, anchor: "left", padding: 0.2)
-
-//     circle((-2*h, 2), radius: 0.05, fill: black, name: "v2") 
-//     content("v2.bottom", $v_2 (0.13)$, anchor: "left", padding: 0.2)
-
-//     circle((-3*h, 1), radius: 0.05,fill:black, name: "v5") 
-//     content("v5.bottom", $v_5 (0.1)$, anchor: "left", padding: 0.2)
-
-//     circle((-1*h, 1), radius: 0.05,fill:black, name: "v6") 
-//     content("v6.bottom", $v_6 (0.1)$, anchor: "left", padding: 0.2)
-
-//     circle((0*h, 2), radius: 0.05, fill: black, name: "v3") 
-//     content("v3.bottom", $v_3 (0.06)$, anchor: "left", padding: 0.2)
-
-//     circle((0*h, 1), radius: 0.05, fill: black, name: "v7") 
-//     content("v7.bottom", $v_7 (0.06)$, anchor: "left", padding: 0.2)
-
-//     circle((2*h, 2), radius: 0.05, fill: black, name: "v4") 
-//     content("v4.bottom", $v_4 (0.15)$, anchor: "left", padding: 0.2)
-
-//     circle((1*h, 1), radius: 0.05, fill: black, name: "v8") 
-//     content("v8.bottom", $v_8 (0.2)$, anchor: "left", padding: 0.2)
-//     circle((3*h, 1), radius: 0.05, fill:black, name: "v9") 
-//     content("v9.bottom", $v_9 (0.1)$, anchor: "left", padding: 0.2)
-    
-//     line("v1", "v2")
-//     line("v1", "v3")
-//     line("v1", "v4")
-//     line("v2", "v5")
-//     line("v2", "v6")
-//     line("v3", "v7")
-//     line("v4", "v8")
-//     line("v4", "v9")    }
-//   )]]
 
 
 
@@ -187,6 +214,36 @@ $
     & x_i in [-epsilon_0; epsilon_0], forall i = 1,...,n
 $
 ]
+
+#slide[
+  #table(
+    columns: 2,
+    stroke: none,
+    inset: 1em,
+    gutter: 1em,
+  $
+    min quad & max_(u in N(v_1)) angle.l w + x, bb(1)_T_u angle.r quad quad  #text(blue)[(USR-2)]\ 
+
+    "s.t." quad & norm(x)_1 <= B\
+
+    & sum^n_(i=1) x_i = 0\
+
+    & x_i in [-epsilon_0; epsilon_0], forall i = 1,...,n
+  $,
+  $
+      min quad & norm(x)_1 quad quad quad quad quad quad #text(blue)[(PUSR-3)]\
+
+      "s.t." quad & max_(u in N(v_1)) angle.l w + x, bb(1)_T_u angle.r <= t\
+
+      & sum^n_(i=1) x_i = 0\
+
+      & x_i in [-epsilon_0; epsilon_0], forall i = 1,...,n
+  $
+
+  )
+
+]
+
 
 #slide[Đặt #text(blue)[$x^*$] là #text(blue)[nghiệm tối ưu] và #text(blue)[$t^*$] là #text(blue)[giá trị tối ưu] của (USR-2).
 
