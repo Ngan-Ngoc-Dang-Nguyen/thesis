@@ -43,34 +43,64 @@
     date: "Tháng 12 năm 2024",
 )
 
-#slide[#text(size: 32pt)[#align(center)[*NỘI DUNG LUẬN VĂN*]]
+#slide[
+  #v(-2em)
+  #set table(
+    stroke: none,
+    row-gutter: 0.5em,
+    column-gutter: 0.2em,
+    inset: 0.5em,
+    align: (horizon+center, horizon)
+  )
+  #let chuong-1 = table.cell(rowspan: 3, fill: green.lighten(30%))[Chương 1]
+  #let phan-11 = table.cell(fill: green.lighten(60%))[Lý thuyết đồ thị]
+  #let phan-12 = table.cell(fill: green.lighten(60%))[Bài toán 1-median]
+  #let phan-13 = table.cell(fill: green.lighten(60%))[Inverse 1-median và các bài toán liên quan]
 
-#text(size: 30pt)[
-*CHƯƠNG 1.* Kiến thức liên quan.
+  #let chuong-2 = table.cell(rowspan: 3, fill: aqua.lighten(30%), )[Chương 2]
+  #let phan-21 = table.cell(fill: aqua.lighten(60%), )[Bán kính ổn định và cận dưới]
+  #let phan-22 = table.cell(fill: aqua.lighten(60%), )[Bài toán nâng cấp cận dưới bán kính ổn định]
+  #let phan-23 = table.cell(fill: aqua.lighten(60%), )[Giải thuật]
 
-*CHƯƠNG 2.* Bán kính ổn định của điểm 1-median.]
+
+  #table(
+    columns: (auto, 1fr),
+    chuong-1, phan-11, phan-12, phan-13,
+    chuong-2, phan-21, phan-22, phan-23,
+  )
+
+  // xxx
 ]
 
-#slide[#text(size: 32pt)[#align(center)[*CHƯƠNG 1*]]
-1. Lý thuyết đồ thị.
 
-2. Bài toán 1-median.
+// #slide[#text(size: 32pt)[#align(center)[*NỘI DUNG LUẬN VĂN*]]
 
-3. Inverse 1-median và các bài toán liên quan.
+// #text(size: 30pt)[
+// *CHƯƠNG 1.* Kiến thức liên quan.
+
+// *CHƯƠNG 2.* Bán kính ổn định của điểm 1-median.]
+// ]
+
+// #slide[#text(size: 32pt)[#align(center)[*CHƯƠNG 1*]]
+// 1. Lý thuyết đồ thị.
+
+// 2. Bài toán 1-median.
+
+// 3. Inverse 1-median và các bài toán liên quan.
 
 
-]
+// ]
 
-#slide[#text(size: 32pt)[#align(center)[*CHƯƠNG 2*]]
-1. Một số ký hiệu liên quan.
+// #slide[#text(size: 32pt)[#align(center)[*CHƯƠNG 2*]]
+// 1. Một số ký hiệu liên quan.
 
-2. Bán kính ổn định.
+// 2. Bán kính ổn định.
 
-3. Nâng cấp cận dưới bán kính ổn định.
+// 3. Nâng cấp cận dưới bán kính ổn định.
 
-4. Giải thuật.
+// 4. Giải thuật.
 
-]
+// ]
 
 
 #slide[
@@ -122,8 +152,9 @@
 
   #table(
     columns: (1fr, 1fr),
-    stroke: black,
-    // stroke: none,
+    // stroke: black,
+    align: (center, center),
+    stroke: none,
     logistic-image,
     tree
   )
