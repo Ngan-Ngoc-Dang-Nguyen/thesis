@@ -94,23 +94,21 @@ Cho đồ thị $G=(V(G),E(G),psi_G)$ với $V(G)={v_1,v_2,v_3,v_4,v_5}, E(G)={e
   //content("v9.bottom", $v_9 (0.1)$, anchor: "left", padding: 0.2)
   
   line("v1", "v2", name: "v1v2")
-  content("v1v2.bottom", $e_1$, anchor: "bottom", padding: 0.2)
   line("v2", "v3", name: "v2v3")
-  content("v2v3.top", $e_2$, anchor: "top", padding: 0.7)
   line("v2", "v4", name: "v2v4")
-  content("v2v4.top", $e_3$, anchor: "top", padding: 0.9)
   line("v5", "v1", name: "v5v1")
-  content("v5v1.top", $e_4$, anchor: "top", padding: 1.1)
   line("v3", "v5", name: "v3v5")
-  content("v3v5.top", $e_5$, anchor: "top", padding: 0.1)
   line("v4", "v1", name: "v4v1")
-  content("v4v1.top", $e_6$, anchor: "top", padding: 1.3)
-  // line("v4", "v8")
-  // line("v4", "v9")  
+  content("v1v2", $e_1$, anchor: "bottom", padding: 0.2)
+  content("v2v3", $e_2$, anchor: "bottom", padding: 0.2)
+  content("v2v4", $e_3$, anchor: "top", padding: 0.2)
+  content("v5v1", $e_4$, anchor: "bottom", padding: 0.2)
+  content("v3v5", $e_5$, anchor: "top", padding: 0.2)
+  content("v4v1", $e_6$, anchor: "left", padding: 0.2) 
 })
 #figure(
   do-thi-vo-huong,
-  caption: [Biểu diễn hình học của đồ thị],
+  caption: [Hình biểu diễn của đồ thị],
 ) <fig-do-thi-vo-huong>
 // #align(center)[#text(orange)[*Hình 1.1*] Minh họa biểu diễn hình học của một đồ thị]
 
@@ -172,21 +170,21 @@ Tiếp theo, ta sẽ xét các dạng đồ thị thường gặp.
   content("v4.bottom", $v_4$, anchor: "left", padding: 0.2)
 
   circle((-3, 1), radius: 0.05, fill: black, name: "v5") 
-  content("v5.bottom", $v_5$, anchor: "right", padding: 0.2)
   line("v1", "v2", name: "v1v2", mark:(end: ">", fill: orange))
-  content("v1v2.bottom", $e_1$, anchor: "bottom", padding: 0.2)
   line("v2", "v3", name: "v2v3", mark:(end: ">", fill: orange))
-  content("v2v3.top", $e_2$, anchor: "top", padding: 0.7)
   line("v2", "v4", name: "v2v4", mark:(end: ">", fill: orange))
-  content("v2v4.top", $e_3$, anchor: "top", padding: 0.9)
   line("v5", "v1", name: "v5v1", mark:(end: ">", fill: orange))
-  content("v5v1.top", $e_4$, anchor: "top", padding: 1.1)
   line("v3", "v5", name: "v3v5", mark: (end: ">", fill: orange))
-  content("v3v5", $e_5$, anchor: "top", padding: 0.2)
   line("v4", "v1", name: "v4v1", mark:(end: ">", fill: orange))
-  content("v4v1", $e_6$, anchor: "left", padding: 0.2)
   // line("v4", "v8")
   // line("v4", "v9")  
+
+  content("v1v2", $e_1$, anchor: "bottom", padding: 0.2)
+  content("v2v3", $e_2$, anchor: "bottom", padding: 0.2)
+  content("v2v4", $e_3$, anchor: "top", padding: 0.2)
+  content("v5v1", $e_4$, anchor: "bottom", padding: 0.2)
+  content("v3v5", $e_5$, anchor: "top", padding: 0.2)
+  content("v4v1", $e_6$, anchor: "left", padding: 0.2) 
 })
 #figure(
   do-thi-co-huong,
@@ -240,7 +238,7 @@ Tiếp theo, ta sẽ xét các dạng đồ thị thường gặp.
 // #align(center)[#text(orange)[*Hình 1.3*]  Đồ thị có trọng số]
 #figure(
   do-thi-co-trong-so,
-  caption: [Đồ thị có trọng số đỉnh và cạnh],
+  caption: [Đồ thị có trọng số đỉnh và độ dài cạnh],
 ) <fig-do-thi-co-trong-so-xxx>
 
 4. _Đồ thị không có trọng số (unweighted graph)_ là đồ thị mà các cạnh và các đỉnh không có trọng số. Đồ thị trong #figref[@fig-do-thi-vo-huong] và #figref[@fig-do-thi-co-huong] là những đồ thị không có trọng số.
@@ -493,7 +491,7 @@ Có nhiều loại đồ thị con như:
     let h=1.4
 
     circle((0*h,3), radius: 0.05,fill:black, name: "v1") 
-    content("v1.bottom", $v_1$, anchor: "left", padding: 0.2)
+    content("v1.bottom", $v_1$, anchor: "top", padding: 0.2)
     content("v1.bottom", $(G)$, anchor: "top", padding: 2)
 
 
@@ -539,7 +537,7 @@ Có nhiều loại đồ thị con như:
     let h=1.4
 
     circle((0*h,3), radius: 0.05,fill:black, name: "v1") 
-    content("v1.bottom", $v_1$, anchor: "left", padding: 0.2)
+    content("v1.bottom", $v_1$, anchor: "top", padding: 0.2)
     content("v1.bottom", $(G[V'])$, anchor: "top", padding: 2)
 
     circle((-3, 1.5), radius: 0.05, fill: black, name: "v2") 
@@ -644,7 +642,7 @@ Bậc của một đỉnh trong đồ thị mang nhiều ý nghĩa quan trọng 
 // #align(center)[#text(orange)[*Hình 1.11*] Minh họa bậc của đỉnh]
 #figure(
   do-thi-tong-bac,
-  caption: [Bậc của đồ thị],
+  caption: [Đồ thị với các bậc khác nhau],
 ) <fig-do-thi-tong-bac-xxx>
 
 Trong #figref[@fig-do-thi-tong-bac-xxx], ta có thể tính được bậc của các đỉnh như sau: 
@@ -921,7 +919,7 @@ Tiếp theo, ta sẽ xem xét một bổ đề quan trọng sau:
 // #align(center)[#text(orange)[*Hình 1.12*] Minh họa đồ thị cây]
 #figure(
   do-thi-cay,
-  caption: [Đồ thị vòng của bốn điểm],
+  caption: [Đồ thị vòng chứa bốn điểm],
 ) <phan-chung>
  //ĐN a
 

@@ -129,7 +129,7 @@ $c_1=1, c_2 = 6, c_3 = 4, c_4 =5, c_5=7, c_6 = 8,
 2 <= w_5 <= 6,
 2 <= w_6 <= 4.$]
 
-#align(center)[#canvas(length: 7%, {
+#let do-thi-de-giai-inverse = canvas(length: 7%, {
     import cetz.draw: *
 
     let y = 2 
@@ -164,9 +164,12 @@ $c_1=1, c_2 = 6, c_3 = 4, c_4 =5, c_5=7, c_6 = 8,
     line("v4","v5")
 
     line("v4","v6")
+})
 
-     }
-  )]
+#figure(
+  do-thi-de-giai-inverse,
+  caption: [Đồ thị cây ví dụ cho bài toán Inverse 1-median]
+)
 
 Ta có
 $ b = 2 tilde(w)_k - W = 2.18 - 28 = 8  $
