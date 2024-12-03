@@ -191,36 +191,72 @@ $ R(w) = sup{epsilon >= 0: v_1 in X^*_tilde(w), quad forall tilde(w) in [w-epsil
 // // $ R(w) = sup{epsilon >= 0: v_1 in X^*_tilde(w), quad forall tilde(w) in [w-epsilon, w+ epsilon] sect RR_+^n}. $
 // ]
 
-#slide[#text(size: 32pt)[#align(center)[*CẬN DƯỚI BÁN KÍNH ỔN ĐỊNH*]]
+#slide[
+    
+    #text(size: 32pt)[#align(center)[*CẬN DƯỚI BÁN KÍNH ỔN ĐỊNH*]]
 *Định lý 1.*
 $ R(w) >=  underline(R)(w) = min_(u in N(v_1)) 1/n  (1- 2 angle.l w, bb(1)_T_u angle.r). $ _Dấu "=" xảy ra nếu  $underline(R)(w) < min_(i=1,...,n) w_i$_
 ]
 
-#slide[#text(size: 32pt)[#align(center)[*NÂNG CẤP BÁN KÍNH ỔN ĐỊNH*]]
+#slide[
+    
+    #v(-1em)
+    #text(size: 32pt)[#align(center)[*NÂNG CẤP BÁN KÍNH ỔN ĐỊNH*]]
 
-#set table.hline(stroke: .7pt)
+    // #set table.hline(stroke: .7pt)
 
+// #table(
+//   stroke: none,
+//   columns: (auto, 5fr),
+//   [*Nâng cấp cận dưới*], [$ quad quad quad quad quad max quad underline(R)(tilde(w)) quad$ #text(blue)[(USR-1)]],
+//   [],[],
+//   [],[],
+//   [],[],
+//   [Điều chỉnh trong ngân sách $B$],  [$ quad quad quad quad quad quad "s.t"  norm(tilde(w)-w)_1 <= B$],
+//   [],[],
+//   [],[],
+//   [],[],
+
+//   [$v_1$ vẫn là 1-median của $tilde(w)$],  [$ quad quad quad quad quad quad  quad v_1$ vẫn là 1-median của $tilde(w)$],
+//   [],[],
+//   [],[],
+
+//   [Tổng trọng số không đổi],  [$ quad quad quad quad quad quad quad sum_(i=1)^n tilde(w)_i =1$],
+//   [],[],
+//   [],[],
+
+//   [Điều chỉnh không quá lớn],  [$ quad quad quad quad quad quad quad norm(tilde(w)-w)_infinity <= epsilon_0$],
+// )
+    #let bai-toan = [
+        
+        *Nâng cấp cận dưới*
+
+        Điều chỉnh trong ngân sách $B$
+
+        $v_1$ vẫn là 1-median của $tilde(w)$
+        #v(1em)
+
+        Tổng trọng số không đổi
+
+        Điều chỉnh không quá lớn
+
+
+    ]
+
+    #let problem = $ 
+     max quad & underline(R)(tilde(w)) quad quad quad quad #text(blue)[(USR-1)]\
+     "s.t"  quad &  norm(tilde(w)-w)_1 <= B\
+            & v_1 "vẫn là 1-median của" tilde(w)\
+            & sum_(i=1)^n tilde(w)_i =1\
+            & norm(tilde(w)-w)_infinity <= epsilon_0
+    $
+// #v(-1em)
 #table(
   stroke: none,
-  columns: (auto, 5fr),
-  [*Nâng cấp cận dưới*], [$ quad quad quad quad quad max quad underline(R)(tilde(w)) quad$ #text(blue)[(USR-1)]],
-  [],[],
-  [],[],
-  [],[],
-  [Điều chỉnh trong ngân sách $B$],  [$ quad quad quad quad quad quad "s.t"  norm(tilde(w)-w)_1 <= B$],
-  [],[],
-  [],[],
-  [],[],
-
-  [$v_1$ vẫn là 1-median của $tilde(w)$],  [$ quad quad quad quad quad v_1$ vẫn là 1-median của $tilde(w)$],
-  [],[],
-  [],[],
-
-  [Tổng trọng số không đổi],  [$ quad quad quad quad quad sum_(i=1)^n tilde(w)_i =1$],
-  [],[],
-  [],[],
-
-  [Điều chỉnh không quá lớn],  [$ quad quad quad quad quad norm(tilde(w)-w)_infinity <= epsilon_0$],
+  columns: (5fr, 5fr),
+  align: (top, top),
+  bai-toan,
+  problem
 )
 
 
