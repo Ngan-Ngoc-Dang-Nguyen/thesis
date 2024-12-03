@@ -29,33 +29,121 @@
     date: "Tháng 12 năm 2024",
 )
 
-#slide[#text(size: 32pt)[#align(center)[*NỘI DUNG LUẬN VĂN*]]
+#slide[
+  #v(-2em)
+  #set table(
+    stroke: none,
+    row-gutter: 0.5em,
+    column-gutter: 0.2em,
+    inset: 0.5em,
+    align: (horizon+center, horizon)
+  )
+  #let chuong-1 = table.cell(rowspan: 3, fill: green.lighten(30%))[Chương 1]
+  #let phan-11 = table.cell(fill: green.lighten(60%))[Lý thuyết đồ thị]
+  #let phan-12 = table.cell(fill: green.lighten(60%))[Bài toán 1-median]
+  #let phan-13 = table.cell(fill: green.lighten(60%))[Inverse 1-median và các bài toán liên quan]
 
-#text(size: 30pt)[
-*CHƯƠNG 1.* Kiến thức liên quan.
+  #let chuong-2 = table.cell(rowspan: 3, fill: aqua.lighten(30%), )[Chương 2]
+  #let phan-21 = table.cell(fill: aqua.lighten(60%), )[Bán kính ổn định và cận dưới]
+  #let phan-22 = table.cell(fill: aqua.lighten(60%), )[Bài toán nâng cấp cận dưới bán kính ổn định]
+  #let phan-23 = table.cell(fill: aqua.lighten(60%), )[Giải thuật]
 
-*CHƯƠNG 2.* Bán kính ổn định của điểm 1-median.]
+
+  #table(
+    columns: (auto, 1fr),
+    chuong-1, phan-11, phan-12, phan-13,
+    chuong-2, phan-21, phan-22, phan-23,
+  )
+
+  // xxx
 ]
 
-#slide[#text(size: 32pt)[#align(center)[*CHƯƠNG 1*]]
-1. Lý thuyết đồ thị.
 
-2. Bài toán 1-median.
+// #slide[#text(size: 32pt)[#align(center)[*NỘI DUNG LUẬN VĂN*]]
 
-3. Inverse 1-median và các bài toán liên quan.
+// #text(size: 30pt)[
+// *CHƯƠNG 1.* Kiến thức liên quan.
+
+// *CHƯƠNG 2.* Bán kính ổn định của điểm 1-median.]
+// ]
+
+// #slide[#text(size: 32pt)[#align(center)[*CHƯƠNG 1*]]
+// 1. Lý thuyết đồ thị.
+
+// 2. Bài toán 1-median.
+
+// 3. Inverse 1-median và các bài toán liên quan.
 
 
-]
+// ]
 
-#slide[#text(size: 32pt)[#align(center)[*CHƯƠNG 2*]]
-1. Một số ký hiệu liên quan.
+// #slide[#text(size: 32pt)[#align(center)[*CHƯƠNG 2*]]
+// 1. Một số ký hiệu liên quan.
 
-2. Bán kính ổn định.
+// 2. Bán kính ổn định.
 
-3. Nâng cấp cận dưới bán kính ổn định.
+// 3. Nâng cấp cận dưới bán kính ổn định.
 
-4. Giải thuật.
+// 4. Giải thuật.
 
+// ]
+
+
+#slide[
+  #let logistic-image = image(height: 100%, "../images/logistic.jpg")
+  #let tree = canvas(length: 10%, {
+    import cetz.draw: *
+
+    let y = 2 
+    let x = 4
+    let y-space = 1
+    let h=1.4
+
+    circle((0*h,3), radius: 0.05,fill:black, name: "v1") 
+    content("v1.bottom", $v_1 (0.1)$, anchor: "left", padding: 0.2)
+
+    circle((-2*h, 2), radius: 0.05, fill: black, name: "v2") 
+    content("v2.bottom", $v_2 (0.13)$, anchor: "left", padding: 0.2)
+
+    circle((-3*h, 1), radius: 0.05,fill:black, name: "v5") 
+    content("v5.bottom", $v_5 (0.1)$, anchor: "left", padding: 0.2)
+
+    // circle((-1*h, 1), radius: 0.05,fill:black, name: "v6") 
+    // content("v6.bottom", $v_6 (0.1)$, anchor: "left", padding: 0.2)
+
+    circle((0*h, 2), radius: 0.05, fill: black, name: "v3") 
+    content("v3.bottom", $v_3 (0.06)$, anchor: "left", padding: 0.2)
+
+    circle((0*h, 1), radius: 0.05, fill: black, name: "v7") 
+    content("v7.bottom", $v_7 (0.06)$, anchor: "left", padding: 0.2)
+
+    // circle((2*h, 2), radius: 0.05, fill: black, name: "v4") 
+    // content("v4.bottom", $v_4 (0.15)$, anchor: "left", padding: 0.2)
+
+    // circle((1*h, 1), radius: 0.05, fill: black, name: "v8") 
+    // content("v8.bottom", $v_8 (0.2)$, anchor: "left", padding: 0.2)
+    // circle((3*h, 1), radius: 0.05, fill:black, name: "v9") 
+    // content("v9.bottom", $v_9 (0.1)$, anchor: "left", padding: 0.2)
+    
+    line("v1", "v2")
+    line("v1", "v3")
+    // line("v1", "v4")
+    line("v2", "v5")
+    // line("v2", "v6")
+    line("v3", "v7")
+    // line("v4", "v8")
+    // line("v4", "v9")    
+  })
+
+
+  #table(
+    columns: (1fr, 1fr),
+    // stroke: black,
+    align: (center, center),
+    stroke: none,
+    logistic-image,
+    tree
+  )
 ]
 
 #slide[#text(size: 32pt)[#align(center)[*BÁN KÍNH ỔN ĐỊNH*]]
