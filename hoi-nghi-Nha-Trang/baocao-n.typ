@@ -190,7 +190,7 @@ $ R(w) = sup{epsilon >= 0: v_1 in X^*_tilde(w), quad forall tilde(w) in [w-epsil
 
 #slide[#text(size: 32pt)[#align(center)[*CẬN DƯỚI BÁN KÍNH ỔN ĐỊNH*]]
 *Định lý 1.*
-$ R(w) >=  underline(R)(w) = min_(u in N(v_1)) 1/n  (1- 2 angle.l w, bb(1)_T_u angle.r). $ _Furthermore, the equality in (1) holds if $underline(R)(w) < min_(i=1,...,n) w_i$_
+$ R(w) >=  underline(R)(w) = min_(u in N(v_1)) 1/n  (1- 2 angle.l w, bb(1)_T_u angle.r). $ _Dấu "=" xảy ra nếu  $underline(R)(w) < min_(i=1,...,n) w_i$_
 ]
 
 #slide[#text(size: 32pt)[#align(center)[*NÂNG CẤP BÁN KÍNH ỔN ĐỊNH*]]
@@ -324,7 +324,7 @@ $ R(w) >=  underline(R)(w) = min_(u in N(v_1)) 1/n  (1- 2 angle.l w, bb(1)_T_u a
 *Định lý 2.*
 _Giá trị tối ưu $t^*$ của (USR-2) được tính_ 
 
-$ t^* = inf{t : beta(t) ≤ B } $ và $hat(x)(t^*)$ nghiệm tối ưu của (USR-2).
+$ t^* = inf{t : beta(t) ≤ B } $ _và $hat(x)(t^*)$ nghiệm tối ưu của (USR-2)_.
 // Đặt $N(v_1)={u_1,u_2,...,u_k}$, $u_0=v_1$ và $T_u_0={v_1}.$
 
 // Gọi $gamma_j= angle.l w, bb(1)_T_u_j angle.r $: tổng trọng số đỉnh của cây con lấy gốc tại $u_j, j=0,1...,k.$
