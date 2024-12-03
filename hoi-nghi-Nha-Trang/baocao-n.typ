@@ -318,6 +318,8 @@ $ R(w) >=  underline(R)(w) = min_(u in N(v_1)) 1/n  (1- 2 angle.l w, bb(1)_T_u a
 // ]
 
 #slide[
+    #let obj = text(fill: red)[$max_(u in N(v_1)) angle.l w + x, bb(1)_T_u angle.r$]
+    #let budget = text(fill: eastern)[$norm(x)_1$]
 
   #table(
     columns: 2,
@@ -325,18 +327,18 @@ $ R(w) >=  underline(R)(w) = min_(u in N(v_1)) 1/n  (1- 2 angle.l w, bb(1)_T_u a
     inset: 1em,
     gutter: 1em,
   $
-    min quad & max_(u in N(v_1)) angle.l w + x, bb(1)_T_u angle.r quad quad  #text(blue)[(USR-2)]\ 
+    min quad & #obj quad quad  #text(blue)[(USR-2)]\ 
 
-    "s.t." quad & norm(x)_1 <= B\
+    "s.t." quad & budget <= B\
 
     & sum^n_(i=1) x_i = 0\
 
     & x_i in [-epsilon_0; epsilon_0], forall i = 1,...,n
   $,
   $
-      min quad & norm(x)_1 quad quad quad quad quad quad #text(blue)[(PUSR-3)]\
+      min quad & budget quad quad quad quad quad quad #text(blue)[(PUSR-3)]\
 
-      "s.t." quad & max_(u in N(v_1)) angle.l w + x, bb(1)_T_u angle.r <= t\
+      "s.t." quad & #obj <= t\
 
       & sum^n_(i=1) x_i = 0\
 
