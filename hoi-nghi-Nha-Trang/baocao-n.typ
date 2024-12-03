@@ -498,7 +498,7 @@ $
     - Thu được công thức tường minh cho cận dưới bán kính ổn định điểm 1-median trên cây
     - Đề xuất giải thuật tổ hợp hiệu quả cho bài toán nâng cấp cận dưới bán kính ổn định 
     - Công bố kết quả tại một tạp chí Q3 Scopus đang trong quá trình phản biện
-    - Công bố kết quả tại Đại hội toán học toàn quốc 2024
+    - Công bố kết quả tại Hội nghị Toán học Miền Trung - Tây Nguyên 2024
 
 ]
 
