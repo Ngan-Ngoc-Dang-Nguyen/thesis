@@ -21,7 +21,7 @@
 #let author = table(
       // width: 100%,
       columns: (1fr, 1fr),
-      align: (left, left), 
+      align: (left+top, left+top), 
       inset: 2em,
       // stroke: black,
       stroke: none,
@@ -35,7 +35,7 @@
     )
 
 #title-slide(
-    title: [#text(size: 32pt)[LUẬN VĂN TỐT NGHIỆP]
+    title: text(fill: blue)[#text(size: 32pt, fill: blue)[LUẬN VĂN TỐT NGHIỆP]
 
     Nâng cấp bán kính ổn định cho vị trí 1-median trên cây ],
     //subtitle: "An overview over all the features",
@@ -112,7 +112,7 @@
     let x = 4
     let y-space = 1
     let h=1.6
-    let v = 2
+    let v = 1.5
 
     circle((0*h, 3*v), radius: 0.1,fill:black, name: "v1") 
     content("v1.bottom", $v_1 (0.1)$, anchor: "left", padding: 0.2)
@@ -149,8 +149,8 @@
     // line("v4", "v8")
     line("v4", "v9")    
   })
-
-  #v(-2em)
+  #v(-3em)
+  #text(size: 32pt)[#align(center)[*ĐIỂM 1-MEDIAN*]]
   #table(
     columns: (1fr, 1fr),
     // stroke: black,
