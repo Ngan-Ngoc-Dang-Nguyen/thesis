@@ -18,14 +18,28 @@
 #import "@preview/cetz:0.2.2"
 #import "@preview/cetz:0.1.2"
 
+#let author = table(
+      // width: 100%,
+      columns: (1fr, 1fr),
+      align: (left, left), 
+      inset: 2em,
+      // stroke: black,
+      stroke: none,
+      [_GV hướng dẫn_\ *PGS.TS. Nguyễn Trung Kiên*],
+      [
+      _Sinh viên thực hiện_\
+      *Nguyễn Đặng Ngọc Ngân*\
+      *MSSV: B2100137*\
+      *Lớp: SP Toán học - K47*
+      ]
+    )
 
 #title-slide(
     title: [#text(size: 32pt)[LUẬN VĂN TỐT NGHIỆP]
 
     Nâng cấp bán kính ổn định cho vị trí 1-median trên cây ],
     //subtitle: "An overview over all the features",
-    authors:[
-    Nguyễn Đặng Ngọc Ngân],
+    authors: author,
     date: "Tháng 12 năm 2024",
 )
 
